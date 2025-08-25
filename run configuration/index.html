@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Run Configuration</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/style.css?v=9">
+  <link rel="stylesheet" href="../assets/run configuration.css?v=9">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+  <script src="../assets/include.js?v=9" defer></script>
+  <style>
+    .fake-link { text-decoration: underline; cursor: pointer; }
+  </style>
+</head>
+<body>
+
+<!-- Top Bar -->
+<div id="header"></div>
+
+<!-- Layout -->
+<div class="d-flex" id="contentArea">
+  <!-- Sidebar -->
+  <aside id="sidebar" class="sidebar"></aside>
+
+  <!-- Main Content -->
+  <div class="main-content flex-grow-1 p-4" id="mainContent">
+    <div class="d-flex align-items-center gap-2 mb-3 flex-wrap">
+      <h5 class="text-uppercase mb-0" style="font-size: 1.2rem;">Run Configuration</h5>
+    </div>
+    <div class="bg-white p-3 rounded shadow-sm">
+      <div class="table-responsive">
+        <table class="table table-bordered table-hover align-middle" id="runTable">
+         <thead>
+          <tr class="table-dark text-white">
+            <th>Edit</th>
+            <th>Year</th>
+            <th>Run No</th>
+            <th>Start Date</th>
+            <th>End Date</th>
+            <th>Module</th>
+            <th>Sub-Module</th>
+            <th>Upload General Report</th>
+            <th>Status</th>
+          </tr>
+          <tr class="bg-white text-dark align-middle border-bottom">
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th>
+              <select id="moduleFilter" class="form-select form-select-sm border">
+                <option value="">All</option>
+                <option>IHC</option>
+                <option>TSP</option>
+                <option>H&E</option>
+              </select>
+            </th>
+            <th>
+              <select id="submoduleFilter" class="form-select form-select-sm border">
+                <option value="">All</option>
+                <option>ER</option>
+                <option>PR</option>
+                <option>Her2/Neu</option>
+                <option>Lymphoma</option>
+                <option>Miscellaneous</option>
+                <option>TSP</option>
+                <option>MDSR</option>
+                <option>Diagnostic Histopathology</option>
+              </select>
+            </th>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+
+
+
+          <tbody>
+            <tr>
+              <td>
+                <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#editRunModal">
+                  <i class="bi bi-pencil-square"></i>
+                </button>
+                <button class="btn btn-danger btn-sm delete-row">
+                  <i class="bi bi-trash"></i>
+                </button>
+              </td>
+              <td>2025</td>
+              <td>27</td>
+              <td>30-09-2025</td>
+              <td>01-12-2025</td>
+              <td>IHC</td>
+              <td>ER</td>
+              <td class="upload-cell">
+                <button class="btn btn-outline-primary btn-sm upload-btn" title="Upload" disabled>
+                  <i class="bi bi-upload"></i>
+                </button>
+                <button class="btn btn-outline-success btn-sm commit-btn" title="Commit" disabled>
+                  <i class="bi bi-check2-circle"></i>
+                </button>
+              </td>
+              <td><span class="badge bg-secondary">Inactive</span></td>
+            </tr>
+            <tr>
+              <td>
+                <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#editRunModal">
+                  <i class="bi bi-pencil-square"></i>
+                </button>
+              </td>
+              <td>2025</td>
+              <td>27</td>
+              <td>15-07-2025</td>
+              <td>20-07-2025</td>
+              <td>IHC</td>
+              <td>PR</td>
+              <td class="upload-cell">
+                <button class="btn btn-outline-primary btn-sm upload-btn" title="Upload" disabled>
+                  <i class="bi bi-upload"></i>
+                </button>
+                <button class="btn btn-outline-success btn-sm commit-btn" title="Commit" disabled>
+                  <i class="bi bi-check2-circle"></i>
+                </button>
+              </td>
+              <td><span class="badge bg-secondary">Completed</span></td>
+            </tr>
+            <tr>
+              <td>
+                <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#editRunModal">
+                  <i class="bi bi-pencil-square"></i>
+                </button>
+              </td>
+              <td>2025</td>
+              <td>26</td>
+              <td>01-08-2025</td>
+              <td>05-08-2025</td>
+              <td>IHC</td>
+              <td>Her2/Neu</td>
+              <td class="upload-cell">
+                <button class="btn btn-outline-primary btn-sm upload-btn" title="Upload" disabled>
+                  <i class="bi bi-upload"></i>
+                </button>
+                <button class="btn btn-outline-success btn-sm commit-btn" title="Commit" disabled>
+                  <i class="bi bi-check2-circle"></i>
+                </button>
+              </td>
+              <td><span class="badge bg-success">Active</span></td>
+            </tr>
+            <tr>
+              <td>
+                <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#editRunModal">
+                  <i class="bi bi-pencil-square"></i>
+                </button>
+              </td>
+              <td>2025</td>
+              <td>28</td>
+              <td>01-08-2025</td>
+              <td>05-08-2025</td>
+              <td>IHC</td>
+              <td>Lymphoma</td>
+              <td class="upload-cell">
+                <button class="btn btn-outline-primary btn-sm upload-btn" title="Upload" disabled>
+                  <i class="bi bi-upload"></i>
+                </button>
+                <button class="btn btn-outline-success btn-sm commit-btn" title="Commit" disabled>
+                  <i class="bi bi-check2-circle"></i>
+                </button>
+              </td>
+              <td><span class="badge bg-success">Active</span></td>
+            </tr>
+            <tr>
+              <td>
+                <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#editRunModal">
+                  <i class="bi bi-pencil-square"></i>
+                </button>
+              </td>
+              <td>2025</td>
+              <td>29</td>
+              <td>01-08-2025</td>
+              <td>05-08-2025</td>
+              <td>IHC</td>
+              <td>Miscellaneous</td>
+              <td class="upload-cell">
+                <button class="btn btn-outline-primary btn-sm upload-btn" title="Upload" disabled>
+                  <i class="bi bi-upload"></i>
+                </button>
+                <button class="btn btn-outline-success btn-sm commit-btn" title="Commit" disabled>
+                  <i class="bi bi-check2-circle"></i>
+                </button>
+              </td>
+              <td><span class="badge bg-success">Active</span></td>
+            </tr>
+            <tr>
+              <td>
+                <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#editRunModal">
+                  <i class="bi bi-pencil-square"></i>
+                </button>
+              </td>
+              <td>2025</td>
+              <td>30</td>
+              <td>15-07-2025</td>
+              <td>20-07-2025</td>
+              <td>TSP</td>
+              <td>TSP</td>
+              <td class="upload-cell">
+                <button class="btn btn-outline-primary btn-sm upload-btn" title="Upload" disabled>
+                  <i class="bi bi-upload"></i>
+                </button>
+                <button class="btn btn-outline-success btn-sm commit-btn" title="Commit" disabled>
+                  <i class="bi bi-check2-circle"></i>
+                </button>
+              </td>
+              <td><span class="badge bg-secondary">Completed</span></td>
+            </tr>
+            <tr>
+              <td>
+                <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#editRunModal">
+                  <i class="bi bi-pencil-square"></i>
+                </button>
+              </td>
+              <td>2025</td>
+              <td>26/27</td>
+              <td>01-08-2025</td>
+              <td>05-08-2025</td>
+              <td>H&E</td>
+              <td>MDSR</td>
+              <td class="upload-cell">
+                <button class="btn btn-outline-primary btn-sm upload-btn" title="Upload" disabled>
+                  <i class="bi bi-upload"></i>
+                </button>
+                <button class="btn btn-outline-success btn-sm commit-btn" title="Commit" disabled>
+                  <i class="bi bi-check2-circle"></i>
+                </button>
+              </td>
+              <td><span class="badge bg-success">Active</span></td>
+            </tr>
+            <tr>
+              <td>
+                <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#editRunModal">
+                  <i class="bi bi-pencil-square"></i>
+                </button>
+              </td>
+              <td>2025</td>
+              <td>28/29</td>
+              <td>15-07-2025</td>
+              <td>20-07-2025</td>
+              <td>H&E</td>
+              <td>Diagnostic Histopathology </td>
+              <td class="upload-cell">
+                <button class="btn btn-outline-primary btn-sm upload-btn" title="Upload" disabled>
+                  <i class="bi bi-upload"></i>
+                </button>
+                <button class="btn btn-outline-success btn-sm commit-btn" title="Commit" disabled>
+                  <i class="bi bi-check2-circle"></i>
+                </button>
+              </td>
+              <td><span class="badge bg-secondary">Completed</span></td>
+            </tr>
+          </tbody>
+        </table>
+        <!-- Edit Run Modal -->
+        <div class="modal fade" id="editRunModal" tabindex="-1" aria-labelledby="editRunModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+              <div class="modal-header bg-navy text-white">
+                <h5 class="modal-title" id="addRunModalLabel">Edit Run</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <form id="editRunForm">
+                  <div class="mb-3">
+                    <label for="runNo" class="form-label">Run No.</label>
+                    <input type="text" class="form-control" id="runNo" required autofocus>
+                  </div>
+                  <div class="mb-3">
+                    <label for="module" class="form-label">Module</label>
+                    <select class="form-select" id="module" required>
+                      <option value="">Select Module</option>
+                      <option value="IHC">IHC</option>
+                      <option value="TSP">TSP</option>
+                      <option value="H&E">H&E</option>
+                    </select>
+                  </div>
+                  <div class="mb-3">
+                    <label for="submodule" class="form-label">Submodule</label>
+                    <select class="form-select" id="submodule" required>
+                      <option value="">Select Submodule</option>
+                    </select>
+                  </div>
+                  <div class="mb-3">
+                    <label for="year" class="form-label">Year</label>
+                    <input type="number" class="form-control" id="year" placeholder="e.g., 2025" required>
+                  </div>
+                  <div class="mb-3">
+                    <label for="startDate" class="form-label">Start Date</label>
+                    <input type="date" class="form-control" id="startDate" required>
+                  </div>
+                  <div class="mb-3">
+                    <label for="endDate" class="form-label">End Date</label>
+                    <input type="date" class="form-control" id="endDate" required>
+                  </div>
+                </form>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button type="submit" class="btn btn-primary" form="editRunForm">Save Changes</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="d-flex justify-content-end mt-3">
+        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addRunModal">Add Run</button>
+      </div>
+</div>
+
+
+<!-- Add Run Modal -->
+<div class="modal fade" id="addRunModal" tabindex="-1" aria-labelledby="addRunModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header bg-navy text-white">
+        <h5 class="modal-title" id="addRunModalLabel">Configure Run</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form id="addRunForm">
+          <div class="mb-3">
+            <label for="addRunNo" class="form-label">Run No.</label>
+            <input type="text" class="form-control" id="addRunNo" required autofocus>
+          </div>
+          <div class="mb-3">
+            <label for="addModule" class="form-label">Module</label>
+            <select class="form-select" id="addModule" required>
+              <option value="">Select Module</option>
+              <option value="IHC">IHC</option>
+              <option value="TSP">TSP</option>
+              <option value="H&E">H&E</option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label for="addSubmodule" class="form-label">Submodule</label>
+            <select class="form-select" id="addSubmodule" required>
+              <option value="">Select Submodule</option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label for="addYear" class="form-label">Year</label>
+            <input type="number" class="form-control" id="addYear" placeholder="e.g., 2025" required>
+          </div>
+          <div class="mb-3">
+            <label for="addStartDate" class="form-label">Start Date</label>
+            <input type="date" class="form-control" id="addStartDate" required>
+          </div>
+          <div class="mb-3">
+            <label for="addEndDate" class="form-label">End Date</label>
+            <input type="date" class="form-control" id="addEndDate" required>
+          </div>
+        </form>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+        <button type="submit" class="btn btn-primary" form="addRunForm">Save</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+    </div>
+  </div>
+</div>
+
+<script>
+  const submoduleOptions = {
+    "IHC": ["ER", "PR", "Her2/Neu", "Lymphoma", "Miscellaneous"],
+    "TSP": ["TSP"],
+    "H&E": ["Diagnostic Histopathology", "MDSR"]
+  };
+
+  const addModuleSelect = document.getElementById("addModule");
+  const addSubmoduleSelect = document.getElementById("addSubmodule");
+
+
+  addModuleSelect.addEventListener("change", () => {
+    const selectedModule = addModuleSelect.value;
+    addSubmoduleSelect.innerHTML = '<option value="">Select Submodule</option>';
+    if (submoduleOptions[selectedModule]) {
+      submoduleOptions[selectedModule].forEach(sub => {
+        const option = document.createElement("option");
+        option.value = sub;
+        option.textContent = sub;
+        addSubmoduleSelect.appendChild(option);
+      });
+    }
+  });
+
+  const moduleFilter = document.getElementById("moduleFilter");
+  const submoduleFilter = document.getElementById("submoduleFilter");
+
+  function filterTable() {
+    const moduleValue = moduleFilter.value.toLowerCase();
+    const submoduleValue = submoduleFilter.value.toLowerCase();
+
+    const rows = document.querySelectorAll("#runTable tbody tr");
+    rows.forEach(row => {
+      const moduleText = row.children[5].textContent.trim().toLowerCase();
+      const submoduleText = row.children[6].textContent.trim().toLowerCase();
+
+      const matchModule = !moduleValue || moduleText === moduleValue;
+      const matchSubmodule = !submoduleValue || submoduleText === submoduleValue;
+
+      row.style.display = (matchModule && matchSubmodule) ? "" : "none";
+    });
+  }
+
+  moduleFilter.addEventListener("change", filterTable);
+  submoduleFilter.addEventListener("change", filterTable);
+
+  document.getElementById('addRunForm').addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    // Collect values from modal form
+    const module = document.getElementById('addModule').value;
+    const submodule = document.getElementById('addSubmodule').value;
+    const year = document.getElementById('addYear').value;
+    const runNo = document.getElementById('addRunNo').value;
+    const startDate = document.getElementById('addStartDate').value.split('-').reverse().join('-');
+    const endDate = document.getElementById('addEndDate').value.split('-').reverse().join('-');
+    // Create new row
+    const table = document.getElementById('runTable').getElementsByTagName('tbody')[0];
+    const newRow = table.insertRow();
+
+    // Edit button cell
+    const editCell = newRow.insertCell(0);
+    editCell.innerHTML = `
+      <button class="btn btn-primary btn-sm me-1" data-bs-toggle="modal" data-bs-target="#editRunModal">
+        <i class="bi bi-pencil-square"></i>
+      </button>
+      <button class="btn btn-danger btn-sm delete-row">
+        <i class="bi bi-trash"></i>
+      </button>
+    `;
+
+    // Other cells
+    newRow.insertCell(1).textContent = year;
+    newRow.insertCell(2).textContent = runNo;
+    newRow.insertCell(3).textContent = startDate;
+    newRow.insertCell(4).textContent = endDate;
+    newRow.insertCell(5).textContent = module;
+    newRow.insertCell(6).textContent = submodule;
+    makeNoopLinks(newRow);
+
+
+    const uploadCell = newRow.insertCell(7);
+    uploadCell.className = 'upload-cell';
+    uploadCell.innerHTML = `
+      <button class="btn btn-outline-primary btn-sm upload-btn" title="Upload" disabled>
+        <i class="bi bi-upload"></i>
+      </button>
+      <button class="btn btn-outline-success btn-sm commit-btn" title="Commit" disabled>
+        <i class="bi bi-check2-circle"></i>
+      </button>
+    `;
+    const statusCell = newRow.insertCell(8);
+    statusCell.innerHTML = '<span class="badge bg-success">Active</span>';
+    initUploadButtons(newRow);
+
+    editCell.querySelector('.delete-row').addEventListener('click', function () {
+      if (confirm("Are you sure you want to delete this run?")) newRow.remove();
+    });
+
+    // reset & close
+    this.reset();
+    addSubmoduleSelect.innerHTML = '<option value="">Select Submodule</option>';
+    bootstrap.Modal.getInstance(document.getElementById('addRunModal')).hide();
+  });
+
+  document.querySelectorAll('.delete-row').forEach(btn => {
+    btn.addEventListener('click', function () {
+      if (confirm("Are you sure you want to delete this run?")) {
+        this.closest('tr').remove();
+      }
+    });
+  });
+
+  function initUploadButtons(row) {
+    // indices after adding the new column:
+    const uploadCell = row.children[7];
+    const statusCell = row.children[8];
+
+    const isCompleted = /completed/i.test(statusCell.textContent.trim());
+    uploadCell.querySelectorAll('button').forEach(btn => {
+      btn.disabled = !isCompleted;
+    });
+  }
+
+  const SUBMODULE_LINKS = {
+    'mdsr': '../mdsr_run_config/',
+    'diagnostic histopathology': '../result_center_specific/'
+    };
+
+  // Convert matching Sub-Module cells (col 7) into no-op links
+  function linkSubmodules(context = document) {
+    const cells = context.querySelectorAll('#runTable tbody tr td:nth-child(7)');
+    cells.forEach(td => {
+        const label = td.textContent.trim().toLowerCase(); // trim handles stray spaces
+        const href = SUBMODULE_LINKS[label];
+        if (!href) return;
+
+        const existing = td.querySelector('a');
+        if (existing) {
+        existing.setAttribute('href', href);
+        existing.classList.add('fake-link');
+        return;
+        }
+        td.innerHTML = `<a href="${href}" class="fake-link">${td.textContent.trim()}</a>`;
+        // If you prefer new tab: add target="_blank" rel="noopener"
+    });
+  }
+
+  // Run once for existing rows
+  linkSubmodules();
+  linkSubmodules(newRow);
+
+  // init for existing rows
+  document.querySelectorAll('#runTable tbody tr').forEach(initUploadButtons);
+
+  
+
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

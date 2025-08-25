@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>ad_result</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/style.css?v=9">
+  <link rel="stylesheet" href="../assets/admin_results.css?v=9">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+  <script src="../assets/include.js?v=9" defer></script>
+</head>
+<body>
+
+<!-- Top Bar -->
+<div id="header"></div>
+
+<!-- Layout -->
+<div class="d-flex" id="contentArea">
+  <!-- Sidebar -->
+  <aside id="sidebar" class="sidebar"></aside>
+
+  <!-- Main Content -->
+  <div class="main-content flex-grow-1 p-4" id="mainContent">
+    <div class="d-flex align-items-center gap-2 mb-3 flex-wrap">
+      <h5 class="text-uppercase mb-0" style="font-size: 1.2rem;">Results</h5>
+      <select class="form-select form-select-sm custom-inline-dropdown" style="width: auto;">
+        <option>Show All</option>
+        <option>2025</option>
+        <option>2026</option>
+        <option>2027</option>
+      </select>
+    </div>
+    <div class="bg-white p-3 rounded shadow-sm">
+
+      <div class="d-flex justify-content-between align-items-center flex-wrap mb-3">
+        <div class="bucket-tabs d-flex gap-3 flex-wrap mb-2 mb-md-0">
+          <div class="bucket-tab active-tab" data-status="Centers" onclick="setActiveTab(this)">Centers</div>
+          <div class="bucket-tab" data-status="Performance" onclick="setActiveTab(this)">Performance Metrics</div>
+        </div>
+      </div>
+
+
+
+      <table class="table table-bordered table-striped mb-0">
+        <thead class="table-dark text-white align-middle">
+          <tr>
+            <th>
+              NCG Member
+              <div class="dropdown d-inline ms-1">
+                <a href="#" class="text-white" data-bs-toggle="dropdown">
+                  <i class="bi bi-caret-down-fill"></i>
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#">Yes</a></li>
+                  <li><a class="dropdown-item" href="#">No</a></li>
+                </ul>
+              </div>
+            </th>
+            <th>Year</th>
+            <th>
+              Centre Name
+              <input id="centerSearch"
+                    class="form-control form-control-sm d-inline-block ms-2"
+                    placeholder="Search..."
+                    list="centerList"
+                    style="width: 180px; display:inline-block;">
+              <datalist id="centerList"></datalist>
+            </th>
+            <th>
+              Modules Enrolled
+            </th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+            <td>Yes</td>
+            <td>2025</td>
+            <td>
+              <a href="../result_center_specific/" class="text-primary text-decoration-none">
+                Tata Memorial Hospital
+              </a>
+            </td>
+            <td>IHC | TSP | H&E</td>
+          </tr>
+          <tr>
+            <td>No</td>
+            <td>2025</td>
+            <td>
+              <a href="../result_center_specific/" class="text-primary text-decoration-none">
+                Apollo Chennai
+              </a>
+            </td>
+            <td>IHC | TSP</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+
+
+<script>
+
+function downloadExcel() {
+  const link = document.createElement("a");
+  link.href = "assets/registrations.xlsx";
+  link.download = "registrations.xlsx";
+  link.click();
+}
+
+  // Build datalist from existing rows
+function populateCenterList() {
+  const list = document.getElementById('centerList');
+  const names = new Set(
+    Array.from(document.querySelectorAll('table tbody tr td:nth-child(2)'))
+      .map(td => td.textContent.trim())
+      .filter(Boolean)
+  );
+  list.innerHTML = '';
+  names.forEach(n => {
+    const opt = document.createElement('option');
+    opt.value = n;
+    list.appendChild(opt);
+  });
+}
+
+// Filter rows as user types
+function wireCenterSearch() {
+  const input = document.getElementById('centerSearch');
+  const rows = Array.from(document.querySelectorAll('table tbody tr'));
+  input.addEventListener('input', () => {
+    const q = input.value.trim().toLowerCase();
+    rows.forEach(row => {
+      const name = row.querySelector('td:nth-child(2)')?.textContent.toLowerCase() || '';
+      row.style.display = q === '' || name.includes(q) ? '' : 'none';
+    });
+  });
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  populateCenterList();
+  wireCenterSearch();
+});
+
+
+
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

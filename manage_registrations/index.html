@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin Registration</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/style.css?v=9">
+  <link rel="stylesheet" href="../assets/manage_registrations.css?v=9">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+  <script src="../assets/include.js?v=9" defer></script>
+</head>
+<body>
+
+<!-- Top Bar -->
+<div id="header"></div>
+
+<!-- Layout -->
+<div class="d-flex" id="contentArea">
+  <!-- Sidebar -->
+  <aside id="sidebar" class="sidebar"></aside>
+
+  <!-- Main Content -->
+  <div class="main-content flex-grow-1 p-4" id="mainContent">
+    <div class="d-flex align-items-center gap-2 mb-3 flex-wrap">
+      <h5 class="text-uppercase mb-0" style="font-size: 1.2rem;">Registrations</h5>
+      <select class="form-select form-select-sm custom-inline-dropdown" style="width: auto;">
+        <option>Show All</option>
+        <option>2025</option>
+        <option>2026</option>
+        <option>2027</option>
+      </select>
+    </div>
+    <div class="bg-white p-3 rounded shadow-sm">
+      <div class="d-flex justify-content-between align-items-center flex-wrap mb-3">
+        <div class="bucket-tabs d-flex gap-3 flex-wrap mb-2 mb-md-0">
+          <div class="bucket-tab active-tab" data-status="all" onclick="setActiveTab(this)">All (4)</div>
+          <div class="bucket-tab" data-status="pending" onclick="setActiveTab(this)">Pending (2)</div>
+          <div class="bucket-tab" data-status="approved" onclick="setActiveTab(this)">Approved (2)</div>
+          <div class="bucket-tab" data-status="disapproved" onclick="setActiveTab(this)">Disapproved (2)</div>
+          <div class="bucket-tab" data-status="renewal" onclick="setActiveTab(this)">Renewal (2)</div>
+        </div>
+        <button class="btn btn-success" onclick="downloadExcel()">Export to Excel</button>
+      </div>
+
+      <table class="table table-bordered table-striped mb-0">
+        <thead class="table-dark text-white align-middle">
+          <tr>
+            <th style="width: 5%; text-align: center;">Edit</th>
+            <th>
+              Date
+              <div class="dropdown d-inline ms-1">
+                <a href="#" class="text-white" data-bs-toggle="dropdown">
+                  <i class="bi bi-caret-down-fill"></i>
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#">Latest</a></li>
+                  <li><a class="dropdown-item" href="#">Oldest</a></li>
+                </ul>
+              </div>
+            </th>
+            <th>
+              NCG Member
+              <div class="dropdown d-inline ms-1">
+                <a href="#" class="text-white" data-bs-toggle="dropdown">
+                  <i class="bi bi-caret-down-fill"></i>
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#">Yes</a></li>
+                  <li><a class="dropdown-item" href="#">No</a></li>
+                </ul>
+              </div>
+            </th>
+            <th>Centre Name</th>
+            <th>
+              Modules Enrolled
+              <div class="dropdown d-inline ms-1">
+                <a href="#" class="text-white" data-bs-toggle="dropdown">
+                  <i class="bi bi-caret-down-fill"></i>
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#">All</a></li>
+                  <li><a class="dropdown-item" href="#">IHC</a></li>
+                  <li><a class="dropdown-item" href="#">TSP</a></li>
+                  <li><a class="dropdown-item" href="#">H&E</a></li>
+                </ul>
+              </div>
+            </th>
+            <th>
+              Enrolment Type
+              <div class="dropdown d-inline ms-1">
+                <a href="#" class="text-white" data-bs-toggle="dropdown">
+                  <i class="bi bi-caret-down-fill"></i>
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#">All</a></li>
+                  <li><a class="dropdown-item" href="#">Registration</a></li>
+                  <li><a class="dropdown-item" href="#">Renewal</a></li>
+                </ul>
+              </div>
+            </th>
+            <th>Year</th> <!-- ✅ NEW COLUMN -->
+            <th class="text-center" style="width: 1%; white-space: nowrap;">Approval</th>
+          </tr>
+        </thead>
+
+
+        <tbody>
+          <tr>
+            <td class="text-center">
+              <button class="btn btn-primary btn-sm" onclick="editRegistration('Tata Memorial Hospital')">
+                <i class="bi bi-pencil-square"></i>
+              </button>
+            </td>
+            <td>01-07-2025</td>
+            <td>Yes</td>
+            <td><a href="#" class="text-primary text-decoration-none" onclick="openModalForm('tata')">Tata Memorial Hospital</a></td>
+            <td>IHC, TSP, H&E</td>
+            <td>Registration</td>
+            <td>2025</td> <!-- ✅ NEW CELL -->
+            <td style="white-space: nowrap;">
+              <div class="d-inline-flex gap-1">
+                <button class="btn btn-success btn-sm approve-btn" onclick="openApprovalModal('Tata Memorial Hospital', 'lab@tata.org')">Approve</button>
+                <button class="btn btn-danger btn-sm disapprove-btn" onclick="openDisapprovalModal('Tata Memorial Hospital')">Disapprove</button>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td class="text-center">
+              <button class="btn btn-primary btn-sm" onclick="editRegistration('Apollo Chennai')">
+                <i class="bi bi-pencil-square"></i>
+              </button>
+            </td>
+            <td>03-07-2025</td>
+            <td>No</td>
+            <td><a href="#" class="text-primary text-decoration-none" onclick="openModalForm('apollo')">Apollo Chennai</a></td>
+            <td>IHC, TSP, H&E</td>
+            <td>Registration</td>
+            <td>2025</td> <!-- ✅ NEW CELL -->
+            <td style="white-space: nowrap;">
+              <div class="d-inline-flex gap-1">
+                <button class="btn btn-success btn-sm approve-btn" onclick="openApprovalModal('Apollo Chennai', 'lab@apollo.org')">Approve</button>
+                <button class="btn btn-danger btn-sm disapprove-btn" onclick="openDisapprovalModal('Apollo Chennai')">Disapprove</button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <!-- Table for 'All' bucket (with Status column instead of Approval) -->
+      <table class="table table-bordered table-striped mb-0" id="tableAll" style="display: none;">
+        <thead class="table-dark text-white align-middle">
+          <tr>
+            <th style="width: 5%; text-align: center;">Edit</th>
+            <th>
+              Date
+              <div class="dropdown d-inline ms-1">
+                <a href="#" class="text-white" data-bs-toggle="dropdown">
+                  <i class="bi bi-caret-down-fill"></i>
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#">Latest</a></li>
+                  <li><a class="dropdown-item" href="#">Oldest</a></li>
+                </ul>
+              </div>
+            </th>
+            <th>
+              NCG Member
+              <div class="dropdown d-inline ms-1">
+                <a href="#" class="text-white" data-bs-toggle="dropdown">
+                  <i class="bi bi-caret-down-fill"></i>
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#">Yes</a></li>
+                  <li><a class="dropdown-item" href="#">No</a></li>
+                </ul>
+              </div>
+            </th>
+            <th>Centre Name</th>
+            <th>
+              Modules Enrolled
+              <div class="dropdown d-inline ms-1">
+                <a href="#" class="text-white" data-bs-toggle="dropdown">
+                  <i class="bi bi-caret-down-fill"></i>
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#">All</a></li>
+                  <li><a class="dropdown-item" href="#">IHC</a></li>
+                  <li><a class="dropdown-item" href="#">TSP</a></li>
+                  <li><a class="dropdown-item" href="#">H&E</a></li>
+                </ul>
+              </div>
+            </th>
+            <th>
+              Enrolment Type
+              <div class="dropdown d-inline ms-1">
+                <a href="#" class="text-white" data-bs-toggle="dropdown">
+                  <i class="bi bi-caret-down-fill"></i>
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#">All</a></li>
+                  <li><a class="dropdown-item" href="#">Registration</a></li>
+                  <li><a class="dropdown-item" href="#">Renewal</a></li>
+                </ul>
+              </div>
+            </th>
+            <th style="width: 5%;">Year</th>
+            <th style="width: 10%;">Status</th> <!-- ✅ Slimmer width -->
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+            <td class="text-center">
+              <button class="btn btn-primary btn-sm" onclick="editRegistration('Tata Memorial Hospital')">
+                <i class="bi bi-pencil-square"></i>
+              </button>
+            </td>
+            <td>01-07-2025</td>
+            <td>Yes</td>
+            <td><a href="#" class="text-primary text-decoration-none" onclick="openModalForm('tata')">Tata Memorial Hospital</a></td>
+            <td>IHC, TSP, H&E</td>
+            <td>Registration</td>
+            <td>2025</td>
+            <td>Pending</td> <!-- ✅ Status instead of buttons -->
+          </tr>
+          <tr>
+            <td class="text-center">
+              <button class="btn btn-primary btn-sm" onclick="editRegistration('Apollo Chennai')">
+                <i class="bi bi-pencil-square"></i>
+              </button>
+            </td>
+            <td>03-07-2025</td>
+            <td>No</td>
+            <td><a href="#" class="text-primary text-decoration-none" onclick="openModalForm('apollo')">Apollo Chennai</a></td>
+            <td>IHC, TSP, H&E</td>
+            <td>Registration</td>
+            <td>2025</td>
+            <td>Approved/Disapproved</td>
+          </tr>
+          <tr>
+            <td class="text-center">
+              <button class="btn btn-primary btn-sm" onclick="editRegistration('Tata Memorial Hospital')">
+                <i class="bi bi-pencil-square"></i>
+              </button>
+            </td>
+            <td>03-12-2025</td>
+            <td>Yes</td>
+            <td><a href="#" class="text-primary text-decoration-none" onclick="openModalForm('tata')">Tata Memorial Hospital</a></td>
+            <td>IHC, TSP, H&E</td>
+            <td>Renewal</td>
+            <td>2026</td>
+            <td>Pending Renewal</td>
+          </tr>
+          <tr>
+            <td class="text-center">
+              <button class="btn btn-primary btn-sm" onclick="editRegistration('Apollo Chennai')">
+                <i class="bi bi-pencil-square"></i>
+              </button>
+            </td>
+            <td>03-12-2025</td>
+            <td>No</td>
+            <td><a href="#" class="text-primary text-decoration-none" onclick="openModalForm('apollo')">Apollo Chennai</a></td>
+            <td>IHC, TSP, H&E</td>
+            <td>Renewal</td>
+            <td>2026</td>
+            <td>Pending Renewal</td>
+          </tr>
+          <!-- Add approved/disapproved rows here if needed -->
+        </tbody>
+      </table>
+      <table class="table table-bordered table-striped mb-0" id="tableApproved" style="display: none;">
+        <thead class="table-dark text-white align-middle">
+          <tr>
+            <th style="width: 5%; text-align: center;">Edit</th>
+            
+            <th>
+              Date
+              <div class="dropdown d-inline ms-1">
+                <a href="#" class="text-white" data-bs-toggle="dropdown">
+                  <i class="bi bi-caret-down-fill"></i>
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#">Latest</a></li>
+                  <li><a class="dropdown-item" href="#">Oldest</a></li>
+                </ul>
+              </div>
+            </th>
+
+            <th>
+              NCG Member
+              <div class="dropdown d-inline ms-1">
+                <a href="#" class="text-white" data-bs-toggle="dropdown">
+                  <i class="bi bi-caret-down-fill"></i>
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#">Yes</a></li>
+                  <li><a class="dropdown-item" href="#">No</a></li>
+                </ul>
+              </div>
+            </th>
+
+            <th>Centre Name</th>
+
+            <th>
+              Modules Enrolled
+              <div class="dropdown d-inline ms-1">
+                <a href="#" class="text-white" data-bs-toggle="dropdown">
+                  <i class="bi bi-caret-down-fill"></i>
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#">All</a></li>
+                  <li><a class="dropdown-item" href="#">IHC</a></li>
+                  <li><a class="dropdown-item" href="#">TSP</a></li>
+                  <li><a class="dropdown-item" href="#">H&E</a></li>
+                </ul>
+              </div>
+            </th>
+            <th>
+              Enrolment Type
+              <div class="dropdown d-inline ms-1">
+                <a href="#" class="text-white" data-bs-toggle="dropdown">
+                  <i class="bi bi-caret-down-fill"></i>
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#">All</a></li>
+                  <li><a class="dropdown-item" href="#">Registration</a></li>
+                  <li><a class="dropdown-item" href="#">Renewal</a></li>
+                </ul>
+              </div>
+            </th>
+            <th>Year</th>
+            <th>Approved On</th> <!-- ✅ Changed column heading -->
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="text-center">
+              <button class="btn btn-primary btn-sm" onclick="editRegistration('Tata Memorial Hospital')">
+                <i class="bi bi-pencil-square"></i>
+              </button>
+            </td>
+            <td>01-07-2025</td>
+            <td>Yes</td>
+            <td><a href="#" class="text-primary text-decoration-none" onclick="openModalForm('tata')">Tata Memorial Hospital</a></td>
+            <td>IHC, TSP, H&E</td>
+            <td>Registration</td>
+            <td>2025</td>
+            <td>10-07-2025</td> <!-- ✅ Approval date instead of button -->
+          </tr>
+          <tr>
+            <td class="text-center">
+              <button class="btn btn-primary btn-sm" onclick="editRegistration('Apollo Chennai')">
+                <i class="bi bi-pencil-square"></i>
+              </button>
+            </td>
+            <td>03-07-2025</td>
+            <td>No</td>
+            <td><a href="#" class="text-primary text-decoration-none" onclick="openModalForm('apollo')">Apollo Chennai</a></td>
+            <td>IHC, TSP, H&E</td>
+            <td>Registration</td>
+            <td>2025</td>
+            <td>12-07-2025</td>
+          </tr>
+        </tbody>
+      </table>
+      <table class="table table-bordered table-striped mb-0" id="tableRenewal" style="display: none;">
+        <thead class="table-dark text-white align-middle">
+          <tr>
+          <th style="width: 5%; text-align: center;">Edit</th>
+          
+          <th>
+            Date
+            <div class="dropdown d-inline ms-1">
+              <a href="#" class="text-white" data-bs-toggle="dropdown">
+                <i class="bi bi-caret-down-fill"></i>
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">Latest</a></li>
+                <li><a class="dropdown-item" href="#">Oldest</a></li>
+              </ul>
+            </div>
+          </th>
+
+          <th>
+            NCG Member
+            <div class="dropdown d-inline ms-1">
+              <a href="#" class="text-white" data-bs-toggle="dropdown">
+                <i class="bi bi-caret-down-fill"></i>
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">Yes</a></li>
+                <li><a class="dropdown-item" href="#">No</a></li>
+              </ul>
+            </div>
+          </th>
+
+          <th>Centre Name</th>
+
+          <th>
+            Modules Enrolled
+            <div class="dropdown d-inline ms-1">
+              <a href="#" class="text-white" data-bs-toggle="dropdown">
+                <i class="bi bi-caret-down-fill"></i>
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">All</a></li>
+                <li><a class="dropdown-item" href="#">IHC</a></li>
+                <li><a class="dropdown-item" href="#">TSP</a></li>
+                <li><a class="dropdown-item" href="#">H&E</a></li>
+              </ul>
+            </div>
+          </th>
+
+          <th>Year</th>
+
+          <th class="text-center" style="width: 120px; white-space: nowrap;">Approval</th>
+        </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="text-center">
+              <button class="btn btn-primary btn-sm" onclick="editRegistration('Tata Memorial Hospital')">
+                <i class="bi bi-pencil-square"></i>
+              </button>
+            </td>
+            <td>10-07-2025</td>
+            <td>Yes</td>
+            <td><a href="#" class="text-primary text-decoration-none" onclick="openModalForm('tata')">Tata Memorial Hospital</a></td>
+            <td>IHC, TSP, H&E</td>
+            <td>2026</td>
+            <td>
+              <div class="d-inline-flex gap-1">
+                <button class="btn btn-warning btn-sm" onclick="renewRegistration(this.closest('tr'))">Renew</button>
+                <button class="btn btn-danger btn-sm" onclick="openDisapprovalModal('Tata Memorial Hospital')">Disapprove</button>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td class="text-center">
+              <button class="btn btn-primary btn-sm" onclick="editRegistration('Apollo Chennai')">
+                <i class="bi bi-pencil-square"></i>
+              </button>
+            </td>
+            <td>12-07-2025</td>
+            <td>No</td>
+            <td><a href="#" class="text-primary text-decoration-none" onclick="openModalForm('apollo')">Apollo Chennai</a></td>
+            <td>IHC, TSP, H&E</td>
+            <td>2026</td>
+            <td>
+              <div class="d-inline-flex gap-1">
+                <button class="btn btn-warning btn-sm" onclick="renewRegistration(this.closest('tr'))">Renew</button>
+                <button class="btn btn-danger btn-sm" onclick="openDisapprovalModal('Apollo Chennai')">Disapprove</button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+    </div>
+  </div>
+</div>
+
+<!-- Approval Modal -->
+<div class="modal fade" id="approvalModal" tabindex="-1">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header bg-navy">
+        <h5 class="modal-title">Send Registration Approval Email</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <form id="approvalForm">
+          <div class="mb-3"><label>Centre Name</label><input type="text" class="form-control" id="centerName" readonly></div>
+          <div class="mb-3"><label>Date</label><input type="date" class="form-control" id="approvalDate"></div>
+          <div class="mb-3"><label>To Email</label><input type="email" class="form-control" id="toEmail"></div>
+          <div class="mb-3"><label>Subject</label><input type="text" class="form-control" value="Registration confirmation on NCG EQAS Application"></div>
+          <div class="mb-3">
+            <label>Body</label>
+            <textarea class="form-control" rows="8">Dear Sir / Madam,
+
+Welcome to eqas.ncgindia.org, your registration is approved.
+
+Your Login Information is as under:
+URL: https://eqas.ncgindia.org
+Username: [email]
+Password: [generated password]
+
+Best regards,
+Team NCG EQAS</textarea>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer"><button type="button" class="btn btn-primary">Approve</button></div>
+    </div>
+  </div>
+</div>
+
+<!-- Registration Details Modal -->
+<div class="modal fade" id="registrationModal" tabindex="-1" aria-labelledby="registrationModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header bg-navy">
+        <h5 class="modal-title" id="registrationModalLabel">Lab Details</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body"><div id="modalFormContent"></div></div>
+    </div>
+  </div>
+</div>
+
+<script>
+function openApprovalModal(center, email) {
+  document.getElementById("centerName").value = center;
+  document.getElementById("toEmail").value = email;
+  const modal = new bootstrap.Modal(document.getElementById("approvalModal"));
+  modal.show();
+}
+
+function openModalForm(centerId) {
+  const modalBody = document.getElementById("modalFormContent");
+
+  if (centerId === 'tata') {
+    modalBody.innerHTML = `<div class="container-fluid"><div class="row mb-3"><div class="col-md-6"><div class="card p-3 shadow-sm"><h6 class="mb-3">General Info</h6><p><strong>NCG Member:</strong> Yes</p><p><strong>Other EQAS:</strong> Cytopath EQAS, CB-QAP</p><p><strong>Centre:</strong> Tata Memorial Hospital</p><p><strong>Accredited:</strong> Yes (NABL)</p></div></div><div class="col-md-6"><div class="card p-3 shadow-sm"><h6 class="mb-3">Location & IDs</h6><p><strong>Address:</strong> Parel, Mumbai</p><p><strong>City:</strong> Mumbai</p><p><strong>Pincode:</strong> 400012</p><p><strong>GST No:</strong> 27ABCDE1234F1Z5</p><p><strong>PAN No:</strong> AAAAA1234A</p></div></div></div><div class="row mb-3"><div class="col-md-6"><div class="card p-3 shadow-sm"><h6 class="mb-3">Personnel</h6><p><strong>Pathologist:</strong> Dr. Smitha | smitha@tata.org | 9876543210</p><p><strong>Alternate Pathologist:</strong> Dr. Meena | meena@tata.org | 9876543211</p><p><strong>Senior Technician:</strong> Mr. Raj | raj@tata.org | 9876543212</p></div></div><div class="col-md-6"><div class="card p-3 shadow-sm"><h6 class="mb-3">Staff & Workload</h6><p><strong>Surgical Workload:</strong> 5200/year</p><p><strong>Pathologists:</strong> 5</p><p><strong>Histotechnologists:</strong> 4</p><p><strong>IHC:</strong> Yes</p><p><strong>Molecular:</strong> Yes</p><p><strong>Workload/year:</strong> 4300 cases</p><p><strong>IHC Method:</strong> Automated</p></div></div></div><div class="row mb-3"><div class="col-md-12"><div class="card p-3 shadow-sm"><h6 class="mb-3">Program & Payment</h6><p><strong>Programs:</strong> H&E EQAS, Breast Panel</p><p><strong>UTR:</strong> UTR123456789</p><p><strong>Bank:</strong> SBI, Parel</p><p><strong>Amount:</strong> ₹5000</p><p><strong>Date:</strong> 2025-07-01</p></div></div></div></div>`;
+  }
+
+  if (centerId === 'apollo') {
+    modalBody.innerHTML = `<div class="container-fluid"><div class="row mb-3"><div class="col-md-6"><div class="card p-3 shadow-sm"><h6 class="mb-3">General Info</h6><p><strong>NCG Member:</strong> No</p><p><strong>Other EQAS:</strong> None</p><p><strong>Centre:</strong> Apollo Chennai</p><p><strong>Accredited:</strong> No</p></div></div><div class="col-md-6"><div class="card p-3 shadow-sm"><h6 class="mb-3">Location & IDs</h6><p><strong>Address:</strong> Greams Lane, Chennai</p><p><strong>City:</strong> Chennai</p><p><strong>Pincode:</strong> 600006</p><p><strong>GST No:</strong> 33ABCDE9876L1Z8</p><p><strong>PAN No:</strong> BBBBB2345B</p></div></div></div><div class="row mb-3"><div class="col-md-6"><div class="card p-3 shadow-sm"><h6 class="mb-3">Personnel</h6><p><strong>Pathologist:</strong> Dr. Kumar | kumar@apollo.org | 9988776655</p><p><strong>Alternate Pathologist:</strong> -</p><p><strong>Senior Technician:</strong> Mr. Ravi | ravi@apollo.org | 8899776655</p></div></div><div class="col-md-6"><div class="card p-3 shadow-sm"><h6 class="mb-3">Staff & Workload</h6><p><strong>Surgical Workload:</strong> 3100/year</p><p><strong>Pathologists:</strong> 3</p><p><strong>Histotechnologists:</strong> 2</p><p><strong>IHC:</strong> Yes</p><p><strong>Molecular:</strong> No</p><p><strong>Workload/year:</strong> 2800 cases</p><p><strong>IHC Method:</strong> Manual</p></div></div></div><div class="row mb-3"><div class="col-md-12"><div class="card p-3 shadow-sm"><h6 class="mb-3">Program & Payment</h6><p><strong>Programs:</strong> Tissue Processing, Miscellaneous Panel</p><p><strong>UTR:</strong> UTR987654321</p><p><strong>Bank:</strong> ICICI, Chennai</p><p><strong>Amount:</strong> ₹4200</p><p><strong>Date:</strong> 2025-07-03</p></div></div></div></div>`;
+  }
+
+  const modal = new bootstrap.Modal(document.getElementById("registrationModal"));
+  modal.show();
+}
+
+function downloadExcel() {
+  const link = document.createElement("a");
+  link.href = "assets/registrations.xlsx";
+  link.download = "registrations.xlsx";
+  link.click();
+}
+
+function setActiveTab(element) {
+  document.querySelectorAll('.bucket-tab').forEach(tab => tab.classList.remove('active-tab'));
+  element.classList.add('active-tab');
+
+  const status = element.getAttribute('data-status');
+
+  const allTable = document.getElementById('tableAll');
+  const renewalTable = document.getElementById('tableRenewal');
+    const approvedTable = document.getElementById('tableApproved');
+  const defaultTable = document.querySelector('.table:not(#tableAll):not(#tableRenewal):not(#tableApproved)');
+
+  // Hide both tables initially
+  allTable.style.display = 'none';
+  renewalTable.style.display = 'none';
+  approvedTable.style.display = 'none';
+  defaultTable.style.display = 'none';
+
+  // Show relevant table
+  if (status === 'all') {
+    allTable.style.display = 'table';
+  } else if (status === 'renewal') {
+    renewalTable.style.display = 'table'; 
+  } else if (status === 'approved') {
+    approvedTable.style.display = 'table';
+  } else {
+    defaultTable.style.display = 'table';
+  }
+
+
+  const approveBtns = document.querySelectorAll('.approve-btn');
+  const disapproveBtns = document.querySelectorAll('.disapprove-btn');
+
+  approveBtns.forEach(btn => btn.style.display = 'inline-block');
+  disapproveBtns.forEach(btn => btn.style.display = 'inline-block');
+
+  if (status === 'approved') {
+    approveBtns.forEach(btn => btn.style.display = 'none');
+    disapproveBtns.forEach(btn => {
+      btn.textContent = 'Renew';
+      btn.classList.remove('btn-danger');
+      btn.classList.add('btn-warning');
+      btn.onclick = function () {
+        renewRegistration(this.closest('tr'));
+      };
+    });
+  } else if (status === 'disapproved') {
+    disapproveBtns.forEach(btn => btn.style.display = 'none');
+  } else if (status === 'all') {
+    approveBtns.forEach(btn => btn.style.display = 'none');
+    disapproveBtns.forEach(btn => btn.style.display = 'none');
+  } else if (status === 'renewal') {
+    approveBtns.forEach(btn => btn.style.display = 'none');
+    disapproveBtns.forEach(btn => {
+      btn.textContent = 'Disable';
+      btn.classList.remove('btn-danger');
+      btn.classList.remove('btn-warning');
+      btn.classList.add('btn-secondary');
+      btn.onclick = function () {
+        disableCenter(this.closest('tr'));
+      };
+    });
+
+  // Show renew buttons if already part of HTML
+    const renewBtns = document.querySelectorAll('.renew-btn');
+    renewBtns.forEach(btn => btn.style.display = 'inline-block');
+  } else {
+    // Reset disapprove button back to original in other buckets
+    disapproveBtns.forEach(btn => {
+      btn.textContent = 'Disapprove';
+      btn.classList.remove('btn-warning');
+      btn.classList.add('btn-danger');
+      btn.onclick = function () {
+        openDisapprovalModal(this.closest('tr').querySelector('td:nth-child(3)').innerText);
+      };
+    });
+  }
+}
+
+function renewRegistration(row) {
+  const center = row.querySelector('td:nth-child(4)').innerText;
+  alert(`Renewal initiated for ${center}`);
+}
+
+  
+function openDisapprovalModal(center) {
+  if (confirm(`Are you sure you want to disapprove ${center}?`)) {
+    alert(`${center} has been disapproved.`);
+    // You can add backend logic here later (AJAX or form submission)
+  }
+}
+
+
+window.addEventListener('DOMContentLoaded', () => {
+    const defaultTab = document.querySelector('.bucket-tab[data-status="all"]');
+    if (defaultTab) setActiveTab(defaultTab);
+  });
+</script>
+
+<script src="../assets/include.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

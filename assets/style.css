@@ -1,0 +1,98 @@
+/* === Global Resets (safe shared) === */
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; height: 100%; overflow-x: hidden; }
+
+
+.top-bar {
+    height: 80px;
+    background-color: white;
+    border-bottom: 1px solid #ddd;
+}
+
+.logo {
+    height: 65px;
+}
+
+.sidebar {
+    width: 220px;
+    min-height: calc(100vh - 80px);
+    background-color: #2f3e63 !important;
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+}
+
+.sidebar.collapsed {
+    transform: translateX(-100%);
+    width: 0 !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+    border: none !important;
+}
+
+.main-content {
+    background-color: #e0e0e0; /* light grey */
+    min-height: calc(100vh - 80px);
+    transition: all 0.3s ease;
+}
+
+#contentArea{
+    width: 100%;
+    transition: all 0.3s ease;
+}
+
+.custom-table tr:nth-child(even) {
+    background-color: #ffffff;
+}
+
+.toggle-btn {
+    background: none;
+    border: none;
+    font-size: 1.4rem;
+    padding: 0.25rem 0.5rem;
+    cursor: pointer;
+}
+
+.toggle-btn:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+.toggle-btn:hover {
+    background-color: rgba(0, 0, 0, 0.05); /* optional subtle hover */
+}
+
+.bucket-tabs {
+  border-bottom: 1px solid #ccc;
+  font-weight: 500;
+  font-size: 16px;
+}
+
+.bucket-tab {
+  padding: 6px 12px;
+  background-color: transparent;
+  border: none;
+  border-bottom: 2px solid transparent;
+  cursor: pointer;
+  color: #333;
+}
+
+.bucket-tab:hover {
+  color: #007bff;
+}
+
+.bucket-tab.active-tab {
+  border-bottom: 2px solid #007bff;
+  color: #007bff;
+  font-weight: 600;
+}
+.card h6 {
+  font-weight: bold;
+  color: #2f3e63;
+}
+.card p {
+  margin-bottom: 6px;
+}
+.bg-navy {
+  background-color: #1b2957 !important; /* or any dark blue you prefer */
+  color: white;
+}

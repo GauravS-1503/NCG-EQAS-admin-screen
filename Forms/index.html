@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Forms</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/style.css?v=9">
+  <link rel="stylesheet" href="../assets/Forms.css?v=9">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+  <script src="../assets/include.js?v=9" defer></script>
+</head>
+<body>
+
+<!-- Top Bar -->
+<div id="header"></div>
+<!-- Layout -->
+<div class="d-flex" id="contentArea">
+  <!-- Sidebar -->
+  <aside id="sidebar" class="sidebar"></aside>
+  
+
+  <!-- Main Content -->
+  <div class="main-content flex-grow-1 p-4" id="mainContent">
+    <div class="d-flex align-items-center gap-2 mb-3 flex-wrap">
+      <h5 class="text-uppercase mb-0" style="font-size: 1.2rem;">Forms</h5>
+      <select class="form-select form-select-sm custom-inline-dropdown" style="width: auto;">
+        <option>Show All</option>
+        <option>2025</option>
+        <option>2026</option>
+        <option>2027</option>
+      </select>
+    </div>
+    <div class="bg-white p-3 rounded shadow-sm">
+
+      <div class="d-flex justify-content-between align-items-center flex-wrap mb-3">
+        <div class="bucket-tabs d-flex gap-3 flex-wrap mb-2 mb-md-0">
+          <div class="bucket-tab active-tab" data-status="Centers" onclick="setActiveTab(this)">Registration & Enrolment</div>
+          <div class="bucket-tab" data-status="Performance" onclick="setActiveTab(this)">Payment</div>
+          <div class="bucket-tab" data-status="Performance" onclick="setActiveTab(this)">Modules</div>
+        </div>
+      </div>
+
+      <!-- Registration & Enrolment ▶ Form Builder -->
+      <div class="mt-3" id="regFormBuilder">
+        <div class="d-flex justify-content-between align-items-center mb-2">
+          <h5 class="m-0">Registration form — builder</h5>
+          <div class="d-flex gap-2">
+            <button id="exportConfig" class="btn btn-outline-secondary btn-sm">Export JSON</button>
+            <label class="btn btn-outline-secondary btn-sm mb-0">
+              Import JSON <input id="importConfig" type="file" accept="application/json" hidden>
+            </label>
+            <button id="saveConfig" class="btn btn-primary btn-sm">Save</button>
+          </div>
+        </div>
+
+        <div class="row g-3">
+          <!-- Field Library -->
+          <div class="col-lg-4">
+            <div class="card">
+              <div class="card-header py-2"><strong>Field library</strong></div>
+              <div class="card-body" id="fieldLibrary"></div>
+            </div>
+          </div>
+
+          <!-- Live Preview -->
+          <div class="col-lg-8">
+            <div class="card">
+              <div class="card-header py-2 d-flex justify-content-between align-items-center">
+                <strong>Form preview</strong>
+                <small class="text-muted">Rendered from config</small>
+              </div>
+              <div class="card-body">
+                <form id="regFormPreview" class="row g-3"></form>
+                <div class="text-end mt-3">
+                  <button class="btn btn-primary" type="button">Proceed to Enrolment</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>      
+    </div>
+  </div>
+</div>
+
+
+
+<script>
+// ---------- 1) Field definitions (the “schema”) ----------
+const FIELD_LIBRARY = [
+  { id:'ncg_member', label:'Are you NCG Member?', type:'radio', required:true,
+    options:['Yes','No']
+  },
+  { id:'centre_name_text', label:'Centre Name', type:'text', required:true,
+    showIf: [{ field:'ncg_member', equals:'No' }]
+  },
+  { id:'centre_name_select', label:'Centre Name (NCG list)', type:'select',
+    options:[
+      'Acharya Harihar Regional Cancer Centre, Cuttack - 753007',
+      'All India Institute of Medical Sciences, Bhubaneshwar - 751019',
+      'Amrita Institute of Medical Sciences & research Centre, Kochi - 631552',
+      'Tata Memorial Hospital, Mumbai'
+    ],
+    showIf: [{ field:'ncg_member', equals:'Yes' }]
+  },
+  { id:'address', label:'Address', type:'text', required:true },
+  { id:'state', label:'State', type:'select',
+    options:['Maharashtra','Gujarat','Delhi','Tamil Nadu','Kerala']
+  },
+  { id:'city', label:'City', type:'select',
+    options:['Mumbai','Pune','Nagpur','Nashik','Thane']
+  },
+  { id:'pincode', label:'Pincode', type:'text', pattern:'\\d{6}' },
+  { id:'gst_q', label:'Do you have a registered GST No.?', type:'select',
+    options:['','Yes','No']
+  },
+  { id:'gstin', label:'GSTIN No.', type:'text',
+    showIf:[{ field:'gst_q', equals:'Yes' }]
+  },
+  { id:'pan', label:'PAN No.', type:'text', required:true },
+  { id:'email', label:'Email (Username)', type:'email', required:true },
+
+  // Contact
+  { id:'path_name', label:'Pathologist Name', type:'text', required:true },
+  { id:'path_email', label:'Pathologist Email', type:'email', required:true },
+  { id:'path_mobile', label:'Pathologist Mobile (+91)', type:'text', pattern:'\\d{10}' },
+
+  // Lab details
+  { id:'lab_accredited', label:'Lab Accredited', type:'select',
+    options:['','Yes','No']
+  },
+  { id:'accreditation_details', label:'Accreditation Details', type:'text',
+    showIf:[{ field:'lab_accredited', equals:'Yes' }]
+  },
+  { id:'surgical_workload', label:'Annual Surgical Specimen Workload', type:'select',
+    options:['< 500','500–1000','1000–5000','> 5000']
+  },
+  { id:'n_path', label:'Number of Pathologists', type:'number', min:0 },
+  { id:'n_histotech', label:'Number of Histotechnologists', type:'number', min:0 },
+  { id:'ihc', label:'Do you perform Immunohistochemistry?', type:'select',
+    options:['','Yes','No']
+  },
+  { id:'molecular', label:'Do you perform Molecular Diagnosis?', type:'select',
+    options:['','Yes','No']
+  },
+  { id:'yearly_workload', label:'Specify workload per year', type:'text' },
+  { id:'ihc_stainer', label:'Type of Immunostainer for IHC', type:'select',
+    options:['','Automated','Manual']
+  },
+
+  // Declaration
+  { id:'dec_tnc', label:'Agree to Terms & Conditions', type:'checkbox', required:true },
+  { id:'dec_conf', label:'Agree to Confidentiality Declaration', type:'checkbox', required:true }
+];
+
+// Default enabled fields (you can change this set)
+let enabled = JSON.parse(localStorage.getItem('regFormConfig') || JSON.stringify([
+  'ncg_member','centre_name_text','centre_name_select','address','state','city','pincode',
+  'gst_q','gstin','pan','email','path_name','path_email','path_mobile',
+  'lab_accredited','accreditation_details','surgical_workload','n_path','n_histotech',
+  'ihc','molecular','yearly_workload','ihc_stainer','dec_tnc','dec_conf'
+]));
+
+// ---------- 2) Render the left column (library) ----------
+function renderLibrary(){
+  const box = document.getElementById('fieldLibrary');
+  box.innerHTML = '';
+  FIELD_LIBRARY.forEach(f => {
+    const wrap = document.createElement('div');
+    wrap.className = 'form-check mb-1';
+    wrap.innerHTML = `
+      <input class="form-check-input" type="checkbox" id="chk_${f.id}" ${enabled.includes(f.id)?'checked':''}>
+      <label class="form-check-label small" for="chk_${f.id}">${f.label}</label>
+    `;
+    wrap.querySelector('input').addEventListener('change', (e)=>{
+      if(e.target.checked){ if(!enabled.includes(f.id)) enabled.push(f.id); }
+      else { enabled = enabled.filter(x=>x!==f.id); }
+      renderPreview();
+    });
+    box.appendChild(wrap);
+  });
+}
+
+// ---------- 3) Helpers ----------
+function shouldShow(field, values){
+  if(!field.showIf) return true;
+  return field.showIf.every(cond => (values[cond.field] ?? '') === cond.equals);
+}
+
+function buildControl(field, values){
+  const col = document.createElement('div');
+  col.className = 'col-lg-4';
+  const req = field.required ? 'required' : '';
+  const label = `<label class="form-label" for="${field.id}">${field.label}${field.required?' *':''}</label>`;
+
+  let control = '';
+  if(field.type === 'text' || field.type === 'email' || field.type === 'number'){
+    const extra = field.type==='number' ? ` type="number" min="${field.min??''}"` :
+                  field.type==='email' ? ` type="email"` : ` type="text"`;
+    const pattern = field.pattern ? ` pattern="${field.pattern}"` : '';
+    control = `<input class="form-control" id="${field.id}" ${extra} ${pattern} ${req}>`;
+  } else if(field.type === 'select'){
+    const opts = (field.options||[]).map(o => `<option value="${o}">${o||'Select'}</option>`).join('');
+    control = `<select class="form-select" id="${field.id}" ${req}>${opts}</select>`;
+  } else if(field.type === 'radio'){
+    const radios = (field.options||[]).map((o,i)=>`
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="${field.id}" id="${field.id}_${i}" value="${o}">
+        <label class="form-check-label" for="${field.id}_${i}">${o}</label>
+      </div>`).join('');
+    control = `<div>${radios}</div>`;
+  } else if(field.type === 'checkbox'){
+    control = `
+      <div class="form-check mt-4">
+        <input class="form-check-input" type="checkbox" id="${field.id}" ${req}>
+        <label class="form-check-label" for="${field.id}">${field.label}</label>
+      </div>`;
+    // For checkboxes we already printed the label inside; avoid double-label
+    return (()=>{ const c=document.createElement('div'); c.className='col-lg-12'; c.innerHTML = control; return c; })();
+  }
+  col.innerHTML = `${label}${control}`;
+  return col;
+}
+
+// ---------- 4) Render the right column (preview) ----------
+function renderPreview(){
+  const form = document.getElementById('regFormPreview');
+  form.innerHTML = '';
+
+  // current simple values used for conditional visibility
+  const values = {};
+  enabled.map(id => FIELD_LIBRARY.find(f=>f.id===id))
+         .filter(Boolean)
+         .forEach(field => {
+           if(!shouldShow(field, values)) return;
+           form.appendChild(buildControl(field, values));
+         });
+
+  // wire up basic reactive conditions in preview
+  form.querySelectorAll('input,select').forEach(el=>{
+    el.addEventListener('change', ()=>{
+      // capture values (simplified)
+      form.querySelectorAll('input[type="text"],input[type="email"],input[type="number"],select')
+        .forEach(i => values[i.id] = i.value);
+      form.querySelectorAll('input[type="radio"]').forEach(r=>{
+        if(r.checked) values[r.name] = r.value;
+      });
+      renderPreview(); // re-render to apply showIf
+    });
+  });
+}
+
+// ---------- 5) Persistence & import/export ----------
+document.getElementById('saveConfig').addEventListener('click', ()=>{
+  localStorage.setItem('regFormConfig', JSON.stringify(enabled));
+  alert('Registration form configuration saved.');
+});
+
+document.getElementById('exportConfig').addEventListener('click', ()=>{
+  const blob = new Blob([JSON.stringify({ enabled, FIELD_LIBRARY }, null, 2)], {type:'application/json'});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'registration-form-config.json';
+  a.click();
+  URL.revokeObjectURL(a.href);
+});
+
+document.getElementById('importConfig').addEventListener('change', async (e)=>{
+  const file = e.target.files[0];
+  if(!file) return;
+  const text = await file.text();
+  const data = JSON.parse(text);
+  if(Array.isArray(data.enabled)) enabled = data.enabled;
+  renderLibrary(); renderPreview();
+});
+
+// ---------- 6) Boot ----------
+renderLibrary();
+renderPreview();
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

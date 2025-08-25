@@ -1,0 +1,52 @@
+/* === Run Configuration Specific Styles === */
+.bucket-tabs {
+  border-bottom: 1px solid #ccc;
+  font-weight: 500;
+  font-size: 16px;
+}
+
+.bucket-tab {
+  padding: 6px 12px;
+  background-color: transparent;
+  border: none;
+  border-bottom: 2px solid transparent;
+  cursor: pointer;
+  color: #333;
+}
+
+.bucket-tab:hover {
+  color: #007bff;
+}
+
+.bucket-tab.active-tab {
+  border-bottom: 2px solid #007bff;
+  color: #007bff;
+  font-weight: 600;
+}
+.card h6 {
+  font-weight: bold;
+  color: #2f3e63;
+}
+.card p {
+  margin-bottom: 6px;
+}
+.bg-navy {
+  background-color: #1b2957 !important; /* or any dark blue you prefer */
+  color: white;
+}
+
+#runTable thead tr:nth-child(2) th {
+  vertical-align: middle;
+  background-color: #fff;
+  border-bottom: 1px solid #dee2e6;
+  padding: 0.25rem;
+}
+
+.upload-cell button:disabled { opacity: .5; cursor: not-allowed; }
+
+#runTable th:nth-child(8),
+#runTable td:nth-child(8) {
+  width: 110px; /* adjust as needed */
+  text-align: center;
+  white-space: nowrap; /* keep buttons on same line */
+}

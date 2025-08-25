@@ -1,0 +1,459 @@
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>cen_res</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/style.css?v=9">
+  <link rel="stylesheet" href="../assets/result_center_specific.css?v=9">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+  <script src="../assets/include.js?v=9" defer></script>
+</head>
+<body>
+
+<!-- Top Bar -->
+<div id="header"></div>
+
+
+<!-- Layout -->
+<div class="d-flex" id="contentArea">
+  <!-- Sidebar -->
+  <aside id="sidebar" class="sidebar"></aside>
+
+  <!-- Main Content -->
+  <div class="main-content flex-grow-1 p-4" id="mainContent">
+    <div class="d-flex align-items-center gap-2 mb-3 flex-wrap">
+      <h5 class="text-uppercase mb-0" style="font-size: 1.2rem;">Tata Memorial Hospital</h5>      
+    </div>
+    <div class="bg-white p-3 rounded shadow-sm">
+      <div class="d-flex justify-content-between align-items-center flex-wrap mb-3">
+        <div class="bucket-tabs d-flex gap-3 flex-wrap mb-2 mb-md-0">
+          <div class="bucket-tab active-tab" data-status="IHC" onclick="setActiveTab(this)">IHC</div>
+          <div class="bucket-tab" data-status="TSP" onclick="setActiveTab(this)">TSP</div>
+          <div class="bucket-tab" data-status="H&E" onclick="setActiveTab(this)">H&E</div>
+          <div class="bucket-tab" data-status="Performance" onclick="setActiveTab(this)">Performance</div>
+        </div>
+      </div>
+
+      
+     <!-- Table controls shown only on data tabs -->
+      <div id="tableControls" class="d-flex align-items-center gap-2 mb-3">
+        <select id="moduleSelect" class="form-select form-select-sm" style="width: 120px;">
+          <option value="All">All</option>
+          <option value="2025">2025</option>
+          <option value="2026">2026</option>
+        </select>
+      </div>
+
+      <table id="resultsTable" class="table table-bordered table-striped mb-0">
+        <thead class="table-dark text-white align-middle text-center" id="tableHeader">
+        </thead>
+        <tbody id="IHCTableBody">
+          <tr>
+            <td class="text-center"><a href="report.pdf" class="btn btn-sm btn-outline-primary" target="_blank">View</a></td>
+            <td class="text-center">27</td>
+            <td class="text-center">2025</td>
+            <td class="text-center submodule-cell">ER</td>
+            <td class="text-center">03/04/2025</td>
+            <td class="text-center">01/08/2025</td>
+            <td class="text-center">40/50</td>
+            <td class="text-center">Upload</td>
+          </tr
+          <tr>
+            <td class="text-center">
+              <a href="reports/ihc_run27_er.pdf" target="_blank" class="btn btn-sm btn-outline-primary">View</a>
+            </td>
+            <td class="text-center">27</td>
+            <td class="text-center">2025</td>
+            <td class="text-center submodule-cell">PR</td>
+            <td class="text-center">03/04/2025</td>
+            <td class="text-center">01/08/2025</td>
+            <td class="text-center">40/50</td>
+            <td class="text-center">Upload</td>
+            </td>
+          </tr>
+          <tr>
+            <td class="text-center">
+              <a href="reports/ihc_run27_er.pdf" target="_blank" class="btn btn-sm btn-outline-primary">View</a>
+            </td>
+            <td class="text-center">26</td>
+            <td class="text-center">2025</td>
+            <td class="text-center submodule-cell">Her2/Neu</td>
+            <td class="text-center">03/04/2025</td>
+            <td class="text-center">01/08/2025</td>
+            <td class="text-center">40/50</td>
+            <td class="text-center">Upload</td>
+            </td>
+          </tr>
+          <tr>
+            <td class="text-center">
+              <a href="reports/ihc_run27_er.pdf" target="_blank" class="btn btn-sm btn-outline-primary">View</a>
+            </td>
+            <td class="text-center">28</td>
+            <td class="text-center">2025</td>
+            <td class="text-center submodule-cell">Lymphoma</td>
+            <td class="text-center">03/04/2025</td>
+            <td class="text-center">01/08/2025</td>
+            <td class="text-center">40/50</td>
+            <td class="text-center">Upload</td>
+            </td>
+          </tr>
+          <tr>
+            <td class="text-center">
+              <a href="reports/ihc_run27_er.pdf" target="_blank" class="btn btn-sm btn-outline-primary">View</a>
+            </td>
+            <td class="text-center">29</td>
+            <td class="text-center">2025</td>
+            <td class="text-center submodule-cell">Miscellaneous</td>
+            <td class="text-center">03/04/2025</td>
+            <td class="text-center">01/08/2025</td>
+            <td class="text-center">40/50</td>
+            <td class="text-center">Upload</td>
+            </td>  
+          </tr>
+          <tr>
+            <td class="text-center"><a href="report.pdf" class="btn btn-sm btn-outline-primary" target="_blank">View</a></td>
+            <td class="text-center">28</td>
+            <td class="text-center">2026</td>
+            <td class="text-center submodule-cell">ER</td>
+            <td class="text-center">03/04/2026</td>
+            <td class="text-center">01/08/2026</td>
+            <td class="text-center">30/50</td>
+            <td class="text-center">Upload</td>
+          </tr>
+          <tr>
+            <td class="text-center"><a href="report.pdf" class="btn btn-sm btn-outline-primary" target="_blank">View</a></td>
+            <td class="text-center">29</td>
+            <td class="text-center">2027</td>
+            <td class="text-center submodule-cell">ER</td>
+            <td class="text-center">03/04/2027</td>
+            <td class="text-center">01/08/2027</td>
+            <td class="text-center">35/50</td>
+            <td class="text-center">Upload</td>
+          </tr>
+        </tbody>
+        <tbody id="TSPTableBody" style="display: none;">
+          <tr>
+            <td class="text-center">
+              <a href="reports/ihc_run27_er.pdf" target="_blank" class="btn btn-sm btn-outline-primary">View</a>
+            </td>
+            <td class="text-center">30</td>
+            <td class="text-center">2025</td>
+            <td class="text-center">TSP</td>
+            <td class="text-center">03/04/2025</td>
+            <td class="text-center">01/08/2025</td>
+            <td class="text-center">40/50</td>
+            <td class="text-center">Upload</td>
+            </td>
+          </tr
+        </tbody>
+        <tbody id="H&ETableBody" style="display: none;">        
+        </tbody>
+      </table>
+      <!-- Performance placeholder (left-aligned) -->
+      <div id="performanceSection" class="d-flex align-items-center gap-4 py-3 d-none">
+        
+        <!-- Select Module -->
+        <div class="d-flex align-items-center gap-2">
+          <label for="performanceModuleSelect" class="mb-0 fw-semibold">Select Module</label>
+          <select id="performanceModuleSelect" class="form-select form-select-sm" style="width: 160px;">
+            <option value="">-- Choose --</option>
+            <option value="IHC">IHC</option>
+            <option value="TSP">TSP</option>
+            <option value="H&E">H&E</option>
+          </select>
+        </div>
+
+        <div class="d-flex align-items-center gap-2">
+          <label for="yearFrom" class="mb-0 fw-semibold">Year Range</label>
+          <select id="yearFrom" class="form-select form-select-sm" style="width: 120px;"></select>
+          <span>to</span>
+          <select id="yearTo" class="form-select form-select-sm" style="width: 120px;"></select>
+          <button id="goBtn" type="button" class="btn btn-sm btn-primary">Go</button>
+        </div>
+
+      </div>
+      <div id="chartsWrapper" class="row g-3 d-none"></div>
+    </div>
+  </div>
+</div>
+
+
+
+<script>
+
+  function renderReceiveHeader() {
+    const th = document.getElementById('tableHeader');
+    if (!th) return;
+    th.innerHTML = `
+      <tr>
+        <th>View Final Report</th>
+        <th>Run No</th>
+        <th>Year</th>
+        <th>Submodule</th>
+        <th>Date of Dispatch</th>
+        <th>Date of End Run</th>
+        <th>Total Score</th>
+        <th>Upload Certificate</th>
+      </tr>
+    `;
+  }
+
+
+  function populateYearDropdowns(minYear = 2018, maxYear = new Date().getFullYear() + 1) {
+    const fromSel = document.getElementById('yearFrom');
+    const toSel   = document.getElementById('yearTo');
+    if (!fromSel || !toSel) return;
+
+    // clear existing
+    fromSel.innerHTML = '';
+    toSel.innerHTML   = '';
+
+    // add options (descending looks nice)
+    for (let y = maxYear; y >= minYear; y--) {
+      const opt1 = document.createElement('option');
+      opt1.value = opt1.textContent = y;
+      const opt2 = opt1.cloneNode(true);
+      fromSel.appendChild(opt1);
+      toSel.appendChild(opt2);
+    }
+
+    // sensible defaults (full span)
+    fromSel.value = minYear.toString();
+    toSel.value   = maxYear.toString();
+
+    // keep constraints: To >= From
+    fromSel.addEventListener('change', () => {
+      if (parseInt(toSel.value) < parseInt(fromSel.value)) {
+        toSel.value = fromSel.value;
+      }
+    });
+    toSel.addEventListener('change', () => {
+      if (parseInt(toSel.value) < parseInt(fromSel.value)) {
+        fromSel.value = toSel.value;
+      }
+    });
+  }
+
+
+  function setActiveTab(el) {
+    // active tab UI
+    document.querySelectorAll('.bucket-tab').forEach(t => t.classList.remove('active-tab'));
+    el.classList.add('active-tab');
+
+    const status          = el.dataset.status;
+    const tableHeader     = document.getElementById('tableHeader');
+    const ihcBody         = document.getElementById('IHCTableBody');
+    const tspBody         = document.getElementById('TSPTableBody');
+    const heBody          = document.getElementById('H&ETableBody');
+    const resultsTable    = document.getElementById('resultsTable');
+    const performanceSection = document.getElementById('performanceSection'); // <-- add this
+    const chartsWrapper = document.getElementById('chartsWrapper');
+    const tableControls = document.getElementById('tableControls');
+
+    // Hide everything first
+    ihcBody.style.display = 'none';
+    tspBody.style.display = 'none';
+    heBody.style.display  = 'none';
+    resultsTable.classList.remove('d-none');
+    performanceSection.classList.add('d-none');
+    performanceSection.classList.remove('d-flex');
+
+    if (status === 'Performance') {
+      // show performance UI, hide table
+      resultsTable.classList.add('d-none');
+      tableHeader.innerHTML = '';
+      if (tableControls) tableControls.classList.add('d-none'); 
+      performanceSection.classList.remove('d-none');
+      performanceSection.classList.add('d-flex');       
+      populateYearDropdowns(2018, new Date().getFullYear() + 1);
+      cleanupCharts();
+      if (chartsWrapper) chartsWrapper.classList.remove('d-none');// now it's flex only when visible
+      return;
+    }
+
+    // All other tabs show the table (not the performance section)
+    if (tableControls) tableControls.classList.remove('d-none');
+    resultsTable.style.display = 'table';
+    cleanupCharts();
+    if (chartsWrapper) chartsWrapper.classList.add('d-none');
+
+    if (status === 'IHC') {
+      tableHeader.innerHTML = `
+        <tr>
+          <th>View Reports</th>
+          <th>Run No</th>
+          <th>Year</th>
+          <th>
+            <div class="d-flex align-items-center justify-content-between">
+              <span>Submodule</span>
+              <select id="submoduleFilter" class="form-select form-select-sm ms-2" style="width:auto;font-size:.8rem;">
+                <option value="">All</option>
+                <option value="ER">ER</option>
+                <option value="PR">PR</option>
+                <option value="Her2/Neu">Her2/Neu</option>
+                <option value="Lymphoma">Lymphoma</option>
+                <option value="Miscellaneous">Miscellaneous</option>
+              </select>
+            </div>
+          </th>
+          <th>Date of Dispatch</th>
+          <th>Date of End Run</th>
+          <th>Total Score</th>
+          <th>Upload Certificate</th>
+        </tr>`;
+      ihcBody.style.display = 'table-row-group';
+    } else if (status === 'TSP') {
+      tableHeader.innerHTML = `
+        <tr>
+          <th>View Reports</th>
+          <th>Run No</th>
+          <th>Year</th>
+          <th>Submodule</th>
+          <th>Date of Dispatch</th>
+          <th>Date of End Run</th>
+          <th>Total Score</th>
+          <th>Upload Certificate</th>
+        </tr>`;
+      tspBody.style.display = 'table-row-group';
+    } else if (status === 'H&E') {
+      tableHeader.innerHTML = `
+        <tr>
+          <th>View Reports</th>
+          <th>Run No</th>
+          <th>Year</th>
+          <th>Submodule</th>
+          <th>Date of Dispatch</th>
+          <th>Date of End Run</th>
+          <th>Total Score</th>
+          <th>Upload Certificate</th>
+        </tr>`;
+      heBody.style.display = 'table-row-group';
+    }
+  }
+
+
+  // Keep references to charts so we can destroy them on refresh/tab switch
+  let chartInstances = [];
+
+  function cleanupCharts() {
+    chartInstances.forEach(ch => ch.destroy());
+    chartInstances = [];
+    const wrap = document.getElementById('chartsWrapper');
+    if (wrap) wrap.innerHTML = '';
+  }
+
+  function yearsBetween(from, to) {
+    const a = [];
+    const start = Math.min(from, to);
+    const end   = Math.max(from, to);
+    for (let y = start; y <= end; y++) a.push(String(y));
+    return a;
+  }
+
+  function randomSeries(n, min=10, max=100) {
+    return Array.from({length: n}, () => Math.floor(Math.random()*(max-min+1)) + min);
+  }
+
+  function renderCharts() {
+    const fromSel = document.getElementById('yearFrom');
+    const toSel   = document.getElementById('yearTo');
+    const wrap    = document.getElementById('chartsWrapper');
+    if (!fromSel || !toSel || !wrap) return;
+
+    // Clear old charts
+    cleanupCharts();
+
+    const from = parseInt(fromSel.value, 10);
+    const to   = parseInt(toSel.value, 10);
+    const labels = yearsBetween(from, to);
+
+    const titles = ["ER", "PR", "Her2/Neu", "Lymphoma", "Miscellaneous"];
+
+    // Make wrapper visible
+    wrap.classList.remove('d-none');
+
+    // Build 5 canvases and charts
+    titles.forEach((title) => {
+      // column
+      const col = document.createElement('div');
+      col.className = 'col-12 col-md-6 col-xl-4';
+
+      // card
+      const card = document.createElement('div');
+      card.className = 'card shadow-sm';
+      const body = document.createElement('div');
+      body.className = 'card-body';
+
+      // canvas
+      const canvas = document.createElement('canvas');
+      body.appendChild(canvas);
+      card.appendChild(body);
+      col.appendChild(card);
+      wrap.appendChild(col);
+
+      const data = randomSeries(labels.length);
+
+      // Chart.js bar chart (histogram-like)
+      const chart = new Chart(canvas.getContext('2d'), {
+        type: 'bar',
+        data: {
+          labels,
+          datasets: [{
+            label: title,
+            data,
+            // no explicit colors; Chart.js will choose defaults
+          }]
+        },
+        options: {
+          plugins: {
+            legend: { display: false },
+            title: { display: true, text: title }
+          },
+          scales: {
+            x: { title: { display: true, text: 'Year' } },
+            y: { beginAtZero: true, title: { display: true, text: 'Value' } }
+          }
+        }
+      });
+
+      chartInstances.push(chart);
+    });
+  }
+
+  // Wire up the Go button
+  document.addEventListener('DOMContentLoaded', () => {
+    const go = document.getElementById('goBtn');
+    if (go) go.addEventListener('click', renderCharts);
+  });
+
+  
+
+  
+  document.addEventListener('change', function (e) {
+    if (e.target.id === 'submoduleFilter') {
+      const selected = e.target.value.toLowerCase();
+      const rows = document.querySelectorAll('#IHCTableBody tr');
+
+      rows.forEach(row => {
+        const cell = row.querySelector('.submodule-cell');
+        const value = cell?.textContent.trim().toLowerCase();
+        row.style.display = (!selected || value === selected) ? '' : 'none';
+      });
+    }
+  });
+
+
+
+
+  window.addEventListener('DOMContentLoaded', () => {
+    setActiveTab(document.querySelector('.bucket-tab[data-status="IHC"]'));
+  });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
