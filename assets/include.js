@@ -28,13 +28,19 @@
 
   function markActive() {
     const segs = location.pathname.split('/').filter(Boolean);
-    const folder = decodeURIComponent(segs[segs.length - 1] || '').toLowerCase();
+
+    // Use parent folder when the last segment is a file (has a dot)
+    let keySeg = segs[segs.length - 1] || '';
+    if (keySeg.includes('.')) keySeg = segs[segs.length - 2] || keySeg;
+
+    const folder = decodeURIComponent(keySeg).toLowerCase();
+
     document.querySelectorAll('#sidebarMenu a[data-link]').forEach(a => {
-        const key = a.getAttribute('data-link');
-        if (folder && key && folder.toLowerCase().includes(key.toLowerCase())) {
+      const key = (a.getAttribute('data-link') || '').toLowerCase();
+      if (key && (folder === key || folder.includes(key))) {
         a.classList.add('text-primary');
         a.classList.remove('text-white');
-        }
+      }
     });
   }
 
