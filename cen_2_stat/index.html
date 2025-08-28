@@ -1,0 +1,2096 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Centre Specific</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/style.css?v=9">
+  <link rel="stylesheet" href="../assets/tata_hosp_sample_status.css?v=9">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+  <script src="../assets/include.js?v=9" defer></script>
+  <style>
+    .bucket-tab { display:inline-flex; align-items:center; gap:.4rem; }
+    .bucket-badge { font-size:12px; }
+    #statusTableBody tr:first-child td { color:#0f5132; } 
+  </style>
+
+</head>
+<body>
+
+<!-- Top Bar -->
+<div id="header"></div>
+
+<!-- Layout -->
+<div class="d-flex" id="contentArea">
+  <!-- Sidebar -->
+  <aside id="sidebar" class="sidebar"></aside>
+
+  <!-- Main Content -->
+  <div class="main-content flex-grow-1 p-4" id="mainContent">
+    <div class="d-flex align-items-center gap-2 mb-3 flex-wrap">
+      <h5 class="text-uppercase mb-0" style="font-size: 1.2rem;">Tata Memorial Hospital (Center No: 01)</h5>
+      <div>
+        <select id="moduleSelect" class="form-select" style="width: 200px;">
+          <option value="IHC">ImmunoHistochemistry (IHC)</option>
+          <option value="TSP">Tissue Processing (TSP)</option>
+          <option value="H&E">H&E</option>
+        </select>
+      </div>
+    </div>
+    <div class="bg-white p-3 rounded shadow-sm">
+      <div id="ihcView">
+        <div class="bucket-tabs d-flex gap-3 flex-wrap mb-2 mb-md-0">
+          <div class="bucket-tab active-tab" data-status="status" onclick="setActiveTab(this)">
+            Status
+          </div>
+
+          <div class="bucket-tab" data-status="reporting" onclick="setActiveTab(this)">
+            Sample Reporting
+            <!-- >0 so red -->
+            <span class="badge rounded-pill bg-danger bucket-badge">2</span>
+          </div>
+        </div>
+
+
+        <table class="table table-bordered table-striped mb-0">
+          <thead class="table-dark text-white align-middle" id="ihctableHeader">
+          </thead>
+
+          
+          <tbody id="statusTableBody" style="display: none;">
+            <tr>
+              <td style="text-align: center;">2025</td>
+              <td style="text-align: center;">27</td>
+              <td style="text-align: center;">ER</td>
+              <td style="text-align: center;">Run Completed</td>
+            </tr>
+            <tr>
+              <td style="text-align: center;">2025</td>
+              <td style="text-align: center;">27</td>
+              <td style="text-align: center;">PR</td>
+              <td style="text-align: center;">Sample Sent by NCG</td>
+            </tr>
+            <tr>
+              <td style="text-align: center;">2025</td>
+              <td style="text-align: center;">26</td>
+              <td style="text-align: center;">Her2/Neu</td>
+              <td style="text-align: center;">Sample Received by Center</td>
+            </tr>
+            <tr>
+              <td style="text-align: center;">2025</td>
+              <td style="text-align: center;">28</td>
+              <td style="text-align: center;">Lymphoma</td>
+              <td style="text-align: center;">Sample Reported by Center</td>
+            </tr>
+            <tr>
+              <td style="text-align: center;">2025</td>
+              <td style="text-align: center;">29</td>
+              <td style="text-align: center;">Miscellaneous</td>
+              <td style="text-align: center;">Sample Received by NCG</td>
+            </tr>
+          </tbody>
+            
+          <tbody id="receiveTableBody">
+            <tr>
+              <td class="courier-cell" data-original="Blue Dart">Blue Dart</td>
+              <td>27</td>
+              <td class="tracking-cell" data-original="TRK10234567">TRK10234567</td>
+              <td>ER</td>
+              <td style="text-align: center;">01-07-2025</td>
+              <td style="text-align: center;">
+                <button class="btn btn-success btn-sm px-2 py-1" onclick="confirmReceive(this)">✓</button>
+              </td>
+
+            </tr>
+            <tr>
+              <td class="courier-cell" data-original="Blue Dart">Blue Dart</td>
+              <td>27</td>
+              <td class="tracking-cell" data-original="TRK10234567">TRK10234567</td>
+              <td>PR</td>
+              <td style="text-align: center;">01-07-2025</td>
+              <td style="text-align: center;">
+                <button class="btn btn-success btn-sm px-2 py-1" onclick="confirmReceive(this)">✓</button>
+              </td>
+            </tr>
+            <tr>
+              <td class="courier-cell" data-original="Blue Dart">Blue Dart</td>
+              <td>26</td>
+              <td class="tracking-cell" data-original="TRK10234567">TRK10234567</td>
+              <td>Her2/Neu</td>
+              <td style="text-align: center;">01-07-2025</td>
+              <td style="text-align: center;">
+                <button class="btn btn-success btn-sm px-2 py-1" onclick="confirmReceive(this)">✓</button>
+              </td>
+            </tr>
+            <tr>
+              <td class="courier-cell" data-original="Blue Dart">Blue Dart</td>
+              <td>28</td>
+              <td class="tracking-cell" data-original="TRK10234567">TRK10234567</td>
+              <td>Lymphoma</td>
+              <td style="text-align: center;">01-07-2025</td>
+              <td style="text-align: center;">
+                <button class="btn btn-success btn-sm px-2 py-1" onclick="confirmReceive(this)">✓</button>
+              </td>
+            </tr>
+            <tr>
+              <td class="courier-cell" data-original="Blue Dart">Blue Dart</td>
+              <td>29</td>
+              <td class="tracking-cell" data-original="TRK10234567">TRK10234567</td>
+              <td>Miscellaneous</td>
+              <td style="text-align: center;">01-07-2025</td>
+              <td style="text-align: center;">
+                <button class="btn btn-success btn-sm px-2 py-1" onclick="confirmReceive(this)">✓</button>
+              </td>
+            </tr>
+          </tbody>
+
+          <tbody id="sendTableBody" style="display: none;">
+            <tr>
+              <td class="courier-cell" data-original="">
+                <input type="text" class="form-control form-control-sm" placeholder="Enter Courier Name">
+              </td>
+              <td>27</td>
+              <td class="tracking-cell" data-original="">
+                <input type="text" class="form-control form-control-sm" placeholder="Enter Tracking ID">
+              </td>
+              <td>ER</td>
+              <td style="text-align: center;">01-07-2025</td>
+              <td style="text-align: center;">
+                <button class="btn btn-success btn-sm px-2 py-1" onclick="confirmReceive(this)">✓</button>
+              </td>
+
+            </tr>
+            <tr>
+              <td class="courier-cell" data-original="">
+                <input type="text" class="form-control form-control-sm" placeholder="Enter Courier Name">
+              </td>
+              <td>27</td>
+              <td class="tracking-cell" data-original="">
+                <input type="text" class="form-control form-control-sm" placeholder="Enter Tracking ID">
+              </td>
+              <td>PR</td>
+              <td style="text-align: center;">01-07-2025</td>
+              <td style="text-align: center;">
+                <button class="btn btn-success btn-sm px-2 py-1" onclick="confirmReceive(this)">✓</button>
+              </td>
+            </tr>
+            <tr>
+              <td class="courier-cell" data-original="">
+                <input type="text" class="form-control form-control-sm" placeholder="Enter Courier Name">
+              </td>
+              <td>26</td>
+              <td class="tracking-cell" data-original="">
+                <input type="text" class="form-control form-control-sm" placeholder="Enter Tracking ID">
+              </td>
+              <td>Her2/Neu</td>
+              <td style="text-align: center;">01-07-2025</td>
+              <td style="text-align: center;">
+                <button class="btn btn-success btn-sm px-2 py-1" onclick="confirmReceive(this)">✓</button>
+              </td>
+            </tr>
+            <tr>
+              <td class="courier-cell" data-original="">
+                <input type="text" class="form-control form-control-sm" placeholder="Enter Courier Name">
+              </td>
+              <td>28</td>
+              <td class="tracking-cell" data-original="">
+                <input type="text" class="form-control form-control-sm" placeholder="Enter Tracking ID">
+              </td>
+              <td>Lymphoma</td>
+              <td style="text-align: center;">01-07-2025</td>
+              <td style="text-align: center;">
+                <button class="btn btn-success btn-sm px-2 py-1" onclick="confirmReceive(this)">✓</button>
+              </td>
+            </tr>
+            <tr>
+              <td class="courier-cell" data-original="">
+                <input type="text" class="form-control form-control-sm" placeholder="Enter Courier Name">
+              </td>
+              <td>29</td>
+              <td class="tracking-cell" data-original="">
+                <input type="text" class="form-control form-control-sm" placeholder="Enter Tracking ID">
+              </td>
+              <td>Miscellaneous</td>
+              <td style="text-align: center;">01-07-2025</td>
+              <td style="text-align: center;">
+                <button class="btn btn-success btn-sm px-2 py-1" onclick="confirmReceive(this)">✓</button>
+              </td>
+          </tbody>
+          <tbody id="reportingTableBody" style="display: none;">
+            <tr>
+              <td>27</td>
+              <td>ER</td>
+              <td>01/10/2025</td>
+              <td class="text-center">
+                <button class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#protocolModal" data-submodule="ER" data-run="27">
+                  View Protocol
+                </button>
+              </td>
+              <td class="text-center enter-results">
+                <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#resultModal">
+                  Enter Results
+                </button>
+              </td>
+              <td class="text-center enter-results">
+                <button class="btn btn-danger btn-sm btn-build" data-bs-toggle="modal" data-bs-target="">
+                  Build
+                </button>
+              </td>
+              <td class="text-center">
+                <button class="btn btn-outline-secondary btn-sm btn-edit-report" title="Edit Report">
+                  <i class="bi bi-pencil-square"></i>
+                </button>
+                <button class="btn btn-outline-info btn-sm ms-1 btn-view-report" title="View Report">
+                  <i class="bi bi-eye"></i>
+                </button>
+              </td>
+              <td class="text-center">
+                <button class="btn btn-success btn-sm btn-commit-report" title="Commit Report">
+                  <i class="bi bi-check2-circle me-1"></i> Commit
+                </button>
+              </td>  
+            </tr>
+            <tr>
+              <td>27</td>
+              <td>PR</td>
+              <td>01/10/2025</td>
+              <td class="text-center">
+                <button class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#protocolModal" data-submodule="PR" data-run="27">
+                  View Protocol
+                </button>
+              </td>
+              <td class="text-center enter-results">
+                <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#resultModal">
+                  Enter Results
+                </button>
+              </td>
+              <td class="text-center enter-results">
+                <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="">
+                  Build
+                </button>
+              </td>
+              <td class="text-center">
+                <button class="btn btn-outline-secondary btn-sm btn-edit-report" title="Edit Report">
+                  <i class="bi bi-pencil-square"></i>
+                </button>
+                <button class="btn btn-outline-info btn-sm ms-1 btn-view-report" title="View Report">
+                  <i class="bi bi-eye"></i>
+                </button>
+              </td>
+              <td class="text-center">
+                <button class="btn btn-success btn-sm btn-commit-report" title="Commit Report">
+                  <i class="bi bi-check2-circle me-1"></i> Commit
+                </button>
+              </td>
+            </tr>
+            <tr>
+              <td>26</td>
+              <td>Her2/Neu</td>
+              <td>01/10/2025</td>
+              <td class="text-center">
+                <button class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#protocolModal" data-submodule="Her2/Neu" data-run="26">
+                  View Protocol
+                </button>
+              </td>
+              <td class="text-center enter-results">
+                <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#resultModal">
+                  Enter Results
+                </button>
+              </td>
+              <td class="text-center enter-results">
+                <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="">
+                  Build
+                </button>
+              </td>
+              <td class="text-center">
+                <button class="btn btn-outline-secondary btn-sm btn-edit-report" title="Edit Report">
+                  <i class="bi bi-pencil-square"></i>
+                </button>
+                <button class="btn btn-outline-info btn-sm ms-1 btn-view-report" title="View Report">
+                  <i class="bi bi-eye"></i>
+                </button>
+              </td>
+              <td class="text-center">
+                <button class="btn btn-success btn-sm btn-commit-report" title="Commit Report">
+                  <i class="bi bi-check2-circle me-1"></i> Commit
+                </button>
+              </td> 
+            </tr>
+            <tr>
+              <td>28</td>
+              <td>Lymphoma</td>
+              <td>01/10/2025</td>
+              <td class="text-center">
+                <button class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#protocolModal" data-submodule="Lymphoma" data-run="28">
+                  View Protocol
+                </button>
+              </td>
+              <td class="text-center enter-results">
+                <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#resultModal">
+                  Enter Results
+                </button>
+              </td>
+              <td class="text-center enter-results">
+                <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="">
+                  Build
+                </button>
+              </td>
+              <td class="text-center">
+                <button class="btn btn-outline-secondary btn-sm btn-edit-report" title="Edit Report">
+                  <i class="bi bi-pencil-square"></i>
+                </button>
+                <button class="btn btn-outline-info btn-sm ms-1 btn-view-report" title="View Report">
+                  <i class="bi bi-eye"></i>
+                </button>
+              </td>
+              <td class="text-center">
+                <button class="btn btn-success btn-sm btn-commit-report" title="Commit Report">
+                  <i class="bi bi-check2-circle me-1"></i> Commit
+                </button>
+              </td>  
+            </tr>
+            <tr>
+              <td>29</td>
+              <td>Miscellaneous</td>
+              <td>01/10/2025</td>
+              <td class="text-center">
+                <button class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#protocolModal" data-submodule="Miscellaneous" data-run="27">
+                  View Protocol
+                </button>
+              </td>
+              <td class="text-center enter-results">
+                <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#resultModal">
+                  Enter Results
+                </button>
+              </td>
+              <td class="text-center enter-results">
+                <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="">
+                  Build
+                </button>
+              </td>
+              <td class="text-center">
+                <button class="btn btn-outline-secondary btn-sm btn-edit-report" title="Edit Report">
+                  <i class="bi bi-pencil-square"></i>
+                </button>
+                <button class="btn btn-outline-info btn-sm ms-1 btn-view-report" title="View Report">
+                  <i class="bi bi-eye"></i>
+                </button>
+              </td>
+              <td class="text-center">
+                <button class="btn btn-success btn-sm btn-commit-report" title="Commit Report">
+                  <i class="bi bi-check2-circle me-1"></i> Commit
+                </button>
+              </td>  
+            </tr>         
+          </tbody>
+
+
+
+        </table>
+        <!-- Table for 'All' bucket (with Status column instead of Approval) -->
+        <table class="table table-bordered table-striped mb-0" id="tableAll" style="display: none;">
+          <thead class="table-dark text-white align-middle">
+            <tr>
+              <th style="width: 5%; text-align: center;">Edit</th>
+              <th>
+                Date
+                <div class="dropdown d-inline ms-1">
+                  <a href="#" class="text-white" data-bs-toggle="dropdown">
+                    <i class="bi bi-caret-down-fill"></i>
+                  </a>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#">Latest</a></li>
+                    <li><a class="dropdown-item" href="#">Oldest</a></li>
+                  </ul>
+                </div>
+              </th>
+              <th>
+                NCG Member
+                <div class="dropdown d-inline ms-1">
+                  <a href="#" class="text-white" data-bs-toggle="dropdown">
+                    <i class="bi bi-caret-down-fill"></i>
+                  </a>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#">Yes</a></li>
+                    <li><a class="dropdown-item" href="#">No</a></li>
+                  </ul>
+                </div>
+              </th>
+              <th>Centre Name</th>
+              <th>
+                Modules Enrolled
+                <div class="dropdown d-inline ms-1">
+                  <a href="#" class="text-white" data-bs-toggle="dropdown">
+                    <i class="bi bi-caret-down-fill"></i>
+                  </a>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#">All</a></li>
+                    <li><a class="dropdown-item" href="#">IHC</a></li>
+                    <li><a class="dropdown-item" href="#">TSP</a></li>
+                    <li><a class="dropdown-item" href="#">H&E</a></li>
+                  </ul>
+                </div>
+              </th>
+              <th style="width: 5%;">Run</th>
+              <th style="width: 10%;">Status</th> <!-- ✅ Slimmer width -->
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr>
+              <td class="text-center">
+                <button class="btn btn-primary btn-sm" onclick="editRegistration('Tata Memorial Hospital')">
+                  <i class="bi bi-pencil-square"></i>
+                </button>
+              </td>
+              <td>01-07-2025</td>
+              <td>Yes</td>
+              <td><a href="#" class="text-primary text-decoration-none" onclick="openModalForm('tata')">Tata Memorial Hospital</a></td>
+              <td>IHC, TSP, H&E</td>
+              <td>01</td>
+              <td>Pending</td> <!-- ✅ Status instead of buttons -->
+            </tr>
+            <tr>
+              <td class="text-center">
+                <button class="btn btn-primary btn-sm" onclick="editRegistration('Apollo Chennai')">
+                  <i class="bi bi-pencil-square"></i>
+                </button>
+              </td>
+              <td>03-07-2025</td>
+              <td>No</td>
+              <td><a href="#" class="text-primary text-decoration-none" onclick="openModalForm('apollo')">Apollo Chennai</a></td>
+              <td>IHC, TSP, H&E</td>
+              <td>02</td>
+              <td>Approved/Disapproved</td>
+            </tr>
+            <!-- Add approved/disapproved rows here if needed -->
+          </tbody>
+        </table>
+      </div>
+      <!-- TSP VIEW (new) -->
+      <div id="tspView" style="display:none;">
+        <div class="d-flex justify-content-between align-items-center flex-wrap mb-3">
+          <div class="bucket-tabs d-flex gap-3 flex-wrap mb-2 mb-md-0">
+            <div class="bucket-tab active-tab" data-status="tsp-status"   onclick="setActiveTabTSP(this)">Status</div>
+            <div class="bucket-tab"          data-status="tsp-send"     onclick="setActiveTabTSP(this)">Send Sample</div>
+            <div class="bucket-tab"          data-status="tsp-receive"  onclick="setActiveTabTSP(this)">Received Sample</div>
+            <div class="bucket-tab"          data-status="tsp-reporting"onclick="setActiveTabTSP(this)">Sample Reporting</div>
+          </div>
+        </div>
+
+        <table class="table table-bordered table-striped mb-0">
+          <thead class="table-dark text-white align-middle" id="tspTableHeader"></thead>
+
+          <!-- Status -->
+          <tbody id="tspStatusTableBody">
+            <tr>
+              <td class="text-center">2025</td>
+              <td class="text-center">27</td>
+              <td class="text-center">TSP</td>
+              <td class="text-center">Pending</td>
+            </tr>
+          </tbody>
+
+          <!-- Received Sample -->
+          <tbody id="tspReceiveTableBody" style="display:none;">
+            <tr>
+              <td>Blue Dart</td><td>27</td><td>TRK10234567</td><td>TSP</td>
+              <td class="text-center">01-07-2025</td>
+              <td class="text-center"><button class="btn btn-success btn-sm px-2 py-1" onclick="confirmReceive(this)">✓</button></td>
+            </tr>
+            <!-- more rows as needed -->
+          </tbody>
+
+          <!-- Sample Reporting (NO "Enter Results" column for TSP) -->
+          <tbody id="tspReportingTableBody" style="display:none;">
+            <tr>
+              <td>27</td><td>TSP</td><td>01/10/2025</td>
+              <td class="text-center">
+                <button class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#protocolModal">View Protocol</button>
+              </td>
+              <td class="text-center enter-results">
+                <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#resultModal1">
+                  Enter Results
+                </button>
+              </td>
+              <td class="text-center enter-results">
+                <button class="btn btn-danger btn-sm btn-build" data-bs-toggle="modal" data-bs-target="">
+                  Build
+                </button>
+              </td>
+              <td class="text-center">
+                <button class="btn btn-outline-secondary btn-sm btn-edit-report" title="Edit Report" data-bs-toggle="modal" data-bs-target="#resultModal1">
+                  <i class="bi bi-pencil-square"></i>
+                </button>
+                <button class="btn btn-outline-info btn-sm ms-1 btn-view-report" title="View Report">
+                  <i class="bi bi-eye"></i>
+                </button>
+              </td>
+              <td class="text-center">
+                <button class="btn btn-success btn-sm btn-commit-report" title="Commit Report">
+                  <i class="bi bi-check2-circle me-1"></i> Commit
+                </button>
+              </td>
+            </tr>
+            <!-- more rows as needed -->
+          </tbody>
+
+          <!-- Send Sample -->
+          <tbody id="tspSendTableBody" style="display:none;">
+            <tr>
+              <td><input type="text" class="form-control form-control-sm" placeholder="Enter Courier Name"></td>
+              <td>27</td>
+              <td><input type="text" class="form-control form-control-sm" placeholder="Enter Tracking ID"></td>
+              <td>TSP</td>
+              <td class="text-center">01-07-2025</td>
+              <td class="text-center"><button class="btn btn-success btn-sm px-2 py-1" onclick="confirmReceive(this)">✓</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+            <!-- H&E VIEW (starts hidden) -->
+      <div id="heView" style="display:none;">
+        <div class="d-flex justify-content-between align-items-center flex-wrap mb-3">
+          <div class="bucket-tabs d-flex gap-3 flex-wrap mb-2 mb-md-0">
+            <div class="bucket-tab active-tab" data-status="he-status" onclick="setActiveTabHE(this)">Status</div>
+            <div class="bucket-tab" data-status="he-examine" onclick="setActiveTabHE(this)">Assign Slides</div>
+            <div class="bucket-tab" data-status="he-reporting" onclick="setActiveTabHE(this)">Reporting</div>
+          </div>
+        </div>
+
+        <table class="table table-bordered table-striped mb-0">
+          <thead class="table-dark text-white align-middle" id="heTableHeader"></thead>
+
+          <!-- Status -->
+          <tbody id="heStatusTableBody">
+            <tr><td class="text-center">2025</td><td class="text-center">27</td><td class="text-center">1</td><td class="text-center">Diagnostic Histopathology</td><td class="text-center">Pending</td></tr>
+            <tr><td class="text-center">2025</td><td class="text-center">28</td><td class="text-center">1</td><td class="text-center">MDSR</td><td class="text-center">Result Submitted</td></tr>
+          </tbody>
+
+          <!-- Examine Slides -->
+          <tbody id="heExamineTableBody" style="display:none;">
+            <tr>
+              <td class="text-center">1</td>
+              <td class="text-center">www.example.com</td>
+              <td class="text-center">2025</td>
+              <td class="text-center">Diagnostic Histopathology</td>
+              <td class="text-center">11/08/2025</td>
+              <td class="text-center">12/09/2025</td>
+              <td class="text-center">
+                <button type="button" class="btn btn-primary butn-sm btn-login" data-bs-toggle="modal" data-bs-target="#loginModal" data-pass="demo_password">Enter</button>
+              </td>  
+            </tr>
+            <tr>
+              <td class="text-center">1</td>
+              <td class="text-center">www.example.com</td>
+              <td class="text-center">2025</td>
+              <td class="text-center">MDSR</td>
+              <td class="text-center">11/08/2025</td>
+              <td class="text-center">12/09/2025</td>
+              <td class="text-center">
+                <button type="button" class="btn btn-primary butn-sm btn-login" data-bs-toggle="modal" data-bs-target="#loginModal" data-pass="demo_password">Enter</button>
+              </td>
+            </tr>
+          </tbody>
+
+
+          <!-- Reporting -->
+          <tbody id="heReportingTableBody" style="display:none;">         
+            <tr>
+              <td class="text-center">26</td>
+              <td class="text-center">Diagnostic Histopathology</td>
+              <td class="text-center">01/10/2025</td>
+              <td class="text-center">1</td>              
+              <td class="text-center enter-results">
+                <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#heresultModaldigital">
+                  Enter Results
+                </button>
+              </td>
+              <td class="text-center enter-results">
+                <button class="btn btn-danger btn-sm btn-build" data-bs-toggle="modal" data-bs-target="">
+                  Build
+                </button>
+              </td>
+              <td class="text-center">
+                <button class="btn btn-outline-secondary btn-sm btn-edit-report" title="Edit Report">
+                  <i class="bi bi-pencil-square"></i>
+                </button>
+                <button class="btn btn-outline-info btn-sm ms-1 btn-view-report" title="View Report">
+                  <i class="bi bi-eye"></i>
+                </button>
+              </td>
+              <td class="text-center">
+                <button class="btn btn-success btn-sm btn-commit-report" title="Commit Report">
+                  <i class="bi bi-check2-circle me-1"></i> Commit
+                </button>
+              </td>  
+            </tr>
+            <tr>
+              <td class="text-center">27</td>
+              <td class="text-center">MDSR</td>
+              <td class="text-center">01/10/2025</td>
+              <td class="text-center">1</td>              
+              <td class="text-center enter-results">
+                <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#heresultModalmdsr">
+                  Enter Results
+                </button>
+              </td>
+              <td class="text-center enter-results">
+                <button class="btn btn-danger btn-sm btn-build" data-bs-toggle="modal" data-bs-target="">
+                  Build
+                </button>
+              </td>
+              <td class="text-center">
+                <button class="btn btn-outline-secondary btn-sm btn-edit-report" title="Edit Report">
+                  <i class="bi bi-pencil-square"></i>
+                </button>
+                <button class="btn btn-outline-info btn-sm ms-1 btn-view-report" title="View Report">
+                  <i class="bi bi-eye"></i>
+                </button>
+              </td>
+              <td class="text-center">
+                <button class="btn btn-success btn-sm btn-commit-report" title="Commit Report">
+                  <i class="bi bi-check2-circle me-1"></i> Commit
+                </button>
+              </td>  
+            </tr>   
+          </tbody>
+        </table>
+
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModal" aria-hidden="true">
+  <div class="modal-dialog" role="document" style="max-width: 520px;">
+    <div class="modal-content" style="border-radius: 12px; overflow: hidden;">
+      <!-- Header -->
+      <div class="d-flex justify-content-between align-items-center" style="background-color:#2f3e63;color:#fff;padding:12px 18px;">
+        <h5 class="modal-title mb-0" id="loginModalLabel">Enter Login Details</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+
+      <form id="loginForm">
+        <!-- Body -->
+        <div class="modal-body">
+          <!-- Context -->
+          <div class="small text-muted mb-3">
+            <div><strong>Batch:</strong> <span id="loginBatch"></span></div>
+            <div><strong>Sub-Module:</strong> <span id="loginSubmodule"></span></div>
+            <div><strong>Year:</strong> <span id="loginYear"></span></div>
+            <div class="text-truncate"><strong>Link:</strong> <span id="loginLink"></span></div>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label" for="loginUsername">Username</label>
+            <input type="text" class="form-control" id="loginUsername" placeholder="Enter username" required>
+          </div>
+
+          <div class="mb-2">
+            <label class="form-label" for="loginPassword">Password</label>
+            <input type="password" class="form-control" id="loginPassword" placeholder="Enter password" required>
+          </div>
+
+          <div class="form-check mb-2">
+            <input class="form-check-input" type="checkbox" id="loginRemember">
+            <label class="form-check-label" for="loginRemember">Remember these details</label>
+          </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="modal-footer border-0">
+          <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancel</button>
+          <button type="submit" class="btn btn-primary">Save</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+<div class="modal fade" id="protocolModal" tabindex="-1" aria-labelledby="protocolModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-xl" role="document" style="max-width: 900px;">
+    <div class="modal-content p-0" style="border-radius: 12px; overflow: hidden;">
+      
+      <!-- Dark Blue Header with Close Button -->
+      <div class="d-flex justify-content-between align-items-center" style="background-color: #2f3e63; color: white; padding: 14px 20px;">
+        <h4 class="modal-title mb-0 fw-semibold" id="protocolModalLabel">Protocol</h4>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      
+      <!-- Modal Body -->
+      <div class="modal-body bg-white px-4 py-3">
+        <h5 class="fw-semibold mt-3">Staining Platform</h5>
+        <div class="mb-3">
+          <label for="stainingPlatform" class="form-label">Select Staining Platform</label>
+          <select class="form-select" id="stainingPlatform">
+            <option value="">Select</option>
+            <option>Dako Autostainer</option>
+            <option>Dako Autostainer Link 48+</option>
+            <option>Dako Omnis</option>
+            <option>Leica BOND III</option>
+            <option>Leica BOND Max</option>
+            <option>Leica BOND Prime</option>
+            <option>Sakura Tissue-Tek Genie</option>
+            <option>Thermo Autostainer 36/48/72</option>
+            <option>Ventana Benchmark GX</option>
+            <option>Ventana Benchmark Ultra</option>
+            <option>Ventana Benchmark Ultra Plus</option>
+            <option>Ventana Benchmark XT</option>
+            <option>Pathnsitu Caliber 30</option>
+            <option>Manual</option>
+            <option>Others</option>
+          </select>
+        </div>
+        <div class="mb-3 d-none" id="otherStainingPlatformDiv">
+          <label for="otherStainingPlatform" class="form-label">Please specify</label>
+          <input type="text" class="form-control" id="otherStainingPlatform" placeholder="Enter platform name">
+        </div>
+
+        <h5 class="fw-semibold mt-3">Primary Antibody</h5>
+        <div class="mb-3">
+          <label for="cloneType" class="form-label">Primary Antibody Clone</label>
+          <select class="form-select" id="cloneType">
+            <option value="">Select</option>
+            <option>Ready to use</option>
+            <option>Concentrated</option>
+          </select>
+        </div>
+
+        <!-- 2. Input: Lot No. -->
+        <div class="mb-3">
+          <label for="lotNumber" class="form-label">Lot No.</label>
+          <input type="text" class="form-control" id="lotNumber" placeholder="Enter lot number">
+        </div>
+
+        <!-- 3. Input: Dilution Factor -->
+        <div class="mb-3">
+          <label for="dilutionFactor" class="form-label">Dilution Factor</label>
+          <input type="text" class="form-control" id="dilutionFactor" placeholder="Enter dilution factor">
+        </div>
+
+        <!-- 4. Dropdown: Dilution Buffer -->
+        <div class="mb-3">
+          <label for="dilutionBuffer" class="form-label">Dilution Buffer</label>
+          <select class="form-select" id="dilutionBuffer">
+            <option value="">Select</option>
+            <option>Biocare Medical  -Da Vinci Green Diluent</option>
+            <option>Biocare Medical - Renoir Red Diluent</option>
+            <option>Biocare Medical - Renaissance background reducing Diluent</option>
+            <option>Biocare Medical - Van Gogh Yellow Diluent</option>
+            <option>Cell Marque - Diamond - Antibody Diluent</option>
+            <option>Cell Marque - Emeraid - Antibody Diluent</option>
+            <option>Dako - Antibody Diluent</option>
+            <option>Dako - Antibody Diluent with Background Reducing Components</option>
+            <option>Dako - REAL Antibody Diluent</option>
+            <option>Diagnostic Biosystem - Primary Antibody Diluent</option>
+            <option>Immunologic - Bright Diluent,Green</option>
+            <option>Leica - Bond Primary Antibody Diluent</option>
+            <option>Ventana - Antibody Diluent</option>
+            <option>Ventana - Antibody Diluent with casein</option>
+            <option>Ventana - Antibody Diluent Buffer</option>
+            <option>Zytomed - Antibody Diluent</option>
+            <option>Others</option>
+            <option>None</option>
+          </select>
+        </div>
+
+        <!-- Show only if 'Others' is selected -->
+        <div id="otherDilutionFields" class="d-none">
+          <div class="mb-3">
+            <label for="bufferName" class="form-label">Dilution Buffer Name</label>
+            <input type="text" class="form-control" id="bufferName" placeholder="Enter buffer name">
+          </div>
+          <div class="mb-3">
+            <label for="bufferProducer" class="form-label">Dilution Buffer Producer</label>
+            <input type="text" class="form-control" id="bufferProducer" placeholder="Enter producer name">
+          </div>
+          <div class="mb-3">
+            <label for="productNumber" class="form-label">Dilution Product Number</label>
+            <input type="text" class="form-control" id="productNumber" placeholder="Enter product number">
+          </div>
+        </div>
+
+        <!-- Always shown -->
+        <div class="mb-3">
+          <label for="incubationTime" class="form-label">Incubation Time (minutes)</label>
+          <input type="number" class="form-control" id="incubationTime" placeholder="Enter time in minutes">
+        </div>
+
+        <div class="mb-3">
+          <label for="incubationTemp" class="form-label">Incubation Temperature (°C)</label>
+          <input type="number" class="form-control" id="incubationTemp" placeholder="Enter temperature in °C">
+        </div>
+
+        <h5 class="fw-semibold mt-3">Epitope Retrieval (HIER)</h5>
+
+        <h5 class="fw-semibold mt-3">Epitope Retrieval (Proteolysis)</h5>
+
+        <h5 class="fw-semibold mt-3">Visualization System</h5>
+
+        <h5 class="fw-semibold mt-3">Chromogen</h5>
+
+        <h5 class="fw-semibold mt-3">Enhancement</h5>
+
+        <h5 class="fw-semibold mt-3">Comments</h5>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="resultModal" tabindex="-1" aria-labelledby="resultModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-xl" role="document" style="max-width: 900px;">
+    <div class="modal-content p-0" style="border-radius: 12px; overflow: hidden;">
+      
+      <!-- Dark Blue Header with Close Button -->
+      <div class="d-flex justify-content-between align-items-center" style="background-color: #2f3e63; color: white; padding: 14px 20px;">
+        <h4 class="modal-title mb-0 fw-semibold" id="resultModalLabel">Enter Results</h4>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      
+      <!-- Modal Body -->
+      <div class="modal-body bg-white px-4 py-3">
+        <div class="table-responsive">
+          <table class="table table-bordered align-middle mb-0">
+            <thead class="table-light">
+              <tr>
+                <th style="width: 18%;">Core No.</th>
+                <th style="width: 28%;">Participant Score</th>
+                <th style="width: 18%;">Ideal Score</th>
+                <th style="width: 18%;">EQAS Score</th>
+                <th style="width: 18%;">DOA</th>
+              </tr>
+            </thead>
+            <tbody id="resultRows"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Extra Section: Total Score + Comment -->
+      <div class="mt-4 d-flex flex-column align-items-center text-center">
+
+        <!-- Total Score -->
+        <div class="mb-3" style="max-width: 280px; width: 100%;">
+          <label for="scoreObtained" class="fw-semibold mb-1 d-block">Total Score:</label>
+          <div class="input-group justify-content-center">
+            <input type="number" id="scoreObtained" class="form-control form-control-sm text-end score-input"
+                  min="0" step="1" value="0" aria-label="Score obtained">
+            <span class="input-group-text">/</span>
+            <input type="number" id="scoreTotal" class="form-control form-control-sm score-input"
+                  min="0" step="1" value="0" aria-label="Total score">
+          </div>
+        </div>
+
+        <!-- Comment -->
+        <div style="max-width: 500px; width: 100%;">
+          <label for="comment" class="fw-semibold mb-1 d-block">Comment:</label>
+          <textarea id="comment" class="form-control" rows="3" placeholder="Enter your comment here..."></textarea>
+        </div>
+
+      </div>
+
+
+      <!-- Footer -->
+      <div class="modal-footer border-0 px-4 py-3">
+        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-primary">Save</button>
+        <button type="button" class="btn btn-primary">Submit</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+
+
+<div class="modal fade" id="resultModal1" tabindex="-1" aria-labelledby="resultModalLabel1" aria-hidden="true">
+  <div class="modal-dialog modal-xl" role="document" style="max-width: 900px;">
+    <div class="modal-content p-0" style="border-radius: 12px; overflow: hidden;">
+      
+      <!-- Dark Blue Header with Close Button -->
+      <div class="d-flex justify-content-between align-items-center" style="background-color: #2f3e63; color: white; padding: 14px 20px;">
+        <h4 class="modal-title mb-0 fw-semibold" id="resultModalLabel1">Enter Results</h4>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      
+      <!-- Modal Body -->
+      <div class="modal-body bg-white px-4 py-3">
+        <div class="table-responsive">
+          <table class="table table-bordered align-middle mb-0">
+            <thead class="table-light">
+              <tr>
+                <th style="width: 18%;">Core No.</th>
+                <th style="width: 18%;">Ideal Score</th>
+                <th style="width: 18%;">EQAS Score</th>
+                <th style="width: 18%;">DOA</th>
+              </tr>
+            </thead>
+            <tbody id="resultRows1"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <div class="modal-footer border-0 px-4 py-3">
+        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-primary">Save</button>
+        <button type="button" class="btn btn-primary">Submit</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="heresultModaldigital" tabindex="-1" aria-labelledby="heresultModaldigitalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-xl" role="document" style="max-width: 900px;">
+    <div class="modal-content p-0" style="border-radius: 12px; overflow: hidden;">
+      
+      <!-- Dark Blue Header with Close Button -->
+      <div class="d-flex justify-content-between align-items-center" style="background-color: #2f3e63; color: white; padding: 14px 20px;">
+        <h4 class="modal-title mb-0 fw-semibold" id="resultModalLabel">Enter Results</h4>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      
+      <!-- Modal Body -->
+      <div class="modal-body bg-white px-4 py-3">
+        <div class="table-responsive">
+          <table class="table table-bordered align-middle mb-0">
+            <thead class="table-light">
+              <tr>
+                <th style="width: 25%; text-align: center;">Case No.</th>
+                <th style="width: 25%; text-align: center;">Participant Diagnosis</th>
+                <th style="width: 25%; text-align: center;">NCG EQAS Diagnosis</th>
+                <th style="width: 25%; text-align: center;">Concordance</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="width: 25%; text-align: center;">Case 1</td>
+                <td>Protrusion of glomerular cells</td>
+                <td><input type="text" class="form-control" placeholder="Enter diagnosis"></td>
+                <td class = "select" ALIGN="center">      
+                  <select class="form-select">        
+                        <option>Concordant</option>
+                        <option>Discordant</option>
+                        <option>Partly Concordant</option>
+                        <option>Educational Challenge</option>
+                        <option>Others</option>
+                  </select>
+                </td> 
+              </tr>
+              <tr>
+                <td style="width: 25%; text-align: center;">Case 2</td>
+                <td>EMT for islets of langerhan cells</td>
+                <td><input type="text" class="form-control" placeholder="Enter diagnosis"></td>
+                <td class = "select" ALIGN="center">      
+                  <select class="form-select">        
+                        <option>Concordant</option>
+                        <option>Discordant</option>
+                        <option>Partly Concordant</option>
+                        <option>Educational Challenge</option>
+                        <option>Others</option>
+                  </select>
+                </td> 
+              </tr>
+               <tr>
+                <td style="width: 25%; text-align: center;">Case 3</td>
+                <td>Metastasis in the mesenchymal lining</td>
+                <td><input type="text" class="form-control" placeholder="Enter diagnosis"></td>
+                <td class = "select" ALIGN="center">      
+                  <select class="form-select">        
+                        <option>Concordant</option>
+                        <option>Discordant</option>
+                        <option>Partly Concordant</option>
+                        <option>Educational Challenge</option>
+                        <option>Others</option>
+                  </select>
+                </td> 
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="mt-4 d-flex flex-column align-items-center text-center">
+
+        <!-- Total Score -->
+        <div class="mb-3" style="max-width: 280px; width: 100%;">
+          <label for="scoreObtained" class="fw-semibold mb-1 d-block">Total Score:</label>
+          <div class="input-group justify-content-center">
+            <input type="number" id="scoreObtained" class="form-control form-control-sm text-end score-input"
+                  min="0" step="1" value="0" aria-label="Score obtained">
+            <span class="input-group-text">/</span>
+            <input type="number" id="scoreTotal" class="form-control form-control-sm score-input"
+                  min="0" step="1" value="0" aria-label="Total score">
+          </div>
+        </div>
+
+        <!-- Comment -->
+        <div style="max-width: 500px; width: 100%;">
+          <label for="comment" class="fw-semibold mb-1 d-block">Comment:</label>
+          <textarea id="comment" class="form-control" rows="3" placeholder="Enter your comment here..."></textarea>
+        </div>
+
+      </div>
+      </div>
+
+      <!-- Footer -->
+      <div class="modal-footer border-0 px-4 py-3">
+        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-primary">Save</button>
+        <button type="button" class="btn btn-primary">Submit</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="heresultModalmdsr" tabindex="-1" aria-labelledby="heresultModalmdsrLabel" aria-hidden="true">
+  <div class="modal-dialog modal-xl" role="document" style="max-width: 900px;">
+    <div class="modal-content p-0" style="border-radius: 12px; overflow: hidden;">
+
+      <!-- Header -->
+      <div class="d-flex justify-content-between align-items-center" style="background-color:#2f3e63;color:#fff;padding:14px 20px;">
+        <h4 class="modal-title mb-0 fw-semibold" id="heresultModalmdsrLabel">Enter Results</h4>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+
+      <!-- Body with Tabs -->
+      <div class="modal-body bg-white px-4 py-3">
+
+        <!-- Tabs -->
+        <ul class="nav nav-tabs" id="resultTabs" role="tablist">
+          <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="tab-form-tab" data-bs-toggle="tab" data-bs-target="#tab-form" type="button" role="tab" aria-controls="tab-form" aria-selected="true">
+              Participant Report
+            </button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="tab-table-tab" data-bs-toggle="tab" data-bs-target="#tab-table" type="button" role="tab" aria-controls="tab-table" aria-selected="false">
+              Add Results
+            </button>
+          </li>
+        </ul>
+
+        <div class="tab-content pt-3" id="resultTabsContent">
+          <!-- Tab 1: your existing form -->
+          <div class="tab-pane fade show active" id="tab-form" role="tabpanel" aria-labelledby="tab-form-tab">
+            <form id="narrativeForm">
+              <!-- Run No (fixed) -->
+              <div class="mb-3">
+                <label for="runNo" class="form-label fw-semibold">Run No.</label>
+                <input type="text" id="runNo" class="form-control" value="27" readonly>
+              </div>
+
+              <!-- Microscopic Description -->
+              <div class="mb-3">
+                <label for="microscopicDesc" class="form-label fw-semibold">Microscopic Description</label>
+                <textarea id="microscopicDesc" class="form-control" rows="6">Sections show multiple fragments of tan-pink tissue composed of nests and cords of atypical epithelial cells infiltrating a fibrous stroma. The cells display moderate pleomorphism with vesicular chromatin and conspicuous nucleoli, with variable eosinophilic cytoplasm. Mitotic activity is brisk with occasional atypical forms; foci of comedo-type necrosis are identified. The intervening stroma is desmoplastic with scattered lymphoplasmacytic infiltrates and focal hemorrhage. Areas of surface ulceration are noted. No granulomas or fungal profiles are seen in the examined levels.</textarea>
+              </div>
+
+              <!-- Describe Lesion -->
+              <div class="mb-3">
+                <label for="describe" class="form-label fw-semibold">Describe Lesion</label>
+                <textarea id="describe" class="form-control" rows="5">Grossly described as an ill-defined, firm, grey-white nodule measuring approximately 2.3 cm with indistinct borders. On sections, the lesion is irregular and infiltrative, extending between adjacent structures with focal perineural wrapping. Foci of necrosis and microcalcification are present with patchy intratumoral hemorrhage. Tumor approaches the inked deep margin in multiple levels, the closest distance being &lt;1 mm.</textarea>
+              </div>
+
+              <!-- Comments -->
+              <div class="mb-3">
+                <label for="comments" class="form-label fw-semibold">Comments (if any)</label>
+                <textarea id="comments" class="form-control" rows="4">Correlation with imaging and clinical context is recommended. Ancillary studies may assist in subtyping and therapeutic stratification; suggested panel includes pan-cytokeratin, p63/p40, Ki-67, CK7/CK20, and site-specific markers as appropriate. If clinically relevant, HPV or EBER testing may be considered.</textarea>
+              </div>
+
+              <!-- Diagnosis (long) -->
+              <div class="mb-3">
+                <label for="diagnosis" class="form-label fw-semibold">Diagnosis</label>
+                <textarea id="diagnosis" class="form-control" rows="14">Biopsy, site unspecified — Infiltrating carcinoma, favor keratinizing squamous cell carcinoma, moderately differentiated (grade 2/3).
+
+          The tumor is composed of invasive nests and sheets of atypical squamous cells with intercellular bridges and focal keratin pearl formation. Nuclear pleomorphism is moderate to marked with irregular nuclear contours and prominent nucleoli. The mitotic index is elevated (up to high-power fields examined), including atypical mitoses. Geographic tumor necrosis is present.
+
+          Lymphovascular invasion is identified in multiple foci. Perineural invasion is present, involving small to medium-caliber nerves with partial circumferential encasement. Tumor extends to within 0.5 mm of the deep (inked) margin in the submitted levels; other margins are free of invasive carcinoma in the examined material. Background mucosa shows chronic active inflammation with focal epithelial dysplasia.
+
+          No definitive glandular differentiation or neuroendocrine morphology is seen on hematoxylin-eosin sections. Based on morphology alone, findings support a keratinizing squamous cell carcinoma, moderately differentiated. Correlation with radiologic studies is advised to assess the full extent of disease. Immunohistochemistry (if not already performed) for p40, p63 and pan-cytokeratin may be used to support squamous differentiation; Ki-67 can aid in proliferation assessment. Programmed death-ligand 1 (PD-L1) and pathogen-specific testing (e.g., HPV by in situ hybridization) may be performed if clinically indicated. Final classification and any staging considerations should integrate clinical, imaging and ancillary study results.</textarea>
+              </div>
+            </form>
+          </div>
+
+
+          
+
+          <!-- Tab 2: table with inputs -->
+          <div class="tab-pane fade" id="tab-table" role="tabpanel" aria-labelledby="tab-table-tab">
+            <div class="table-responsive">
+              <table class="table table-sm table-bordered align-middle mb-0" id="mdsrTable">
+                <thead class="table-light">
+                  <tr>
+                    <th style="width:70px;">Sr. No.</th>
+                    <th>Minimum Data Set Reporting Points</th>
+                    <th>Report Expected</th>
+                    <th>Reported by Participant</th>
+                    <th>Correctly reported</th>
+                    <th style="width:120px;">Points</th>
+                  </tr>
+                </thead>
+                <tbody></tbody>
+                <tfoot class="table-light">
+                  <tr>
+                    <th colspan="5" class="text-end">Total Points</th>
+                    <th><span id="pointsTotal">0.0</span></th>
+                  </tr>
+                </tfoot>
+              </table>
+              <!-- Summary under the table -->
+              <div class="mt-3">
+                <table class="table table-sm table-bordered align-middle mb-0" id="mdsrSummary">
+                  <tbody>
+                    <tr>
+                      <th style="width: 40%;">Histologic Diagnosis (Drop Down)</th>
+                      <td>
+                        <select id="histologicDx" class="form-select form-select-sm">
+                          <option value="">Choose...</option>
+                          <option value="Concordant">Concordant</option>
+                          <option value="Discordance">Discordant</option>
+                          <option value="Partly Concordant">Partly Concordant</option>
+                        </select>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>Total number of points reported by center:</th>
+                      <td>
+                        <input id="pointsReportedByCenter" class="form-control form-control-sm" placeholder="Free Text">
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>Points reported by center correctly:</th>
+                      <td>
+                        <input id="pointsReportedCorrectly" class="form-control form-control-sm" placeholder="Free Text">
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- Footer -->
+      <div class="modal-footer border-0 px-4 py-3">
+        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancel</button>
+
+        <!-- Back/Next switch tabs -->
+        <button type="button" class="btn btn-outline-primary" id="backTabBtn" disabled>Back</button>
+        <button type="button" class="btn btn-outline-primary" id="nextTabBtn">Next</button>
+
+        <button type="button" class="btn btn-primary" id="saveBtn">Save</button>
+        <button type="button" class="btn btn-success" id="submitBtn">Submit</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script>
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const platformSelect = document.getElementById('stainingPlatform');
+    const otherInputDiv = document.getElementById('otherStainingPlatformDiv');
+
+    platformSelect.addEventListener('change', () => {
+      if (platformSelect.value === 'Others') {
+        otherInputDiv.classList.remove('d-none');
+      } else {
+        otherInputDiv.classList.add('d-none');
+      }
+    });
+  });
+
+  const firstRow = document.querySelector('#statusTableBody tr');
+  if (firstRow) firstRow.classList.add('table-success');
+
+
+  function renderReceiveHeader() {
+    const th = document.getElementById('ihctableHeader');
+    if (!th) return;
+    th.innerHTML = `
+      <tr>
+        <th>Courier Name</th>
+        <th>Run No</th>
+        <th>Tracking ID</th>
+        <th>Submodule</th>
+        <th style="width:1%;white-space:nowrap;text-align:center">
+          Date of Dispatch
+        </th>
+        <th style="width:1%;white-space:nowrap;text-align:center">
+          Confirm Received
+        </th>
+      </tr>
+    `;
+  }
+  
+  function setActiveTab(el) {
+    document.querySelectorAll('.bucket-tab')
+            .forEach(t => t.classList.remove('active-tab'));
+    el.classList.add('active-tab');
+
+    const status = el.dataset.status;
+    const th = document.getElementById('ihctableHeader');
+    const stBody = document.getElementById('statusTableBody');
+    const rBody = document.getElementById('receiveTableBody');
+    const sBody = document.getElementById('sendTableBody');
+    const repBody = document.getElementById('reportingTableBody');
+    const allTable = document.getElementById('tableAll');
+
+    // hide everything
+    [stBody,rBody,sBody,repBody].forEach(b => b.style.display='none');
+    allTable.style.display='none';
+
+    if (status === 'status') {
+      stBody.style.display = 'table-row-group';
+      th.innerHTML = `
+        <tr>
+          <th style="text-align:center">Year</th>
+          <th style="text-align:center">Run No</th>
+          <th style="text-align:center">Submodule</th>
+          <th style="text-align:center">Current Status</th>
+        </tr>
+      `;
+    }
+    else if (status === 'recieve') {
+      rBody.style.display = 'table-row-group';
+      renderReceiveHeader();
+    }
+    else if (status === 'send') {
+      sBody.style.display = 'table-row-group';
+      th.innerHTML = `
+        <tr>
+          <th>Courier Name</th>
+          <th>Run No</th>
+          <th>Tracking ID</th>
+          <th>Submodule</th>
+          <th style="width:1%;white-space:nowrap;text-align:center">
+            Date of Dispatch
+          </th>
+          <th style="width:1%;white-space:nowrap;text-align:center">
+            Confirm Sample Sent
+          </th>
+        </tr>
+      `;
+    }
+    else if (status === 'reporting') {
+      repBody.style.display = 'table-row-group';
+      th.innerHTML = `
+        <tr>
+          <th>Run No</th>
+          <th>Submodule</th>
+          <th>Date of Submission</th>
+          <th style="text-align:center">View Protocol</th>
+          <th style="text-align:center">Enter Results</th>
+          <th class="text-center">Build Report</th>
+          <th class="text-center">View Report</th>
+          <th class="text-center">Commit Report</th>
+        </tr>
+      `;
+      return;
+    }
+    else if (status === 'all') {
+      allTable.style.display = 'table';
+      renderReceiveHeader();
+    }
+  }
+
+
+  function setActiveTabHE(el) {
+    // active tab styling only inside HE view
+    document.querySelectorAll('#heView .bucket-tab').forEach(t => t.classList.remove('active-tab'));
+    el.classList.add('active-tab');
+
+    const th = document.getElementById('heTableHeader');
+
+    // Hide all HE bodies
+    ['heStatusTableBody','heExamineTableBody','heReportingTableBody']
+      .forEach(id => { const b = document.getElementById(id); if (b) b.style.display = 'none'; });
+
+    const map = {
+      'he-status': {
+        head: `
+          <tr>
+            <th class="text-center">Year</th>
+            <th class="text-center">Run No</th>
+            <th class="text-center">Batch</th>
+            <th class="text-center">Submodule</th>
+            <th class="text-center">Current Status</th>
+          </tr>`,
+        body: 'heStatusTableBody'
+      },
+      'he-examine': {
+        head: `
+          <tr>
+            <th class="text-center">Batch No.</th>
+            <th class="text-center">Link</th>
+            <th class="text-center">Year</th>
+            <th class="text-center">Sub-Module</th>
+            <th class="text-center">Start Date</th>
+            <th class="text-center">End Date</th>
+            <th class="text-center">Login Details</th>
+          </tr>`,
+        body: 'heExamineTableBody'
+      },
+      'he-reporting': {
+        head: `
+          <tr>
+            <th class="text-center">Run No</th>
+            <th class="text-center">Submodule</th>
+            <th class="text-center">Date of Submission</th>
+            <th class="text-center">Batch No.</th>
+            <th class="text-center">Enter Results</th>
+            <th class="text-center">Build Report</th>
+            <th class="text-center">View Report</th>
+            <th class="text-center">Commit Report</th>
+          </tr>`,
+        body: 'heReportingTableBody'
+      }
+    };
+
+    const cfg = map[el.dataset.status];
+    if (cfg) {
+      th.innerHTML = cfg.head;
+      document.getElementById(cfg.body).style.display = 'table-row-group';
+    }
+  }
+
+  function setActiveTabTSP(el) {
+    // active state within TSP view
+    document.querySelectorAll('#tspView .bucket-tab').forEach(t => t.classList.remove('active-tab'));
+    el.classList.add('active-tab');
+
+    const th  = document.getElementById('tspTableHeader');
+    const bSt = document.getElementById('tspStatusTableBody');
+    const bRc = document.getElementById('tspReceiveTableBody');
+    const bRp = document.getElementById('tspReportingTableBody');
+    const bSd = document.getElementById('tspSendTableBody');
+
+    [bSt, bRc, bRp, bSd].forEach(b => b.style.display = 'none');
+
+    const status = el.dataset.status;
+    if (status === 'tsp-status') {
+      bSt.style.display = 'table-row-group';
+      th.innerHTML = `
+        <tr>
+          <th class="text-center">Year</th>
+          <th class="text-center">Run No</th>
+          <th class="text-center">Submodule</th>
+          <th class="text-center">Current Status</th>
+        </tr>`;
+    } else if (status === 'tsp-receive') {
+      bRc.style.display = 'table-row-group';
+      th.innerHTML = `
+        <tr>
+          <th>Courier Name</th>
+          <th>Run No</th>
+          <th>Tracking ID</th>
+          <th>Submodule</th>
+          <th style="width:1%;white-space:nowrap;text-align:center">Date of Dispatch</th>
+          <th style="width:1%;white-space:nowrap;text-align:center">Confirm Received</th>
+        </tr>`;
+    } else if (status === 'tsp-reporting') {
+      bRp.style.display = 'table-row-group';
+      th.innerHTML = `
+        <tr>
+          <th>Run No</th>
+          <th>Submodule</th>
+          <th>Last Date of Submission</th>
+          <th style="text-align:center">View Protocol</th>
+          <th style="text-align:center">Enter Results</th>
+          <th class="text-center">Build Report</th>
+          <th class="text-center">View Report</th>
+          <th class="text-center">Commit Report</th>
+        </tr>`;
+    } else if (status === 'tsp-send') {
+      bSd.style.display = 'table-row-group';
+      th.innerHTML = `
+        <tr>
+          <th>Courier Name</th>
+          <th>Run No</th>
+          <th>Tracking ID</th>
+          <th>Submodule</th>
+          <th style="width:1%;white-space:nowrap;text-align:center">Date of Dispatch</th>
+          <th style="width:1%;white-space:nowrap;text-align:center">Confirm Sample Sent</th>
+        </tr>`;
+    }
+  }
+
+
+  function confirmReceive(button) {
+  const row = button.closest('tr');
+  const courierCell = row.querySelector('.courier-cell');
+  const trackingCell = row.querySelector('.tracking-cell');
+
+  const isSendTab =
+    document.querySelector('.bucket-tab.active-tab')?.dataset.status === 'send';
+
+  // Pull values (inputs in Send, text in Receive)
+  const courier = isSendTab
+    ? courierCell?.querySelector('input')?.value.trim()
+    : courierCell?.textContent.trim();
+
+  const trackingId = isSendTab
+    ? trackingCell?.querySelector('input')?.value.trim()
+    : trackingCell?.textContent.trim();
+
+  const message = isSendTab
+    ? 'Do you want to mark the sample as sent?'
+    : `Do you want to mark the sample from "${courier}" (Tracking ID: ${trackingId}) as received?`;
+
+  if (!confirm(message)) return;
+
+  // RECEIVE tab behavior stays the same
+  if (!isSendTab) {
+    button.textContent = 'Received';
+    button.classList.remove('btn-success');
+    button.classList.add('btn-secondary');
+    button.disabled = true;
+    return;
+  }
+
+  // SEND tab behavior: mark as Sent and show refresh
+  button.textContent = 'Sent';
+  button.classList.remove('btn-success');
+  button.classList.add('btn-secondary', 'btn-sent'); // marker class
+  button.disabled = true;
+
+  // Add a refresh button if not already present
+  if (!row.querySelector('.btn-refresh')) {
+    const refreshBtn = document.createElement('button');
+    refreshBtn.type = 'button';
+    refreshBtn.className = 'btn btn-outline-secondary btn-sm ms-2 btn-refresh';
+    refreshBtn.title = 'Refresh to add new details';
+    refreshBtn.innerHTML = '<i class="bi bi-arrow-clockwise"></i>';
+    button.parentElement.appendChild(refreshBtn);
+  }
+}
+
+// Delegated handler for refresh clicks (works for all rows)
+document.addEventListener('click', (e) => {
+  const refreshBtn = e.target.closest('.btn-refresh');
+  if (!refreshBtn) return;
+
+  const row = refreshBtn.closest('tr');
+  const courierInput  = row.querySelector('.courier-cell input');
+  const trackingInput = row.querySelector('.tracking-cell input');
+  const confirmBtn    = row.querySelector('.btn-sent');
+
+  // Clear inputs so new details can be entered
+  if (courierInput)  courierInput.value  = '';
+  if (trackingInput) trackingInput.value = '';
+
+  // Restore confirm button to ✓ (green & enabled)
+  if (confirmBtn) {
+    confirmBtn.textContent = '✓';
+    confirmBtn.classList.remove('btn-secondary', 'btn-sent');
+    confirmBtn.classList.add('btn-success');
+    confirmBtn.disabled = false;
+  }
+
+  // Remove the refresh button
+  refreshBtn.remove();
+});
+
+
+
+  const scoreOptions = [
+    "SELECT",
+    "Negative 0",
+    "Negative 1+",
+    "Equivocal 2+",
+    "Positive 3+",
+    "Lymph node",
+    "Blank",
+    "Uninterpretable",
+    "Tissue depleted",
+    "Others, Then specify"
+  ];
+  const interpretationOptions = [
+    "Concordance",
+    "Discordance",
+    "Concordance-i"
+  ];
+
+  function buildResultRows() {
+    const tbody = document.getElementById('resultRows');
+    if (!tbody) return;
+
+    // Rebuild fresh every open
+    tbody.innerHTML = '';
+
+    // Options for random participant score (exclude "SELECT")
+    const randomPool = scoreOptions.filter(o => o !== 'SELECT');
+
+    for (let i = 1; i <= 12; i++) {
+      const tr = document.createElement('tr');
+
+      // Core
+      const tdCore = document.createElement('td');
+      tdCore.textContent = `Core ${i}`;
+      tr.appendChild(tdCore);
+
+      // Participant Score (value, not dropdown)
+      const tdParticipant = document.createElement('td');
+      const randVal = randomPool[Math.floor(Math.random() * randomPool.length)];
+      // Use a read-only input for a "filled" look, or swap to plain text if you prefer
+      const participantInput = document.createElement('input');
+      participantInput.type = 'text';
+      participantInput.className = 'form-control';
+      participantInput.value = randVal;
+      participantInput.readOnly = true; // locked look
+      tdParticipant.appendChild(participantInput);
+      tr.appendChild(tdParticipant);
+
+      // Helper to build a select from an array of strings
+      const makeSelect = (values) => {
+        const sel = document.createElement('select');
+        sel.className = 'form-select';
+        values.forEach(v => {
+          const o = document.createElement('option');
+          o.value = v;
+          o.textContent = v;
+          sel.appendChild(o);
+        });
+        return sel;
+      };
+
+      // Ideal Score (dropdown)
+      const tdIdeal = document.createElement('td');
+      const idealSelect = makeSelect(scoreOptions);
+      tdIdeal.appendChild(idealSelect);
+      tr.appendChild(tdIdeal);
+
+      // EQAS Score (dropdown)
+      const tdEqas = document.createElement('td');
+      const eqasSelect = makeSelect(scoreOptions);
+      tdEqas.appendChild(eqasSelect);
+      tr.appendChild(tdEqas);
+
+      // Interpretation (dropdown)
+      const tdInterp = document.createElement('td');
+      const interpSelect = makeSelect(interpretationOptions);
+      tdInterp.appendChild(interpSelect);
+      tr.appendChild(tdInterp);
+
+      tbody.appendChild(tr);
+    }
+  }
+  function buildResultRowsTSP() {
+    const tbody = document.getElementById('resultRows1'); // TSP modal body
+    if (!tbody) return;
+    tbody.innerHTML = '';
+
+    const makeSelect = (values) => {
+      const sel = document.createElement('select');
+      sel.className = 'form-select';
+      values.forEach(v => {
+        const o = document.createElement('option');
+        o.value = v;
+        o.textContent = v;
+        sel.appendChild(o);
+      });
+      return sel;
+    };
+
+    for (let i = 1; i <= 12; i++) {
+      const tr = document.createElement('tr');
+
+      const tdCore = document.createElement('td');
+      tdCore.textContent = `Core ${i}`;
+      tr.appendChild(tdCore);
+
+      const tdIdeal = document.createElement('td');
+      tdIdeal.appendChild(makeSelect(scoreOptions));
+      tr.appendChild(tdIdeal);
+
+      const tdEqas = document.createElement('td');
+      tdEqas.appendChild(makeSelect(scoreOptions));
+      tr.appendChild(tdEqas);
+
+      const tdDOA = document.createElement('td');
+      tdDOA.appendChild(makeSelect(interpretationOptions));
+      tr.appendChild(tdDOA);
+
+      tbody.appendChild(tr);
+    }
+  }
+
+
+
+  // Build rows when the modal opens
+  document.getElementById('resultModal')
+    .addEventListener('shown.bs.modal', buildResultRows);
+
+  window.addEventListener('DOMContentLoaded', () => {
+    renderReceiveHeader();
+    const def = document.querySelector('.bucket-tab[data-status="status"]');
+    if (def) setActiveTab(def);
+  });
+
+
+  const moduleSelect = document.getElementById('moduleSelect');
+
+  function applyModuleView() {
+    const mod = document.getElementById('moduleSelect').value;
+
+    const ihc = (mod === 'IHC');
+    const tsp = (mod === 'TSP');
+    const he  = (mod === 'H&E');
+
+    document.getElementById('ihcView').style.display = ihc ? 'block' : 'none';
+    document.getElementById('tspView').style.display = tsp ? 'block' : 'none';
+    document.getElementById('heView').style.display  = he  ? 'block' : 'none';
+
+    if (ihc) {
+      const defIHC = document.querySelector('#ihcView .bucket-tab.active-tab') ||
+                    document.querySelector('#ihcView .bucket-tab[data-status="status"]');
+      if (defIHC) setActiveTab(defIHC);
+    } else if (tsp) {
+      const defTSP = document.querySelector('#tspView .bucket-tab.active-tab') ||
+                    document.querySelector('#tspView .bucket-tab[data-status="tsp-status"]');
+      if (defTSP) setActiveTabTSP(defTSP);
+    } else if (he) {
+      const defHE = document.querySelector('#heView .bucket-tab.active-tab') ||
+                    document.querySelector('#heView .bucket-tab[data-status="he-status"]');
+      if (defHE) setActiveTabHE(defHE);
+    }
+  }
+
+  moduleSelect.addEventListener('change', applyModuleView);
+  const tspModalEl = document.getElementById('resultModal1');
+  if (tspModalEl) {
+    tspModalEl.addEventListener('shown.bs.modal', buildResultRowsTSP);
+    tspModalEl.addEventListener('hidden.bs.modal', () => {
+      const tbody = document.getElementById('resultRows1');
+      if (tbody) tbody.innerHTML = '';
+    });
+  }
+
+
+  // initial view on load
+  window.addEventListener('DOMContentLoaded', () => {
+    applyModuleView(); // respects current dropdown selection
+  });
+</script>
+<script>
+  // 1) Your “saved” protocol values by submodule (example values — replace with yours)
+  const protocolDataBySubmodule = {
+    'ER': {
+      stainingPlatform: 'Ventana Benchmark Ultra',
+      cloneType: 'Ready to use',
+      lotNumber: 'L-ER-1029',
+      dilutionFactor: 'RTU',
+      dilutionBuffer: 'Ventana - Antibody Diluent Buffer',
+      incubationTime: 24,
+      incubationTemp: 37
+    },
+    'PR': {
+      stainingPlatform: 'Leica BOND III',
+      cloneType: 'Concentrated',
+      lotNumber: 'PR-7781',
+      dilutionFactor: '1:100',
+      dilutionBuffer: 'Leica - Bond Primary Antibody Diluent',
+      incubationTime: 20,
+      incubationTemp: 25
+    },
+    'Her2/Neu': {
+      stainingPlatform: 'Dako Omnis',
+      cloneType: 'Ready to use',
+      lotNumber: 'H2-5543',
+      dilutionFactor: 'RTU',
+      dilutionBuffer: 'Dako - REAL Antibody Diluent',
+      incubationTime: 30,
+      incubationTemp: 37
+    },
+    'Lymphoma': {
+      stainingPlatform: 'Manual',
+      cloneType: 'Concentrated',
+      lotNumber: 'LY-3302',
+      dilutionFactor: '1:50',
+      dilutionBuffer: 'Cell Marque - Diamond - Antibody Diluent',
+      incubationTime: 15,
+      incubationTemp: 25
+    },
+    'Miscellaneous': {
+      stainingPlatform: 'Thermo Autostainer 36/48/72',
+      cloneType: 'Ready to use',
+      lotNumber: 'MISC-9011',
+      dilutionFactor: 'RTU',
+      dilutionBuffer: 'Diagnostic Biosystem - Primary Antibody Diluent',
+      incubationTime: 18,
+      incubationTemp: 25
+    }
+  };
+
+  // 2) Helper to select option by text
+  function selectByText(selectEl, text) {
+    if (!selectEl) return;
+    const opts = Array.from(selectEl.options);
+    const match = opts.find(o => o.text.trim().toLowerCase() === String(text).trim().toLowerCase());
+    if (match) selectEl.value = match.value;
+  }
+
+  // 3) Fill the modal fields
+  function fillProtocolForm(rec) {
+    selectByText(document.getElementById('stainingPlatform'), rec.stainingPlatform);
+    selectByText(document.getElementById('cloneType'), rec.cloneType);
+    selectByText(document.getElementById('dilutionBuffer'), rec.dilutionBuffer);
+
+    const setVal = (id, v) => { const el = document.getElementById(id); if (el) el.value = v ?? ''; };
+    setVal('lotNumber', rec.lotNumber);
+    setVal('dilutionFactor', rec.dilutionFactor);
+    setVal('incubationTime', rec.incubationTime);
+    setVal('incubationTemp', rec.incubationTemp);
+  }
+
+  // 4) Lock the fields (read-only)
+  function lockProtocolForm() {
+    const ids = [
+      'stainingPlatform','cloneType','dilutionBuffer',
+      'lotNumber','dilutionFactor','incubationTime','incubationTemp'
+    ];
+    ids.forEach(id => {
+      const el = document.getElementById(id);
+      if (!el) return;
+      if (el.tagName === 'SELECT') {
+        el.disabled = true; // dropdown locked
+      } else {
+        el.readOnly = true; // text/number input locked
+      }
+    });
+  }
+
+  // 5) Attach to every “View Protocol” button
+  document.querySelectorAll('[data-bs-target="#protocolModal"]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const sub =
+        btn.dataset.submodule ||
+        btn.closest('tr')?.children[1]?.textContent?.trim() || 'ER';
+
+      const rec = protocolDataBySubmodule[sub] || {};
+      fillProtocolForm(rec);
+      lockProtocolForm();
+    });
+  });
+</script>
+<script>
+  // Delegated events for the IHC reporting table
+  const ihcReportingBody = document.getElementById('reportingTableBody');
+
+  if (ihcReportingBody) {
+    ihcReportingBody.addEventListener('click', (e) => {
+      const editBtn = e.target.closest('.btn-edit-report');
+      const viewBtn = e.target.closest('.btn-view-report');
+      const commitBtn = e.target.closest('.btn-commit-report');
+      const buildBtn = e.target.closest('.btn-build');
+      // 1) Edit -> open the existing Enter Results modal
+      if (editBtn) {
+        const resultModal = new bootstrap.Modal(document.getElementById('resultModal'));
+        resultModal.show();
+        return;
+      }
+
+      // 2) View -> (placeholder) open a viewer or show a message for now
+      if (viewBtn) {
+        // Always open the same template file
+        window.open('assets/report.pdf', '_blank');
+        return;
+      }
+
+      // 3) Commit -> confirm then lock the button
+      if (commitBtn) {
+        const row = commitBtn.closest('tr');
+        const run = row?.dataset.run || row?.children[0]?.textContent?.trim();
+        const sub = row?.dataset.submodule || row?.children[1]?.textContent?.trim();
+
+        const ok = confirm(`Do you want to commit the report for Run ${run} (${sub})?`);
+        if (!ok) return;
+
+        // Simulate commit success: update button state
+        commitBtn.innerHTML = '<i class="bi bi-check2"></i> Committed';
+        commitBtn.classList.remove('btn-success');
+        commitBtn.classList.add('btn-secondary');
+        commitBtn.disabled = true;
+
+        // (Optional) also lock edit button after commit
+        const siblingEdit = row.querySelector('.btn-edit-report');
+        if (siblingEdit) {
+          siblingEdit.classList.add('disabled');
+          siblingEdit.disabled = true;
+        }
+      }
+
+      if (buildBtn) {
+        const row = buildBtn.closest('tr');
+        const run = row?.dataset.run || row?.children[0]?.textContent?.trim();
+        const sub = row?.dataset.submodule || row?.children[1]?.textContent?.trim();
+
+
+        const ok = confirm(`Do you want to build the final report for Run ${run} (${sub})?`);
+        if (!ok) return;
+
+        buildBtn.innerHTML = '<i class="bi bi-check2"></i> Report Generated';
+        buildBtn.classList.remove('btn-success');
+        buildBtn.classList.add('btn-secondary');
+        buildBtn.disabled = true;
+
+
+
+      }
+
+    
+
+    });
+  }
+
+  const tspReportingBody = document.getElementById('tspReportingTableBody');
+
+  if (tspReportingBody) {
+    tspReportingBody.addEventListener('click', (e) => {
+      const viewBtn = e.target.closest('.btn-view-report');
+      const commitBtn = e.target.closest('.btn-commit-report');
+
+      if (viewBtn) {
+        window.open('assets/report.pdf', '_blank'); // single template
+        return;
+      }
+
+      if (commitBtn) {
+        const row = commitBtn.closest('tr');
+        const run = row?.children[0]?.textContent?.trim();
+        const sub = row?.children[1]?.textContent?.trim();
+
+        if (!confirm(`Do you want to commit the report for Run ${run} (${sub})?`)) return;
+
+        commitBtn.innerHTML = '<i class="bi bi-check2"></i> Committed';
+        commitBtn.classList.remove('btn-success');
+        commitBtn.classList.add('btn-secondary');
+        commitBtn.disabled = true;
+
+        const siblingEdit = row.querySelector('.btn-edit-report');
+        if (siblingEdit) {
+          siblingEdit.classList.add('disabled');
+          siblingEdit.disabled = true;
+        }
+      }
+    });
+  }
+
+  const heExamineBody = document.getElementById('heExamineTableBody');
+  const loginModalEl  = document.getElementById('loginModal');
+
+  if (heExamineBody && loginModalEl) {
+    heExamineBody.addEventListener('click', (e) => {
+      const btn = e.target.closest('.btn-login');
+      if (!btn) return;
+
+      const tr    = btn.closest('tr');
+      const tds   = tr.querySelectorAll('td');
+
+      // Table order: [0]=Batch, [1]=Link, [2]=Year, [3]=Sub-Module, [4]=Start, [5]=End, [6]=Login btn
+      const batch     = tds[0]?.textContent.trim() || '';
+      const link      = tds[1]?.textContent.trim() || '';
+      const year      = tds[2]?.textContent.trim() || '';
+      const submodule = tds[3]?.textContent.trim() || '';
+
+      // Fill context
+      loginModalEl.querySelector('#loginBatch').textContent     = batch;
+      loginModalEl.querySelector('#loginSubmodule').textContent = submodule;
+      loginModalEl.querySelector('#loginYear').textContent      = year;
+      loginModalEl.querySelector('#loginLink').textContent      = link;
+
+      // Optionally pre-fill saved creds (demo using localStorage key)
+      const key = `heLogin:${year}:${batch}:${submodule}`;
+      const saved = JSON.parse(localStorage.getItem(key) || 'null');
+      const defP = btn.dataset.pass || ''; 
+      document.getElementById('loginUsername').value = saved?.u || '';
+      document.getElementById('loginPassword').value = (saved?.p ?? defP);
+      document.getElementById('loginRemember').checked = !!saved;
+    });
+
+    // Handle Save
+    document.getElementById('loginForm').addEventListener('submit', (ev) => {
+      ev.preventDefault();
+
+      const batch     = loginModalEl.querySelector('#loginBatch').textContent.trim();
+      const year      = loginModalEl.querySelector('#loginYear').textContent.trim();
+      const submodule = loginModalEl.querySelector('#loginSubmodule').textContent.trim();
+
+      const u = document.getElementById('loginUsername').value.trim();
+      const p = document.getElementById('loginPassword').value.trim();
+      const remember = document.getElementById('loginRemember').checked;
+
+      // Persist locally (replace with API call if needed)
+      const key = `heLogin:${year}:${batch}:${submodule}`;
+      if (remember) {
+        localStorage.setItem(key, JSON.stringify({ u, p }));
+      } else {
+        localStorage.removeItem(key);
+      }
+
+      // Close modal
+      const modal = bootstrap.Modal.getInstance(loginModalEl) || new bootstrap.Modal(loginModalEl);
+      modal.hide();
+
+      // Simple feedback (replace with toast if you have one)
+      alert('Login details saved for Batch ' + batch + ' (' + submodule + ').');
+    });
+  }
+
+
+  
+  </script>
+
+    
+  <script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const modalEl = document.getElementById('heresultModalmdsr');
+    if (!modalEl) return;
+
+    // Build UI once when the modal is first shown
+    modalEl.addEventListener('shown.bs.modal', () => {
+      if (modalEl.dataset.mdsrInit) return;
+      modalEl.dataset.mdsrInit = '1';
+
+      const tbody = modalEl.querySelector('#mdsrTable tbody');
+      const pointsTotalEl = modalEl.querySelector('#pointsTotal');
+
+      // Build 15 rows
+      for (let i = 1; i <= 15; i++) {
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+          <td class="text-muted">${i}</td>
+          <td><input class="form-control form-control-sm" name="mdsr_point_${i}" placeholder="Free Text"></td>
+          <td><input class="form-control form-control-sm" name="report_expected_${i}" placeholder="Free Text"></td>
+          <td>
+            <select class="form-select form-select-sm" name="reported_by_${i}">
+              <option value="">Choose...</option><option>Yes</option><option>No</option>
+            </select>
+          </td>
+          <td>
+            <select class="form-select form-select-sm" name="correct_${i}">
+              <option value="">Choose...</option><option>Yes</option><option>No</option>
+            </select>
+          </td>
+          <td>
+            <select class="form-select form-select-sm points" name="points_${i}">
+              <option value="">Choose...</option><option value="0">0</option>
+              <option value="0.5">0.5</option><option value="1">1</option>
+            </select>
+          </td>`;
+        tbody.appendChild(tr);
+      }
+
+      // Live total for Points + optional prefill of "Total number of points by center"
+      function recomputeTotal() {
+        let sum = 0;
+        tbody.querySelectorAll('select.points').forEach(s => {
+          const v = parseFloat(s.value);
+          if (!isNaN(v)) sum += v;
+        });
+        pointsTotalEl.textContent = sum.toFixed(1);
+      }
+
+      // keep these
+      tbody.addEventListener('change', e => {
+        if (e.target.matches('select.points')) recomputeTotal();
+      });
+      recomputeTotal();
+
+      // Exporter used by Save/Submit
+      window.getMdsrData = function () {
+        const rows = [];
+        for (let i = 1; i <= 15; i++) {
+          rows.push({
+            srNo: i,
+            mdsrPoint: modalEl.querySelector(`[name="mdsr_point_${i}"]`).value.trim(),
+            reportExpected: modalEl.querySelector(`[name="report_expected_${i}"]`).value.trim(),
+            reportedBy: modalEl.querySelector(`[name="reported_by_${i}"]`).value,
+            correctlyReported: modalEl.querySelector(`[name="correct_${i}"]`).value,
+            points: (() => {
+              const v = modalEl.querySelector(`[name="points_${i}"]`).value;
+              return v === '' ? null : Number(v);
+            })()
+          });
+        }
+        return {
+          rows,
+          totalPoints: parseFloat(pointsTotalEl.textContent),
+          histologicDiagnosis: modalEl.querySelector('#histologicDx')?.value || '',
+          centerPointsReported: modalEl.querySelector('#pointsReportedByCenter')?.value.trim() || '',
+          centerPointsCorrect: modalEl.querySelector('#pointsReportedCorrectly')?.value.trim() || ''
+        };
+      };
+
+      // Optional: wire buttons
+      document.getElementById('saveBtn')?.addEventListener('click', () => {
+        console.log('Save payload:', window.getMdsrData());
+      });
+      document.getElementById('submitBtn')?.addEventListener('click', () => {
+        console.log('Submit payload:', window.getMdsrData());
+      });
+    });
+  });
+
+  let ihcActiveEnterBtn = null;
+
+  document.getElementById('reportingTableBody')?.addEventListener('click', (e) => {
+    const openBtn = e.target.closest('[data-bs-target="#resultModal"]'); // IHC modal opener
+    if (!openBtn) return;
+    ihcActiveEnterBtn = openBtn; // remember the exact button in that row
+  });
+
+  // --- When IHC modal is submitted, update that button to "Submitted" ---
+  document.addEventListener('DOMContentLoaded', () => {
+    const ihcModal = document.getElementById('resultModal');
+    if (!ihcModal) return;
+
+    // Get the Submit button inside IHC modal footer (it's the 2nd .btn-primary there)
+    const footerPrimaryBtns = ihcModal.querySelectorAll('.modal-footer .btn.btn-primary');
+    const submitBtn = footerPrimaryBtns[1];  // [Cancel][Save][Submit] -> index 1 is "Submit" in your markup
+    if (!submitBtn) return;
+
+    submitBtn.addEventListener('click', () => {
+      if (!ihcActiveEnterBtn) return; // safety
+
+      // 1) Change label & style
+      ihcActiveEnterBtn.textContent = 'Submitted';
+      ihcActiveEnterBtn.classList.remove('btn-primary');
+      ihcActiveEnterBtn.classList.add('btn-success');
+
+      // 2) (optional) prevent reopening the modal from that button
+      ihcActiveEnterBtn.removeAttribute('data-bs-toggle');
+      ihcActiveEnterBtn.removeAttribute('data-bs-target');
+
+      // 3) Close the modal
+      (bootstrap.Modal.getInstance(ihcModal) || new bootstrap.Modal(ihcModal)).hide();
+    });
+  });
+
+
+
+  </script>
+
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
