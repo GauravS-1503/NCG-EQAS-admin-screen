@@ -29,7 +29,7 @@
   <!-- Main Content -->
   <div class="main-content flex-grow-1 p-4" id="mainContent">
     <div class="d-flex align-items-center gap-2 mb-3 flex-wrap">
-      <h5 class="text-uppercase mb-0" style="font-size: 1.2rem;">Tata Memorial Hospital</h5>
+      <h5 class="text-uppercase mb-0" style="font-size: 1.2rem;">Tata Memorial Hospital (Center No: 01)</h5>
       <div>
         <select id="moduleSelect" class="form-select" style="width: 200px;">
           <option value="IHC">ImmunoHistochemistry (IHC)</option>
@@ -244,6 +244,11 @@
                   Enter Results
                 </button>
               </td>
+              <td class="text-center enter-results">
+                <button class="btn btn-danger btn-sm btn-build" data-bs-toggle="modal" data-bs-target="">
+                  Build
+                </button>
+              </td>
               <td class="text-center">
                 <button class="btn btn-outline-secondary btn-sm btn-edit-report" title="Edit Report">
                   <i class="bi bi-pencil-square"></i>
@@ -270,6 +275,11 @@
               <td class="text-center enter-results">
                 <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#resultModal">
                   Enter Results
+                </button>
+              </td>
+              <td class="text-center enter-results">
+                <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="">
+                  Build
                 </button>
               </td>
               <td class="text-center">
@@ -300,6 +310,11 @@
                   Enter Results
                 </button>
               </td>
+              <td class="text-center enter-results">
+                <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="">
+                  Build
+                </button>
+              </td>
               <td class="text-center">
                 <button class="btn btn-outline-secondary btn-sm btn-edit-report" title="Edit Report">
                   <i class="bi bi-pencil-square"></i>
@@ -328,6 +343,11 @@
                   Enter Results
                 </button>
               </td>
+              <td class="text-center enter-results">
+                <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="">
+                  Build
+                </button>
+              </td>
               <td class="text-center">
                 <button class="btn btn-outline-secondary btn-sm btn-edit-report" title="Edit Report">
                   <i class="bi bi-pencil-square"></i>
@@ -354,6 +374,11 @@
               <td class="text-center enter-results">
                 <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#resultModal">
                   Enter Results
+                </button>
+              </td>
+              <td class="text-center enter-results">
+                <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="">
+                  Build
                 </button>
               </td>
               <td class="text-center">
@@ -501,6 +526,11 @@
                   Enter Results
                 </button>
               </td>
+              <td class="text-center enter-results">
+                <button class="btn btn-danger btn-sm btn-build" data-bs-toggle="modal" data-bs-target="">
+                  Build
+                </button>
+              </td>
               <td class="text-center">
                 <button class="btn btn-outline-secondary btn-sm btn-edit-report" title="Edit Report" data-bs-toggle="modal" data-bs-target="#resultModal1">
                   <i class="bi bi-pencil-square"></i>
@@ -590,6 +620,11 @@
                   Enter Results
                 </button>
               </td>
+              <td class="text-center enter-results">
+                <button class="btn btn-danger btn-sm btn-build" data-bs-toggle="modal" data-bs-target="">
+                  Build
+                </button>
+              </td>
               <td class="text-center">
                 <button class="btn btn-outline-secondary btn-sm btn-edit-report" title="Edit Report">
                   <i class="bi bi-pencil-square"></i>
@@ -612,6 +647,11 @@
               <td class="text-center enter-results">
                 <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#heresultModalmdsr">
                   Enter Results
+                </button>
+              </td>
+              <td class="text-center enter-results">
+                <button class="btn btn-danger btn-sm btn-build" data-bs-toggle="modal" data-bs-target="">
+                  Build
                 </button>
               </td>
               <td class="text-center">
@@ -1264,6 +1304,7 @@
           <th>Date of Submission</th>
           <th style="text-align:center">View Protocol</th>
           <th style="text-align:center">Enter Results</th>
+          <th class="text-center">Build Report</th>
           <th class="text-center">View Report</th>
           <th class="text-center">Commit Report</th>
         </tr>
@@ -1321,6 +1362,7 @@
             <th class="text-center">Date of Submission</th>
             <th class="text-center">Batch No.</th>
             <th class="text-center">Enter Results</th>
+            <th class="text-center">Build Report</th>
             <th class="text-center">View Report</th>
             <th class="text-center">Commit Report</th>
           </tr>`,
@@ -1378,6 +1420,7 @@
           <th>Last Date of Submission</th>
           <th style="text-align:center">View Protocol</th>
           <th style="text-align:center">Enter Results</th>
+          <th class="text-center">Build Report</th>
           <th class="text-center">View Report</th>
           <th class="text-center">Commit Report</th>
         </tr>`;
@@ -1398,24 +1441,81 @@
 
   function confirmReceive(button) {
   const row = button.closest('tr');
-  const courierCell = row.querySelector('td:nth-child(1)');
-  const trackingCell = row.querySelector('td:nth-child(3)');
+  const courierCell = row.querySelector('.courier-cell');
+  const trackingCell = row.querySelector('.tracking-cell');
 
-  const isSendTab = document.querySelector('.bucket-tab.active-tab').dataset.status === 'send';
-  const courier = isSendTab ? courierCell.querySelector('input')?.value.trim() : courierCell.innerText.trim();
-  const trackingId = isSendTab ? trackingCell.querySelector('input')?.value.trim() : trackingCell.innerText.trim();
+  const isSendTab =
+    document.querySelector('.bucket-tab.active-tab')?.dataset.status === 'send';
+
+  // Pull values (inputs in Send, text in Receive)
+  const courier = isSendTab
+    ? courierCell?.querySelector('input')?.value.trim()
+    : courierCell?.textContent.trim();
+
+  const trackingId = isSendTab
+    ? trackingCell?.querySelector('input')?.value.trim()
+    : trackingCell?.textContent.trim();
 
   const message = isSendTab
-    ? `Do you want to mark the sample as sent?`
+    ? 'Do you want to mark the sample as sent?'
     : `Do you want to mark the sample from "${courier}" (Tracking ID: ${trackingId}) as received?`;
 
-  if (confirm(message)) {
-    button.textContent = isSendTab ? 'Sent' : 'Received';
+  if (!confirm(message)) return;
+
+  // RECEIVE tab behavior stays the same
+  if (!isSendTab) {
+    button.textContent = 'Received';
     button.classList.remove('btn-success');
     button.classList.add('btn-secondary');
     button.disabled = true;
+    return;
+  }
+
+  // SEND tab behavior: mark as Sent and show refresh
+  button.textContent = 'Sent';
+  button.classList.remove('btn-success');
+  button.classList.add('btn-secondary', 'btn-sent'); // marker class
+  button.disabled = true;
+
+  // Add a refresh button if not already present
+  if (!row.querySelector('.btn-refresh')) {
+    const refreshBtn = document.createElement('button');
+    refreshBtn.type = 'button';
+    refreshBtn.className = 'btn btn-outline-secondary btn-sm ms-2 btn-refresh';
+    refreshBtn.title = 'Refresh to add new details';
+    refreshBtn.innerHTML = '<i class="bi bi-arrow-clockwise"></i>';
+    button.parentElement.appendChild(refreshBtn);
   }
 }
+
+// Delegated handler for refresh clicks (works for all rows)
+document.addEventListener('click', (e) => {
+  const refreshBtn = e.target.closest('.btn-refresh');
+  if (!refreshBtn) return;
+
+  const row = refreshBtn.closest('tr');
+  const courierInput  = row.querySelector('.courier-cell input');
+  const trackingInput = row.querySelector('.tracking-cell input');
+  const confirmBtn    = row.querySelector('.btn-sent');
+
+  // Clear inputs so new details can be entered
+  if (courierInput)  courierInput.value  = '';
+  if (trackingInput) trackingInput.value = '';
+
+  // Restore confirm button to ✓ (green & enabled)
+  if (confirmBtn) {
+    confirmBtn.textContent = '✓';
+    confirmBtn.classList.remove('btn-secondary', 'btn-sent');
+    confirmBtn.classList.add('btn-success');
+    confirmBtn.disabled = false;
+  }
+
+  // Remove the refresh button
+  refreshBtn.remove();
+});
+
+
+
   const scoreOptions = [
     "SELECT",
     "Negative 0",
@@ -1705,7 +1805,7 @@
       const editBtn = e.target.closest('.btn-edit-report');
       const viewBtn = e.target.closest('.btn-view-report');
       const commitBtn = e.target.closest('.btn-commit-report');
-
+      const buildBtn = e.target.closest('.btn-build');
       // 1) Edit -> open the existing Enter Results modal
       if (editBtn) {
         const resultModal = new bootstrap.Modal(document.getElementById('resultModal'));
@@ -1742,6 +1842,27 @@
           siblingEdit.disabled = true;
         }
       }
+
+      if (buildBtn) {
+        const row = buildBtn.closest('tr');
+        const run = row?.dataset.run || row?.children[0]?.textContent?.trim();
+        const sub = row?.dataset.submodule || row?.children[1]?.textContent?.trim();
+
+
+        const ok = confirm(`Do you want to build the final report for Run ${run} (${sub})?`);
+        if (!ok) return;
+
+        buildBtn.innerHTML = '<i class="bi bi-check2"></i> Report Generated';
+        buildBtn.classList.remove('btn-success');
+        buildBtn.classList.add('btn-secondary');
+        buildBtn.disabled = true;
+
+
+
+      }
+
+    
+
     });
   }
 
@@ -1933,6 +2054,44 @@
       });
     });
   });
+
+  let ihcActiveEnterBtn = null;
+
+  document.getElementById('reportingTableBody')?.addEventListener('click', (e) => {
+    const openBtn = e.target.closest('[data-bs-target="#resultModal"]'); // IHC modal opener
+    if (!openBtn) return;
+    ihcActiveEnterBtn = openBtn; // remember the exact button in that row
+  });
+
+  // --- When IHC modal is submitted, update that button to "Submitted" ---
+  document.addEventListener('DOMContentLoaded', () => {
+    const ihcModal = document.getElementById('resultModal');
+    if (!ihcModal) return;
+
+    // Get the Submit button inside IHC modal footer (it's the 2nd .btn-primary there)
+    const footerPrimaryBtns = ihcModal.querySelectorAll('.modal-footer .btn.btn-primary');
+    const submitBtn = footerPrimaryBtns[1];  // [Cancel][Save][Submit] -> index 1 is "Submit" in your markup
+    if (!submitBtn) return;
+
+    submitBtn.addEventListener('click', () => {
+      if (!ihcActiveEnterBtn) return; // safety
+
+      // 1) Change label & style
+      ihcActiveEnterBtn.textContent = 'Submitted';
+      ihcActiveEnterBtn.classList.remove('btn-primary');
+      ihcActiveEnterBtn.classList.add('btn-success');
+
+      // 2) (optional) prevent reopening the modal from that button
+      ihcActiveEnterBtn.removeAttribute('data-bs-toggle');
+      ihcActiveEnterBtn.removeAttribute('data-bs-target');
+
+      // 3) Close the modal
+      (bootstrap.Modal.getInstance(ihcModal) || new bootstrap.Modal(ihcModal)).hide();
+    });
+  });
+
+
+
   </script>
 
 

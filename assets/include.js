@@ -16,15 +16,42 @@
     const base = computeBase();
     const url  = `${base}/${rel}`.replace(/\/+/g, '/');
 
-    console.log('[include] fetching', url);
-    const res = await fetch(url, { cache: 'no-store' });
-    if (!res.ok) throw new Error(`${res.status} ${res.statusText}`);
+    try {
+      const res = await fetch(url, { cache: 'no-store' });
+      if (!res.ok) throw new Error(`${res.status} ${res.statusText}`);
+      const html = await res.text();
 
-    // rewrite relative src/href in the fragment so assets resolve from the same base
-    let html = await res.text();
-    html = html.replace(/(src|href)="(?!https?:|\/\/|data:|#|\/)/g, `$1="${base}/`);
-    host.innerHTML = html;
-  }
+      const tpl = document.createElement('template');
+      tpl.innerHTML = html;
+
+      const rewrite = (el, attr) => {
+        const v = el.getAttribute(attr);
+        if (!v) return;
+        if (/^(https?:)?\/\//i.test(v) || v.startsWith('data:') || v.startsWith('#')) return;
+
+        let out = v;
+        if (v.startsWith('/')) {
+          // root-relative → prefix repo base
+          out = `${base}${v}`;
+        } else {
+          // plain relative → normalize and prefix base
+          let cleaned = v.replace(/^(\.\/)+/, '');
+          while (cleaned.startsWith('../')) cleaned = cleaned.slice(3);
+          out = `${base}/${cleaned}`;
+        }
+        el.setAttribute(attr, out.replace(/\/+/g, '/'));
+      };
+
+      tpl.content.querySelectorAll('[src]').forEach(n => rewrite(n, 'src'));
+      tpl.content.querySelectorAll('[href]').forEach(n => rewrite(n, 'href'));
+
+      host.innerHTML = '';
+      host.appendChild(tpl.content);
+    } catch (err) {
+      console.error('[include] failed:', url, err);
+    }
+}
+
 
   function markActive() {
     const segs = location.pathname.split('/').filter(Boolean);

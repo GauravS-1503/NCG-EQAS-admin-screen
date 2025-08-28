@@ -35,10 +35,179 @@
     </div>
     <div class="bg-white p-3 rounded shadow-sm">
       <div class="d-flex justify-content-between align-items-center flex-wrap mb-3">
-        <button class="btn btn-success" onclick="downloadExcel()">Export to Excel</button>
-      </div>
+        <div class="bucket-tabs d-flex gap-3 flex-wrap mb-2 mb-md-0">
+          <div class="bucket-tab active-tab" data-target="statusContent" onclick="setActiveTab(this)">
+            Pending Reports
+          </div>
+          <div class="bucket-tab" data-target="savedReportsContent" onclick="setActiveTab(this)">
+            Saved Reports
+          </div>
+        </div>
+      </div> 
 
-      <table class="table table-bordered table-striped mb-0">
+      <div id="statusContent" class="tab-content-section">
+        <div class="d-flex justify-content-between align-items-center flex-wrap mb-3 mt-3">
+          <button class="btn btn-success" onclick="downloadExcel()">Export to Excel</button>
+        </div>
+
+        <table class="table table-bordered table-striped mb-0">
+          <thead class="table-dark text-white align-middle">
+            <tr>
+              <th>
+                NCG Member
+                <div class="dropdown d-inline ms-1">
+                  <a href="#" class="text-white" data-bs-toggle="dropdown">
+                    <i class="bi bi-caret-down-fill"></i>
+                  </a>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#">Yes</a></li>
+                    <li><a class="dropdown-item" href="#">No</a></li>
+                  </ul>
+                </div>
+              </th>
+              <th>Year</th>
+              <th>
+                Center No.
+                <div class="dropdown d-inline ms-1">
+                  <a href="#" class="text-white" data-bs-toggle="dropdown">
+                    <i class="bi bi-caret-down-fill"></i>
+                  </a>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#">Ascending</a></li>
+                    <li><a class="dropdown-item" href="#">Descending</a></li>
+                  </ul>
+                </div>
+              </th>
+              <th>
+                Centre Name
+                <input id="centerSearch"
+                      class="form-control form-control-sm d-inline-block ms-2"
+                      placeholder="Search..."
+                      list="centerList"
+                      style="width: 180px; display:inline-block;">
+                <datalist id="centerList"></datalist>
+              </th>
+              <th>
+                Modules
+                <div class="dropdown d-inline ms-1">
+                  <a href="#" class="text-white" data-bs-toggle="dropdown">
+                    <i class="bi bi-caret-down-fill"></i>
+                  </a>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#">All</a></li>
+                    <li><a class="dropdown-item" href="#">IHC</a></li>
+                    <li><a class="dropdown-item" href="#">TSP</a></li>
+                    <li><a class="dropdown-item" href="#">H&E</a></li>
+                  </ul>
+                </div>
+              </th>
+              <th>
+                Submodules
+                <div class="dropdown d-inline ms-1">
+                  <a href="#" class="text-white" data-bs-toggle="dropdown">
+                    <i class="bi bi-caret-down-fill"></i>
+                  </a>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#">ER</a></li>
+                    <li><a class="dropdown-item" href="#">PR</a></li>
+                    <li><a class="dropdown-item" href="#">Her2/Neu</a></li>
+                    <li><a class="dropdown-item" href="#">Lymphoma</a></li>
+                    <li><a class="dropdown-item" href="#">Miscellaneous</a></li>
+                  </ul>
+                </div>
+              </th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr>
+              <td>Yes</td>
+              <td>2025</td>
+              <td>01</td>
+              <td>
+                <a href="../tata_hosp_sample_status/" class="text-primary text-decoration-none">
+                  Tata Memorial Hospital
+                </a>
+              </td>
+              <td>IHC</td>
+              <td>ER</td>
+            </tr>
+            <tr>
+              <td>Yes</td>
+              <td>2025</td>
+              <td>01</td>
+              <td>
+                <a href="../tata_hosp_sample_status/" class="text-primary text-decoration-none">
+                  Tata Memorial Hospital
+                </a>
+              </td>
+              <td>IHC</td>
+              <td>PR</td>
+            </tr>
+            <tr>
+              <td>Yes</td>
+              <td>2025</td>
+              <td>01</td>
+              <td>
+                <a href="../tata_hosp_sample_status/" class="text-primary text-decoration-none">
+                  Tata Memorial Hospital
+                </a>
+              </td>
+              <td>IHC</td>
+              <td>Her2/Neu</td>
+            </tr>
+            <tr>
+              <td>Yes</td>
+              <td>2025</td>
+              <td>01</td>
+              <td>
+                <a href="../tata_hosp_sample_status/" class="text-primary text-decoration-none">
+                  Tata Memorial Hospital
+                </a>
+              </td>
+              <td>IHC</td>
+              <td>Lymphoma</td>
+            </tr>
+            <tr>
+              <td>Yes</td>
+              <td>2025</td>
+              <td>01</td>
+              <td>
+                <a href="../tata_hosp_sample_status/" class="text-primary text-decoration-none">
+                  Tata Memorial Hospital
+                </a>
+              </td>
+              <td>IHC</td>
+              <td>Miscellaneous</td>
+            </tr>
+            <tr>
+              <td>No</td>
+              <td>2025</td>
+              <td>03</td>
+              <td>
+                <a href="../tata_hosp_sample_status/" class="text-primary text-decoration-none">
+                  Apollo Chennai
+                </a>
+              </td>
+              <td>TSP</td>
+              <td>TSP</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div id="savedReportsContent" class="tab-content-section" style="display:none;">
+        <div class="d-flex align-items-center gap-2 mb-3">
+          <label for="performanceModuleSelect" class="mb-0 fw-semibold">Select Module</label>
+          <select id="performanceModuleSelect" class="form-select form-select-sm" style="width: 160px;">
+            <option value="">-- Choose --</option>
+            <option value="IHC">IHC</option>
+            <option value="TSP">TSP</option>
+            <option value="H&E">H&E</option>
+          </select>
+          <button id="goBtn" type="button" class="btn btn-sm btn-primary">Go</button>
+          <button id="exportBtnSaved" class="btn btn-sm btn-success d-none" onclick="exportSavedExcel()">Export to Excel</button>
+      </div>
+      <table class="table table-bordered table-striped mb-0" id="savedTable">
         <thead class="table-dark text-white align-middle">
           <tr>
             <th>
@@ -55,6 +224,18 @@
             </th>
             <th>Year</th>
             <th>
+              Center No.
+              <div class="dropdown d-inline ms-1">
+                <a href="#" class="text-white" data-bs-toggle="dropdown">
+                  <i class="bi bi-caret-down-fill"></i>
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#">Ascending</a></li>
+                  <li><a class="dropdown-item" href="#">Descending</a></li>
+                </ul>
+              </div>
+            </th>
+            <th>
               Centre Name
               <input id="centerSearch"
                     class="form-control form-control-sm d-inline-block ms-2"
@@ -64,27 +245,14 @@
               <datalist id="centerList"></datalist>
             </th>
             <th>
-              Modules
-              <div class="dropdown d-inline ms-1">
-                <a href="#" class="text-white" data-bs-toggle="dropdown">
-                  <i class="bi bi-caret-down-fill"></i>
-                </a>
-                <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="#">All</a></li>
-                  <li><a class="dropdown-item" href="#">IHC</a></li>
-                  <li><a class="dropdown-item" href="#">TSP</a></li>
-                  <li><a class="dropdown-item" href="#">H&E</a></li>
-                </ul>
-              </div>
-            </th>
-            <th>
               Submodules
               <div class="dropdown d-inline ms-1">
                 <a href="#" class="text-white" data-bs-toggle="dropdown">
                   <i class="bi bi-caret-down-fill"></i>
                 </a>
                 <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="#">ER/PR</a></li>
+                  <li><a class="dropdown-item" href="#">ER</a></li>
+                  <li><a class="dropdown-item" href="#">PR</a></li>
                   <li><a class="dropdown-item" href="#">Her2/Neu</a></li>
                   <li><a class="dropdown-item" href="#">Lymphoma</a></li>
                   <li><a class="dropdown-item" href="#">Miscellaneous</a></li>
@@ -93,72 +261,149 @@
             </th>
           </tr>
         </thead>
-
-        <tbody>
-          <tr>
-            <td>Yes</td>
-            <td>2025</td>
-            <td>
-              <a href="../tata_hosp_sample_status/" class="text-primary text-decoration-none">
-                Tata Memorial Hospital
-              </a>
-            </td>
-            <td>IHC</td>
-            <td>ER/PR</td>
-          </tr>
-          <tr>
-            <td>Yes</td>
-            <td>2025</td>
-            <td>
-              <a href="../tata_hosp_sample_status/" class="text-primary text-decoration-none">
-                Tata Memorial Hospital
-              </a>
-            </td>
-            <td>IHC</td>
-            <td>Her2/Neu</td>
-          </tr>
-          <tr>
-            <td>Yes</td>
-            <td>2025</td>
-            <td>
-              <a href="../tata_hosp_sample_status/" class="text-primary text-decoration-none">
-                Tata Memorial Hospital
-              </a>
-            </td>
-            <td>IHC</td>
-            <td>Lymphoma</td>
-          </tr>
-          <tr>
-            <td>Yes</td>
-            <td>2025</td>
-            <td>
-              <a href="../tata_hosp_sample_status/" class="text-primary text-decoration-none">
-                Tata Memorial Hospital
-              </a>
-            </td>
-            <td>IHC</td>
-            <td>Miscellaneous</td>
-          </tr>
-          <tr>
-            <td>No</td>
-            <td>2025</td>
-            <td>
-              <a href="../tata_hosp_sample_status/" class="text-primary text-decoration-none">
-                Apollo Chennai
-              </a>
-            </td>
-            <td>TSP</td>
-            <td>TSP</td>
-          </tr>
-        </tbody>
+        <tbody id="savedTbody"></tbody>
       </table>
+
+      <template id="savedRowsTmpl">
+        <tr>
+          <td>Yes</td>
+          <td>2025</td>
+          <td>01</td>
+          <td>
+            <a href="#" class="text-primary text-decoration-none" data-bs-toggle="modal" data-bs-target="#resultModal">
+              Tata Memorial Hospital
+            </a>
+          </td>
+          <td>ER</td>
+        </tr>
+        <tr>
+          <td>Yes</td>
+          <td>2025</td>
+          <td>01</td>
+          <td>
+            <a href="#" class="text-primary text-decoration-none" data-bs-toggle="modal" data-bs-target="#resultModal">
+              Tata Memorial Hospital
+            </a>
+          </td>
+          <td>PR</td>
+        </tr>
+        <tr>
+          <td>Yes</td>
+          <td>2025</td>
+          <td>01</td>
+          <td>
+            <a href="#" class="text-primary text-decoration-none" data-bs-toggle="modal" data-bs-target="#resultModal">
+              Tata Memorial Hospital
+            </a>
+          </td>
+          <td>Her2/Neu</td>
+        </tr>
+        <tr>
+          <td>Yes</td>
+          <td>2025</td>
+          <td>01</td>
+          <td>
+            <a href="#" class="text-primary text-decoration-none" data-bs-toggle="modal" data-bs-target="#resultModal">
+              Tata Memorial Hospital
+            </a>
+          </td>
+          <td>Lymphoma</td>
+        </tr>
+        <tr>
+          <td>Yes</td>
+          <td>2025</td>
+          <td>01</td>
+         <td>
+            <a href="#" class="text-primary text-decoration-none" data-bs-toggle="modal" data-bs-target="#resultModal">
+              Tata Memorial Hospital
+            </a>
+          </td>
+          <td>Miscellaneous</td>
+        </tr>
+      </template>
     </div>
   </div>
 </div>
 
 
+<div class="modal fade" id="resultModal" tabindex="-1" aria-labelledby="resultModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-xl" role="document" style="max-width: 900px;">
+    <div class="modal-content p-0" style="border-radius: 12px; overflow: hidden;">
+      
+      <!-- Dark Blue Header with Close Button -->
+      <div class="d-flex justify-content-between align-items-center" style="background-color: #2f3e63; color: white; padding: 14px 20px;">
+        <h4 class="modal-title mb-0 fw-semibold" id="resultModalLabel">Enter Results</h4>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      
+      <!-- Modal Body -->
+      <div class="modal-body bg-white px-4 py-3">
+        <div class="table-responsive">
+          <table class="table table-bordered align-middle mb-0">
+            <thead class="table-light">
+              <tr>
+                <th style="width: 18%;">Core No.</th>
+                <th style="width: 28%;">Participant Score</th>
+                <th style="width: 18%;">Ideal Score</th>
+                <th style="width: 18%;">EQAS Score</th>
+                <th style="width: 18%;">DOA</th>
+              </tr>
+            </thead>
+            <tbody id="resultRows"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Extra Section: Total Score + Comment -->
+      <div class="mt-4 d-flex flex-column align-items-center text-center">
+
+        <!-- Total Score -->
+        <div class="mb-3" style="max-width: 280px; width: 100%;">
+          <label for="scoreObtained" class="fw-semibold mb-1 d-block">Total Score:</label>
+          <div class="input-group justify-content-center">
+            <input type="number" id="scoreObtained" class="form-control form-control-sm text-end score-input"
+                  min="0" step="1" value="0" aria-label="Score obtained">
+            <span class="input-group-text">/</span>
+            <input type="number" id="scoreTotal" class="form-control form-control-sm score-input"
+                  min="0" step="1" value="0" aria-label="Total score">
+          </div>
+        </div>
+
+        <!-- Comment -->
+        <div style="max-width: 500px; width: 100%;">
+          <label for="comment" class="fw-semibold mb-1 d-block">Comment:</label>
+          <textarea id="comment" class="form-control" rows="3" placeholder="Enter your comment here..."></textarea>
+        </div>
+
+      </div>
+
+
+      <!-- Footer -->
+      <div class="modal-footer border-0 px-4 py-3">
+        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-primary">Save</button>
+        <button type="button" class="btn btn-primary">Submit</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
 
 <script>
+function setActiveTab(tab) {
+  // remove highlight from all tabs
+  document.querySelectorAll('.bucket-tab').forEach(el => el.classList.remove('active-tab'));
+  tab.classList.add('active-tab');
+
+  // hide all content sections
+  document.querySelectorAll('.tab-content-section').forEach(el => el.style.display = 'none');
+
+  // show the selected one
+  const targetId = tab.getAttribute('data-target');
+  document.getElementById(targetId).style.display = 'block';
+}
+
 
 function downloadExcel() {
   const link = document.createElement("a");
@@ -196,9 +441,128 @@ function wireCenterSearch() {
   });
 }
 
+
+const scoreOptions = [
+  "SELECT",
+  "Negative 0",
+  "Negative 1+",
+  "Equivocal 2+",
+  "Positive 3+",
+  "Lymph node",
+  "Blank",
+  "Uninterpretable",
+  "Tissue depleted",
+  "Others, Then specify"
+];
+const interpretationOptions = [
+  "Concordance",
+  "Discordance",
+  "Concordance-i"
+];
+
+function buildResultRows() {
+  const tbody = document.getElementById('resultRows');
+  if (!tbody) return;
+
+  // Rebuild fresh every open
+  tbody.innerHTML = '';
+
+  // Options for random participant score (exclude "SELECT")
+  const randomPool = scoreOptions.filter(o => o !== 'SELECT');
+
+  for (let i = 1; i <= 12; i++) {
+    const tr = document.createElement('tr');
+
+    // Core
+    const tdCore = document.createElement('td');
+    tdCore.textContent = `Core ${i}`;
+    tr.appendChild(tdCore);
+
+    // Participant Score (value, not dropdown)
+    const tdParticipant = document.createElement('td');
+    const randVal = randomPool[Math.floor(Math.random() * randomPool.length)];
+    // Use a read-only input for a "filled" look, or swap to plain text if you prefer
+    const participantInput = document.createElement('input');
+    participantInput.type = 'text';
+    participantInput.className = 'form-control';
+    participantInput.value = randVal;
+    participantInput.readOnly = true; // locked look
+    tdParticipant.appendChild(participantInput);
+    tr.appendChild(tdParticipant);
+
+    // Helper to build a select from an array of strings
+    const makeSelect = (values) => {
+      const sel = document.createElement('select');
+      sel.className = 'form-select';
+      values.forEach(v => {
+        const o = document.createElement('option');
+        o.value = v;
+        o.textContent = v;
+        sel.appendChild(o);
+      });
+      return sel;
+    };
+
+    // Ideal Score (dropdown)
+    const tdIdeal = document.createElement('td');
+    const idealSelect = makeSelect(scoreOptions);
+    tdIdeal.appendChild(idealSelect);
+    tr.appendChild(tdIdeal);
+
+    // EQAS Score (dropdown)
+    const tdEqas = document.createElement('td');
+    const eqasSelect = makeSelect(scoreOptions);
+    tdEqas.appendChild(eqasSelect);
+    tr.appendChild(tdEqas);
+
+    // Interpretation (dropdown)
+    const tdInterp = document.createElement('td');
+    const interpSelect = makeSelect(interpretationOptions);
+    tdInterp.appendChild(interpSelect);
+    tr.appendChild(tdInterp);
+
+    tbody.appendChild(tr);
+  }
+}
+const resultModalEl = document.getElementById('resultModal');
+resultModalEl.addEventListener('show.bs.modal', (e) => {
+  // Optional: get row count from the clicked link if you want
+  const trigger = e.relatedTarget;
+  const cores = parseInt(trigger?.dataset.cores || '12', 10);
+  buildResultRows(cores);
+});
+
 document.addEventListener('DOMContentLoaded', () => {
   populateCenterList();
   wireCenterSearch();
+});
+
+
+
+</script>
+
+<script>
+function exportSavedExcel() {
+  const a = document.createElement('a');
+  a.href = './exported_data.xlsx';   // relative to index.html
+  a.download = 'saved_reports.xlsx';
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  const goBtn = document.getElementById('goBtn');
+  const exportBtn = document.getElementById('exportBtnSaved');
+  const tbody = document.getElementById('savedTbody');
+  const tmpl = document.getElementById('savedRowsTmpl');
+
+  goBtn?.addEventListener('click', () => {
+    // Inject rows into table
+    tbody.innerHTML = tmpl.innerHTML;
+    // Show export button
+    exportBtn.classList.remove('d-none');
+  });
 });
 
 
