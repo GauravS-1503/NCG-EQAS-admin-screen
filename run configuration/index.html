@@ -381,15 +381,16 @@
               <option value="IHC">IHC</option>
               <option value="TSP">TSP</option>
               <option value="H&E">H&E</option>
-              <option value="Custom">Custom</option>
-              
+              <option value="Custom">Custom</option>              
             </select>
+            <input type="text" id="addModuleCustom" class="form-control mt-2 d-none" placeholder="Enter module name">
           </div>
           <div class="mb-3">
             <label for="addSubmodule" class="form-label">Submodule</label>
             <select class="form-select" id="addSubmodule" required>
               <option value="">Select Submodule</option>
             </select>
+            <input type="text" id="addSubmoduleCustom" class="form-control mt-2 d-none" placeholder="Enter sub-module name">
           </div>
           <div class="mb-3">
             <label for="addYear" class="form-label">Year</label>
@@ -427,23 +428,46 @@
     "IHC": ["ER", "PR", "Her2/Neu", "Lymphoma", "Miscellaneous", "Custom"],
     "TSP": ["TSP", "Custom"],
     "H&E": ["Diagnostic Histopathology", "MDSR", "Custom"],
+    "Custom": ["Custom"] // when module itself is custom
   };
 
   const addModuleSelect = document.getElementById("addModule");
   const addSubmoduleSelect = document.getElementById("addSubmodule");
+  const addModuleCustom = document.getElementById("addModuleCustom");
+  const addSubmoduleCustom = document.getElementById("addSubmoduleCustom");
 
-
+  // Module change → show custom input if needed and (re)build submodule list
   addModuleSelect.addEventListener("change", () => {
-    const selectedModule = addModuleSelect.value;
+    const selected = addModuleSelect.value;
+
+    // Show / hide custom module input
+    const isCustomModule = (selected === "Custom");
+    addModuleCustom.classList.toggle("d-none", !isCustomModule);
+    addModuleCustom.required = isCustomModule;
+    if (isCustomModule) setTimeout(() => addModuleCustom.focus(), 0);
+
+    // Rebuild submodule list
     addSubmoduleSelect.innerHTML = '<option value="">Select Submodule</option>';
-    if (submoduleOptions[selectedModule]) {
-      submoduleOptions[selectedModule].forEach(sub => {
-        const option = document.createElement("option");
-        option.value = sub;
-        option.textContent = sub;
-        addSubmoduleSelect.appendChild(option);
-      });
-    }
+    (submoduleOptions[selected] || []).forEach(sub => {
+      const opt = document.createElement("option");
+      opt.value = sub;
+      opt.textContent = sub;
+      addSubmoduleSelect.appendChild(opt);
+    });
+
+    // If module is Custom, we also want a custom submodule by default
+    const needCustomSub = isCustomModule;
+    addSubmoduleCustom.classList.toggle("d-none", !needCustomSub);
+    addSubmoduleCustom.required = needCustomSub;
+    if (needCustomSub) setTimeout(() => addSubmoduleCustom.focus(), 0);
+  });
+
+  // Submodule change → show custom submodule input if "Custom"
+  addSubmoduleSelect.addEventListener("change", () => {
+    const isCustomSub = (addSubmoduleSelect.value === "Custom");
+    addSubmoduleCustom.classList.toggle("d-none", !isCustomSub);
+    addSubmoduleCustom.required = isCustomSub;
+    if (isCustomSub) setTimeout(() => addSubmoduleCustom.focus(), 0);
   });
 
   const moduleFilter = document.getElementById("moduleFilter");
@@ -471,18 +495,29 @@
   document.getElementById('addRunForm').addEventListener('submit', function (e) {
     e.preventDefault();
 
-    // Collect values from modal form
-    const module = document.getElementById('addModule').value;
-    const submodule = document.getElementById('addSubmodule').value;
+    // Get module / submodule (respecting "Custom")
+    let module = addModuleSelect.value;
+    if (module === 'Custom') {
+      module = addModuleCustom.value.trim();
+      if (!module) { alert('Please enter a module name.'); addModuleCustom.focus(); return; }
+    }
+
+    let submodule = addSubmoduleSelect.value;
+    if (submodule === 'Custom' || submodule === '') {
+      submodule = addSubmoduleCustom.value.trim();
+      if (!submodule) { alert('Please enter a sub-module name.'); addSubmoduleCustom.focus(); return; }
+    }
+
     const year = document.getElementById('addYear').value;
     const runNo = document.getElementById('addRunNo').value;
     const startDate = document.getElementById('addStartDate').value.split('-').reverse().join('-');
-    const endDate = document.getElementById('addEndDate').value.split('-').reverse().join('-');
-    // Create new row
-    const table = document.getElementById('runTable').getElementsByTagName('tbody')[0];
-    const newRow = table.insertRow();
+    const endDate   = document.getElementById('addEndDate').value.split('-').reverse().join('-');
 
-    // Edit button cell
+    // Create new row
+    const tbody = document.querySelector('#runTable tbody');
+    const newRow = tbody.insertRow();
+
+    // Edit + delete cell
     const editCell = newRow.insertCell(0);
     editCell.innerHTML = `
       <button class="btn btn-primary btn-sm me-1" data-bs-toggle="modal" data-bs-target="#editRunModal">
@@ -493,19 +528,25 @@
       </button>
     `;
 
-    // Other cells
     newRow.insertCell(1).textContent = year;
     newRow.insertCell(2).textContent = runNo;
     newRow.insertCell(3).textContent = startDate;
     newRow.insertCell(4).textContent = endDate;
     newRow.insertCell(5).textContent = module;
     newRow.insertCell(6).textContent = submodule;
-    makeNoopLinks(newRow);
 
+    const coverCell = newRow.insertCell(7);
+    coverCell.className = 'upload-cell';
+    coverCell.innerHTML = `
+      <button class="btn btn-outline-primary btn-sm upload-btn" title="Upload" disabled>
+        <i class="bi bi-upload"></i>
+      </button>
+    `;
 
-    const uploadCell = newRow.insertCell(7);
-    uploadCell.className = 'upload-cell';
-    uploadCell.innerHTML = `
+    // col 9: Upload General Report (upload + commit)
+    const reportCell = newRow.insertCell(8);
+    reportCell.className = 'upload-cell';
+    reportCell.innerHTML = `
       <button class="btn btn-outline-primary btn-sm upload-btn" title="Upload" disabled>
         <i class="bi bi-upload"></i>
       </button>
@@ -513,17 +554,23 @@
         <i class="bi bi-check2-circle"></i>
       </button>
     `;
-    const statusCell = newRow.insertCell(8);
-    statusCell.innerHTML = '<span class="badge bg-success">Active</span>';
-    initUploadButtons(newRow);
 
+    // col 10: Status
+    const statusCell = newRow.insertCell(9);
+    statusCell.innerHTML = '<span class="badge bg-success">Active</span>';
+
+    // wire delete & uploads for the new row
     editCell.querySelector('.delete-row').addEventListener('click', function () {
       if (confirm("Are you sure you want to delete this run?")) newRow.remove();
     });
+    initUploadButtons(newRow);
+
 
     // reset & close
     this.reset();
     addSubmoduleSelect.innerHTML = '<option value="">Select Submodule</option>';
+    addModuleCustom.classList.add('d-none'); addModuleCustom.required = false;
+    addSubmoduleCustom.classList.add('d-none'); addSubmoduleCustom.required = false;
     bootstrap.Modal.getInstance(document.getElementById('addRunModal')).hide();
   });
 
@@ -536,13 +583,16 @@
   });
 
   function initUploadButtons(row) {
-    // indices after adding the new column:
-    const uploadCell = row.children[7];
-    const statusCell = row.children[8];
+    const coverCell  = row.children[7]; // Upload Cover Letter
+    const reportCell = row.children[8]; // Upload General Report
+    const statusCell = row.children[9]; // Status
 
     const isCompleted = /completed/i.test(statusCell.textContent.trim());
-    uploadCell.querySelectorAll('button').forEach(btn => {
-      btn.disabled = !isCompleted;
+
+    [coverCell, reportCell].forEach(cell => {
+      cell?.querySelectorAll('button').forEach(btn => {
+        btn.disabled = !isCompleted;
+      });
     });
   }
 

@@ -13,6 +13,7 @@
   <style>
     .bucket-tab { display:inline-flex; align-items:center; gap:.4rem; }
     .bucket-badge { font-size:12px; }
+    #statusTableBody tr:first-child td { color:#0f5132; } 
   </style>
 
 </head>
@@ -75,7 +76,7 @@
               <td style="text-align: center;">2025</td>
               <td style="text-align: center;">27</td>
               <td style="text-align: center;">ER</td>
-              <td style="text-align: center;">Sample yet to be dispatched</td>
+              <td style="text-align: center;">Run Completed</td>
             </tr>
             <tr>
               <td style="text-align: center;">2025</td>
@@ -1226,6 +1227,10 @@
       }
     });
   });
+
+  const firstRow = document.querySelector('#statusTableBody tr');
+  if (firstRow) firstRow.classList.add('table-success');
+
 
   function renderReceiveHeader() {
     const th = document.getElementById('ihctableHeader');
