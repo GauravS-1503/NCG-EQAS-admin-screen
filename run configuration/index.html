@@ -256,7 +256,11 @@
               <td>01-08-2025</td>
               <td>05-08-2025</td>
               <td>H&E</td>
-              <td>MDSR</td>
+              <td>
+                <a href="../mdsr_run_config/index.html" class="text-primary text-decoration-none">
+                      MDSR
+                    </a>
+              </td>    
               <td class="upload-cell">
                 <button class="btn btn-outline-primary btn-sm upload-btn" title="Upload" disabled>
                   <i class="bi bi-upload"></i>
@@ -283,7 +287,12 @@
               <td>15-07-2025</td>
               <td>20-07-2025</td>
               <td>H&E</td>
-              <td>Diagnostic Histopathology </td>
+              <td>
+                <a href="../diagnostic_config/index.html" class="text-primary text-decoration-none">
+                      Diagnostic Histopathology
+                    </a>
+
+              </td>      
               <td class="upload-cell">
                 <button class="btn btn-outline-primary btn-sm upload-btn" title="Upload" disabled>
                   <i class="bi bi-upload"></i>
@@ -667,34 +676,38 @@
   }
 
   const SUBMODULE_LINKS = {
-    'mdsr': '../mdsr_run_config/',
-    'diagnostic histopathology': '../diagnostic_config/'
-    };
+    'mdsr': 'mdsr_run_config/',
+    'diagnostic histopathology': 'diagnostic_config/'
+  };
 
-  // Convert matching Sub-Module cells (col 7) into no-op links
-  function linkSubmodules(context = document) {
-    const cells = context.querySelectorAll('#runTable tbody tr td:nth-child(7)');
-    cells.forEach(td => {
-        const label = td.textContent.trim().toLowerCase(); // trim handles stray spaces
-        const href = SUBMODULE_LINKS[label];
-        if (!href) return;
+  // Link just one row's Sub-Module cell (col 7)
+  function linkSubmoduleCellForRow(tr) {
+    const td = tr.children[6]; // 0-based index; 7th column
+    if (!td) return;
 
-        const existing = td.querySelector('a');
-        if (existing) {
-        existing.setAttribute('href', href);
-        existing.classList.add('fake-link');
-        return;
-        }
-        td.innerHTML = `<a href="${href}" class="fake-link">${td.textContent.trim()}</a>`;
-        // If you prefer new tab: add target="_blank" rel="noopener"
-    });
+    const label = td.textContent.replace(/\s+/g, ' ').trim().toLowerCase();
+    const href  = SUBMODULE_LINKS[label];
+    if (!href) return;
+
+    if (!td.querySelector('a')) {
+      const text = td.textContent.trim();
+      td.innerHTML = `<a href="${href}" class="fake-link" target="_blank" rel="noopener">${text}</a>`;
+    }
   }
-
   // Run once for existing rows
   linkSubmodules();
 
+
   // init for existing rows
-  document.querySelectorAll('#runTable tbody tr').forEach(initUploadButtons);
+  document.querySelectorAll('#runTable tbody tr').forEach(linkSubmoduleCellForRow);
+
+  const addRunModalEl = document.getElementById('addRunModal');
+  if (window.bootstrap && addRunModalEl) {
+    const inst = bootstrap.Modal.getInstance(addRunModalEl);
+    if (inst) inst.hide();
+
+    linkSubmoduleCellForRow(newRow);
+  }
 
   
 
