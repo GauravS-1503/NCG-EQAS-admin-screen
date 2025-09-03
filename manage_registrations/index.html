@@ -73,16 +73,13 @@
               </div>
             </th>
             <th>
-              Center No.
-              <div class="dropdown d-inline ms-1">
-                <a href="#" class="text-white" data-bs-toggle="dropdown">
-                  <i class="bi bi-caret-down-fill"></i>
-                </a>
-                <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="#">Ascending</a></li>
-                  <li><a class="dropdown-item" href="#">Descending</a></li>
-                </ul>
-              </div>
+              Centre No.
+              <input id="centerSearch"
+                    class="form-control form-control-sm d-inline-block ms-2"
+                    placeholder="Search..."
+                    list="centerList"
+                    style="width: 180px; display:inline-block;">
+              <datalist id="centerList"></datalist>
             </th>
             <th>Centre Name</th>
             <th>
@@ -191,16 +188,13 @@
               </div>
             </th>
             <th>
-              Center No.
-              <div class="dropdown d-inline ms-1">
-                <a href="#" class="text-white" data-bs-toggle="dropdown">
-                  <i class="bi bi-caret-down-fill"></i>
-                </a>
-                <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="#">Ascending</a></li>
-                  <li><a class="dropdown-item" href="#">Descending</a></li>
-                </ul>
-              </div>
+              Centre No.
+              <input id="centerSearch"
+                    class="form-control form-control-sm d-inline-block ms-2"
+                    placeholder="Search..."
+                    list="centerList"
+                    style="width: 180px; display:inline-block;">
+              <datalist id="centerList"></datalist>
             </th>
             <th>Centre Name</th>
             <th>
@@ -330,16 +324,13 @@
               </div>
             </th>
             <th>
-              Center No.
-              <div class="dropdown d-inline ms-1">
-                <a href="#" class="text-white" data-bs-toggle="dropdown">
-                  <i class="bi bi-caret-down-fill"></i>
-                </a>
-                <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="#">Ascending</a></li>
-                  <li><a class="dropdown-item" href="#">Descending</a></li>
-                </ul>
-              </div>
+              Centre No.
+              <input id="centerSearch"
+                    class="form-control form-control-sm d-inline-block ms-2"
+                    placeholder="Search..."
+                    list="centerList"
+                    style="width: 180px; display:inline-block;">
+              <datalist id="centerList"></datalist>
             </th>
 
             <th>Centre Name</th>
@@ -439,18 +430,14 @@
             </div>
           </th>
           <th>
-              Center No.
-              <div class="dropdown d-inline ms-1">
-                <a href="#" class="text-white" data-bs-toggle="dropdown">
-                  <i class="bi bi-caret-down-fill"></i>
-                </a>
-                <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="#">Ascending</a></li>
-                  <li><a class="dropdown-item" href="#">Descending</a></li>
-                </ul>
-              </div>
-            </th>
-
+            Centre No.
+            <input id="centerSearch"
+                  class="form-control form-control-sm d-inline-block ms-2"
+                  placeholder="Search..."
+                  list="centerList"
+                  style="width: 180px; display:inline-block;">
+            <datalist id="centerList"></datalist>
+          </th>
           <th>Centre Name</th>
 
           <th>
@@ -695,9 +682,13 @@ function setActiveTab(element) {
     });
 
   } else if (status === 'disapproved') {
-    // Hide disapprove buttons in "Disapproved"
-    document.querySelectorAll('#tableAll .disapprove-btn').forEach(btn => btn.style.display = 'none'); // adjust if you have a separate disapproved table
-
+    if (defaultTable) {
+      defaultTable.querySelectorAll('.disapprove-btn')
+        .forEach(btn => btn.style.display = 'none');
+      defaultTable.querySelectorAll('.approve-btn')
+        .forEach(btn => btn.style.display = 'inline-block');
+    }
+    
   } else if (status === 'all') {
     // Hide approval actions in "All"
     document.querySelectorAll('#tableAll .approve-btn, #tableAll .disapprove-btn')

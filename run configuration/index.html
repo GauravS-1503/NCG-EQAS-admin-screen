@@ -392,6 +392,12 @@
             </select>
             <input type="text" id="addSubmoduleCustom" class="form-control mt-2 d-none" placeholder="Enter sub-module name">
           </div>
+          <div class="mb-3 d-none" id="subSubWrap">
+            <label for="addSubSubmodule" class="form-label">Sub-module for Miscellaneous Panel</label>
+            <input type="text" id="addSubSubmoduleText"
+              class="form-control"
+              placeholder="Enter module">
+          </div>
           <div class="mb-3">
             <label for="addYear" class="form-label">Year</label>
             <input type="number" class="form-control" id="addYear" placeholder="e.g., 2025" required>
@@ -404,6 +410,7 @@
             <label for="addEndDate" class="form-label">End Date</label>
             <input type="date" class="form-control" id="addEndDate" required>
           </div>
+          
         </form>
 
       </div>
@@ -431,10 +438,20 @@
     "Custom": ["Custom"] // when module itself is custom
   };
 
+  const subSubmoduleOptions = {
+    "IHC": {
+      "Miscellaneous": ["Immunofluorescence", "Special stains", "Validation", "Custom"]
+    }
+    // TSP/H&E currently don't have sub-subs; add if needed later
+  };
+
   const addModuleSelect = document.getElementById("addModule");
   const addSubmoduleSelect = document.getElementById("addSubmodule");
   const addModuleCustom = document.getElementById("addModuleCustom");
   const addSubmoduleCustom = document.getElementById("addSubmoduleCustom");
+  const subSubWrap = document.getElementById("subSubWrap");
+  const addSubSubmoduleText = document.getElementById("addSubSubmoduleText");
+
 
   // Module change → show custom input if needed and (re)build submodule list
   addModuleSelect.addEventListener("change", () => {
@@ -455,6 +472,12 @@
       addSubmoduleSelect.appendChild(opt);
     });
 
+    subSubWrap.classList.add("d-none");
+    addSubSubmoduleCustom.classList.add("d-none");
+    addSubSubmodule.innerHTML = '<option value="">Select Sub-Sub Module</option>';
+    addSubSubmodule.required = false;
+    addSubSubmoduleCustom.required = false;
+
     // If module is Custom, we also want a custom submodule by default
     const needCustomSub = isCustomModule;
     addSubmoduleCustom.classList.toggle("d-none", !needCustomSub);
@@ -468,7 +491,25 @@
     addSubmoduleCustom.classList.toggle("d-none", !isCustomSub);
     addSubmoduleCustom.required = isCustomSub;
     if (isCustomSub) setTimeout(() => addSubmoduleCustom.focus(), 0);
+
+    const mod = addModuleSelect.value;
+    const sub = addSubmoduleSelect.value;
+
+    const hasSubSub = subSubmoduleOptions[mod] && subSubmoduleOptions[mod][sub];
+
+    if (hasSubSub) {
+      subSubWrap.classList.remove("d-none");
+      addSubSubmoduleText.required = true;
+      // Optionally prefill or hint using the first suggestion:
+      // addSubSubmoduleText.placeholder = "e.g., " + subSubmoduleOptions[mod][sub][0];
+    } else {
+      subSubWrap.classList.add("d-none");
+      addSubSubmoduleText.required = false;
+      addSubSubmoduleText.value = "";
+    }
   });
+
+
 
   const moduleFilter = document.getElementById("moduleFilter");
   const submoduleFilter = document.getElementById("submoduleFilter");
@@ -483,7 +524,10 @@
       const submoduleText = row.children[6].textContent.trim().toLowerCase();
 
       const matchModule = !moduleValue || moduleText === moduleValue;
-      const matchSubmodule = !submoduleValue || submoduleText === submoduleValue;
+      const matchSubmodule =
+        !submoduleValue ||
+        submoduleText === submoduleValue ||
+        submoduleText.startsWith(submoduleValue + ' —');
 
       row.style.display = (matchModule && matchSubmodule) ? "" : "none";
     });
@@ -507,6 +551,20 @@
       submodule = addSubmoduleCustom.value.trim();
       if (!submodule) { alert('Please enter a sub-module name.'); addSubmoduleCustom.focus(); return; }
     }
+
+    let subsub = "";
+    if (!subSubWrap.classList.contains("d-none")) {
+      const val = addSubSubmoduleText.value.trim();
+      if (!val) { alert('Please enter a sub-sub module.'); addSubSubmoduleText.focus(); return; }
+      subsub = val;
+    }
+
+    // Build display label for table cell
+    let submoduleDisplay = submodule;
+    if (subsub) submoduleDisplay = `${submodule} — ${subsub}`;
+
+
+
 
     const year = document.getElementById('addYear').value;
     const runNo = document.getElementById('addRunNo').value;
@@ -533,7 +591,7 @@
     newRow.insertCell(3).textContent = startDate;
     newRow.insertCell(4).textContent = endDate;
     newRow.insertCell(5).textContent = module;
-    newRow.insertCell(6).textContent = submodule;
+    newRow.insertCell(6).textContent = submoduleDisplay;
 
     const coverCell = newRow.insertCell(7);
     coverCell.className = 'upload-cell';
@@ -574,6 +632,18 @@
     bootstrap.Modal.getInstance(document.getElementById('addRunModal')).hide();
   });
 
+  this.reset();
+  addSubmoduleSelect.innerHTML = '<option value="">Select Submodule</option>';
+  addModuleCustom.classList.add('d-none'); addModuleCustom.required = false;
+  addSubmoduleCustom.classList.add('d-none'); addSubmoduleCustom.required = false;
+
+  // ✅ Reset sub-sub module controls too
+  subSubWrap.classList.add('d-none');
+  addSubSubmoduleText.required = false;
+  addSubSubmoduleText.value = "";
+
+  bootstrap.Modal.getInstance(document.getElementById('addRunModal')).hide();
+
   document.querySelectorAll('.delete-row').forEach(btn => {
     btn.addEventListener('click', function () {
       if (confirm("Are you sure you want to delete this run?")) {
@@ -598,7 +668,7 @@
 
   const SUBMODULE_LINKS = {
     'mdsr': '../mdsr_run_config/',
-    'diagnostic histopathology': '../result_center_specific/'
+    'diagnostic histopathology': '../diagnostic_config/'
     };
 
   // Convert matching Sub-Module cells (col 7) into no-op links
@@ -622,7 +692,6 @@
 
   // Run once for existing rows
   linkSubmodules();
-  linkSubmodules(newRow);
 
   // init for existing rows
   document.querySelectorAll('#runTable tbody tr').forEach(initUploadButtons);

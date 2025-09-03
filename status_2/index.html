@@ -40,13 +40,16 @@
             Sample Dispatch
           </div>
           <div class="bucket-tab" data-target="receiveContent" onclick="setActiveTab(this)">
-            Recieve Sample
+            Receive Sample
           </div>
           <div class="bucket-tab" data-target="statusContent" onclick="setActiveTab(this)">
             Pending Reports
           </div>
           <div class="bucket-tab" data-target="savedReportsContent" onclick="setActiveTab(this)">
             Saved Reports
+          </div>
+          <div class="bucket-tab" data-target="commitReportsContent" onclick="setActiveTab(this)">
+            Committed Reports
           </div>
         </div>
       </div>
@@ -56,203 +59,227 @@
         <div class="d-flex justify-content-between align-items-center flex-wrap mb-3 mt-3">
           <button class="btn btn-success" onclick="downloadExcel()">Export to Excel</button>
         </div>
+        <div class="table-responsive">
+          <table class="table table-bordered table-striped mb-0">
+            <thead class="table-dark text-white align-middle">
+              <tr>
+                <th>
+                  NCG Member
+                  <div class="dropdown d-inline ms-1">
+                    <a href="#" class="text-white" data-bs-toggle="dropdown">
+                      <i class="bi bi-caret-down-fill"></i>
+                    </a>
+                    <ul class="dropdown-menu">
+                      <li><a class="dropdown-item" href="#">Yes</a></li>
+                      <li><a class="dropdown-item" href="#">No</a></li>
+                    </ul>
+                  </div>
+                </th>
+                <th>Year</th>
+                <th>
+                  Centre No.
+                  <input id="centerSearch"
+                        class="form-control form-control-sm d-inline-block ms-2"
+                        placeholder="Search..."
+                        list="centerList"
+                        style="width: 180px; display:inline-block;">
+                  <datalist id="centerList"></datalist>
+                </th>
+                <th>
+                  Centre Name
+                  <input id="centerSearch"
+                        class="form-control form-control-sm d-inline-block ms-2"
+                        placeholder="Search..."
+                        list="centerList"
+                        style="width: 180px; display:inline-block;">
+                  <datalist id="centerList"></datalist>
+                </th>
+                <th>
+                  Modules
+                  <div class="dropdown d-inline ms-1">
+                    <a href="#" class="text-white" data-bs-toggle="dropdown">
+                      <i class="bi bi-caret-down-fill"></i>
+                    </a>
+                    <ul class="dropdown-menu">
+                      <li><a class="dropdown-item" href="#">All</a></li>
+                      <li><a class="dropdown-item" href="#">IHC</a></li>
+                      <li><a class="dropdown-item" href="#">TSP</a></li>
+                      <li><a class="dropdown-item" href="#">H&E</a></li>
+                    </ul>
+                  </div>
+                </th>
+                <th>
+                  Submodules
+                  <div class="dropdown d-inline ms-1">
+                    <a href="#" class="text-white" data-bs-toggle="dropdown">
+                      <i class="bi bi-caret-down-fill"></i>
+                    </a>
+                    <ul class="dropdown-menu">
+                      <li><a class="dropdown-item" href="#">ER</a></li>
+                      <li><a class="dropdown-item" href="#">PR</a></li>
+                      <li><a class="dropdown-item" href="#">Her2/Neu</a></li>
+                      <li><a class="dropdown-item" href="#">Lymphoma</a></li>
+                      <li><a class="dropdown-item" href="#">Miscellaneous</a></li>
+                    </ul>
+                  </div>
+                </th>
+                <th>Run No.</th>
+                <th>Pathologist Name</th>
+                <th>Address</th>
+                <th>Courier Name</th>
+                <th>Tracking ID</th>
+                <th>Confirm Sample Sent</th>
+              </tr>
+            </thead>
 
-        <table class="table table-bordered table-striped mb-0">
-          <thead class="table-dark text-white align-middle">
-            <tr>
-              <th>
-                NCG Member
-                <div class="dropdown d-inline ms-1">
-                  <a href="#" class="text-white" data-bs-toggle="dropdown">
-                    <i class="bi bi-caret-down-fill"></i>
+            <tbody>
+              <tr>
+                <td>Yes</td>
+                <td>2025</td>
+                <td>01</td>
+                <td>
+                  <a href="../cen_2_stat/" class="text-primary text-decoration-none">
+                    Tata Memorial Hospital
                   </a>
-                  <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#">Yes</a></li>
-                    <li><a class="dropdown-item" href="#">No</a></li>
-                  </ul>
-                </div>
-              </th>
-              <th>Year</th>
-              <th>
-                Center No.
-                <div class="dropdown d-inline ms-1">
-                  <a href="#" class="text-white" data-bs-toggle="dropdown">
-                    <i class="bi bi-caret-down-fill"></i>
+                </td>
+                <td>IHC</td>
+                <td>ER</td>
+                <td>27</td>
+                <td>Rahul Sharma</td>
+                <td>Jerbai wadia road, parel, mumbai</td>
+                <td class="courier-cell" data-original="">
+                  <input type="text" class="form-control form-control-sm" placeholder="Enter Courier Name">
+                </td>
+                <td class="tracking-cell" data-original="">
+                  <input type="text" class="form-control form-control-sm" placeholder="Enter Tracking ID">
+                </td>
+                <td style="text-align: center;">
+                  <button class="btn btn-success btn-sm px-2 py-1" onclick="confirmReceive(this)">✓</button>
+                </td>
+              </tr>
+              <tr>
+                <td>Yes</td>
+                <td>2025</td>
+                <td>01</td>
+                <td>
+                  <a href="../cen_2_stat/" class="text-primary text-decoration-none">
+                    Tata Memorial Hospital
                   </a>
-                  <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#">Ascending</a></li>
-                    <li><a class="dropdown-item" href="#">Descending</a></li>
-                  </ul>
-                </div>
-              </th>
-              <th>
-                Centre Name
-                <input id="centerSearch"
-                      class="form-control form-control-sm d-inline-block ms-2"
-                      placeholder="Search..."
-                      list="centerList"
-                      style="width: 180px; display:inline-block;">
-                <datalist id="centerList"></datalist>
-              </th>
-              <th>
-                Modules
-                <div class="dropdown d-inline ms-1">
-                  <a href="#" class="text-white" data-bs-toggle="dropdown">
-                    <i class="bi bi-caret-down-fill"></i>
+                </td>
+                <td>IHC</td>
+                <td>PR</td>
+                <td>28</td>
+                <td>Rahul Sharma</td>
+                <td>Jerbai wadia road, parel, mumbai</td>
+                <td class="courier-cell" data-original="">
+                  <input type="text" class="form-control form-control-sm" placeholder="Enter Courier Name">
+                </td>
+                <td class="tracking-cell" data-original="">
+                  <input type="text" class="form-control form-control-sm" placeholder="Enter Tracking ID">
+                </td>
+                <td style="text-align: center;">
+                  <button class="btn btn-success btn-sm px-2 py-1" onclick="confirmReceive(this)">✓</button>
+                </td>
+              </tr>
+              <tr>
+                <td>Yes</td>
+                <td>2025</td>
+                <td>01</td>
+                <td>
+                  <a href="../cen_2_stat/" class="text-primary text-decoration-none">
+                    Tata Memorial Hospital
                   </a>
-                  <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#">All</a></li>
-                    <li><a class="dropdown-item" href="#">IHC</a></li>
-                    <li><a class="dropdown-item" href="#">TSP</a></li>
-                    <li><a class="dropdown-item" href="#">H&E</a></li>
-                  </ul>
-                </div>
-              </th>
-              <th>
-                Submodules
-                <div class="dropdown d-inline ms-1">
-                  <a href="#" class="text-white" data-bs-toggle="dropdown">
-                    <i class="bi bi-caret-down-fill"></i>
+                </td>
+                <td>IHC</td>
+                <td>Her2/Neu</td>
+                <td>29</td>
+                <td>Rahul Sharma</td>
+                <td>Jerbai wadia road, parel, mumbai</td>
+                <td class="courier-cell" data-original="">
+                  <input type="text" class="form-control form-control-sm" placeholder="Enter Courier Name">
+                </td>
+                <td class="tracking-cell" data-original="">
+                  <input type="text" class="form-control form-control-sm" placeholder="Enter Tracking ID">
+                </td>
+                <td style="text-align: center;">
+                  <button class="btn btn-success btn-sm px-2 py-1" onclick="confirmReceive(this)">✓</button>
+                </td>
+              </tr>
+              <tr>
+                <td>Yes</td>
+                <td>2025</td>
+                <td>01</td>
+                <td>
+                  <a href="../cen_2_stat/" class="text-primary text-decoration-none">
+                    Tata Memorial Hospital
                   </a>
-                  <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#">ER</a></li>
-                    <li><a class="dropdown-item" href="#">PR</a></li>
-                    <li><a class="dropdown-item" href="#">Her2/Neu</a></li>
-                    <li><a class="dropdown-item" href="#">Lymphoma</a></li>
-                    <li><a class="dropdown-item" href="#">Miscellaneous</a></li>
-                  </ul>
-                </div>
-              </th>
-              <th>Pathologist Name</th>
-              <th>Address</th>
-              <th>Tracking ID</th>
-              <th>Confirm Sample Sent</th>
-            </tr>
-          </thead>
-
-          <tbody>
-            <tr>
-              <td>Yes</td>
-              <td>2025</td>
-              <td>01</td>
-              <td>
-                <a href="../cen_2_stat/" class="text-primary text-decoration-none">
-                  Tata Memorial Hospital
-                </a>
-              </td>
-              <td>IHC</td>
-              <td>ER</td>
-              <td>Rahul Sharma</td>
-              <td>Jerbai wadia road, parel, mumbai</td>
-              <td class="tracking-cell" data-original="">
-                <input type="text" class="form-control form-control-sm" placeholder="Enter Tracking ID">
-              </td>
-              <td style="text-align: center;">
-                <button class="btn btn-success btn-sm px-2 py-1" onclick="confirmReceive(this)">✓</button>
-              </td>
-            </tr>
-            <tr>
-              <td>Yes</td>
-              <td>2025</td>
-              <td>01</td>
-              <td>
-                <a href="../cen_2_stat/" class="text-primary text-decoration-none">
-                  Tata Memorial Hospital
-                </a>
-              </td>
-              <td>IHC</td>
-              <td>PR</td>
-              <td>Rahul Sharma</td>
-              <td>Jerbai wadia road, parel, mumbai</td>
-              <td class="tracking-cell" data-original="">
-                <input type="text" class="form-control form-control-sm" placeholder="Enter Tracking ID">
-              </td>
-              <td style="text-align: center;">
-                <button class="btn btn-success btn-sm px-2 py-1" onclick="confirmReceive(this)">✓</button>
-              </td>
-            </tr>
-            <tr>
-              <td>Yes</td>
-              <td>2025</td>
-              <td>01</td>
-              <td>
-                <a href="../cen_2_stat/" class="text-primary text-decoration-none">
-                  Tata Memorial Hospital
-                </a>
-              </td>
-              <td>IHC</td>
-              <td>Her2/Neu</td>
-              <td>Rahul Sharma</td>
-              <td>Jerbai wadia road, parel, mumbai</td>
-              <td class="tracking-cell" data-original="">
-                <input type="text" class="form-control form-control-sm" placeholder="Enter Tracking ID">
-              </td>
-              <td style="text-align: center;">
-                <button class="btn btn-success btn-sm px-2 py-1" onclick="confirmReceive(this)">✓</button>
-              </td>
-            </tr>
-            <tr>
-              <td>Yes</td>
-              <td>2025</td>
-              <td>01</td>
-              <td>
-                <a href="../cen_2_stat/" class="text-primary text-decoration-none">
-                  Tata Memorial Hospital
-                </a>
-              </td>
-              <td>IHC</td>
-              <td>Lymphoma</td>
-              <td>Rahul Sharma</td>
-              <td>Jerbai wadia road, parel, mumbai</td>
-              <td class="tracking-cell" data-original="">
-                <input type="text" class="form-control form-control-sm" placeholder="Enter Tracking ID">
-              </td>
-              <td style="text-align: center;">
-                <button class="btn btn-success btn-sm px-2 py-1" onclick="confirmReceive(this)">✓</button>
-              </td>
-            </tr>
-            <tr>
-              <td>Yes</td>
-              <td>2025</td>
-              <td>01</td>
-              <td>
-                <a href="../cen_2_stat/" class="text-primary text-decoration-none">
-                  Tata Memorial Hospital
-                </a>
-              </td>
-              <td>IHC</td>
-              <td>Miscellaneous</td>
-              <td>Rahul Sharma</td>
-              <td>Jerbai wadia road, parel, mumbai</td>
-              <td class="tracking-cell" data-original="">
-                <input type="text" class="form-control form-control-sm" placeholder="Enter Tracking ID">
-              </td>
-              <td style="text-align: center;">
-                <button class="btn btn-success btn-sm px-2 py-1" onclick="confirmReceive(this)">✓</button>
-              </td>
-            </tr>
-            <tr>
-              <td>No</td>
-              <td>2025</td>
-              <td>03</td>
-              <td>
-                <a href="../cen_2_stat/" class="text-primary text-decoration-none">
-                  Apollo Chennai
-                </a>
-              </td>
-              <td>TSP</td>
-              <td>TSP</td>
-              <td>Rahul Sharma</td>
-              <td>Jerbai wadia road, parel, mumbai</td>
-              <td class="tracking-cell" data-original="">
-                <input type="text" class="form-control form-control-sm" placeholder="Enter Tracking ID">
-              </td>
-              <td style="text-align: center;">
-                <button class="btn btn-success btn-sm px-2 py-1" onclick="confirmReceive(this)">✓</button>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+                </td>
+                <td>IHC</td>
+                <td>Lymphoma</td>
+                <td>30</td>
+                <td>Rahul Sharma</td>
+                <td>Jerbai wadia road, parel, mumbai</td>
+                <td class="courier-cell" data-original="">
+                  <input type="text" class="form-control form-control-sm" placeholder="Enter Courier Name">
+                </td>
+                <td class="tracking-cell" data-original="">
+                  <input type="text" class="form-control form-control-sm" placeholder="Enter Tracking ID">
+                </td>
+                <td style="text-align: center;">
+                  <button class="btn btn-success btn-sm px-2 py-1" onclick="confirmReceive(this)">✓</button>
+                </td>
+              </tr>
+              <tr>
+                <td>Yes</td>
+                <td>2025</td>
+                <td>01</td>
+                <td>
+                  <a href="../cen_2_stat/" class="text-primary text-decoration-none">
+                    Tata Memorial Hospital
+                  </a>
+                </td>
+                <td>IHC</td>
+                <td>Miscellaneous</td>
+                <td>31</td>
+                <td>Rahul Sharma</td>
+                <td>Jerbai wadia road, parel, mumbai</td>
+                <td class="courier-cell" data-original="">
+                  <input type="text" class="form-control form-control-sm" placeholder="Enter Courier Name">
+                </td>
+                <td class="tracking-cell" data-original="">
+                  <input type="text" class="form-control form-control-sm" placeholder="Enter Tracking ID">
+                </td>
+                <td style="text-align: center;">
+                  <button class="btn btn-success btn-sm px-2 py-1" onclick="confirmReceive(this)">✓</button>
+                </td>
+              </tr>
+              <tr>
+                <td>No</td>
+                <td>2025</td>
+                <td>03</td>
+                <td>
+                  <a href="../cen_2_stat/" class="text-primary text-decoration-none">
+                    Apollo Chennai
+                  </a>
+                </td>
+                <td>TSP</td>
+                <td>TSP</td>
+                <td>26</td>
+                <td>Rahul Sharma</td>
+                <td>Jerbai wadia road, parel, mumbai</td>
+                <td class="courier-cell" data-original="">
+                  <input type="text" class="form-control form-control-sm" placeholder="Enter Courier Name">
+                </td>
+                <td class="tracking-cell" data-original="">
+                  <input type="text" class="form-control form-control-sm" placeholder="Enter Tracking ID">
+                </td>
+                <td style="text-align: center;">
+                  <button class="btn btn-success btn-sm px-2 py-1" onclick="confirmReceive(this)">✓</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>  
       </div>
 
       <div id="receiveContent" class="tab-content-section">
@@ -277,16 +304,13 @@
               </th>
               <th>Year</th>
               <th>
-                Center No.
-                <div class="dropdown d-inline ms-1">
-                  <a href="#" class="text-white" data-bs-toggle="dropdown">
-                    <i class="bi bi-caret-down-fill"></i>
-                  </a>
-                  <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#">Ascending</a></li>
-                    <li><a class="dropdown-item" href="#">Descending</a></li>
-                  </ul>
-                </div>
+                Centre No.
+                <input id="centerSearch"
+                      class="form-control form-control-sm d-inline-block ms-2"
+                      placeholder="Search..."
+                      list="centerList"
+                      style="width: 180px; display:inline-block;">
+                <datalist id="centerList"></datalist>
               </th>
               <th>
                 Centre Name
@@ -326,8 +350,10 @@
                   </ul>
                 </div>
               </th>
+              <th>Run No.</th>
               <th>Pathologist Name</th>
               <th>Address</th>
+              <th>Courier Name</th>
               <th>Tracking ID</th>
               <th>Receive Sample</th>
             </tr>
@@ -345,8 +371,10 @@
               </td>
               <td>IHC</td>
               <td>ER</td>
+              <td>27</td>
               <td>Rahul Sharma</td>
               <td>Jerbai wadia road, parel, mumbai</td>
+              <td>Blue Dart</td>
               <td>TR101345</td>
               <td style="text-align: center;">
                 <button class="btn btn-success btn-sm px-2 py-1" onclick="confirmReceive(this)">✓</button>
@@ -363,8 +391,10 @@
               </td>
               <td>IHC</td>
               <td>PR</td>
+              <td>28</td>
               <td>Rahul Sharma</td>
               <td>Jerbai wadia road, parel, mumbai</td>
+              <td>Blue Dart</td>
              <td>TR101345</td>
               <td style="text-align: center;">
                 <button class="btn btn-success btn-sm px-2 py-1" onclick="confirmReceive(this)">✓</button>
@@ -381,8 +411,10 @@
               </td>
               <td>IHC</td>
               <td>Her2/Neu</td>
+              <td>29</td>
               <td>Rahul Sharma</td>
               <td>Jerbai wadia road, parel, mumbai</td>
+              <td>Blue Dart</td>
               <td>TR101345</td>
               <td style="text-align: center;">
                 <button class="btn btn-success btn-sm px-2 py-1" onclick="confirmReceive(this)">✓</button>
@@ -399,8 +431,10 @@
               </td>
               <td>IHC</td>
               <td>Lymphoma</td>
+              <td>30</td>
               <td>Rahul Sharma</td>
               <td>Jerbai wadia road, parel, mumbai</td>
+              <td>Blue Dart</td>
               <td>TR101345</td>
               <td style="text-align: center;">
                 <button class="btn btn-success btn-sm px-2 py-1" onclick="confirmReceive(this)">✓</button>
@@ -417,8 +451,10 @@
               </td>
               <td>IHC</td>
               <td>Miscellaneous</td>
+              <td>31</td>              
               <td>Rahul Sharma</td>
               <td>Jerbai wadia road, parel, mumbai</td>
+              <td>Blue Dart</td>
               <td>TR101345</td>
               <td style="text-align: center;">
                 <button class="btn btn-success btn-sm px-2 py-1" onclick="confirmReceive(this)">✓</button>
@@ -435,8 +471,10 @@
               </td>
               <td>TSP</td>
               <td>TSP</td>
+              <td>27</td>
               <td>Rahul Sharma</td>
               <td>Jerbai wadia road, parel, mumbai</td>
+              <td>Blue Dart</td>
               <td>TR101345</td>
               <td style="text-align: center;">
                 <button class="btn btn-success btn-sm px-2 py-1" onclick="confirmReceive(this)">✓</button>
@@ -468,16 +506,13 @@
               </th>
               <th>Year</th>
               <th>
-                Center No.
-                <div class="dropdown d-inline ms-1">
-                  <a href="#" class="text-white" data-bs-toggle="dropdown">
-                    <i class="bi bi-caret-down-fill"></i>
-                  </a>
-                  <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#">Ascending</a></li>
-                    <li><a class="dropdown-item" href="#">Descending</a></li>
-                  </ul>
-                </div>
+                Centre No.
+                <input id="centerSearch"
+                      class="form-control form-control-sm d-inline-block ms-2"
+                      placeholder="Search..."
+                      list="centerList"
+                      style="width: 180px; display:inline-block;">
+                <datalist id="centerList"></datalist>
               </th>
               <th>
                 Centre Name
@@ -517,6 +552,7 @@
                   </ul>
                 </div>
               </th>
+              <th>Run No.</th>
             </tr>
           </thead>
 
@@ -532,6 +568,7 @@
               </td>
               <td>IHC</td>
               <td>ER</td>
+              <td>26</td>
             </tr>
             <tr>
               <td>Yes</td>
@@ -544,6 +581,7 @@
               </td>
               <td>IHC</td>
               <td>PR</td>
+              <td>27</td>
             </tr>
             <tr>
               <td>Yes</td>
@@ -556,6 +594,7 @@
               </td>
               <td>IHC</td>
               <td>Her2/Neu</td>
+              <td>28</td>
             </tr>
             <tr>
               <td>Yes</td>
@@ -568,6 +607,7 @@
               </td>
               <td>IHC</td>
               <td>Lymphoma</td>
+              <td>29</td>
             </tr>
             <tr>
               <td>Yes</td>
@@ -580,6 +620,7 @@
               </td>
               <td>IHC</td>
               <td>Miscellaneous</td>
+              <td>30</td>
             </tr>
             <tr>
               <td>No</td>
@@ -592,10 +633,14 @@
               </td>
               <td>TSP</td>
               <td>TSP</td>
+              <td>26</td>
             </tr>
           </tbody>
         </table>
       </div>
+
+
+
       <div id="savedReportsContent" class="tab-content-section" style="display:none;">
         <div class="d-flex align-items-center gap-2 mb-3">
           <label for="performanceModuleSelect" class="mb-0 fw-semibold">Select Module</label>
@@ -607,7 +652,8 @@
           </select>
           <button id="goBtn" type="button" class="btn btn-sm btn-primary">Go</button>
           <button id="exportBtnSaved" class="btn btn-sm btn-success d-none" onclick="exportSavedExcel()">Export to Excel</button>
-      </div>
+          <button id="commitBtnSaved" class="btn btn-sm btn-danger d-none">Commit All Reports</button>
+        </div>
       <table class="table table-bordered table-striped mb-0" id="savedTable">
         <thead class="table-dark text-white align-middle">
           <tr>
@@ -625,16 +671,13 @@
             </th>
             <th>Year</th>
             <th>
-              Center No.
-              <div class="dropdown d-inline ms-1">
-                <a href="#" class="text-white" data-bs-toggle="dropdown">
-                  <i class="bi bi-caret-down-fill"></i>
-                </a>
-                <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="#">Ascending</a></li>
-                  <li><a class="dropdown-item" href="#">Descending</a></li>
-                </ul>
-              </div>
+              Centre No.
+              <input id="centerSearch"
+                    class="form-control form-control-sm d-inline-block ms-2"
+                    placeholder="Search..."
+                    list="centerList"
+                    style="width: 180px; display:inline-block;">
+              <datalist id="centerList"></datalist>
             </th>
             <th>
               Centre Name
@@ -660,6 +703,8 @@
                 </ul>
               </div>
             </th>
+            <th>Run No.</th>
+            <th>Score</th>
           </tr>
         </thead>
         <tbody id="savedTbody"></tbody>
@@ -671,58 +716,219 @@
           <td>2025</td>
           <td>01</td>
           <td>
-            <a href="#" class="text-primary text-decoration-none" data-bs-toggle="modal" data-bs-target="#resultModal">
+            <a href="#" class="text-primary text-decoration-none" data-bs-toggle="modal" data-bs-target="#addendumModal">
               Tata Memorial Hospital
             </a>
           </td>
           <td>ER</td>
+          <td>26</td>
+          <td>40/50</td>
         </tr>
         <tr>
           <td>Yes</td>
           <td>2025</td>
           <td>01</td>
           <td>
-            <a href="#" class="text-primary text-decoration-none" data-bs-toggle="modal" data-bs-target="#resultModal">
+            <a href="#" class="text-primary text-decoration-none" data-bs-toggle="modal" data-bs-target="#addendumModal">
               Tata Memorial Hospital
             </a>
           </td>
           <td>PR</td>
+          <td>27</td>
+          <td>30/50</td>
         </tr>
         <tr>
           <td>Yes</td>
           <td>2025</td>
           <td>01</td>
           <td>
-            <a href="#" class="text-primary text-decoration-none" data-bs-toggle="modal" data-bs-target="#resultModal">
+            <a href="#" class="text-primary text-decoration-none" data-bs-toggle="modal" data-bs-target="#addendumModal">
               Tata Memorial Hospital
             </a>
           </td>
           <td>Her2/Neu</td>
+          <td>28</td>
+          <td>40/50</td>
         </tr>
         <tr>
           <td>Yes</td>
           <td>2025</td>
           <td>01</td>
           <td>
-            <a href="#" class="text-primary text-decoration-none" data-bs-toggle="modal" data-bs-target="#resultModal">
+            <a href="#" class="text-primary text-decoration-none" data-bs-toggle="modal" data-bs-target="#addendumModal">
               Tata Memorial Hospital
             </a>
           </td>
           <td>Lymphoma</td>
+          <td>29</td>
+          <td>20/50</td>
         </tr>
         <tr>
           <td>Yes</td>
           <td>2025</td>
           <td>01</td>
          <td>
-            <a href="#" class="text-primary text-decoration-none" data-bs-toggle="modal" data-bs-target="#resultModal">
+            <a href="#" class="text-primary text-decoration-none" data-bs-toggle="modal" data-bs-target="#addendumModal">
               Tata Memorial Hospital
             </a>
           </td>
           <td>Miscellaneous</td>
+          <td>30</td>
+          <td>40/50</td>
         </tr>
       </template>
-    </div>
+      </div>
+
+
+
+
+      <div id="commitReportsContent" class="tab-content-section" style="display:none;">
+        <div class="d-flex align-items-center gap-2 mb-3">
+          <label for="commitModuleSelect" class="mb-0 fw-semibold">Select Module</label>
+          <select id="commitModuleSelect" class="form-select form-select-sm" style="width: 160px;">
+            <option value="">-- Choose --</option>
+            <option value="IHC">IHC</option>
+            <option value="TSP">TSP</option>
+            <option value="H&E">H&E</option>
+          </select>
+          <button id="commitGoBtn" type="button" class="btn btn-sm btn-primary">Go</button>
+          <button id="commitExportBtn" class="btn btn-sm btn-success d-none" onclick="exportSavedExcel()">Export to Excel</button>
+          <button id="commitCommitBtn" class="btn btn-sm btn-danger d-none">Commit All Reports</button>
+        </div>
+      <table class="table table-bordered table-striped mb-0" id="commitTable">
+        <thead class="table-dark text-white align-middle">
+          <tr>
+            <th>
+              NCG Member
+              <div class="dropdown d-inline ms-1">
+                <a href="#" class="text-white" data-bs-toggle="dropdown">
+                  <i class="bi bi-caret-down-fill"></i>
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#">Yes</a></li>
+                  <li><a class="dropdown-item" href="#">No</a></li>
+                </ul>
+              </div>
+            </th>
+            <th>Year</th>
+            <th>
+              Centre No.
+              <input id="centerSearch"
+                    class="form-control form-control-sm d-inline-block ms-2"
+                    placeholder="Search..."
+                    list="centerList"
+                    style="width: 180px; display:inline-block;">
+              <datalist id="centerList"></datalist>
+            </th>
+            <th>
+              Centre Name
+              <input id="centerSearch"
+                    class="form-control form-control-sm d-inline-block ms-2"
+                    placeholder="Search..."
+                    list="centerList"
+                    style="width: 180px; display:inline-block;">
+              <datalist id="centerList"></datalist>
+            </th>
+            <th>
+              Submodules
+              <div class="dropdown d-inline ms-1">
+                <a href="#" class="text-white" data-bs-toggle="dropdown">
+                  <i class="bi bi-caret-down-fill"></i>
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#">ER</a></li>
+                  <li><a class="dropdown-item" href="#">PR</a></li>
+                  <li><a class="dropdown-item" href="#">Her2/Neu</a></li>
+                  <li><a class="dropdown-item" href="#">Lymphoma</a></li>
+                  <li><a class="dropdown-item" href="#">Miscellaneous</a></li>
+                </ul>
+              </div>
+            </th>
+            <th>Run No.</th>
+            <th>De-commit</th>
+            <th>Addendum</th>
+          </tr>
+        </thead>
+        <tbody id="commitTbody"></tbody>
+      </table>
+
+      <template id="commitRowsTmpl">
+        <tr>
+          <td>Yes</td>
+          <td>2025</td>
+          <td>01</td>
+          <td>
+            <a href="#" class="text-primary text-decoration-none" data-bs-toggle="modal" data-bs-target="#addendumModal">
+              Tata Memorial Hospital
+            </a>
+          </td>
+          <td>ER</td>
+          <td>26</td>
+          <td><button id="decommitBtn" type="button" class="btn btn-sm btn-warning" data-bs-toggle="modal"  data-bs-target="#decommitModal">De-commit</button></td> 
+          <td><button id="addendumBtn" type="button" class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#resultModal">Addendum</button></td>                    
+        </tr>
+        <tr>
+          <td>Yes</td>
+          <td>2025</td>
+          <td>01</td>
+          <td>
+            <a href="#" class="text-primary text-decoration-none" data-bs-toggle="modal" data-bs-target="#addendumModal">
+              Tata Memorial Hospital
+            </a>
+          </td>
+          <td>PR</td>
+          <td>27</td>
+          <td><button id="decommitBtn" type="button" class="btn btn-sm btn-warning" data-bs-target="#decommitModal">De-commit</button></td> 
+          <td><button id="addendumBtn" type="button" class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#resultModal">Addendum</button></td>                    
+
+        </tr>
+        <tr>
+          <td>Yes</td>
+          <td>2025</td>
+          <td>01</td>
+          <td>
+            <a href="#" class="text-primary text-decoration-none" data-bs-toggle="modal" data-bs-target="#addendumModal">
+              Tata Memorial Hospital
+            </a>
+          </td>
+          <td>Her2/Neu</td>
+          <td>28</td>
+          <td><button id="decommitBtn" type="button" class="btn btn-sm btn-warning" data-bs-target="#decommitModal">De-commit</button></td> 
+          <td><button id="addendumBtn" type="button" class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#resultModal">Addendum</button></td>                    
+
+        </tr>
+        <tr>
+          <td>Yes</td>
+          <td>2025</td>
+          <td>01</td>
+          <td>
+            <a href="#" class="text-primary text-decoration-none" data-bs-toggle="modal" data-bs-target="#addendumModal">
+              Tata Memorial Hospital
+            </a>
+          </td>
+          <td>Lymphoma</td>
+          <td>29</td>
+          <td><button id="decommitBtn" type="button" class="btn btn-sm btn-warning" data-bs-target="#decommitModal">De-commit</button></td> 
+          <td><button id="addendumBtn" type="button" class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#resultModal">Addendum</button></td>                    
+
+        </tr>
+        <tr>
+          <td>Yes</td>
+          <td>2025</td>
+          <td>01</td>
+         <td>
+            <a href="#" class="text-primary text-decoration-none" data-bs-toggle="modal" data-bs-target="#addendumModal">
+              Tata Memorial Hospital
+            </a>
+          </td>
+          <td>Miscellaneous</td>
+          <td>30</td>
+          <td><button id="decommitBtn" type="button" class="btn btn-sm btn-warning" data-bs-target="#decommitModal">De-commit</button></td> 
+          <td><button id="addendumBtn" type="button" class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#resultModal">Addendum</button></td>                    
+
+        </tr>
+      </template>
+      </div>
   </div>
 </div>
 
@@ -733,7 +939,7 @@
       
       <!-- Dark Blue Header with Close Button -->
       <div class="d-flex justify-content-between align-items-center" style="background-color: #2f3e63; color: white; padding: 14px 20px;">
-        <h4 class="modal-title mb-0 fw-semibold" id="resultModalLabel">Enter Results</h4>
+        <h4 class="modal-title mb-0 fw-semibold" id="resultModalLabel">Enter Results (Addendum)</h4>
         <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       
@@ -789,6 +995,81 @@
     </div>
   </div>
 </div>
+
+<div class="modal fade" id="addendumModal" tabindex="-1" aria-labelledby="addendumModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-xl" role="document" style="max-width: 900px;">
+    <div class="modal-content p-0" style="border-radius: 12px; overflow: hidden;">
+      
+      <!-- Dark Blue Header with Close Button -->
+      <div class="d-flex justify-content-between align-items-center" style="background-color: #2f3e63; color: white; padding: 14px 20px;">
+        <h4 class="modal-title mb-0 fw-semibold" id="addendumModalLabel">Saved Results</h4>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      
+      <!-- Modal Body -->
+      <div class="modal-body bg-white px-4 py-3">
+        <div class="table-responsive">
+          <table class="table table-bordered align-middle mb-0">
+            <thead class="table-light">
+              <tr>
+                <th style="width: 18%;">Core No.</th>
+                <th style="width: 28%;">Participant Score</th>
+                <th style="width: 18%;">Ideal Score</th>
+                <th style="width: 18%;">EQAS Score</th>
+                <th style="width: 18%;">DOA</th>
+              </tr>
+            </thead>
+            <tbody id="addendumrows"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Extra Section: Total Score + Comment -->
+      <div class="mt-4 d-flex flex-column align-items-center text-center">
+
+        <!-- Total Score -->
+        <div class="mb-3" style="max-width: 280px; width: 100%;">
+          <label for="scoreObtained" class="fw-semibold mb-1 d-block">Total Score:</label>
+          <div class="input-group justify-content-center">
+            <input type="number" id="scoreObtained" 
+                  class="form-control form-control-sm text-end score-input"
+                  min="0" step="1" value="8" aria-label="Score obtained">
+            <span class="input-group-text">/</span>
+            <input type="number" id="scoreTotal" 
+                  class="form-control form-control-sm score-input"
+                  min="0" step="1" value="12" aria-label="Total score">
+          </div>
+        </div>
+
+        <!-- Comment -->
+        <div style="max-width: 500px; width: 100%;">
+          <label for="comment" class="fw-semibold mb-1 d-block">Comment:</label>
+          <textarea id="comment" class="form-control mb-2" rows="3">Samples were deemed positive for analysis and concordance has been achieved.</textarea>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="decommitModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Confirm De-commit</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Are you sure you want to de-commit the report?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-danger">De-commit</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 
 
 <script>
@@ -925,12 +1206,102 @@ function buildResultRows() {
     tbody.appendChild(tr);
   }
 }
+
+
+// Addendum Rows (OLD)
+function buildAddendumrows() {
+  const tbody = document.getElementById('addendumrows');
+  if (!tbody) return;
+
+  // Rebuild fresh every open
+  tbody.innerHTML = '';
+
+  // Options for random participant/score (exclude "SELECT")
+  const randomPool2 = scoreOptions.filter(o => o !== 'SELECT');
+  const interpPool2 = (typeof interpretationOptions !== 'undefined' && Array.isArray(interpretationOptions))
+    ? interpretationOptions.filter(o => o !== 'SELECT')
+    : [];
+
+  // Helper to build a select from an array of strings
+  const makeSelect2 = (values) => {
+    const sel2 = document.createElement('select');
+    sel2.className = 'form-select';
+    values.forEach(v => {
+      const o2 = document.createElement('option');
+      o2.value = v;
+      o2.textContent = v;
+      sel2.appendChild(o2);
+    });
+    return sel2;
+  };
+
+  for (let i = 1; i <= 12; i++) {
+    const tr = document.createElement('tr');
+
+    // Core
+    const tdCore2 = document.createElement('td');
+    tdCore2.textContent = `Core ${i}`;
+    tr.appendChild(tdCore2);
+
+    // Participant Score (read-only input, pre-filled)
+    const tdParticipant2 = document.createElement('td');
+    const randVal2 = randomPool2[Math.floor(Math.random() * randomPool2.length)];
+    const participantInput2 = document.createElement('input');
+    participantInput2.type = 'text';
+    participantInput2.className = 'form-control';
+    participantInput2.value = randVal2;
+    participantInput2.readOnly = true;
+    tdParticipant2.appendChild(participantInput2);
+    tr.appendChild(tdParticipant2);
+
+    // Ideal Score (dropdown, pre-selected)
+    const tdIdeal2 = document.createElement('td');
+    const idealSelect2 = makeSelect2(scoreOptions);
+    idealSelect2.value = randomPool2[Math.floor(Math.random() * randomPool2.length)];
+    tdIdeal2.appendChild(idealSelect2);
+    tr.appendChild(tdIdeal2);
+
+    // EQAS Score (dropdown, pre-selected)
+    const tdEqas2 = document.createElement('td');
+    const eqasSelect2 = makeSelect2(scoreOptions);
+    eqasSelect2.value = randomPool2[Math.floor(Math.random() * randomPool2.length)];
+    tdEqas2.appendChild(eqasSelect2);
+    tr.appendChild(tdEqas2);
+
+    // Interpretation (dropdown, pre-selected)
+    const tdInterp2 = document.createElement('td');
+    const interpSelect2 = makeSelect2(interpretationOptions);
+    if (interpPool2.length > 0) {
+      interpSelect2.value = interpPool2[Math.floor(Math.random() * interpPool2.length)];
+    }
+    tdInterp2.appendChild(interpSelect2);
+    tr.appendChild(tdInterp2);
+
+    // Append the row
+    tbody.appendChild(tr);
+  }
+}
+
+
+
+
+
+
+
 const resultModalEl = document.getElementById('resultModal');
 resultModalEl.addEventListener('show.bs.modal', (e) => {
   // Optional: get row count from the clicked link if you want
   const trigger = e.relatedTarget;
   const cores = parseInt(trigger?.dataset.cores || '12', 10);
   buildResultRows(cores);
+});
+
+const addendumModalEl = document.getElementById('addendumModal');
+addendumModalEl.addEventListener('show.bs.modal', (e) => {
+  // Optional: get row count from the clicked link if you want
+  const trigger2 = e.relatedTarget;
+  const cores2 = parseInt(trigger2?.dataset.cores || '12', 10);
+  buildAddendumrows(cores2);
 });
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -955,16 +1326,29 @@ function exportSavedExcel() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  const goBtn = document.getElementById('goBtn');
-  const exportBtn = document.getElementById('exportBtnSaved');
-  const tbody = document.getElementById('savedTbody');
-  const tmpl = document.getElementById('savedRowsTmpl');
+  // Saved Reports bucket
+  const goSaved    = document.getElementById('goBtn');
+  const exportSaved= document.getElementById('exportBtnSaved');
+  const commitSaved= document.getElementById('commitBtnSaved');
+  const bodySaved  = document.getElementById('savedTbody');
+  const tmplSaved  = document.getElementById('savedRowsTmpl');
 
-  goBtn?.addEventListener('click', () => {
-    // Inject rows into table
-    tbody.innerHTML = tmpl.innerHTML;
-    // Show export button
-    exportBtn.classList.remove('d-none');
+  goSaved?.addEventListener('click', () => {
+    bodySaved.innerHTML = tmplSaved.innerHTML;
+    exportSaved.classList.remove('d-none');
+    commitSaved.classList.remove('d-none');
+  });
+
+  // Committed Reports bucket (NEW)
+  const goCommit    = document.getElementById('commitGoBtn');
+  const exportCommit= document.getElementById('commitExportBtn');
+  const commitCommit= document.getElementById('commitCommitBtn');
+  const bodyCommit  = document.getElementById('commitTbody');
+  const tmplCommit  = document.getElementById('commitRowsTmpl');
+
+  goCommit?.addEventListener('click', () => {
+    bodyCommit.innerHTML = tmplCommit.innerHTML;
+    exportCommit.classList.remove('d-none');
   });
 });
 
