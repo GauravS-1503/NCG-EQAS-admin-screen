@@ -35,3 +35,7 @@
   color: white;
 }
 
+#commitTable tbody tr.commit-last > * {
+  background-color: #fff3cd !important;
+  font-weight: 600;
+}
