@@ -417,27 +417,31 @@
 
       // Chart.js bar chart (histogram-like)
       const chart = new Chart(canvas.getContext('2d'), {
-        type: 'bar',
-        data: {
-          labels,
-          datasets: [{
-            label: title,
-            data,
-            // no explicit colors; Chart.js will choose defaults
-          }]
-        },
-        options: {
-          plugins: {
-            legend: { display: false },
-            title: { display: true, text: title }
-          },
-          scales: {
-            x: { title: { display: true, text: 'Year' } },
-            y: { beginAtZero: true, title: { display: true, text: 'Value' } }
-          }
-        }
-      });
-
+              type: 'line',
+              data: {
+                labels,
+                datasets: [{
+                  label: title,
+                  data,
+                  fill: false,
+                  tension: 0.3,       // 0 for straight lines, 0.3 for slight smoothing
+                  pointRadius: 3,
+                  borderWidth: 2
+                  // no explicit colors; Chart.js will pick defaults
+                }]
+              },
+              options: {
+                plugins: {
+                  legend: { display: false },
+                  title: { display: true, text: title }
+                },
+                interaction: { mode: 'index', intersect: false },
+                scales: {
+                  x: { title: { display: true, text: 'Year' } },
+                  y: { beginAtZero: true, title: { display: true, text: 'Value' } }
+                }
+              }
+            });
       chartInstances.push(chart);
     });
   }

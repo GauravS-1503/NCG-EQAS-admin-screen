@@ -402,10 +402,10 @@
             <input type="text" id="addSubmoduleCustom" class="form-control mt-2 d-none" placeholder="Enter sub-module name">
           </div>
           <div class="mb-3 d-none" id="subSubWrap">
-            <label for="addSubSubmodule" class="form-label">Sub-module for Miscellaneous Panel</label>
-            <input type="text" id="addSubSubmoduleText"
-              class="form-control"
-              placeholder="Enter module">
+            <label for="addSubSubmoduleText" class="form-label" id="subSubLabel">
+              Sub-module
+            </label>
+            <input type="text" id="addSubSubmoduleText" class="form-control" placeholder="Enter sub-module">
           </div>
           <div class="mb-3">
             <label for="addYear" class="form-label">Year</label>
@@ -449,7 +449,8 @@
 
   const subSubmoduleOptions = {
     "IHC": {
-      "Miscellaneous": ["Immunofluorescence", "Special stains", "Validation", "Custom"]
+      "Miscellaneous": ["Immunofluorescence", "Special stains", "Validation", "Custom"],
+      "Lymphoma": ["Hodgkin", "Non-Hodgkin", "Plasma cell", "Pediatric", "Custom"]
     }
     // TSP/H&E currently don't have sub-subs; add if needed later
   };
@@ -482,10 +483,6 @@
     });
 
     subSubWrap.classList.add("d-none");
-    addSubSubmoduleCustom.classList.add("d-none");
-    addSubSubmodule.innerHTML = '<option value="">Select Sub-Sub Module</option>';
-    addSubSubmodule.required = false;
-    addSubSubmoduleCustom.required = false;
 
     // If module is Custom, we also want a custom submodule by default
     const needCustomSub = isCustomModule;
@@ -494,7 +491,8 @@
     if (needCustomSub) setTimeout(() => addSubmoduleCustom.focus(), 0);
   });
 
-  // Submodule change → show custom submodule input if "Custom"
+  const subSubLabel = document.getElementById("subSubLabel");
+
   addSubmoduleSelect.addEventListener("change", () => {
     const isCustomSub = (addSubmoduleSelect.value === "Custom");
     addSubmoduleCustom.classList.toggle("d-none", !isCustomSub);
@@ -509,14 +507,22 @@
     if (hasSubSub) {
       subSubWrap.classList.remove("d-none");
       addSubSubmoduleText.required = true;
-      // Optionally prefill or hint using the first suggestion:
-      // addSubSubmoduleText.placeholder = "e.g., " + subSubmoduleOptions[mod][sub][0];
+
+      // Dynamic label (e.g., “Sub-module for Lymphoma panel”)
+      subSubLabel.textContent = `Sub-module for ${sub} panel`;
+
+      // Optional: suggest first option in placeholder
+      const suggestions = subSubmoduleOptions[mod][sub];
+      addSubSubmoduleText.placeholder = suggestions?.length ? `e.g., ${suggestions[0]}` : "Enter sub-module";
     } else {
       subSubWrap.classList.add("d-none");
       addSubSubmoduleText.required = false;
       addSubSubmoduleText.value = "";
+      subSubLabel.textContent = "Sub-module";
+      addSubSubmoduleText.placeholder = "Enter sub-module";
     }
   });
+
 
 
 
