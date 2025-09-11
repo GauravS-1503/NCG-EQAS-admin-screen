@@ -142,6 +142,7 @@
                 <th>Address</th>
                 <th>Courier Name</th>
                 <th>Tracking ID</th>
+                <th>Date of Dispatch</th>
                 <th>Confirm Sample Sent</th>
               </tr>
             </thead>
@@ -167,6 +168,7 @@
                 <td class="tracking-cell" data-original="">
                   <input type="text" class="form-control form-control-sm" placeholder="Enter Tracking ID">
                 </td>
+                <td>01-09-2025</td>
                 <td style="text-align: center;">
                   <button class="btn btn-success btn-sm px-2 py-1" onclick="confirmReceive(this)">✓</button>
                 </td>
@@ -184,13 +186,14 @@
                 <td>PR</td>
                 <td>28</td>
                 <td>Rahul Sharma</td>
-                <td>Jerbai wadia road, parel, mumbai</td>
+                <td>Jerbai wadia road, parel, mumbai</td>               
                 <td class="courier-cell" data-original="">
                   <input type="text" class="form-control form-control-sm" placeholder="Enter Courier Name">
                 </td>
                 <td class="tracking-cell" data-original="">
                   <input type="text" class="form-control form-control-sm" placeholder="Enter Tracking ID">
                 </td>
+                <td>01-09-2025</td>
                 <td style="text-align: center;">
                   <button class="btn btn-success btn-sm px-2 py-1" onclick="confirmReceive(this)">✓</button>
                 </td>
@@ -215,6 +218,7 @@
                 <td class="tracking-cell" data-original="">
                   <input type="text" class="form-control form-control-sm" placeholder="Enter Tracking ID">
                 </td>
+                <td>01-09-2025</td>
                 <td style="text-align: center;">
                   <button class="btn btn-success btn-sm px-2 py-1" onclick="confirmReceive(this)">✓</button>
                 </td>
@@ -239,6 +243,7 @@
                 <td class="tracking-cell" data-original="">
                   <input type="text" class="form-control form-control-sm" placeholder="Enter Tracking ID">
                 </td>
+                <td>01-09-2025</td>
                 <td style="text-align: center;">
                   <button class="btn btn-success btn-sm px-2 py-1" onclick="confirmReceive(this)">✓</button>
                 </td>
@@ -263,6 +268,7 @@
                 <td class="tracking-cell" data-original="">
                   <input type="text" class="form-control form-control-sm" placeholder="Enter Tracking ID">
                 </td>
+                <td>01-09-2025</td>
                 <td style="text-align: center;">
                   <button class="btn btn-success btn-sm px-2 py-1" onclick="confirmReceive(this)">✓</button>
                 </td>
@@ -287,6 +293,7 @@
                 <td class="tracking-cell" data-original="">
                   <input type="text" class="form-control form-control-sm" placeholder="Enter Tracking ID">
                 </td>
+                <td>01-09-2025</td>
                 <td style="text-align: center;">
                   <button class="btn btn-success btn-sm px-2 py-1" onclick="confirmReceive(this)">✓</button>
                 </td>
@@ -383,6 +390,7 @@
               <th>Address</th>
               <th>Courier Name</th>
               <th>Tracking ID</th>
+              <th>Date of Sample Received</th>
               <th>Receive Sample</th>
             </tr>
           </thead>
@@ -404,6 +412,7 @@
               <td>Jerbai wadia road, parel, mumbai</td>
               <td>Blue Dart</td>
               <td>TR101345</td>
+              <td>15-09-2025</td>
               <td style="text-align: center;">
                 <button class="btn btn-success btn-sm px-2 py-1" onclick="confirmReceive(this)">✓</button>
               </td>
@@ -424,6 +433,7 @@
               <td>Jerbai wadia road, parel, mumbai</td>
               <td>Blue Dart</td>
              <td>TR101345</td>
+             <td>15-09-2025</td>
               <td style="text-align: center;">
                 <button class="btn btn-success btn-sm px-2 py-1" onclick="confirmReceive(this)">✓</button>
               </td>
@@ -444,6 +454,7 @@
               <td>Jerbai wadia road, parel, mumbai</td>
               <td>Blue Dart</td>
               <td>TR101345</td>
+              <td>15-09-2025</td>
               <td style="text-align: center;">
                 <button class="btn btn-success btn-sm px-2 py-1" onclick="confirmReceive(this)">✓</button>
               </td>
@@ -464,6 +475,7 @@
               <td>Jerbai wadia road, parel, mumbai</td>
               <td>Blue Dart</td>
               <td>TR101345</td>
+              <td>15-09-2025</td>
               <td style="text-align: center;">
                 <button class="btn btn-success btn-sm px-2 py-1" onclick="confirmReceive(this)">✓</button>
               </td>
@@ -484,6 +496,7 @@
               <td>Jerbai wadia road, parel, mumbai</td>
               <td>Blue Dart</td>
               <td>TR101345</td>
+              <td>15-09-2025</td>
               <td style="text-align: center;">
                 <button class="btn btn-success btn-sm px-2 py-1" onclick="confirmReceive(this)">✓</button>
               </td>
@@ -504,6 +517,7 @@
               <td>Jerbai wadia road, parel, mumbai</td>
               <td>Blue Dart</td>
               <td>TR101345</td>
+              <td>15-09-2025</td>
               <td style="text-align: center;">
                 <button class="btn btn-success btn-sm px-2 py-1" onclick="confirmReceive(this)">✓</button>
               </td>
@@ -1192,6 +1206,98 @@ function wireCenterSearch() {
     });
   });
 }
+
+
+const firstRow = document.querySelector('#statusTableBody tr');
+  if (firstRow) firstRow.classList.add('table-success');
+
+  function confirmReceive(button) {
+    const row = button.closest('tr');
+    const courierCell  = row.querySelector('.courier-cell');
+    const trackingCell = row.querySelector('.tracking-cell');
+
+    const activeTab = document.querySelector('.bucket-tab.active-tab');
+    const isSendTab = !!button.closest('#dispatchContent');
+
+
+    const courier = isSendTab
+      ? courierCell?.querySelector('input')?.value.trim() || ''
+      : courierCell?.textContent.trim() || '';
+
+    const trackingId = isSendTab
+      ? trackingCell?.querySelector('input')?.value.trim() || ''
+      : trackingCell?.textContent.trim() || '';
+
+
+
+    const message = isSendTab
+      ? `Do you want to mark the sample as sent?`
+      : `Do you want to mark the sample from "${courier}" (Tracking ID: ${trackingId}) as received?`;
+
+    if (!confirm(message)) return;
+
+    // Update confirm button UI/state
+    button.textContent = isSendTab ? 'Sent' : 'Received';
+    button.classList.remove('btn-success');
+    button.classList.add('btn-secondary');
+    button.disabled = true;
+
+    // 🔁 If we're in Send tab, create/ensure a refresh button and tag the confirm button
+    if (isSendTab) {
+      button.classList.add('btn-sent'); // <-- your refresh handler looks for this
+      const cell = button.parentElement;
+
+      // Avoid duplicates
+      if (!cell.querySelector('.btn-refresh')) {
+        const refresh = document.createElement('button');
+        refresh.type = 'button';
+        refresh.className = 'btn btn-outline-secondary btn-sm ms-2 btn-refresh';
+        refresh.innerHTML = '<i class="bi bi-arrow-clockwise"></i>';
+        cell.appendChild(refresh);
+      }
+    }
+  }
+
+
+function resetDispatchRow(row) {
+  // 1) Clear all user-editable fields in the row
+  row.querySelectorAll('input, textarea').forEach(el => {
+    if (el.type === 'checkbox' || el.type === 'radio') {
+      el.checked = false;
+    } else {
+      el.value = '';
+    }
+    el.disabled = false;
+  });
+  row.querySelectorAll('select').forEach(sel => {
+    sel.selectedIndex = 0;
+    sel.disabled = false;
+  });
+
+  // 2) Restore the primary action button (✓)
+  const actionBtn = row.querySelector('.btn-sent') || row.querySelector('td:last-child button');
+  if (actionBtn) {
+    actionBtn.textContent = '✓';
+    actionBtn.disabled = false;
+    actionBtn.classList.add('btn-success');
+    actionBtn.classList.remove('btn-secondary', 'btn-sent');
+  }
+
+  // 3) Remove any refresh buttons that were added
+  row.querySelectorAll('.btn-refresh').forEach(b => b.remove());
+}
+
+// 🌐 Event delegation for the refresh buttons that get created dynamically
+document.addEventListener('click', (e) => {
+  const refreshBtn = e.target.closest('.btn-refresh');
+  if (!refreshBtn) return;
+
+  const row = refreshBtn.closest('tr');
+  // Only act inside the Sample Dispatch tab
+  if (row && refreshBtn.closest('#dispatchContent')) {
+    resetDispatchRow(row);
+  }
+});    
 
 
 const scoreOptions = [
