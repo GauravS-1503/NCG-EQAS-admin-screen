@@ -34,4 +34,7 @@
   background-color: #1b2957 !important; /* or any dark blue you prefer */
   color: white;
 }
+.btn-edit-report {
+  display: none; /* hidden initially */
+}
 

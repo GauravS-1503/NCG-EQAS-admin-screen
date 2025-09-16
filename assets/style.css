@@ -7,7 +7,13 @@ html, body { margin: 0; padding: 0; height: 100%; overflow-x: hidden; }
     height: 80px;
     background-color: white;
     border-bottom: 1px solid #ddd;
+    position: fixed;      /* 🔒 lock header */
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;        /* make sure it stays above content */
 }
+
 
 .logo {
     height: 65px;
@@ -19,6 +25,11 @@ html, body { margin: 0; padding: 0; height: 100%; overflow-x: hidden; }
     background-color: #2f3e63 !important;
     transition: all 0.3s ease;
     flex-shrink: 0;
+    position: fixed;      /* 🔒 lock sidebar */
+    top: 80px;            /* place just below the header */
+    left: 0;
+    bottom: 0;
+    overflow-y: auto;     /* scroll only if sidebar content is long */
 }
 
 .sidebar.collapsed {
@@ -35,9 +46,9 @@ html, body { margin: 0; padding: 0; height: 100%; overflow-x: hidden; }
     transition: all 0.3s ease;
 }
 
-#contentArea{
-    width: 100%;
-    transition: all 0.3s ease;
+#contentArea {
+    margin-top: 80px;     /* leave space for fixed header */
+    margin-left: 220px;   /* leave space for fixed sidebar */
 }
 
 .custom-table tr:nth-child(even) {

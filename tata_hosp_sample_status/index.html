@@ -738,123 +738,34 @@
         <h4 class="modal-title mb-0 fw-semibold" id="protocolModalLabel">Protocol</h4>
         <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      
+
       <!-- Modal Body -->
-      <div class="modal-body bg-white px-4 py-3">
+      <div class="modal-body bg-white px-4 py-3" id="protocolBody">
         <h5 class="fw-semibold mt-3">Staining Platform</h5>
-        <div class="mb-3">
-          <label for="stainingPlatform" class="form-label">Select Staining Platform</label>
-          <select class="form-select" id="stainingPlatform">
-            <option value="">Select</option>
-            <option>Dako Autostainer</option>
-            <option>Dako Autostainer Link 48+</option>
-            <option>Dako Omnis</option>
-            <option>Leica BOND III</option>
-            <option>Leica BOND Max</option>
-            <option>Leica BOND Prime</option>
-            <option>Sakura Tissue-Tek Genie</option>
-            <option>Thermo Autostainer 36/48/72</option>
-            <option>Ventana Benchmark GX</option>
-            <option>Ventana Benchmark Ultra</option>
-            <option>Ventana Benchmark Ultra Plus</option>
-            <option>Ventana Benchmark XT</option>
-            <option>Pathnsitu Caliber 30</option>
-            <option>Manual</option>
-            <option>Others</option>
-          </select>
-        </div>
-        <div class="mb-3 d-none" id="otherStainingPlatformDiv">
-          <label for="otherStainingPlatform" class="form-label">Please specify</label>
-          <input type="text" class="form-control" id="otherStainingPlatform" placeholder="Enter platform name">
-        </div>
+        <div id="sec-staining-platform" class="section-slot"></div>
 
         <h5 class="fw-semibold mt-3">Primary Antibody</h5>
-        <div class="mb-3">
-          <label for="cloneType" class="form-label">Primary Antibody Clone</label>
-          <select class="form-select" id="cloneType">
-            <option value="">Select</option>
-            <option>Ready to use</option>
-            <option>Concentrated</option>
-          </select>
-        </div>
-
-        <!-- 2. Input: Lot No. -->
-        <div class="mb-3">
-          <label for="lotNumber" class="form-label">Lot No.</label>
-          <input type="text" class="form-control" id="lotNumber" placeholder="Enter lot number">
-        </div>
-
-        <!-- 3. Input: Dilution Factor -->
-        <div class="mb-3">
-          <label for="dilutionFactor" class="form-label">Dilution Factor</label>
-          <input type="text" class="form-control" id="dilutionFactor" placeholder="Enter dilution factor">
-        </div>
-
-        <!-- 4. Dropdown: Dilution Buffer -->
-        <div class="mb-3">
-          <label for="dilutionBuffer" class="form-label">Dilution Buffer</label>
-          <select class="form-select" id="dilutionBuffer">
-            <option value="">Select</option>
-            <option>Biocare Medical  -Da Vinci Green Diluent</option>
-            <option>Biocare Medical - Renoir Red Diluent</option>
-            <option>Biocare Medical - Renaissance background reducing Diluent</option>
-            <option>Biocare Medical - Van Gogh Yellow Diluent</option>
-            <option>Cell Marque - Diamond - Antibody Diluent</option>
-            <option>Cell Marque - Emeraid - Antibody Diluent</option>
-            <option>Dako - Antibody Diluent</option>
-            <option>Dako - Antibody Diluent with Background Reducing Components</option>
-            <option>Dako - REAL Antibody Diluent</option>
-            <option>Diagnostic Biosystem - Primary Antibody Diluent</option>
-            <option>Immunologic - Bright Diluent,Green</option>
-            <option>Leica - Bond Primary Antibody Diluent</option>
-            <option>Ventana - Antibody Diluent</option>
-            <option>Ventana - Antibody Diluent with casein</option>
-            <option>Ventana - Antibody Diluent Buffer</option>
-            <option>Zytomed - Antibody Diluent</option>
-            <option>Others</option>
-            <option>None</option>
-          </select>
-        </div>
-
-        <!-- Show only if 'Others' is selected -->
-        <div id="otherDilutionFields" class="d-none">
-          <div class="mb-3">
-            <label for="bufferName" class="form-label">Dilution Buffer Name</label>
-            <input type="text" class="form-control" id="bufferName" placeholder="Enter buffer name">
-          </div>
-          <div class="mb-3">
-            <label for="bufferProducer" class="form-label">Dilution Buffer Producer</label>
-            <input type="text" class="form-control" id="bufferProducer" placeholder="Enter producer name">
-          </div>
-          <div class="mb-3">
-            <label for="productNumber" class="form-label">Dilution Product Number</label>
-            <input type="text" class="form-control" id="productNumber" placeholder="Enter product number">
-          </div>
-        </div>
-
-        <!-- Always shown -->
-        <div class="mb-3">
-          <label for="incubationTime" class="form-label">Incubation Time (minutes)</label>
-          <input type="number" class="form-control" id="incubationTime" placeholder="Enter time in minutes">
-        </div>
-
-        <div class="mb-3">
-          <label for="incubationTemp" class="form-label">Incubation Temperature (°C)</label>
-          <input type="number" class="form-control" id="incubationTemp" placeholder="Enter temperature in °C">
-        </div>
+        <div id="sec-primary-antibody" class="section-slot"></div>
 
         <h5 class="fw-semibold mt-3">Epitope Retrieval (HIER)</h5>
+        <div id="sec-hier" class="section-slot"></div>
 
         <h5 class="fw-semibold mt-3">Epitope Retrieval (Proteolysis)</h5>
+        <div id="sec-proteolysis" class="section-slot"></div>
 
         <h5 class="fw-semibold mt-3">Visualization System</h5>
+        <div id="sec-visualization" class="section-slot"></div>
 
         <h5 class="fw-semibold mt-3">Chromogen</h5>
+        <div id="sec-chromogen" class="section-slot"></div>
 
         <h5 class="fw-semibold mt-3">Enhancement</h5>
+        <div id="sec-enhancement" class="section-slot"></div>
 
         <h5 class="fw-semibold mt-3">Comments</h5>
+        <div id="sec-comments" class="section-slot"></div>
       </div>
+
     </div>
   </div>
 </div>
@@ -1215,18 +1126,6 @@
 
 <script>
 
-  document.addEventListener('DOMContentLoaded', () => {
-    const platformSelect = document.getElementById('stainingPlatform');
-    const otherInputDiv = document.getElementById('otherStainingPlatformDiv');
-
-    platformSelect.addEventListener('change', () => {
-      if (platformSelect.value === 'Others') {
-        otherInputDiv.classList.remove('d-none');
-      } else {
-        otherInputDiv.classList.add('d-none');
-      }
-    });
-  });
 
   const firstRow = document.querySelector('#statusTableBody tr');
   if (firstRow) firstRow.classList.add('table-success');
@@ -1701,107 +1600,6 @@ document.addEventListener('click', (e) => {
   });
 </script>
 <script>
-  // 1) Your “saved” protocol values by submodule (example values — replace with yours)
-  const protocolDataBySubmodule = {
-    'ER': {
-      stainingPlatform: 'Ventana Benchmark Ultra',
-      cloneType: 'Ready to use',
-      lotNumber: 'L-ER-1029',
-      dilutionFactor: 'RTU',
-      dilutionBuffer: 'Ventana - Antibody Diluent Buffer',
-      incubationTime: 24,
-      incubationTemp: 37
-    },
-    'PR': {
-      stainingPlatform: 'Leica BOND III',
-      cloneType: 'Concentrated',
-      lotNumber: 'PR-7781',
-      dilutionFactor: '1:100',
-      dilutionBuffer: 'Leica - Bond Primary Antibody Diluent',
-      incubationTime: 20,
-      incubationTemp: 25
-    },
-    'Her2/Neu': {
-      stainingPlatform: 'Dako Omnis',
-      cloneType: 'Ready to use',
-      lotNumber: 'H2-5543',
-      dilutionFactor: 'RTU',
-      dilutionBuffer: 'Dako - REAL Antibody Diluent',
-      incubationTime: 30,
-      incubationTemp: 37
-    },
-    'Lymphoma': {
-      stainingPlatform: 'Manual',
-      cloneType: 'Concentrated',
-      lotNumber: 'LY-3302',
-      dilutionFactor: '1:50',
-      dilutionBuffer: 'Cell Marque - Diamond - Antibody Diluent',
-      incubationTime: 15,
-      incubationTemp: 25
-    },
-    'Miscellaneous': {
-      stainingPlatform: 'Thermo Autostainer 36/48/72',
-      cloneType: 'Ready to use',
-      lotNumber: 'MISC-9011',
-      dilutionFactor: 'RTU',
-      dilutionBuffer: 'Diagnostic Biosystem - Primary Antibody Diluent',
-      incubationTime: 18,
-      incubationTemp: 25
-    }
-  };
-
-  // 2) Helper to select option by text
-  function selectByText(selectEl, text) {
-    if (!selectEl) return;
-    const opts = Array.from(selectEl.options);
-    const match = opts.find(o => o.text.trim().toLowerCase() === String(text).trim().toLowerCase());
-    if (match) selectEl.value = match.value;
-  }
-
-  // 3) Fill the modal fields
-  function fillProtocolForm(rec) {
-    selectByText(document.getElementById('stainingPlatform'), rec.stainingPlatform);
-    selectByText(document.getElementById('cloneType'), rec.cloneType);
-    selectByText(document.getElementById('dilutionBuffer'), rec.dilutionBuffer);
-
-    const setVal = (id, v) => { const el = document.getElementById(id); if (el) el.value = v ?? ''; };
-    setVal('lotNumber', rec.lotNumber);
-    setVal('dilutionFactor', rec.dilutionFactor);
-    setVal('incubationTime', rec.incubationTime);
-    setVal('incubationTemp', rec.incubationTemp);
-  }
-
-  // 4) Lock the fields (read-only)
-  function lockProtocolForm() {
-    const ids = [
-      'stainingPlatform','cloneType','dilutionBuffer',
-      'lotNumber','dilutionFactor','incubationTime','incubationTemp'
-    ];
-    ids.forEach(id => {
-      const el = document.getElementById(id);
-      if (!el) return;
-      if (el.tagName === 'SELECT') {
-        el.disabled = true; // dropdown locked
-      } else {
-        el.readOnly = true; // text/number input locked
-      }
-    });
-  }
-
-  // 5) Attach to every “View Protocol” button
-  document.querySelectorAll('[data-bs-target="#protocolModal"]').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const sub =
-        btn.dataset.submodule ||
-        btn.closest('tr')?.children[1]?.textContent?.trim() || 'ER';
-
-      const rec = protocolDataBySubmodule[sub] || {};
-      fillProtocolForm(rec);
-      lockProtocolForm();
-    });
-  });
-</script>
-<script>
   // Delegated events for the IHC reporting table
   const ihcReportingBody = document.getElementById('reportingTableBody');
 
@@ -2104,5 +1902,341 @@ document.addEventListener('click', (e) => {
 
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+
+<script>
+/** ----------------------------------------------
+ *  A) Field renderer primitives
+ * ---------------------------------------------- */
+const makeEl = (tag, cls, attrs={}) => {
+  const el = document.createElement(tag);
+  if (cls) el.className = cls;
+  for (const [k,v] of Object.entries(attrs)) {
+    if (k === 'text') { el.textContent = v; continue; }
+    if (k === 'html') { el.innerHTML = v; continue; }
+    el.setAttribute(k, v);
+  }
+  return el;
+};
+
+function renderField(field, valueMap, onChange) {
+  // field: {id,label,type,placeholder,options,showWhen,hideWhen,asRow}
+  const wrap = makeEl('div', field.asRow ? 'row g-2 mb-3' : 'mb-3');
+
+  const label = makeEl('label', 'form-label fw-semibold', { for: field.id, text: field.label || '' });
+  if (!field.asRow) wrap.appendChild(label);
+
+  let control;
+
+  const currentVal = valueMap?.[field.id] ?? '';
+
+  if (field.type === 'select') {
+    control = makeEl('select', 'form-select', { id: field.id });
+    control.appendChild(makeEl('option', '', { value: '', text: 'Select' }));
+    (field.options || []).forEach(opt => {
+      const o = makeEl('option', '', { value: opt.value ?? opt, text: opt.label ?? opt });
+      control.appendChild(o);
+    });
+    // Try to set by value, fallback to label match if needed
+    control.value = currentVal;
+    if (control.value !== currentVal) {
+      // fallback: match by label text
+      for (const o of control.options) {
+        if (o.text.trim().toLowerCase() === String(currentVal).trim().toLowerCase()) {
+          control.value = o.value;
+          break;
+        }
+      }
+    }
+  }
+
+  control.addEventListener('change', () => onChange?.(field, control.value));
+
+  if (field.asRow) {
+    const colLabel = makeEl('div', 'col-md-4 d-flex align-items-center');
+    colLabel.appendChild(makeEl('div', 'fw-semibold', { text: field.label || '' }));
+    const colCtrl  = makeEl('div', 'col-md-8');
+    colCtrl.appendChild(control);
+    wrap.append(colLabel, colCtrl);
+  } else {
+    wrap.appendChild(control);
+  }
+
+  // simple dependency visibility: showWhen.id === value
+  if (field.showWhen || field.hideWhen) {
+    wrap.dataset.dependsOn = JSON.stringify({ showWhen: field.showWhen || null, hideWhen: field.hideWhen || null });
+    wrap.style.display = 'block'; // will re-evaluate after initial render
+  }
+
+  return wrap;
+}
+
+function resolveDependencies(container) {
+  const deps = container.querySelectorAll('[data-depends-on]');
+  deps.forEach(block => {
+    const { showWhen, hideWhen } = JSON.parse(block.dataset.dependsOn);
+    let visible = true;
+
+    const check = (cond, expectShow) => {
+      if (!cond) return;
+      const ctrl = container.querySelector('#' + cond.id);
+      const val = (ctrl?.value ?? '').toString().trim().toLowerCase();
+      const target = (cond.value ?? '').toString().trim().toLowerCase();
+      const match = (val === target);
+      visible = expectShow ? (visible && match) : (visible && !match);
+    };
+
+    // visible only if showWhen matches
+    if (showWhen) { visible = true; check(showWhen, true); }
+    // hide if hideWhen matches
+    if (hideWhen) { check(hideWhen, false); }
+
+    block.style.display = visible ? '' : 'none';
+  });
+}
+
+/** ----------------------------------------------
+ *  B) Section schemas (what fields appear in each section)
+ *     Reuse section ids = the div ids in HTML (#sec-*)
+ * ---------------------------------------------- */
+const sectionOrder = [
+  'sec-staining-platform',
+  'sec-primary-antibody',
+  'sec-hier',
+  'sec-proteolysis',
+  'sec-visualization',
+  'sec-chromogen',
+  'sec-enhancement',
+  'sec-comments'
+];
+
+// Common option banks
+const STAINING_PLATFORMS = [
+  'Dako Autostainer','Dako Autostainer Link 48+','Dako Omnis',
+  'Leica BOND III','Leica BOND Max','Leica BOND Prime',
+  'Sakura Tissue-Tek Genie',
+  'Thermo Autostainer 36/48/72',
+  'Ventana Benchmark GX','Ventana Benchmark Ultra','Ventana Benchmark Ultra Plus','Ventana Benchmark XT',
+  'Pathnsitu Caliber 30','Manual','Others'
+];
+
+const DILUENTS = [
+  'Biocare Medical  -Da Vinci Green Diluent',
+  'Biocare Medical - Renoir Red Diluent',
+  'Biocare Medical - Renaissance background reducing Diluent',
+  'Biocare Medical - Van Gogh Yellow Diluent',
+  'Cell Marque - Diamond - Antibody Diluent',
+  'Cell Marque - Emeraid - Antibody Diluent',
+  'Dako - Antibody Diluent',
+  'Dako - Antibody Diluent with Background Reducing Components',
+  'Dako - REAL Antibody Diluent',
+  'Diagnostic Biosystem - Primary Antibody Diluent',
+  'Immunologic - Bright Diluent,Green',
+  'Leica - Bond Primary Antibody Diluent',
+  'Ventana - Antibody Diluent',
+  'Ventana - Antibody Diluent with casein',
+  'Ventana - Antibody Diluent Buffer',
+  'Zytomed - Antibody Diluent',
+  'Others','None'
+];
+
+// Base sections used by many submodules
+const BASE_SECTIONS = {
+  'sec-staining-platform': [
+    { id:'stainingPlatform', label:'Select Staining Platform', type:'select', options: STAINING_PLATFORMS.map(v=>({label:v,value:v})) , asRow:true },
+    { id:'otherStainingPlatform', label:'Please specify', type:'text', placeholder:'Enter platform name', showWhen:{ id:'stainingPlatform', value:'Others' } }
+  ],
+  'sec-primary-antibody': [
+    { id:'cloneType', label:'Primary Antibody Clone', type:'select', options:['Ready to use','Concentrated'].map(v=>({label:v,value:v})), asRow:true },
+    { id:'lotNumber', label:'Lot No.', type:'text', placeholder:'Enter lot number', asRow:true },
+    { id:'dilutionFactor', label:'Dilution Factor', type:'text', placeholder:'e.g., RTU or 1:100', asRow:true },
+    { id:'dilutionBuffer', label:'Dilution Buffer', type:'select', options: DILUENTS.map(v=>({label:v,value:v})), asRow:true },
+    { id:'bufferName', label:'Dilution Buffer Name', type:'text', placeholder:'Enter buffer name', showWhen:{ id:'dilutionBuffer', value:'Others' } },
+    { id:'bufferProducer', label:'Dilution Buffer Producer', type:'text', placeholder:'Enter producer name', showWhen:{ id:'dilutionBuffer', value:'Others' } },
+    { id:'productNumber', label:'Dilution Product Number', type:'text', placeholder:'Enter product number', showWhen:{ id:'dilutionBuffer', value:'Others' } },
+    { id:'incubationTime', label:'Incubation Time (minutes)', type:'number', asRow:true },
+    { id:'incubationTemp', label:'Incubation Temperature (°C)', type:'number', asRow:true }
+  ],
+  'sec-hier': [
+    { id:'hierBuffer', label:'HIER Buffer/Target Retrieval', type:'text', placeholder:'e.g., Citrate pH 6 / EDTA pH 9', asRow:true },
+    { id:'hierTemp', label:'HIER Temperature (°C)', type:'number', asRow:true },
+    { id:'hierTime', label:'HIER Time (minutes)', type:'number', asRow:true }
+  ],
+  'sec-proteolysis': [
+    { id:'proteaseType', label:'Protease Type', type:'text', placeholder:'e.g., Protease 1/2/3', asRow:true },
+    { id:'proteaseTime', label:'Protease Time (minutes)', type:'number', asRow:true }
+  ],
+  'sec-visualization': [
+    { id:'visualSystem', label:'Visualization System', type:'text', placeholder:'e.g., HRP Polymer', asRow:true }
+  ],
+  'sec-chromogen': [
+    { id:'chromogen', label:'Chromogen', type:'text', placeholder:'e.g., DAB', asRow:true }
+  ],
+  'sec-enhancement': [
+    { id:'enhancement', label:'Enhancement', type:'text', placeholder:'e.g., Copper sulfate / None', asRow:true }
+  ],
+  'sec-comments': [
+    { id:'comments', label:'Comments', type:'textarea', rows:3, placeholder:'Any notes…' }
+  ]
+};
+
+/** ----------------------------------------------
+ *  C) Submodule-specific overrides (fields add/remove/rename)
+ *     Only list differences from BASE_SECTIONS
+ * ---------------------------------------------- */
+const SUBMODULE_OVERRIDES = {
+  'ER': {
+    // e.g., ER typically: no protease; add clone name
+    add: {
+      'sec-primary-antibody': [
+        { id:'cloneName', label:'Clone Name', type:'text', placeholder:'e.g., SP1/EP1', asRow:true }
+      ]
+    },
+    remove: {
+      'sec-proteolysis': ['proteaseType','proteaseTime'] // hide protease for ER, if not used
+    }
+  },
+  'PR': {
+    add: {
+      'sec-primary-antibody': [
+        { id:'cloneName', label:'Clone Name', type:'text', placeholder:'e.g., 1E2', asRow:true }
+      ]
+    }
+  },
+  'Her2/Neu': {
+    add: {
+      'sec-primary-antibody': [
+        { id:'controlTissue', label:'On-slide Control Tissue', type:'text', placeholder:'e.g., Known 3+ breast', asRow:true }
+      ],
+      'sec-visualization': [
+        { id:'counterstain', label:'Counterstain', type:'text', placeholder:'e.g., Hematoxylin', asRow:true }
+      ]
+    }
+  },
+  'Lymphoma': {
+    add: {
+      'sec-primary-antibody': [
+        { id:'panelNotes', label:'Panel Notes', type:'textarea', rows:3, placeholder:'Brief marker panel notes' }
+      ]
+    }
+  },
+  'Miscellaneous': {
+    // keep base as-is or add light extras
+    add: {}
+  }
+};
+
+/** ----------------------------------------------
+ *  D) Build a concrete schema for a given submodule
+ * ---------------------------------------------- */
+function buildSchemaForSubmodule(submodule) {
+  const schema = JSON.parse(JSON.stringify(BASE_SECTIONS)); // deep-ish copy
+
+  const ov = SUBMODULE_OVERRIDES[submodule] || {};
+  // apply removals
+  if (ov.remove) {
+    for (const [sec, ids] of Object.entries(ov.remove)) {
+      if (!schema[sec]) continue;
+      schema[sec] = schema[sec].filter(f => !ids.includes(f.id));
+    }
+  }
+  // apply additions
+  if (ov.add) {
+    for (const [sec, extra] of Object.entries(ov.add)) {
+      schema[sec] = (schema[sec] || []).concat(extra);
+    }
+  }
+  return schema;
+}
+
+/** ----------------------------------------------
+ *  E) Render into the modal
+ * ---------------------------------------------- */
+function renderProtocolModal(submodule, prefill = {}, readOnly = false) {
+  const body = document.getElementById('protocolBody');
+  if (!body) return;
+
+  // label
+  const titleEl = document.getElementById('protocolModalLabel');
+  if (titleEl) titleEl.textContent = `Protocol — ${submodule}`;
+
+  // schema
+  const schema = buildSchemaForSubmodule(submodule);
+
+  // clear all section slots
+  sectionOrder.forEach(secId => {
+    const slot = document.getElementById(secId);
+    if (slot) slot.innerHTML = '';
+  });
+
+  // render fields
+  const valueMap = {...prefill}; // starting values
+  const onChange = (field, val) => {
+    valueMap[field.id] = val;
+    resolveDependencies(body);
+  };
+
+  for (const secId of sectionOrder) {
+    const slot = document.getElementById(secId);
+    if (!slot || !schema[secId]) continue;
+
+    schema[secId].forEach(field => {
+      slot.appendChild(renderField(field, valueMap, onChange));
+    });
+  }
+
+  // wire dependencies initially
+  resolveDependencies(body);
+
+  // read-only mode
+  if (readOnly) {
+    body.querySelectorAll('input,select,textarea').forEach(el => {
+      if (el.tagName === 'SELECT') el.disabled = true;
+      else el.readOnly = true;
+    });
+  }
+}
+
+/** ----------------------------------------------
+ *  F) Prefill + wiring to your existing buttons
+ * ---------------------------------------------- */
+
+// You already have this map; keep your actual values:
+const protocolDataBySubmodule = window.protocolDataBySubmodule || {
+  'ER':  { stainingPlatform:'Leica BOND III', cloneType:'Ready to use', lotNumber:'L-ER-1029', dilutionFactor:'RTU', dilutionBuffer:'Ventana - Antibody Diluent Buffer', incubationTime:24, incubationTemp:37, cloneName:'SP1' },
+  'PR':  { stainingPlatform:'Leica BOND III', cloneType:'Concentrated', lotNumber:'PR-7781', dilutionFactor:'1:100', dilutionBuffer:'Leica - Bond Primary Antibody Diluent', incubationTime:20, incubationTemp:25, cloneName:'1E2' },
+  'Her2/Neu': { stainingPlatform:'Dako Omnis', cloneType:'Ready to use', lotNumber:'H2-5543', dilutionFactor:'RTU', dilutionBuffer:'Dako - REAL Antibody Diluent', incubationTime:30, incubationTemp:37, controlTissue:'Known 3+ breast', counterstain:'Hematoxylin' },
+  'Lymphoma': { stainingPlatform:'Manual', cloneType:'Concentrated', lotNumber:'LY-3302', dilutionFactor:'1:50', dilutionBuffer:'Cell Marque - Diamond - Antibody Diluent', incubationTime:15, incubationTemp:25, panelNotes:'' },
+  'Miscellaneous': { stainingPlatform:'Thermo Autostainer 36/48/72', cloneType:'Ready to use', lotNumber:'MISC-9011', dilutionFactor:'RTU', dilutionBuffer:'Diagnostic Biosystem - Primary Antibody Diluent', incubationTime:18, incubationTemp:25 }
+};
+
+// Open modal with proper form each time
+document.querySelectorAll('[data-bs-target="#protocolModal"]').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const sub = btn.dataset.submodule?.trim() || 'ER';
+    const prefill = protocolDataBySubmodule[sub] || {};
+    renderProtocolModal(sub, prefill, /*readOnly=*/false);
+  });
+});
+
+// Optional: expose a getter to collect payload on Save/Submit
+window.getProtocolPayload = function() {
+  const body = document.getElementById('protocolBody');
+  const all = {};
+  body.querySelectorAll('input,select,textarea').forEach(el => {
+    // skip hidden by dependency
+    if (el.closest('[style*="display: none"]')) return;
+    all[el.id] = el.value;
+  });
+  return all;
+};
+
+// Example: tie into existing buttons in the modal footer if you wish
+// document.querySelector('#protocolModal .btn.btn-primary')?.addEventListener('click',()=>{
+//   console.log('Protocol Save:', getProtocolPayload());
+// });
+
+</script>
+
 </body>
 </html>
