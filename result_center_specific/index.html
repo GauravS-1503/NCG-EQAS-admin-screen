@@ -53,6 +53,9 @@
         <tbody id="IHCTableBody">
           <tr>
             <td class="text-center"><a href="report.pdf" class="btn btn-sm btn-outline-primary" target="_blank">View</a></td>
+            <td class="text-center">
+                <button class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#protocolModal">View Protocol</button>
+              </td>
             <td class="text-center">27</td>
             <td class="text-center">2025</td>
             <td class="text-center submodule-cell">ER</td>
@@ -64,6 +67,9 @@
             <td class="text-center">
               <a href="reports/ihc_run27_er.pdf" target="_blank" class="btn btn-sm btn-outline-primary">View</a>
             </td>
+            <td class="text-center">
+                <button class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#protocolModal">View Protocol</button>
+              </td>
             <td class="text-center">27</td>
             <td class="text-center">2025</td>
             <td class="text-center submodule-cell">PR</td>
@@ -76,6 +82,9 @@
             <td class="text-center">
               <a href="reports/ihc_run27_er.pdf" target="_blank" class="btn btn-sm btn-outline-primary">View</a>
             </td>
+            <td class="text-center">
+                <button class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#protocolModal">View Protocol</button>
+              </td>
             <td class="text-center">26</td>
             <td class="text-center">2025</td>
             <td class="text-center submodule-cell">Her2/Neu</td>
@@ -89,6 +98,9 @@
             <td class="text-center">
               <a href="reports/ihc_run27_er.pdf" target="_blank" class="btn btn-sm btn-outline-primary">View</a>
             </td>
+            <td class="text-center">
+                <button class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#protocolModal">View Protocol</button>
+              </td>
             <td class="text-center">28</td>
             <td class="text-center">2025</td>
             <td class="text-center submodule-cell">Lymphoma</td>
@@ -102,7 +114,10 @@
             <td class="text-center">
               <a href="reports/ihc_run27_er.pdf" target="_blank" class="btn btn-sm btn-outline-primary">View</a>
             </td>
-            <td class="text-center">29</td>
+            <td class="text-center">
+                <button class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#protocolModal">View Protocol</button>
+              </td>
+            <td class="text-center">29</td> 
             <td class="text-center">2025</td>
             <td class="text-center submodule-cell">Miscellaneous</td>
             <td class="text-center">03/04/2025</td>
@@ -113,6 +128,9 @@
           </tr>
           <tr>
             <td class="text-center"><a href="report.pdf" class="btn btn-sm btn-outline-primary" target="_blank">View</a></td>
+            <td class="text-center">
+                <button class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#protocolModal">View Protocol</button>
+              </td>
             <td class="text-center">28</td>
             <td class="text-center">2026</td>
             <td class="text-center submodule-cell">ER</td>
@@ -123,6 +141,9 @@
           </tr>
           <tr>
             <td class="text-center"><a href="report.pdf" class="btn btn-sm btn-outline-primary" target="_blank">View</a></td>
+            <td class="text-center">
+                <button class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#protocolModal">View Protocol</button>
+              </td>
             <td class="text-center">29</td>
             <td class="text-center">2027</td>
             <td class="text-center submodule-cell">ER</td>
@@ -137,6 +158,9 @@
             <td class="text-center">
               <a href="reports/ihc_run27_er.pdf" target="_blank" class="btn btn-sm btn-outline-primary">View</a>
             </td>
+            <td class="text-center">
+                <button class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#protocolModal">View Protocol</button>
+              </td>
             <td class="text-center">30</td>
             <td class="text-center">2025</td>
             <td class="text-center">TSP</td>
@@ -198,6 +222,458 @@
 
       </div>
       <div id="chartsWrapper" class="row g-3 d-none"></div>
+    </div>
+  </div>
+</div>
+
+
+<div class="modal fade" id="protocolModal" tabindex="-1" aria-labelledby="protocolModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-xl" role="document" style="max-width: 900px;">
+    <div class="modal-content p-0" style="border-radius: 12px; overflow: hidden;">
+      
+      <!-- Dark Blue Header with Close Button -->
+      <div class="d-flex justify-content-between align-items-center" style="background-color: #2f3e63; color: white; padding: 14px 20px;">
+        <h4 class="modal-title mb-0 fw-semibold" id="protocolModalLabel">Protocol</h4>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      
+      <!-- Modal Body -->
+      <div class="modal-body bg-white px-4 py-3">
+        <h5 class="fw-semibold mt-3">Staining Platform</h5>
+        <div class="mb-3">
+          <label for="stainingPlatform" class="form-label">Select Staining Platform</label>
+          <select class="form-select" id="stainingPlatform">
+            <option value="">Select</option>
+            <option>Dako Autostainer</option>
+            <option>Dako Autostainer Link 48+</option>
+            <option>Dako Omnis</option>
+            <option>Leica BOND III</option>
+            <option>Leica BOND Max</option>
+            <option>Leica BOND Prime</option>
+            <option>Sakura Tissue-Tek Genie</option>
+            <option>Thermo Autostainer 36/48/72</option>
+            <option>Ventana Benchmark GX</option>
+            <option>Ventana Benchmark Ultra</option>
+            <option>Ventana Benchmark Ultra Plus</option>
+            <option>Ventana Benchmark XT</option>
+            <option>Pathnsitu Caliber 30</option>
+            <option>Manual</option>
+            <option>Others</option>
+          </select>
+        </div>
+        <div class="mb-3 d-none" id="otherStainingPlatformDiv">
+          <label for="otherStainingPlatform" class="form-label">Please specify</label>
+          <input type="text" class="form-control" id="otherStainingPlatform" placeholder="Enter platform name">
+        </div>
+
+        <h5 class="fw-semibold mt-3">Primary Antibody</h5>
+        <div class="mb-3">
+          <label for="cloneType" class="form-label">Primary Antibody Clone</label>
+          <select class="form-select" id="cloneType">
+            <option value="">Select</option>
+            <option>Ready to use</option>
+            <option>Concentrated</option>
+          </select>
+        </div>
+
+        <!-- 2. Input: Lot No. -->
+        <div class="mb-3">
+          <label for="lotNumber" class="form-label">Lot No.</label>
+          <input type="text" class="form-control" id="lotNumber" placeholder="Enter lot number">
+        </div>
+
+        <!-- 3. Input: Dilution Factor -->
+        <div class="mb-3">
+          <label for="dilutionFactor" class="form-label">Dilution Factor</label>
+          <input type="text" class="form-control" id="dilutionFactor" placeholder="Enter dilution factor">
+        </div>
+
+        <!-- 4. Dropdown: Dilution Buffer -->
+        <div class="mb-3">
+          <label for="dilutionBuffer" class="form-label">Dilution Buffer</label>
+          <select class="form-select" id="dilutionBuffer">
+            <option value="">Select</option>
+            <option>Biocare Medical  -Da Vinci Green Diluent</option>
+            <option>Biocare Medical - Renoir Red Diluent</option>
+            <option>Biocare Medical - Renaissance background reducing Diluent</option>
+            <option>Biocare Medical - Van Gogh Yellow Diluent</option>
+            <option>Cell Marque - Diamond - Antibody Diluent</option>
+            <option>Cell Marque - Emeraid - Antibody Diluent</option>
+            <option>Dako - Antibody Diluent</option>
+            <option>Dako - Antibody Diluent with Background Reducing Components</option>
+            <option>Dako - REAL Antibody Diluent</option>
+            <option>Diagnostic Biosystem - Primary Antibody Diluent</option>
+            <option>Immunologic - Bright Diluent,Green</option>
+            <option>Leica - Bond Primary Antibody Diluent</option>
+            <option>Ventana - Antibody Diluent</option>
+            <option>Ventana - Antibody Diluent with casein</option>
+            <option>Ventana - Antibody Diluent Buffer</option>
+            <option>Zytomed - Antibody Diluent</option>
+            <option>Others</option>
+            <option>None</option>
+          </select>
+        </div>
+
+        <!-- Show only if 'Others' is selected -->
+        <div id="otherDilutionFields" class="d-none">
+          <div class="mb-3">
+            <label for="bufferName" class="form-label">Dilution Buffer Name</label>
+            <input type="text" class="form-control" id="bufferName" placeholder="Enter buffer name">
+          </div>
+          <div class="mb-3">
+            <label for="bufferProducer" class="form-label">Dilution Buffer Producer</label>
+            <input type="text" class="form-control" id="bufferProducer" placeholder="Enter producer name">
+          </div>
+          <div class="mb-3">
+            <label for="productNumber" class="form-label">Dilution Product Number</label>
+            <input type="text" class="form-control" id="productNumber" placeholder="Enter product number">
+          </div>
+        </div>
+
+        <!-- Always shown -->
+        <div class="mb-3">
+          <label for="incubationTime" class="form-label">Incubation Time (minutes)</label>
+          <input type="number" class="form-control" id="incubationTime" placeholder="Enter time in minutes">
+        </div>
+
+        <div class="mb-3">
+          <label for="incubationTemp" class="form-label">Incubation Temperature (°C)</label>
+          <input type="number" class="form-control" id="incubationTemp" placeholder="Enter temperature in °C">
+        </div>
+
+        <div class="row g-3" id="hierSection">
+          <h5 class="fw-semibold mt-3">Epitope Retrieval (HIER)</h5>
+          <div class="mb-1">
+            <select id="hierEnable" class="form-select">
+              <option>Yes</option>
+              <option>No</option>
+            </select>
+          </div>
+
+          <!-- Details hidden when Epitope Retrieval = No -->
+          <div class="col-12" id="hierDetails">
+            <div class="row g-3 mt-0">
+
+              <div class="col-md-6">
+                <label for="hierDevice" class="form-label">Device</label>
+                <select id="hierDevice" class="form-select">
+                  <option value="">Select</option>
+                  <option>On Board/On machine</option>
+                  <option>PT Link /PT module</option>
+                  <option>Microwave Oven</option>
+                  <option>Pressure cooker</option>
+                  <option>Water Bath</option>
+                  <option>Pascal</option>
+                  <option>Declocking chamber</option>
+                  <option>Others (add specify)</option>
+                </select>
+              </div>
+
+              <div class="col-md-6 d-none" id="hierDeviceOtherWrap">
+                <label for="hierDeviceOther" class="form-label">Please specify device</label>
+                <input id="hierDeviceOther" class="form-control" placeholder="Enter device">
+              </div>
+
+              <div class="col-md-6">
+                <label for="hierBuffer" class="form-label">HIER Buffer</label>
+                <select id="hierBuffer" class="form-select">
+                  <option value="">Select</option>
+                  <option>Std - Tris-EDTA pH9 (-)</option>
+                  <option>Std - EDTA pH8 (-)</option>
+                  <option>Std - Citrate pH6 (-)</option>
+                  <option>Ventana - CC1</option>
+                  <option>Ventana - CC2</option>
+                  <option>Ventana Ultra CC1</option>
+                  <option>Ventana Ultra CC2</option>
+                  <option>Dako - TRS High pH</option>
+                  <option>Dako - TRS Low pH</option>
+                  <option>Dako - Citrate Low pH</option>
+                  <option>Leica Bond Epitope Retrival Solution 1</option>
+                  <option>Leica Bond Epitope Retrival Solution 2</option>
+                  <option>Leica BOND - PRIME Epitope Retrival Solution 1</option>
+                  <option>Leica BOND - PRIME Epitope Retreival Solution 2</option>
+                  <option>Sakura -Tissue -Tek Genie High  pH</option>
+                  <option>Sakura -Tissue -Tek Genie Citrate Antigen Retreival</option>
+                  <option>Others,Then Specify</option>
+                </select>
+              </div>
+
+              <div class="col-md-6 d-none" id="hierBufferOtherWrap">
+                <label for="hierBufferOther" class="form-label">Buffer name (if Others)</label>
+                <input id="hierBufferOther" class="form-control" placeholder="Enter buffer name">
+              </div>
+
+              <div class="col-md-6">
+                <label for="hierTime" class="form-label">Efficient Heating Time (Minutes)</label>
+                <input type="number" id="hierTime" class="form-control" placeholder="e.g., 20">
+              </div>
+
+              <div class="col-md-6">
+                <label for="hierTemp" class="form-label">Max. heating temperature (Celcius)</label>
+                <input type="number" id="hierTemp" class="form-control" placeholder="e.g., 97">
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+
+        <!-- Epitope Retrieval (Proteolysis) -->
+        <div class="row g-3" id="proteolysisSection">
+          <h5 class="fw-semibold mt-4">Epitope Retrieval (Proteolysis)</h5>
+          <div class="mb-1">
+            <select id="proteolysisEnable" class="form-select">
+              <option>Yes</option>
+              <option>No</option>
+            </select>
+          </div>
+
+          <!-- Details hidden when proteolysis = No -->
+          <div class="col-12" id="proteolysisDetails">
+            <div class="row g-3 mt-0">
+
+              <div class="col-md-6">
+                <label for="proteolysisEnzyme" class="form-label">Proteolysis Enzyme</label>
+                <select id="proteolysisEnzyme" class="form-select">
+                  <option value="">Select</option>
+                  <option>Dako - Pepsin</option>
+                  <option>Dako - Proteinase K</option>
+                  <option>Dako - Proteinase K, Ready-To-Use</option>
+                  <option>Dako - Proteinase K, Dako Real</option>
+                  <option>Dako - Proteolytic Enzyme, Ready-To-Use</option>
+                  <option>Leica - Bond, Enzyme Pretreatment Kit</option>
+                  <option>Ventana - Protease 1</option>
+                  <option>Ventana - Protease 2</option>
+                  <option>Ventana - Protease 3</option>
+                  <option>Sakura - Tissue-Tek-enie Proteinase K</option>
+                  <option>Others (add specify)</option>
+                </select>
+              </div>
+
+              <div class="col-md-6 d-none" id="proteolysisEnzymeOtherWrap">
+                <label for="proteolysisEnzymeOther" class="form-label">Please specify enzyme</label>
+                <input id="proteolysisEnzymeOther" class="form-control" placeholder="Enter Enzyme Name">
+              </div>
+
+            
+
+              <div class="col-md-6">
+                <label for="proteolysisTime" class="form-label">Proteolysis Time (Minutes)</label>
+                <input type="number" id="proteolysisTime" class="form-control" placeholder="e.g., 20">
+              </div>
+
+              <div class="col-md-6">
+                <label for="proteolysisTemp" class="form-label">Proteolysis temperature (Celcius)</label>
+                <input type="number" id="proteolysisTemp" class="form-control" placeholder="e.g., 97">
+              </div>
+
+              <div class="col-md-6">
+                <label for="proteolysisheatingtime" class="form-label">Heating Time (Minutes)</label>
+                <input type="number" id="proteolysisheatingtime" class="form-control" placeholder="e.g., 20">
+              </div>
+
+              <div class="col-md-6">
+                <label for="proteolysisheatingtemp" class="form-label">Heating temperature (Celcius)</label>
+                <input type="number" id="proteolysisheatingtemp" class="form-control" placeholder="e.g., 97">
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+        
+        <h5 class="fw-semibold mt-3">Visualization Systm</h5>
+
+        <div id="vizAuto" class="row g-3">
+          <div class="mb-3">
+            <label for="vizSystemAuto" class="form-label">Visualization System</label>
+            <select id="vizSystemAuto" class="form-select">
+              <option value="">Select</option>
+              <option>OptiView DAB IHC Detection Kit</option>
+              <option>UltraView Universal DAB Detection Kit</option>
+              <option>UltraView Universal Alkaline Phosphated Red Detection Kit</option>
+              <option>Iview DAB Detection kit</option>
+              <option>EnVison+,Mouse</option>
+              <option>EnVison+,Rabbit</option>
+              <option>EnVision FLEX</option>
+              <option>REAL Envision Rabbit/ Mouse</option>
+              <option>Tissue - Tek Genie Pro Detection Kit DAB</option>
+              <option>Tissue - Tek Genie Pro AP Red Detection Kit</option>
+              <option>Bond Refine</option>
+              <option>Bond Plymer Refine Red Detection</option>
+              <option>BOND-PRIME Polymer DAB Detection System</option>
+              <option>BOND-PRIME Polymer AP Detection System</option>
+              <option>Others,Then Specify</option>
+            </select>
+          </div>
+          <div class="mb-3 d-none" id="vizSystemAutoOtherWrap">
+            <input id="vizSystemAutoOther" class="form-control" placeholder="Specify Visualization System">
+          </div>
+
+          <div class="mb-3">
+            <label for="vizLinker" class="form-label">Linker</label>
+            <select id="vizLinker" class="form-select">
+              <option>Linker Mouse</option>
+              <option>Linker Rabbit</option>
+              <option>None</option>
+              <option>Others,Then Specify</option>
+            </select>
+          </div>
+          <div class="mb-3 d-none" id="vizLinkerOtherWrap">
+            <input id="vizLinkerOther" class="form-control" placeholder="Specify Linker">
+          </div>
+
+          <div class="mb-3">
+            <label for="vizAmplification" class="form-label">Amplification</label>
+            <select id="vizAmplification" class="form-select">
+              <option>OptiView Amplification Kit</option>
+              <option>UltraView/iView Amplification Kit</option>
+              <option>None</option>
+              <option>Others,Then Specify</option>
+            </select>
+          </div>
+          <div class="mb-3 d-none" id="vizAmplificationOtherWrap">
+            <input id="vizAmplificationOther" class="form-control" placeholder="Specify Amplification">
+          </div>
+
+          <div class="row g-3">
+            <div class="col-md-4"><input id="ampName" class="form-control" placeholder="Amplification Name"></div>
+            <div class="col-md-4"><input id="ampProducer" class="form-control" placeholder="Amplification Producer"></div>
+            <div class="col-md-4"><input id="ampProductNumber" class="form-control" placeholder="Amplification Product Number"></div>
+            <div class="col-md-4"><input id="incubationLinker" type="number" class="form-control" placeholder="Incubation Time linker (min)"></div>
+            <div class="col-md-4"><input id="incubationAmplification" type="number" class="form-control" placeholder="Incubation Time amplification (min)"></div>
+            <div class="col-md-4"><input id="incubationPolymer" type="number" class="form-control" placeholder="Incubation Time polymer (min)"></div>
+            <div class="col-md-4"><input id="incubationTempPolymer" type="number" class="form-control" placeholder="Incubation Temperature (°C)"></div>
+          </div>
+        </div>
+
+        <!-- Manual/Others -->
+        <div id="vizManual" class="d-none">
+          <div class="mb-3">
+            <label for="vizMethod" class="form-label">Method</label>
+            <select id="vizMethod" class="form-select">
+              <option>2- Layer Technique</option>
+              <option>3- Layer Technique</option>
+              <option>Biotin-Based</option>
+              <option>None</option>
+            </select>
+          </div>
+
+          <div class="mb-3">
+            <label for="vizSystemManual" class="form-label">Visualization System - Name</label>
+            <select id="vizSystemManual" class="form-select">
+              <option>OptiView DAB IHC Detection Kit</option>
+              <option>UltraView Universal DAB Detection Kit</option>
+              <option>UltraView Universal Alkaline Phosphated Red Detection Kit</option>
+              <option>Iview DAB Detection kit</option>
+              <option>EnVison+,Mouse</option>
+              <option>EnVison+,Rabbit</option>
+              <option>EnVision FLEX</option>
+              <option>REAL Envision Rabbit/ Mouse</option>
+              <option>Tissue - Tek Genie Pro Detection Kit DAB</option>
+              <option>Tissue - Tek Genie Pro AP Red Detection Kit</option>
+              <option>Bond Refine</option>
+              <option>Bond Plymer Refine Red Detection</option>
+              <option>BOND-PRIME Polymer DAB Detection System</option>
+              <option>BOND-PRIME Polymer AP Detection System</option>
+              <option>Others,Then Specify</option>
+            </select>
+          </div>
+          <div class="mb-3 d-none" id="vizSystemManualOtherWrap">
+            <input id="vizSystemManualOther" class="form-control" placeholder="Specify Visualization System">
+          </div>
+
+          <div class="mb-3">
+            <label for="vizProducer" class="form-label">Visualization System - Producer</label>
+            <select id="vizProducer" class="form-select">
+              <option>DAB UV KITS</option>
+              <option>DAB OV KITS</option>
+              <option>DAKO FLEX KITS</option>
+              <option>Other (please specify)</option>
+            </select>
+          </div>
+          <div class="mb-3 d-none" id="vizProducerOtherWrap">
+            <input id="vizProducerOther" class="form-control" placeholder="Specify Producer">
+          </div>
+
+          <div class="row g-3">
+            <div class="col-md-4"><input id="vizProductNumber" class="form-control" placeholder="Visualization System - Product Number"></div>
+            <div class="col-md-4"><input id="vizIncubationTime" type="number" class="form-control" placeholder="Incubation Time (min)"></div>
+            <div class="col-md-4"><input id="vizIncubationTemp" type="number" class="form-control" placeholder="Incubation Temperature (°C)"></div>
+          </div>
+        </div>
+
+        <h5 class="fw-semibold mt-3">Chromogen</h5>
+          <div id="chromogen" class="row g-3">
+            <div class="mb-3">
+              <label for="chromotype" class="form-label">Chromogen</label>
+              <select id="chromotype" class="form-select">
+                <option value="">Select</option>
+                <option>DAB</option>
+                <option>Dako-HRP Magenta Substrate Chromogen System</option>
+                <option>UltraView DAB Detection kit</option>
+                <option>UltraView/iView Amplification Kit </option>
+                <option>OptiView Amplification Kit</option>
+                <option>Others,Then Specify</option>
+              </select>
+            </div>
+          </div>
+          <div class="row g-3 d-none" id="chromoOtherWrap">
+            <div class="col-md-6">
+              <input id="chromoName" class="form-control" placeholder="Chromogen Name">
+            </div>
+            <div class="col-md-6">
+              <input id="chromoProducer" class="form-control" placeholder="Chromogen Producer">
+            </div>
+            <div class="col-md-6">
+              <input id="chromoProductNumber" class="form-control" placeholder="Chromogen Product Number">
+            </div>
+            <div class="col-md-6">
+              <input id="chromoTime" type="number" class="form-control" placeholder="Incubation Time (minutes)">
+            </div>
+            <div class="col-md-6">
+              <input id="chromoTemp" type="number" class="form-control" placeholder="Incubation Temperature (°C)">
+            </div>
+          </div>  
+
+        
+
+        <h5 class="fw-semibold mt-3">Enhancement</h5>
+        <div id="enhancementSection" class="row g-3">
+          <div class="mb-3">
+            <label for="enhancementSelect" class="form-label">Enhancement</label>
+            <select id="enhancementSelect" class="form-select">
+              <option value="">Select</option>
+              <option>CuSO4</option>
+              <option>Others</option>
+              <option>None</option>
+            </select>
+          </div>
+
+          <!-- Only shown when Enhancement = Others -->
+          <div class="col-md-6 d-none" id="enhanceOtherWrap">
+            <label for="enhanceOther" class="form-label">Enhancement (others)</label>
+            <input id="enhanceOther" class="form-control" placeholder="Please Specify">
+          </div>
+        </div>
+
+        <h5 class="fw-semibold mt-3">Scoring</h5>
+        <div id="scoringSection" class="row g-3">
+          <div class="mb-3">
+            <select id="scoringSelect" class="form-select">
+              <option value="">Select</option>
+              <option>ALLRED Score</option>
+              <option>H-Score</option>
+            </select>
+          </div>
+        </div>  
+        
+
+        <h5 class="fw-semibold mt-3">Comments (Tissues provided as control)</h5>
+        <div style="max-width: 500px; width: 100%;">
+          <textarea id="comments" class="form-control" rows="3" placeholder="Comments added by participants.."></textarea>
+        </div>
+      </div>
     </div>
   </div>
 </div>
@@ -305,6 +781,7 @@
       tableHeader.innerHTML = `
         <tr>
           <th>View Reports</th>
+          <th>View Protocol</th>
           <th>Run No</th>
           <th>Year</th>
           <th>
@@ -329,6 +806,7 @@
       tableHeader.innerHTML = `
         <tr>
           <th>View Reports</th>
+          <th>View Protocol </th>
           <th>Run No</th>
           <th>Year</th>
           <th>Submodule</th>
