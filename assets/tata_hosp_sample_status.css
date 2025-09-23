@@ -38,3 +38,46 @@
   display: none; /* hidden initially */
 }
 
+
+/* --- TSP modal: enable horizontal scroll --- */
+#modal-TSP .modal-dialog{
+  max-width: 95vw;                 /* give the modal more room */
+}
+
+#modal-TSP .modal-content{
+  overflow: visible !important;    /* override inline overflow:hidden */
+}
+
+#modal-TSP .modal-body{
+  padding: 0.75rem 0.75rem 1rem;
+}
+
+/* the horizontal scroller */
+#modal-TSP .table-wrap{
+  width: 100%;
+  overflow-x: auto;                /* <- scrollbar appears here */
+  -webkit-overflow-scrolling: touch;
+}
+
+/* make content wider than the container so scrolling is needed */
+#modal-TSP .table-wrap > table{
+  min-width: 1200px;               /* adjust as needed */
+}
+
+/* optional: thinner horizontal scrollbar */
+#modal-TSP .table-wrap::-webkit-scrollbar{ height: 8px; }
+#modal-TSP .table-wrap::-webkit-scrollbar-thumb{ background: #bbb; border-radius: 8px; }
+
+/* Force table to respect defined column widths */
+#modal-TSP table {
+  table-layout: fixed;
+  width: 100%;
+}
+
+/* Narrow down the "Points Assessed" column */
+#modal-TSP th:nth-child(2),
+#modal-TSP td:nth-child(2) {
+  width: 220px;   /* adjust to taste */
+  word-wrap: break-word;   /* wrap text */
+  white-space: normal;     /* allow multi-line */
+}
