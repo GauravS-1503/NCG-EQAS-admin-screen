@@ -479,7 +479,7 @@
             <tr>
               <td>27</td><td>TSP</td><td>01/10/2025</td>
               <td class="text-center">
-                <button class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#protocolModal">View Protocol</button>
+                <button class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#protocolModalTSP" data-bs-target="#protocolModal">View Protocol</button>
               </td>
               <td class="text-center enter-results">
                 <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#resultModal1">
@@ -1119,6 +1119,215 @@
         <div style="max-width: 500px; width: 100%;">
           <textarea id="comments" class="form-control" rows="3" placeholder="Comments added by participants.."></textarea>
         </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+<div class="modal fade" id="protocolModalTSP" tabindex="-1" aria-labelledby="protocolModalLabelTSP" aria-hidden="true">
+  <div class="modal-dialog modal-xl" role="document" style="max-width: 900px;">
+    <div class="modal-content p-0" style="border-radius: 12px; overflow: hidden;">
+      
+      <!-- Dark Blue Header with Close Button -->
+      <div class="d-flex justify-content-between align-items-center" style="background-color: #2f3e63; color: white; padding: 14px 20px;">
+        <h4 class="modal-title mb-0 fw-semibold" id="protocolModalLabelTSP">Protocol - TSP (Run 27)</h4>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      
+      <!-- Modal Body -->
+      <div class="modal-body bg-white px-4 py-3">
+        <h5 class="fw-semibold mt-3">Documentation</h5>
+          <div class="mb-3">
+            <label for="specimen" class="form-label">Does the laboratory have a policy of documenting the time of removal of specimen / Biopsy?</label>
+            <input type="text" class="form-control" id="specimen" placeholder="Enter Answer">
+          </div>
+          <div class="mb-3">
+            <label for="specimentime" class="form-label">Does the laboratory document time of receipt of specimen</label>
+            <input type="text" class="form-control" id="specimentime" placeholder="Enter Answer">
+          </div>
+
+        <!--Fixation-->  
+        <h5 class="fw-semibold mt-3">Fixation</h5>
+          <div class="mb-3">
+            <label for="fixuse" class="form-label">a) Fixative used</label>
+            <input type="text" class="form-control" id="fixuse" placeholder="Enter Fixative used">
+          </div>
+          <div class="mb-3">
+            <label for="fixph" class="form-label">b) pH of Fixative</label>
+            <input type="text" class="form-control" id="fixph" placeholder="Enter pH of Fixative">
+          </div>  
+
+        <!--Tissue Processor-->   
+        <h5 class="fw-semibold mt-3">Tissue Processor</h5>
+          <div class="mb-3">
+            <label for="procType" class="form-label">Type</label>
+            <select class="form-select" id="procType">
+              <option value="">Select</option>
+              <option>Automated</option>
+              <option>Manual</option>
+            </select>
+          </div>
+
+          <div class="mb-3">
+            <label for="makmod" class="form-label">a) Tissue Processor - Maker and model</label>
+            <input type="text" class="form-control" id="makmod" placeholder="Enter Make and Model">
+          </div>
+          <div class="mb-3">
+            <label for="tech" class="form-label">b) Technology used in processor: (Eg. Microwave, pumpin / pumpout)</label>
+            <input type="text" class="form-control" id="tech" placeholder="Enter technology used">
+          </div>  
+          <div class="mb-3">
+            <label for="rgtgrade" class="form-label">c) Grade of reagent used for processing</label>
+            <input type="text" class="form-control" id="rgtgrade" placeholder="Enter reagent grade">
+          </div>
+          <div class="mb-3">
+            <label for="casettes" class="form-label">d) Number of cassettes loaded in machine (per machine) everyday</label>
+            <input type="text" class="form-control" id="casettes" placeholder="Enter reagent grade">
+          </div>
+          <div class="mb-3">
+            <label for="frequency" class="form-label">e) Frequency of changing reagents in the Tissue Processor In days</label>
+            <input type="text" class="form-control" id="frequency" placeholder="Enter frequency in days">
+          </div>
+          <div class="mb-3">
+            <label for="temptime" class="form-label">f) Temperature and timing of formalin in processor</label>
+            <input type="text" class="form-control" id="temptime" placeholder="Enter time and temperature">
+          </div>
+
+
+        <!--Dehydration-->  
+        <h5 class="fw-semibold mt-3">Dehydration</h5>
+          <div class="mb-3">
+            <label for="grrgt" class="form-label">a) Dehydration- are you using graded reagent? (name of the reagent with percentage)</label>
+            <input type="text" class="form-control" id="grrgt" placeholder="Enter reagent name with percentage">
+          </div>
+          <div class="mb-3">
+            <label for="temptimergt" class="form-label">b) Dehydration - Specify the temperature and timing of reagent.</label>
+            <input type="text" class="form-control" id="temptimergt" placeholder="Enter temperature and time">
+          </div>
+        
+        <!--Clearing-->
+        <h5 class="fw-semibold mt-3">Clearing</h5>
+          <div class="mb-3">
+            <label for="clearrgt" class="form-label">a) Clearing - Name of the reagent used</label>
+            <input type="text" class="form-control" id="clearrgt" placeholder="Enter reagent name">
+          </div>
+          <div class="mb-3">
+            <label for="cleartime" class="form-label">b) Clearing - Specify the temperature and timing of reagent.</label>
+            <input type="text" class="form-control" id="cleartime" placeholder="Enter temperature and time">
+          </div>
+        
+          
+        <!--Infiltration-->
+        <h5 class="fw-semibold mt-3">Infiltration</h5>
+          <div class="mb-3">
+            <label for="infrgt" class="form-label">a) Infiltration – Brand name of the paraffin</label>
+            <input type="text" class="form-control" id="infrgt" placeholder="Enter paraffin name">
+          </div>
+
+          <div class="mb-3">
+            <label for="inftime" class="form-label">b) Infiltration - Specify the temperature of retort and timing</label>
+            <input type="text" class="form-control" id="inftime" placeholder="Enter temperature and time">
+          </div>
+          
+        
+        <!--Embedding-->
+        <h5 class="fw-semibold mt-3">Embedding</h5>
+
+
+        <div class="mb-3">
+            <label for="makemod" class="form-label">a) Make and model of the embedding  Machine </label>
+            <input type="text" class="form-control" id="makemod" placeholder="Enter make and model">
+          </div>
+          <div class="mb-3">
+            <label for="embedproc" class="form-label">b) Embedding - Manual or Automatic</label>
+            <input type="text" class="form-control" id="embedproc" placeholder="Enter embedding process">
+          </div>
+
+          <div class="mb-3">
+            <label for="embedtemp" class="form-label">c) Temperature of wax dispenser of embedding machine (Melting point)</label>
+            <input type="text" class="form-control" id="embedtemp" placeholder="Enter temperature">
+          </div>
+
+          <div class="mb-3">
+            <label for="waxType" class="form-label">Type of wax used</label>
+            <select class="form-select" id="waxType">
+              <option value="">Select</option>
+              <option>Paraffin</option>
+              <option>Paraplast</option>
+            </select>
+          </div>
+
+          <div class="mb-3">
+            <label for="waxmp" class="form-label">e) Wax melting point</label>
+            <input type="text" class="form-control" id="waxmp" placeholder="Enter melting point">
+          </div>
+
+          <div class="mb-3">
+            <label for="embedding" class="form-label">Embedding Type</label>
+            <select class="form-select" id="embedding">
+              <option value="">Select</option>
+              <option>Wet</option>
+              <option>Dry</option>
+            </select>
+          </div>
+
+
+          <!--Microtomy-->
+          <div class="mb-3">
+            <label for="microused" class="form-label">a) Microtome used</label>
+            <input type="text" class="form-control" id="microused" placeholder="Enter Microtome used">
+          </div>
+          <div class="mb-3">
+            <label for="makemodmicro" class="form-label">b) Make and model of the microtome</label>
+            <input type="text" class="form-control" id="makemodmicro" placeholder="Enter make and model">
+          </div>  
+          <div class="mb-3">
+            <label for="microblade" class="form-label">c) Brand of the microtome blade</label>
+            <input type="text" class="form-control" id="microblade" placeholder="Enter Brand Name">
+          </div>
+          <div class="mb-3">
+            <label for="secthick" class="form-label">d) Section thickness (µm)</label>
+            <input type="text" class="form-control" id="secthick" placeholder="Enter thickness">
+          </div>
+          <div class="mb-3">
+            <label for="microbladetype" class="form-label">e) Type of microtome blade</label>
+            <input type="text" class="form-control" id="microbladetype" placeholder="Enter Type of blade">
+          </div>
+          <div class="mb-3">
+            <label for="dispblade" class="form-label">f) Type of disposable blade</label>
+            <select class="form-select" id="dispblade">
+              <option value="">Select</option>
+              <option>Low Profile</option>
+              <option>High Profile</option>
+            </select>
+          </div>
+
+
+        <!--Mounting-->  
+        <h5 class="fw-semibold mt-3">Mounting</h5>
+          <div class="mb-3">
+            <label for="mount" class="form-label">a) Mounting done by automated or manual</label>
+            <input type="text" class="form-control" id="mount" placeholder="Enter mounting method">
+          </div>
+          <div class="mb-3">
+            <label for="mountmedia" class="form-label">b) Type and brand of mounting media</label>
+            <input type="text" class="form-control" id="mountmedia" placeholder="Enter type and brand">
+          </div>
+          <div class="mb-3">
+            <label for="mountph" class="form-label">c) Mounting media pH</label>
+            <input type="text" class="form-control" id="mountph" placeholder="Enter media pH">
+          </div>    
+
+
+
+      
+
+        
+
+
       </div>
     </div>
   </div>
@@ -2273,7 +2482,6 @@
               </td>
               <td class = "select" ALIGN="center">      
                   <select class="form-select">
-                        <option>Select</option>        
                         <option>Negative</option>
                         <option>3/8</option>
                         <option>4/8</option>
@@ -5763,7 +5971,7 @@
                 <table class="table table-sm table-bordered align-middle mb-0" id="mdsrSummary">
                   <tbody>
                     <tr>
-                      <th style="width: 40%;">Histologic Diagnosis (Drop Down)</th>
+                      <th style="width: 40%;">Histological Diagnosis</th>
                       <td>
                         <select id="histologicDx" class="form-select form-select-sm">
                           <option value="">Choose...</option>
