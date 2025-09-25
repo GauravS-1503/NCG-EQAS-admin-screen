@@ -69,3 +69,4 @@
 #modal-TSP td.eqas {
   width: 150px;
 }
+.modal:not(.show) { display: none !important; }
