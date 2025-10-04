@@ -522,7 +522,7 @@
         <div class="d-flex justify-content-between align-items-center flex-wrap mb-3">
           <div class="bucket-tabs d-flex gap-3 flex-wrap mb-2 mb-md-0">
             <div class="bucket-tab active-tab" data-status="he-status" onclick="setActiveTabHE(this)">Status</div>
-            <div class="bucket-tab" data-status="he-examine" onclick="setActiveTabHE(this)">Assign Slides</div>
+            <!-- <div class="bucket-tab" data-status="he-examine" onclick="setActiveTabHE(this)">Assign Slides</div> -->
             <div class="bucket-tab" data-status="he-reporting" onclick="setActiveTabHE(this)">Reporting</div>
           </div>
         </div>
@@ -7157,13 +7157,29 @@ document.addEventListener('click', (e) => {
       const tbody = modalEl.querySelector('#mdsrTable tbody');
       const pointsTotalEl = modalEl.querySelector('#pointsTotal');
 
-      // Build 15 rows
+      /* === ADD THESE: word lists + helper === */
+      const HP_TERMS = [
+        "Tumor size","Margins","Necrosis","Mitotic rate","LVI","PNI","Grade","Stage",
+        "Ki-67","p53","ER status","PR status","HER2","Adenocarcinoma","Dysplasia",
+        "Granuloma","Papillary","Mucin","Spindle cells","Signet ring"
+      ];
+      const EXPECTED_TERMS = [
+        "Present","Absent","Positive","Negative","Low grade","High grade","Free",
+        "Involved","Adequate","Atypia","Fibrosis","Ulceration","Metastasis","Inflammation"
+      ];
+      const pick = arr => arr[Math.floor(Math.random() * arr.length)];
+      /* ====================================== */
+
+      // Build 15 rows (prefilled first two inputs)
       for (let i = 1; i <= 15; i++) {
+        const v1 = pick(HP_TERMS);       // Minimum Data Set Reporting Points
+        const v2 = pick(EXPECTED_TERMS); // Report Expected
+
         const tr = document.createElement('tr');
         tr.innerHTML = `
           <td class="text-muted">${i}</td>
-          <td><input class="form-control form-control-sm" name="mdsr_point_${i}" placeholder="Free Text"></td>
-          <td><input class="form-control form-control-sm" name="report_expected_${i}" placeholder="Free Text"></td>
+          <td><input class="form-control form-control-sm" name="mdsr_point_${i}" placeholder="Free Text" value="${v1}"></td>
+          <td><input class="form-control form-control-sm" name="report_expected_${i}" placeholder="Free Text" value="${v2}"></td>
           <td>
             <select class="form-select form-select-sm" name="reported_by_${i}">
               <option value="">Choose...</option><option>Yes</option><option>No</option>
@@ -7183,7 +7199,7 @@ document.addEventListener('click', (e) => {
         tbody.appendChild(tr);
       }
 
-      // Live total for Points + optional prefill of "Total number of points by center"
+      // Live total for Points
       function recomputeTotal() {
         let sum = 0;
         tbody.querySelectorAll('select.points').forEach(s => {
@@ -7192,14 +7208,12 @@ document.addEventListener('click', (e) => {
         });
         pointsTotalEl.textContent = sum.toFixed(1);
       }
-
-      // keep these
       tbody.addEventListener('change', e => {
         if (e.target.matches('select.points')) recomputeTotal();
       });
       recomputeTotal();
 
-      // Exporter used by Save/Submit
+      // Exporter used by Save/Submit (unchanged)
       window.getMdsrData = function () {
         const rows = [];
         for (let i = 1; i <= 15; i++) {
