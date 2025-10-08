@@ -1308,18 +1308,245 @@
 
         <!--Mounting-->  
         <h5 class="fw-semibold mt-3">Mounting</h5>
-          <div class="mb-3">
-            <label for="mount" class="form-label">a) Mounting done by automated or manual</label>
-            <input type="text" class="form-control" id="mount" placeholder="Enter mounting method">
-          </div>
-          <div class="mb-3">
-            <label for="mountmedia" class="form-label">b) Type and brand of mounting media</label>
-            <input type="text" class="form-control" id="mountmedia" placeholder="Enter type and brand">
-          </div>
-          <div class="mb-3">
-            <label for="mountph" class="form-label">c) Mounting media pH</label>
-            <input type="text" class="form-control" id="mountph" placeholder="Enter media pH">
-          </div>    
+        <div class="mb-3">
+          <label for="mount" class="form-label">a) Mounting done by automated or manual</label>
+          <input type="text" class="form-control" id="mount" placeholder="Enter mounting method">
+        </div>
+        <div class="mb-3">
+          <label for="mountmedia" class="form-label">b) Type and brand of mounting media</label>
+          <input type="text" class="form-control" id="mountmedia" placeholder="Enter type and brand">
+        </div>
+        <div class="mb-3">
+          <label for="mountph" class="form-label">c) Mounting media pH</label>
+          <input type="text" class="form-control" id="mountph" placeholder="Enter media pH">
+        </div>
+          
+        <!-- ===================== Processing Details ===================== -->
+        <h5 class="fw-semibold mt-4">Processing Details</h5>
+        <div class="table-responsive">
+          <table class="table table-bordered table-sm align-middle">
+            <thead class="table-light">
+              <tr>
+                <th style="min-width:180px;">Step</th>
+                <th style="min-width:180px;">Reagent Name</th>
+                <th style="width:130px;">% of Reagent</th>
+                <th style="width:190px;">Brand of Reagent</th>
+                <th style="width:140px;">Time duration (min)</th>
+                <th style="width:120px;">Temp (°C)</th>
+                <th style="width:140px;">Total no. of changes</th>
+                <th style="width:170px;">Total duration (hrs)</th>
+              </tr>
+            </thead>
+            <tbody id="procTblBody">
+              <tr>
+                <td>Fixation</td>
+                <td>
+                  <select class="form-select form-select-sm">
+                    <option value="">Select</option>
+                    <option selected>Formalin</option>
+                    <option>Neutral Buffered Formalin</option>
+                    <option>Other</option>
+                  </select>
+                </td>
+                <td><input class="form-control form-control-sm" placeholder="%"></td>
+                <td><input class="form-control form-control-sm" placeholder="Free text"></td>
+                <td><input class="form-control form-control-sm proc-min" type="number" min="0"></td>
+                <td><input class="form-control form-control-sm" type="number" min="0"></td>
+                <td><input class="form-control form-control-sm" type="number" min="0"></td>
+                <td><input class="form-control form-control-sm proc-hrs" type="number" step="0.1" min="0"></td>
+              </tr>
+              <tr>
+                <td>Dehydration</td>
+                <td>
+                  <select class="form-select form-select-sm">
+                    <option value="">Select</option>
+                    <option selected>Isopropanol</option>
+                    <option>Ethanol</option>
+                    <option>Acetone</option>
+                    <option>Chloroform</option>
+                    <option>Others</option>
+                  </select>
+                </td>
+                <td><input class="form-control form-control-sm" placeholder="%"></td>
+                <td><input class="form-control form-control-sm" placeholder="Free text"></td>
+                <td><input class="form-control form-control-sm proc-min" type="number" min="0"></td>
+                <td><input class="form-control form-control-sm" type="number" min="0"></td>
+                <td><input class="form-control form-control-sm" type="number" min="0"></td>
+                <td><input class="form-control form-control-sm proc-hrs" type="number" step="0.1" min="0"></td>
+              </tr>
+              <tr>
+                <td>Clearing</td>
+                <td>
+                  <select class="form-select form-select-sm">
+                    <option value="">Select</option>
+                    <option selected>Xylene</option>
+                    <option>Others</option>
+                  </select>
+                </td>
+                <td><input class="form-control form-control-sm" placeholder="%"></td>
+                <td><input class="form-control form-control-sm" placeholder="Free text"></td>
+                <td><input class="form-control form-control-sm proc-min" type="number" min="0"></td>
+                <td><input class="form-control form-control-sm" type="number" min="0"></td>
+                <td><input class="form-control form-control-sm" type="number" min="0"></td>
+                <td><input class="form-control form-control-sm proc-hrs" type="number" step="0.1" min="0"></td>
+              </tr>
+              <tr>
+                <td>Infiltration</td>
+                <td>
+                  <select class="form-select form-select-sm">
+                    <option value="">Select</option>
+                    <option selected>Parrafin Wax</option>
+                    <option>Others</option>
+                  </select>
+                </td>
+                <td><input class="form-control form-control-sm" placeholder="%"></td>
+                <td><input class="form-control form-control-sm" placeholder="Free text"></td>
+                <td><input class="form-control form-control-sm proc-min" type="number" min="0"></td>
+                <td><input class="form-control form-control-sm" type="number" min="0"></td>
+                <td><input class="form-control form-control-sm" type="number" min="0"></td>
+                <td><input class="form-control form-control-sm proc-hrs" type="number" step="0.1" min="0"></td>
+              </tr>
+              <tr>
+                <td colspan="7" class="text-end fw-semibold">Total time of processing (hours)</td>
+                <td><input id="procTotalHrs" class="form-control form-control-sm" type="number" step="0.1" min="0"></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- ===================== H&E Staining Details ===================== -->
+        <h5 class="fw-semibold mt-4">H&amp;E Staining Details</h5>
+        <div class="table-responsive">
+          <table class="table table-bordered table-sm align-middle">
+            <tbody>
+              <tr>
+                <th style="width:25%;">a) Hematoxylin and Eosin staining</th>
+                <td>
+                  <select class="form-select form-select-sm">
+                    <option value="">Select</option>
+                    <option>Manual</option>
+                    <option>Automated</option>
+                  </select>
+                </td>
+              </tr>
+              <tr><th>b) Make &amp; model of H&amp;E stainer</th><td><input class="form-control form-control-sm" placeholder="Free Text"></td></tr>
+              <tr><th>c) Brand of hematoxylin</th><td><input class="form-control form-control-sm" placeholder="Free Text"></td></tr>
+              <tr><th>d) Colour index of hematoxylin</th><td><input class="form-control form-control-sm" placeholder="Free Text"></td></tr>
+              <tr><th>e) Brand of eosin</th><td><input class="form-control form-control-sm" placeholder="Free Text"></td></tr>
+              <tr>
+                <th>f) Eosin type &amp; pH</th>
+                <td class="d-flex gap-2">
+                  <select class="form-select form-select-sm" style="max-width:220px;">
+                    <option value="">Select</option>
+                    <option selected>Aqueous</option>
+                    <option>Alcoholic</option>
+                    <option>Others</option>
+                  </select>
+                  <input class="form-control form-control-sm" placeholder="pH">
+                </td>
+              </tr>
+              <tr><th>g) Bluing reagent used</th><td><input class="form-control form-control-sm" placeholder="e.g., Tap water, Ammonia water, Scott's"></td></tr>
+              <tr>
+                <th>h) Type of hematoxylin used</th>
+                <td>
+                  <select class="form-select form-select-sm">
+                    <option value="">Select</option>
+                    <option selected>Harris Hematoxylin</option>
+                    <option>Mayer’s Hematoxylin</option>
+                    <option>Enrich Hematoxylin</option>
+                    <option>Gill Hematoxylin</option>
+                    <option>Other</option>
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <th>i) Type of staining done</th>
+                <td>
+                  <select class="form-select form-select-sm">
+                    <option value="">Select</option>
+                    <option selected>Progressive</option>
+                    <option>Regressive</option>
+                  </select>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+
+        <!-- ===== What is used to differentiate H&E slide in staining ===== -->
+        <h5 class="fw-semibold mt-4">What is used to differentiate H&amp;E slide in staining</h5>
+        <div class="table-responsive">
+          <table class="table table-bordered table-sm align-middle">
+            <tbody>
+              <tr>
+                <th style="width:55%;">1. Which acid is used for differentiation</th>
+                <td>
+                  <select class="form-select form-select-sm">
+                    <option value="">Select</option>
+                    <option selected>Sulfuric Acid</option>
+                    <option>Hydrochloric Acid</option>
+                    <option>Nitric Acid</option>
+                    <option>Other</option>
+                  </select>
+                </td>
+              </tr>
+              <tr><th>2. Percentage of acid</th><td><input class="form-control form-control-sm" placeholder="Free Text"></td></tr>
+              <tr>
+                <th>3. Type</th>
+                <td>
+                  <select class="form-select form-select-sm">
+                    <option value="">Select</option>
+                    <option selected>Aqueous</option>
+                    <option>Alcoholic</option>
+                  </select>
+                </td>
+              </tr>
+              <tr><th>4. Time taken to differentiate</th><td><input class="form-control form-control-sm" placeholder="Free Text"></td></tr>
+              <tr><th>5. Frequency of changing staining solution</th><td><input class="form-control form-control-sm" placeholder="Free Text"></td></tr>
+              <tr><th>6. Alcohol</th><td><input class="form-control form-control-sm" placeholder="Free Text"></td></tr>
+              <tr><th>7. Xylene</th><td><input class="form-control form-control-sm" placeholder="Free Text"></td></tr>
+              <tr><th>8. pH of alcohol used in staining</th><td><input class="form-control form-control-sm" placeholder="Free Text"></td></tr>
+              <tr><th>9. Frequency of changing hematoxylin &amp; eosin</th><td><input class="form-control form-control-sm" placeholder="Free Text"></td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- ========================== Storage =========================== -->
+        <h5 class="fw-semibold mt-4">Storage</h5>
+        <div class="table-responsive">
+          <table class="table table-bordered table-sm align-middle">
+            <tbody>
+              <tr><th style="width:55%;">1. Block storage temperature &amp; duration</th><td><input class="form-control form-control-sm" placeholder="Free Text"></td></tr>
+              <tr><th>2. Slide storage temperature &amp; duration</th><td><input class="form-control form-control-sm" placeholder="Free Text"></td></tr>
+              <tr>
+                <th>3. Are H&amp;E stained slides fading?</th>
+                <td>
+                  <div class="d-flex gap-3">
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" name="fading" id="fadeNo" value="No" checked>
+                      <label class="form-check-label" for="fadeNo">No</label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" name="fading" id="fadeYes" value="Yes">
+                      <label class="form-check-label" for="fadeYes">Yes</label>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+              <tr id="fadeWhenRow" class="d-none">
+                <th>If yes, after how many days / months / years?</th>
+                <td><input class="form-control form-control-sm" placeholder="Free Text"></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+
+
+
+
+          
 
 
 
@@ -8124,7 +8351,33 @@ document.addEventListener('DOMContentLoaded', () => {
     localStorage.setItem(keyFor(modKey, run), JSON.stringify(payload));
   });
 
+  
+
 });
+
+document.addEventListener('change', (e) => {
+    if (e.target && e.target.name === 'fading') {
+      document.getElementById('fadeWhenRow')?.classList.toggle('d-none', e.target.value !== 'Yes');
+    }
+  });
+
+  // OPTIONAL: Sum minutes -> hours into "Total time of processing (hours)"
+  function updateProcTotal() {
+    const mins = Array.from(document.querySelectorAll('.proc-min'))
+      .map(i => parseFloat(i.value || 0))
+      .reduce((a,b) => a + b, 0);
+    const hrs = Array.from(document.querySelectorAll('.proc-hrs'))
+      .map(i => parseFloat(i.value || 0))
+      .reduce((a,b) => a + b, 0);
+    const total = (mins/60) + hrs;
+    const out = document.getElementById('procTotalHrs');
+    if (out) out.value = total ? total.toFixed(2) : '';
+  }
+  document.addEventListener('input', (e) => {
+    if (e.target.closest('#procTblBody')) updateProcTotal();
+  });
+
+
 </script>
 
 
