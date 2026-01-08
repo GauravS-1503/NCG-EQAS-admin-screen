@@ -72,8 +72,29 @@ html, body { margin: 0; padding: 0; height: 100%; overflow-x: hidden; }
     background-color: rgba(0, 0, 0, 0.05); /* optional subtle hover */
 }
 
+.modal-wide {
+  max-width: 95vw;
+}
+
 .table { min-width: 1100px; } 
 
+#modal-HER2 table {
+  width: 100%;
+  min-width: unset;
+}
+
 .table-responsive {
-  overflow-x: auto !important;
+  overflow-x: auto;
+}
+
+.modal1 {
+  overflow-x: visible !important;
+}
+
+.modal-dialog1 {
+  max-width: 96vw !important;
+}
+
+.modal-table-wrap {
+  overflow-x: visible !important;
 }
