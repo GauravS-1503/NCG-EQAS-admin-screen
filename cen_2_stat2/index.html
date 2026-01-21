@@ -1102,19 +1102,7 @@
             <input id="enhanceOther" class="form-control" placeholder="Please Specify">
           </div>
         </div>
-
-        <h5 class="fw-semibold mt-3">Scoring</h5>
-        <div id="scoringSection" class="row g-3">
-          <div class="mb-3">
-            <select id="scoringSelect" class="form-select">
-              <option value="">Select</option>
-              <option>ALLRED Score</option>
-              <option>H-Score</option>
-            </select>
-          </div>
-        </div>  
-        
-
+ 
         <h5 class="fw-semibold mt-3">Comments (Tissues provided as control)</h5>
         <div style="max-width: 500px; width: 100%;">
           <textarea id="comments" class="form-control" rows="3" placeholder="Comments added by participants.."></textarea>
@@ -1655,7 +1643,7 @@
                 <th style="width:28%;">Participant Score</th>
                 <th style="width:18%;">EQAS Score</th>
                 <th style="width:18%;">Ideal Score</th>               
-                <th style="width:18%;">DOA</th>
+                <th style="width:18%;">Concordance</th>
               </tr>
             </thead>
             <tbody id="rows-ER">
@@ -1976,11 +1964,33 @@
 
       <div class="mt-4 d-flex flex-column align-items-center text-center pb-2">
         <div class="mb-3" style="max-width:280px; width:100%;">
-          <label class="fw-semibold mb-1 d-block" for="scoreObtained-ER">Total Score:</label>
+          <label class="fw-semibold mb-1 d-block" for="scoreTotal-ER">Total Score:</label>
           <div class="input-group justify-content-center">
-            <input type="number" id="scoreObtained-ER" class="form-control form-control-sm text-end score-input">
+            <input type="number" id="scoreTotal-ER" class="form-control form-control-sm text-end score-input">
           </div>
         </div>
+
+        <div class="mb-3" style="max-width:280px; width:100%;">
+          <label class="fw-semibold mb-1 d-block" for="scoreGood-ER">Good:</label>
+          <div class="input-group justify-content-center">
+            <input type="number" id="scoreGood-ER" class="form-control form-control-sm text-end score-input">
+          </div>
+        </div>
+
+        <div class="mb-3" style="max-width:280px; width:100%;">
+          <label class="fw-semibold mb-1 d-block" for="scoreFair-ER">Fair:</label>
+          <div class="input-group justify-content-center">
+            <input type="number" id="scoreFair-ER" class="form-control form-control-sm text-end score-input">
+          </div>
+        </div>
+
+        <div class="mb-3" style="max-width:280px; width:100%;">
+          <label class="fw-semibold mb-1 d-block" for="scorePoor-ER">Poor:</label>
+          <div class="input-group justify-content-center">
+            <input type="number" id="scorePoor-ER" class="form-control form-control-sm text-end score-input">
+          </div>
+        </div>
+
 
         <div style="max-width:500px; width:100%;">
           <label class="fw-semibold mb-1 d-block" for="comment-ER">Comment:</label>
@@ -2015,837 +2025,320 @@
                 <th style="width:28%;">Participant Score</th>
                 <th style="width:18%;">EQAS Score</th>
                 <th style="width:18%;">Ideal Score</th>               
-                <th style="width:18%;">DOA</th>
+                <th style="width:18%;">Concordance</th>
               </tr>
             </thead>
             <tbody id="rows-PR">
               <tr>
-              <td>Core 1</td>              
-              <td class = "select" ALIGN="center">      
+                <td>Core 1</td>
+
+                <!-- Participant Score -->
+                <td class="select" ALIGN="center">
                   <select class="form-select">
-                        <option>Select</option>        
-                        <option>Negative</option>
-                        <option>3/8</option>
-                        <option>4/8</option>
-                        <option>5/8</option>
-                        <option>6/8</option>
-                        <option>7/8</option>
-                        <option>8/8</option>
-                        <option>Lymph Node</option>
-                        <option>Control</option>
-                        <option>Blank</option>
-                        <option>Others</option>
+                    <option>Select</option>
+                    <optgroup label="Weak">
+                      <option>1-10%  ||  Weak</option>
+                      <option>11-33%  ||  Weak</option>
+                      <option>34-66%  ||  Weak</option>
+                      <option>&gt;67%  ||  Weak</option>
+                    </optgroup>
+                    <optgroup label="Moderate">
+                      <option>1-10%  ||  Moderate</option>
+                      <option>11-33%  ||  Moderate</option>
+                      <option>34-66%  ||  Moderate</option>
+                      <option>&gt;67%  ||  Moderate</option>
+                    </optgroup>
+                    <optgroup label="Strong">
+                      <option>1-10%  ||  Strong</option>
+                      <option>11-33%  ||  Strong</option>
+                      <option>34-66%  ||  Strong</option>
+                      <option>&gt;67%  ||  Strong</option>
+                    </optgroup>
                   </select>
-              </td>
-              <td class = "select" ALIGN="center">      
+                </td>
+
+                <!-- EQAS Score -->
+                <td class="select" ALIGN="center">
                   <select class="form-select">
-                        <option>Select</option>         
-                        <option>Negative</option>
-                        <option>3/8</option>
-                        <option>4/8</option>
-                        <option>5/8</option>
-                        <option>6/8</option>
-                        <option>7/8</option>
-                        <option>8/8</option>
-                        <option>Lymph Node</option>
-                        <option>Control</option>
-                        <option>Blank</option>
-                        <option>Others</option>
+                    <option>Select</option>
+                    <optgroup label="Weak">
+                      <option>1-10%  ||  Weak</option>
+                      <option>11-33%  ||  Weak</option>
+                      <option>34-66%  ||  Weak</option>
+                      <option>&gt;67%  ||  Weak</option>
+                    </optgroup>
+                    <optgroup label="Moderate">
+                      <option>1-10%  ||  Moderate</option>
+                      <option>11-33%  ||  Moderate</option>
+                      <option>34-66%  ||  Moderate</option>
+                      <option>&gt;67%  ||  Moderate</option>
+                    </optgroup>
+                    <optgroup label="Strong">
+                      <option>1-10%  ||  Strong</option>
+                      <option>11-33%  ||  Strong</option>
+                      <option>34-66%  ||  Strong</option>
+                      <option>&gt;67%  ||  Strong</option>
+                    </optgroup>
                   </select>
-              </td>
-              <td class = "select" ALIGN="center">      
+                </td>
+
+                <!-- Ideal Score -->
+                <td class="select" ALIGN="center">
                   <select class="form-select">
-                        <option>Select</option>        
-                        <option>Negative</option>
-                        <option>3/8</option>
-                        <option>4/8</option>
-                        <option>5/8</option>
-                        <option>6/8</option>
-                        <option>7/8</option>
-                        <option>8/8</option>
-                        <option>Lymph Node</option>
-                        <option>Control</option>
-                        <option>Blank</option>
-                        <option>Others</option>
-                        <option>Negative or 3/8</option>
-                        <option>3/8 or 4/8</option>
-                        <option>4/8 or 5/8</option>
-                        <option>5/8 or 6/8</option>
-                        <option>6/8 or 7/8</option>
-                        <option>7/8 or 8/8</option>
+                    <option>Select</option>
+                    <optgroup label="Weak">
+                      <option>1-10%  ||  Weak</option>
+                      <option>11-33%  ||  Weak</option>
+                      <option>34-66%  ||  Weak</option>
+                      <option>&gt;67%  ||  Weak</option>
+                    </optgroup>
+                    <optgroup label="Moderate">
+                      <option>1-10%  ||  Moderate</option>
+                      <option>11-33%  ||  Moderate</option>
+                      <option>34-66%  ||  Moderate</option>
+                      <option>&gt;67%  ||  Moderate</option>
+                    </optgroup>
+                    <optgroup label="Strong">
+                      <option>1-10%  ||  Strong</option>
+                      <option>11-33%  ||  Strong</option>
+                      <option>34-66%  ||  Strong</option>
+                      <option>&gt;67%  ||  Strong</option>
+                    </optgroup>
                   </select>
-              </td>
-              <td class = "select" ALIGN="center">      
+                </td>
+
+                <!-- DOA -->
+                <td class="select" ALIGN="center">
                   <select class="form-select">
-                        <option>Select</option>         
-                        <option>Good</option>
-                        <option>Fair</option>
-                        <option>Poor</option>
-                        <option>Educational Challenge</option>
-                        <option>Tissue Depleted</option>
-                        <option>Uninterpretable</option>
-                        <option>Others</option>
+                    <option>Select</option>
+                    <option>Good</option>
+                    <option>Fair</option>
+                    <option>Poor</option>
+                    <option>Educational Challenge</option>
                   </select>
-              </td>
-            </tr>
-            <tr>
-              <td>Core 2</td>              
-              <td class = "select" ALIGN="center">      
-                  <select class="form-select">
-                        <option>Select</option>             
-                        <option>Negative</option>
-                        <option>3/8</option>
-                        <option>4/8</option>
-                        <option>5/8</option>
-                        <option>6/8</option>
-                        <option>7/8</option>
-                        <option>8/8</option>
-                        <option>Lymph Node</option>
-                        <option>Control</option>
-                        <option>Blank</option>
-                        <option>Others</option>
-                  </select>
-              </td>
-              <td class = "select" ALIGN="center">      
-                  <select class="form-select">
-                        <option>Select</option>        
-                        <option>Negative</option>
-                        <option>3/8</option>
-                        <option>4/8</option>
-                        <option>5/8</option>
-                        <option>6/8</option>
-                        <option>7/8</option>
-                        <option>8/8</option>
-                        <option>Lymph Node</option>
-                        <option>Control</option>
-                        <option>Blank</option>
-                        <option>Others</option>
-                  </select>
-              </td>
-              <td class = "select" ALIGN="center">      
-                  <select class="form-select">
-                        <option>Select</option>             
-                        <option>Negative</option>
-                        <option>3/8</option>
-                        <option>4/8</option>
-                        <option>5/8</option>
-                        <option>6/8</option>
-                        <option>7/8</option>
-                        <option>8/8</option>
-                        <option>Lymph Node</option>
-                        <option>Control</option>
-                        <option>Blank</option>
-                        <option>Others</option>
-                        <option>Negative or 3/8</option>
-                        <option>3/8 or 4/8</option>
-                        <option>4/8 or 5/8</option>
-                        <option>5/8 or 6/8</option>
-                        <option>6/8 or 7/8</option>
-                        <option>7/8 or 8/8</option>
-                  </select>
-              </td>
-              <td class = "select" ALIGN="center">      
-                  <select class="form-select">
-                        <option>Select</option>             
-                        <option>Good</option>
-                        <option>Fair</option>
-                        <option>Poor</option>
-                        <option>Educational Challenge</option>
-                        <option>Tissue Depleted</option>
-                        <option>Uninterpretable</option>
-                        <option>Others</option>
-                  </select>
-              </td>
-            </tr>
-            <tr>
-              <td>Core 3</td>              
-              <td class = "select" ALIGN="center">      
-                  <select class="form-select">
-                        <option>Select</option>             
-                        <option>Negative</option>
-                        <option>3/8</option>
-                        <option>4/8</option>
-                        <option>5/8</option>
-                        <option>6/8</option>
-                        <option>7/8</option>
-                        <option>8/8</option>
-                        <option>Lymph Node</option>
-                        <option>Control</option>
-                        <option>Blank</option>
-                        <option>Others</option>
-                  </select>
-              </td>
-              <td class = "select" ALIGN="center">      
-                  <select class="form-select">
-                        <option>Select</option>        
-                        <option>Negative</option>
-                        <option>3/8</option>
-                        <option>4/8</option>
-                        <option>5/8</option>
-                        <option>6/8</option>
-                        <option>7/8</option>
-                        <option>8/8</option>
-                        <option>Lymph Node</option>
-                        <option>Control</option>
-                        <option>Blank</option>
-                        <option>Others</option>
-                  </select>
-              </td>
-              <td class = "select" ALIGN="center">      
-                  <select class="form-select">
-                        <option>Negative</option>
-                        <option>3/8</option>
-                        <option>4/8</option>
-                        <option>5/8</option>
-                        <option>6/8</option>
-                        <option>7/8</option>
-                        <option>8/8</option>
-                        <option>Lymph Node</option>
-                        <option>Control</option>
-                        <option>Blank</option>
-                        <option>Others</option>
-                        <option>Negative or 3/8</option>
-                        <option>3/8 or 4/8</option>
-                        <option>4/8 or 5/8</option>
-                        <option>5/8 or 6/8</option>
-                        <option>6/8 or 7/8</option>
-                        <option>7/8 or 8/8</option>
-                  </select>
-              </td>
-              <td class = "select" ALIGN="center">      
-                  <select class="form-select">
-                        <option>Select</option>        
-                        <option>Good</option>
-                        <option>Fair</option>
-                        <option>Poor</option>
-                        <option>Educational Challenge</option>
-                        <option>Tissue Depleted</option>
-                        <option>Uninterpretable</option>
-                        <option>Others</option>
-                  </select>
-              </td>
-            </tr>
-            <tr>
-              <td>Core 4</td>              
-              <td class = "select" ALIGN="center">      
-                  <select class="form-select">
-                        <option>Select</option>                                    
-                        <option>Negative</option>
-                        <option>3/8</option>
-                        <option>4/8</option>
-                        <option>5/8</option>
-                        <option>6/8</option>
-                        <option>7/8</option>
-                        <option>8/8</option>
-                        <option>Lymph Node</option>
-                        <option>Control</option>
-                        <option>Blank</option>
-                        <option>Others</option>
-                  </select>
-              </td>
-              <td class = "select" ALIGN="center">      
-                  <select class="form-select">
-                        <option>Select</option>        
-                        <option>Negative</option>
-                        <option>3/8</option>
-                        <option>4/8</option>
-                        <option>5/8</option>
-                        <option>6/8</option>
-                        <option>7/8</option>
-                        <option>8/8</option>
-                        <option>Lymph Node</option>
-                        <option>Control</option>
-                        <option>Blank</option>
-                        <option>Others</option>
-                  </select>
-              </td>
-              <td class = "select" ALIGN="center">      
-                  <select class="form-select">
-                        <option>Select</option>        
-                        <option>Negative</option>
-                        <option>3/8</option>
-                        <option>4/8</option>
-                        <option>5/8</option>
-                        <option>6/8</option>
-                        <option>7/8</option>
-                        <option>8/8</option>
-                        <option>Lymph Node</option>
-                        <option>Control</option>
-                        <option>Blank</option>
-                        <option>Others</option>
-                        <option>Negative or 3/8</option>
-                        <option>3/8 or 4/8</option>
-                        <option>4/8 or 5/8</option>
-                        <option>5/8 or 6/8</option>
-                        <option>6/8 or 7/8</option>
-                        <option>7/8 or 8/8</option>
-                  </select>
-              </td>
-              <td class = "select" ALIGN="center">      
-                  <select class="form-select">
-                        <option>Select</option>        
-                        <option>Good</option>
-                        <option>Fair</option>
-                        <option>Poor</option>
-                        <option>Educational Challenge</option>
-                        <option>Tissue Depleted</option>
-                        <option>Uninterpretable</option>
-                        <option>Others</option>
-                  </select>
-              </td>
-            </tr>
-            <tr>
-              <td>Core 5</td>              
-              <td class = "select" ALIGN="center">      
-                  <select class="form-select">
-                        <option>Select</option>        
-                        <option>Negative</option>
-                        <option>3/8</option>
-                        <option>4/8</option>
-                        <option>5/8</option>
-                        <option>6/8</option>
-                        <option>7/8</option>
-                        <option>8/8</option>
-                        <option>Lymph Node</option>
-                        <option>Control</option>
-                        <option>Blank</option>
-                        <option>Others</option>
-                  </select>
-              </td>
-              <td class = "select" ALIGN="center">      
-                  <select class="form-select">
-                        <option>Select</option>        
-                        <option>Negative</option>
-                        <option>3/8</option>
-                        <option>4/8</option>
-                        <option>5/8</option>
-                        <option>6/8</option>
-                        <option>7/8</option>
-                        <option>8/8</option>
-                        <option>Lymph Node</option>
-                        <option>Control</option>
-                        <option>Blank</option>
-                        <option>Others</option>
-                  </select>
-              </td>
-              <td class = "select" ALIGN="center">      
-                  <select class="form-select">
-                        <option>Select</option>        
-                        <option>Negative</option>
-                        <option>3/8</option>
-                        <option>4/8</option>
-                        <option>5/8</option>
-                        <option>6/8</option>
-                        <option>7/8</option>
-                        <option>8/8</option>
-                        <option>Lymph Node</option>
-                        <option>Control</option>
-                        <option>Blank</option>
-                        <option>Others</option>
-                        <option>Negative or 3/8</option>
-                        <option>3/8 or 4/8</option>
-                        <option>4/8 or 5/8</option>
-                        <option>5/8 or 6/8</option>
-                        <option>6/8 or 7/8</option>
-                        <option>7/8 or 8/8</option>
-                  </select>
-              </td>
-              <td class = "select" ALIGN="center">      
-                  <select class="form-select">
-                        <option>Select</option>        
-                        <option>Good</option>
-                        <option>Fair</option>
-                        <option>Poor</option>
-                        <option>Educational Challenge</option>
-                        <option>Tissue Depleted</option>
-                        <option>Uninterpretable</option>
-                        <option>Others</option>
-                  </select>
-              </td>
-            </tr>
-            <tr>
-              <td>Core 6</td>              
-              <td class = "select" ALIGN="center">      
-                  <select class="form-select">
-                        <option>Select</option>        
-                        <option>Negative</option>
-                        <option>3/8</option>
-                        <option>4/8</option>
-                        <option>5/8</option>
-                        <option>6/8</option>
-                        <option>7/8</option>
-                        <option>8/8</option>
-                        <option>Lymph Node</option>
-                        <option>Control</option>
-                        <option>Blank</option>
-                        <option>Others</option>
-                  </select>
-              </td>
-              <td class = "select" ALIGN="center">      
-                  <select class="form-select">
-                        <option>Select</option>         
-                        <option>Negative</option>
-                        <option>3/8</option>
-                        <option>4/8</option>
-                        <option>5/8</option>
-                        <option>6/8</option>
-                        <option>7/8</option>
-                        <option>8/8</option>
-                        <option>Lymph Node</option>
-                        <option>Control</option>
-                        <option>Blank</option>
-                        <option>Others</option>
-                  </select>
-              </td>
-              <td class = "select" ALIGN="center">      
-                  <select class="form-select">
-                        <option>Select</option>         
-                        <option>Negative</option>
-                        <option>3/8</option>
-                        <option>4/8</option>
-                        <option>5/8</option>
-                        <option>6/8</option>
-                        <option>7/8</option>
-                        <option>8/8</option>
-                        <option>Lymph Node</option>
-                        <option>Control</option>
-                        <option>Blank</option>
-                        <option>Others</option>
-                        <option>Negative or 3/8</option>
-                        <option>3/8 or 4/8</option>
-                        <option>4/8 or 5/8</option>
-                        <option>5/8 or 6/8</option>
-                        <option>6/8 or 7/8</option>
-                        <option>7/8 or 8/8</option>
-                  </select>
-              </td>
-              <td class = "select" ALIGN="center">      
-                  <select class="form-select">
-                        <option>Select</option>        
-                        <option>Good</option>
-                        <option>Fair</option>
-                        <option>Poor</option>
-                        <option>Educational Challenge</option>
-                        <option>Tissue Depleted</option>
-                        <option>Uninterpretable</option>
-                        <option>Others</option>
-                  </select>
-              </td>
-            </tr>
-            <tr>
-              <td>Core 7</td>              
-              <td class = "select" ALIGN="center">      
-                  <select class="form-select">                    
-                        <option>Select</option>
-                        <option>Negative</option>
-                        <option>3/8</option>
-                        <option>4/8</option>
-                        <option>5/8</option>
-                        <option>6/8</option>
-                        <option>7/8</option>
-                        <option>8/8</option>
-                        <option>Lymph Node</option>
-                        <option>Control</option>
-                        <option>Blank</option>
-                        <option>Others</option>
-                  </select>
-              </td>
-              <td class = "select" ALIGN="center">      
-                  <select class="form-select">
-                        <option>Select</option>        
-                        <option>Negative</option>
-                        <option>3/8</option>
-                        <option>4/8</option>
-                        <option>5/8</option>
-                        <option>6/8</option>
-                        <option>7/8</option>
-                        <option>8/8</option>
-                        <option>Lymph Node</option>
-                        <option>Control</option>
-                        <option>Blank</option>
-                        <option>Others</option>
-                  </select>
-              </td>
-              <td class = "select" ALIGN="center">      
-                  <select class="form-select">
-                        <option>Select</option>        
-                        <option>Negative</option>
-                        <option>3/8</option>
-                        <option>4/8</option>
-                        <option>5/8</option>
-                        <option>6/8</option>
-                        <option>7/8</option>
-                        <option>8/8</option>
-                        <option>Lymph Node</option>
-                        <option>Control</option>
-                        <option>Blank</option>
-                        <option>Others</option>
-                        <option>Negative or 3/8</option>
-                        <option>3/8 or 4/8</option>
-                        <option>4/8 or 5/8</option>
-                        <option>5/8 or 6/8</option>
-                        <option>6/8 or 7/8</option>
-                        <option>7/8 or 8/8</option>
-                  </select>
-              </td>
-              <td class = "select" ALIGN="center">      
-                  <select class="form-select">
-                        <option>Select</option>         
-                        <option>Good</option>
-                        <option>Fair</option>
-                        <option>Poor</option>
-                        <option>Educational Challenge</option>
-                        <option>Tissue Depleted</option>
-                        <option>Uninterpretable</option>
-                        <option>Others</option>
-                  </select>
-              </td>
-            </tr>
-            <tr>
-              <td>Core 8</td>              
-              <td class = "select" ALIGN="center">      
-                  <select class="form-select">
-                        <option>Select</option>         
-                        <option>Negative</option>
-                        <option>3/8</option>
-                        <option>4/8</option>
-                        <option>5/8</option>
-                        <option>6/8</option>
-                        <option>7/8</option>
-                        <option>8/8</option>
-                        <option>Lymph Node</option>
-                        <option>Control</option>
-                        <option>Blank</option>
-                        <option>Others</option>
-                  </select>
-              </td>
-              <td class = "select" ALIGN="center">      
-                  <select class="form-select">
-                        <option>Select</option>        
-                        <option>Negative</option>
-                        <option>3/8</option>
-                        <option>4/8</option>
-                        <option>5/8</option>
-                        <option>6/8</option>
-                        <option>7/8</option>
-                        <option>8/8</option>
-                        <option>Lymph Node</option>
-                        <option>Control</option>
-                        <option>Blank</option>
-                        <option>Others</option>
-                  </select>
-              </td>
-              <td class = "select" ALIGN="center">      
-                  <select class="form-select">
-                        <option>Select</option>        
-                        <option>Negative</option>
-                        <option>3/8</option>
-                        <option>4/8</option>
-                        <option>5/8</option>
-                        <option>6/8</option>
-                        <option>7/8</option>
-                        <option>8/8</option>
-                        <option>Lymph Node</option>
-                        <option>Control</option>
-                        <option>Blank</option>
-                        <option>Others</option>
-                        <option>Negative or 3/8</option>
-                        <option>3/8 or 4/8</option>
-                        <option>4/8 or 5/8</option>
-                        <option>5/8 or 6/8</option>
-                        <option>6/8 or 7/8</option>
-                        <option>7/8 or 8/8</option>
-                  </select>
-              </td>
-              <td class = "select" ALIGN="center">      
-                  <select class="form-select">
-                        <option>Select</option>        
-                        <option>Good</option>
-                        <option>Fair</option>
-                        <option>Poor</option>
-                        <option>Educational Challenge</option>
-                        <option>Tissue Depleted</option>
-                        <option>Uninterpretable</option>
-                        <option>Others</option>
-                  </select>
-              </td>
-            </tr>
-            <tr>
-              <td>Core 9</td>              
-              <td class = "select" ALIGN="center">      
-                  <select class="form-select">
-                        <option>Select</option>        
-                        <option>Negative</option>
-                        <option>3/8</option>
-                        <option>4/8</option>
-                        <option>5/8</option>
-                        <option>6/8</option>
-                        <option>7/8</option>
-                        <option>8/8</option>
-                        <option>Lymph Node</option>
-                        <option>Control</option>
-                        <option>Blank</option>
-                        <option>Others</option>
-                  </select>
-              </td>
-              <td class = "select" ALIGN="center">      
-                  <select class="form-select">
-                        <option>Select</option>        
-                        <option>Negative</option>
-                        <option>3/8</option>
-                        <option>4/8</option>
-                        <option>5/8</option>
-                        <option>6/8</option>
-                        <option>7/8</option>
-                        <option>8/8</option>
-                        <option>Lymph Node</option>
-                        <option>Control</option>
-                        <option>Blank</option>
-                        <option>Others</option>
-                  </select>
-              </td>
-              <td class = "select" ALIGN="center">      
-                  <select class="form-select">
-                        <option>Select</option>        
-                        <option>Negative</option>
-                        <option>3/8</option>
-                        <option>4/8</option>
-                        <option>5/8</option>
-                        <option>6/8</option>
-                        <option>7/8</option>
-                        <option>8/8</option>
-                        <option>Lymph Node</option>
-                        <option>Control</option>
-                        <option>Blank</option>
-                        <option>Others</option>
-                        <option>Negative or 3/8</option>
-                        <option>3/8 or 4/8</option>
-                        <option>4/8 or 5/8</option>
-                        <option>5/8 or 6/8</option>
-                        <option>6/8 or 7/8</option>
-                        <option>7/8 or 8/8</option>
-                  </select>
-              </td>
-              <td class = "select" ALIGN="center">      
-                  <select class="form-select">
-                        <option>Select</option>        
-                        <option>Good</option>
-                        <option>Fair</option>
-                        <option>Poor</option>
-                        <option>Educational Challenge</option>
-                        <option>Tissue Depleted</option>
-                        <option>Uninterpretable</option>
-                        <option>Others</option>
-                  </select>
-              </td>
-            </tr>
-            <tr>
-              <td>Core 10</td>              
-              <td class = "select" ALIGN="center">      
-                  <select class="form-select">
-                        <option>Select</option>    
-                        <option>Negative</option>
-                        <option>3/8</option>
-                        <option>4/8</option>
-                        <option>5/8</option>
-                        <option>6/8</option>
-                        <option>7/8</option>
-                        <option>8/8</option>
-                        <option>Lymph Node</option>
-                        <option>Control</option>
-                        <option>Blank</option>
-                        <option>Others</option>
-                  </select>
-              </td>
-              <td class = "select" ALIGN="center">      
-                  <select class="form-select">
-                        <option>Select</option>        
-                        <option>Negative</option>
-                        <option>3/8</option>
-                        <option>4/8</option>
-                        <option>5/8</option>
-                        <option>6/8</option>
-                        <option>7/8</option>
-                        <option>8/8</option>
-                        <option>Lymph Node</option>
-                        <option>Control</option>
-                        <option>Blank</option>
-                        <option>Others</option>
-                  </select>
-              </td>
-              <td class = "select" ALIGN="center">      
-                  <select class="form-select">
-                        <option>Select</option>        
-                        <option>Negative</option>
-                        <option>3/8</option>
-                        <option>4/8</option>
-                        <option>5/8</option>
-                        <option>6/8</option>
-                        <option>7/8</option>
-                        <option>8/8</option>
-                        <option>Lymph Node</option>
-                        <option>Control</option>
-                        <option>Blank</option>
-                        <option>Others</option>
-                        <option>Negative or 3/8</option>
-                        <option>3/8 or 4/8</option>
-                        <option>4/8 or 5/8</option>
-                        <option>5/8 or 6/8</option>
-                        <option>6/8 or 7/8</option>
-                        <option>7/8 or 8/8</option>
-                  </select>
-              </td>
-              <td class = "select" ALIGN="center">      
-                  <select class="form-select">
-                        <option>Select</option>        
-                        <option>Good</option>
-                        <option>Fair</option>
-                        <option>Poor</option>
-                        <option>Educational Challenge</option>
-                        <option>Tissue Depleted</option>
-                        <option>Uninterpretable</option>
-                        <option>Others</option>
-                  </select>
-              </td>
-            </tr>
-            <tr>
-              <td>Core 11</td>              
-              <td class = "select" ALIGN="center">      
-                  <select class="form-select"> 
-                        <option>Select</option>       
-                        <option>Negative</option>
-                        <option>3/8</option>
-                        <option>4/8</option>
-                        <option>5/8</option>
-                        <option>6/8</option>
-                        <option>7/8</option>
-                        <option>8/8</option>
-                        <option>Lymph Node</option>
-                        <option>Control</option>
-                        <option>Blank</option>
-                        <option>Others</option>
-                  </select>
-              </td>
-              <td class = "select" ALIGN="center">      
-                  <select class="form-select">        
-                        <option>Select</option>
-                        <option>Negative</option>
-                        <option>3/8</option>
-                        <option>4/8</option>
-                        <option>5/8</option>
-                        <option>6/8</option>
-                        <option>7/8</option>
-                        <option>8/8</option>
-                        <option>Lymph Node</option>
-                        <option>Control</option>
-                        <option>Blank</option>
-                        <option>Others</option>
-                  </select>
-              </td>
-              <td class = "select" ALIGN="center">      
-                  <select class="form-select">     
-                        <option>Select</option>   
-                        <option>Negative</option>
-                        <option>3/8</option>
-                        <option>4/8</option>
-                        <option>5/8</option>
-                        <option>6/8</option>
-                        <option>7/8</option>
-                        <option>8/8</option>
-                        <option>Lymph Node</option>
-                        <option>Control</option>
-                        <option>Blank</option>
-                        <option>Others</option>
-                        <option>Negative or 3/8</option>
-                        <option>3/8 or 4/8</option>
-                        <option>4/8 or 5/8</option>
-                        <option>5/8 or 6/8</option>
-                        <option>6/8 or 7/8</option>
-                        <option>7/8 or 8/8</option>
-                  </select>
-              </td>
-              <td class = "select" ALIGN="center">      
-                  <select class="form-select">     
-                        <option>Select</option>   
-                        <option>Good</option>
-                        <option>Fair</option>
-                        <option>Poor</option>
-                        <option>Educational Challenge</option>
-                        <option>Tissue Depleted</option>
-                        <option>Uninterpretable</option>
-                        <option>Others</option>
-                  </select>
-              </td>
-            </tr>
-            <tr>
-              <td>Core 12</td>              
-              <td class = "select" ALIGN="center">      
-                  <select class="form-select">    
-                        <option>Select</option>    
-                        <option>Negative</option>
-                        <option>3/8</option>
-                        <option>4/8</option>
-                        <option>5/8</option>
-                        <option>6/8</option>
-                        <option>7/8</option>
-                        <option>8/8</option>
-                        <option>Lymph Node</option>
-                        <option>Control</option>
-                        <option>Blank</option>
-                        <option>Others</option>
-                  </select>
-              </td>
-              <td class = "select" ALIGN="center">      
-                  <select class="form-select">        
-                        <option>Select</option>
-                        <option>Negative</option>
-                        <option>3/8</option>
-                        <option>4/8</option>
-                        <option>5/8</option>
-                        <option>6/8</option>
-                        <option>7/8</option>
-                        <option>8/8</option>
-                        <option>Lymph Node</option>
-                        <option>Control</option>
-                        <option>Blank</option>
-                        <option>Others</option>
-                  </select>
-              </td>
-              <td class = "select" ALIGN="center">      
-                  <select class="form-select">    
-                        <option>Select</option>    
-                        <option>Negative</option>
-                        <option>3/8</option>
-                        <option>4/8</option>
-                        <option>5/8</option>
-                        <option>6/8</option>
-                        <option>7/8</option>
-                        <option>8/8</option>
-                        <option>Lymph Node</option>
-                        <option>Control</option>
-                        <option>Blank</option>
-                        <option>Others</option>
-                        <option>Negative or 3/8</option>
-                        <option>3/8 or 4/8</option>
-                        <option>4/8 or 5/8</option>
-                        <option>5/8 or 6/8</option>
-                        <option>6/8 or 7/8</option>
-                        <option>7/8 or 8/8</option>
-                  </select>
-              </td>
-              <td class = "select" ALIGN="center">      
-                  <select class="form-select">      
-                        <option>Select</option>  
-                        <option>Good</option>
-                        <option>Fair</option>
-                        <option>Poor</option>
-                        <option>Educational Challenge</option>
-                        <option>Tissue Depleted</option>
-                        <option>Uninterpretable</option>
-                        <option>Others</option>
-                  </select>
-              </td>
-            </tr>
+                </td>
+              </tr>
+
+              <tr>
+                <td>Core 2</td>
+                <td class="select" ALIGN="center"><select class="form-select"><option>Select</option>
+                  <optgroup label="Weak"><option>1-10%  ||  Weak</option><option>11-33%  ||  Weak</option><option>34-66%  ||  Weak</option><option>&gt;67%  ||  Weak</option></optgroup>
+                  <optgroup label="Moderate"><option>1-10%  ||  Moderate</option><option>11-33%  ||  Moderate</option><option>34-66%  ||  Moderate</option><option>&gt;67%  ||  Moderate</option></optgroup>
+                  <optgroup label="Strong"><option>1-10%  ||  Strong</option><option>11-33%  ||  Strong</option><option>34-66%  ||  Strong</option><option>&gt;67%  ||  Strong</option></optgroup>
+                </select></td>
+                <td class="select" ALIGN="center"><select class="form-select"><option>Select</option>
+                  <optgroup label="Weak"><option>1-10%  ||  Weak</option><option>11-33%  ||  Weak</option><option>34-66%  ||  Weak</option><option>&gt;67%  ||  Weak</option></optgroup>
+                  <optgroup label="Moderate"><option>1-10%  ||  Moderate</option><option>11-33%  ||  Moderate</option><option>34-66%  ||  Moderate</option><option>&gt;67%  ||  Moderate</option></optgroup>
+                  <optgroup label="Strong"><option>1-10%  ||  Strong</option><option>11-33%  ||  Strong</option><option>34-66%  ||  Strong</option><option>&gt;67%  ||  Strong</option></optgroup>
+                </select></td>
+                <td class="select" ALIGN="center"><select class="form-select"><option>Select</option>
+                  <optgroup label="Weak"><option>1-10%  ||  Weak</option><option>11-33%  ||  Weak</option><option>34-66%  ||  Weak</option><option>&gt;67%  ||  Weak</option></optgroup>
+                  <optgroup label="Moderate"><option>1-10%  ||  Moderate</option><option>11-33%  ||  Moderate</option><option>34-66%  ||  Moderate</option><option>&gt;67%  ||  Moderate</option></optgroup>
+                  <optgroup label="Strong"><option>1-10%  ||  Strong</option><option>11-33%  ||  Strong</option><option>34-66%  ||  Strong</option><option>&gt;67%  ||  Strong</option></optgroup>
+                </select></td>
+                <td class="select" ALIGN="center"><select class="form-select"><option>Select</option><option>Good</option><option>Fair</option><option>Poor</option><option>Educational Challenge</option></select></td>
+              </tr>
+
+              <tr>
+                <td>Core 3</td>
+                <td class="select" ALIGN="center"><select class="form-select"><option>Select</option>
+                  <optgroup label="Weak"><option>1-10%  ||  Weak</option><option>11-33%  ||  Weak</option><option>34-66%  ||  Weak</option><option>&gt;67%  ||  Weak</option></optgroup>
+                  <optgroup label="Moderate"><option>1-10%  ||  Moderate</option><option>11-33%  ||  Moderate</option><option>34-66%  ||  Moderate</option><option>&gt;67%  ||  Moderate</option></optgroup>
+                  <optgroup label="Strong"><option>1-10%  ||  Strong</option><option>11-33%  ||  Strong</option><option>34-66%  ||  Strong</option><option>&gt;67%  ||  Strong</option></optgroup>
+                </select></td>
+                <td class="select" ALIGN="center"><select class="form-select"><option>Select</option>
+                  <optgroup label="Weak"><option>1-10%  ||  Weak</option><option>11-33%  ||  Weak</option><option>34-66%  ||  Weak</option><option>&gt;67%  ||  Weak</option></optgroup>
+                  <optgroup label="Moderate"><option>1-10%  ||  Moderate</option><option>11-33%  ||  Moderate</option><option>34-66%  ||  Moderate</option><option>&gt;67%  ||  Moderate</option></optgroup>
+                  <optgroup label="Strong"><option>1-10%  ||  Strong</option><option>11-33%  ||  Strong</option><option>34-66%  ||  Strong</option><option>&gt;67%  ||  Strong</option></optgroup>
+                </select></td>
+                <td class="select" ALIGN="center"><select class="form-select"><option>Select</option>
+                  <optgroup label="Weak"><option>1-10%  ||  Weak</option><option>11-33%  ||  Weak</option><option>34-66%  ||  Weak</option><option>&gt;67%  ||  Weak</option></optgroup>
+                  <optgroup label="Moderate"><option>1-10%  ||  Moderate</option><option>11-33%  ||  Moderate</option><option>34-66%  ||  Moderate</option><option>&gt;67%  ||  Moderate</option></optgroup>
+                  <optgroup label="Strong"><option>1-10%  ||  Strong</option><option>11-33%  ||  Strong</option><option>34-66%  ||  Strong</option><option>&gt;67%  ||  Strong</option></optgroup>
+                </select></td>
+                <td class="select" ALIGN="center"><select class="form-select"><option>Select</option><option>Good</option><option>Fair</option><option>Poor</option><option>Educational Challenge</option></select></td>
+              </tr>
+
+              <tr>
+                <td>Core 4</td>
+                <td class="select" ALIGN="center"><select class="form-select"><option>Select</option>
+                  <optgroup label="Weak"><option>1-10%  ||  Weak</option><option>11-33%  ||  Weak</option><option>34-66%  ||  Weak</option><option>&gt;67%  ||  Weak</option></optgroup>
+                  <optgroup label="Moderate"><option>1-10%  ||  Moderate</option><option>11-33%  ||  Moderate</option><option>34-66%  ||  Moderate</option><option>&gt;67%  ||  Moderate</option></optgroup>
+                  <optgroup label="Strong"><option>1-10%  ||  Strong</option><option>11-33%  ||  Strong</option><option>34-66%  ||  Strong</option><option>&gt;67%  ||  Strong</option></optgroup>
+                </select></td>
+                <td class="select" ALIGN="center"><select class="form-select"><option>Select</option>
+                  <optgroup label="Weak"><option>1-10%  ||  Weak</option><option>11-33%  ||  Weak</option><option>34-66%  ||  Weak</option><option>&gt;67%  ||  Weak</option></optgroup>
+                  <optgroup label="Moderate"><option>1-10%  ||  Moderate</option><option>11-33%  ||  Moderate</option><option>34-66%  ||  Moderate</option><option>&gt;67%  ||  Moderate</option></optgroup>
+                  <optgroup label="Strong"><option>1-10%  ||  Strong</option><option>11-33%  ||  Strong</option><option>34-66%  ||  Strong</option><option>&gt;67%  ||  Strong</option></optgroup>
+                </select></td>
+                <td class="select" ALIGN="center"><select class="form-select"><option>Select</option>
+                  <optgroup label="Weak"><option>1-10%  ||  Weak</option><option>11-33%  ||  Weak</option><option>34-66%  ||  Weak</option><option>&gt;67%  ||  Weak</option></optgroup>
+                  <optgroup label="Moderate"><option>1-10%  ||  Moderate</option><option>11-33%  ||  Moderate</option><option>34-66%  ||  Moderate</option><option>&gt;67%  ||  Moderate</option></optgroup>
+                  <optgroup label="Strong"><option>1-10%  ||  Strong</option><option>11-33%  ||  Strong</option><option>34-66%  ||  Strong</option><option>&gt;67%  ||  Strong</option></optgroup>
+                </select></td>
+                <td class="select" ALIGN="center"><select class="form-select"><option>Select</option><option>Good</option><option>Fair</option><option>Poor</option><option>Educational Challenge</option></select></td>
+              </tr>
+
+              <tr>
+                <td>Core 5</td>
+                <td class="select" ALIGN="center"><select class="form-select"><option>Select</option>
+                  <optgroup label="Weak"><option>1-10%  ||  Weak</option><option>11-33%  ||  Weak</option><option>34-66%  ||  Weak</option><option>&gt;67%  ||  Weak</option></optgroup>
+                  <optgroup label="Moderate"><option>1-10%  ||  Moderate</option><option>11-33%  ||  Moderate</option><option>34-66%  ||  Moderate</option><option>&gt;67%  ||  Moderate</option></optgroup>
+                  <optgroup label="Strong"><option>1-10%  ||  Strong</option><option>11-33%  ||  Strong</option><option>34-66%  ||  Strong</option><option>&gt;67%  ||  Strong</option></optgroup>
+                </select></td>
+                <td class="select" ALIGN="center"><select class="form-select"><option>Select</option>
+                  <optgroup label="Weak"><option>1-10%  ||  Weak</option><option>11-33%  ||  Weak</option><option>34-66%  ||  Weak</option><option>&gt;67%  ||  Weak</option></optgroup>
+                  <optgroup label="Moderate"><option>1-10%  ||  Moderate</option><option>11-33%  ||  Moderate</option><option>34-66%  ||  Moderate</option><option>&gt;67%  ||  Moderate</option></optgroup>
+                  <optgroup label="Strong"><option>1-10%  ||  Strong</option><option>11-33%  ||  Strong</option><option>34-66%  ||  Strong</option><option>&gt;67%  ||  Strong</option></optgroup>
+                </select></td>
+                <td class="select" ALIGN="center"><select class="form-select"><option>Select</option>
+                  <optgroup label="Weak"><option>1-10%  ||  Weak</option><option>11-33%  ||  Weak</option><option>34-66%  ||  Weak</option><option>&gt;67%  ||  Weak</option></optgroup>
+                  <optgroup label="Moderate"><option>1-10%  ||  Moderate</option><option>11-33%  ||  Moderate</option><option>34-66%  ||  Moderate</option><option>&gt;67%  ||  Moderate</option></optgroup>
+                  <optgroup label="Strong"><option>1-10%  ||  Strong</option><option>11-33%  ||  Strong</option><option>34-66%  ||  Strong</option><option>&gt;67%  ||  Strong</option></optgroup>
+                </select></td>
+                <td class="select" ALIGN="center"><select class="form-select"><option>Select</option><option>Good</option><option>Fair</option><option>Poor</option><option>Educational Challenge</option></select></td>
+              </tr>
+
+              <tr>
+                <td>Core 6</td>
+                <td class="select" ALIGN="center"><select class="form-select"><option>Select</option>
+                  <optgroup label="Weak"><option>1-10%  ||  Weak</option><option>11-33%  ||  Weak</option><option>34-66%  ||  Weak</option><option>&gt;67%  ||  Weak</option></optgroup>
+                  <optgroup label="Moderate"><option>1-10%  ||  Moderate</option><option>11-33%  ||  Moderate</option><option>34-66%  ||  Moderate</option><option>&gt;67%  ||  Moderate</option></optgroup>
+                  <optgroup label="Strong"><option>1-10%  ||  Strong</option><option>11-33%  ||  Strong</option><option>34-66%  ||  Strong</option><option>&gt;67%  ||  Strong</option></optgroup>
+                </select></td>
+                <td class="select" ALIGN="center"><select class="form-select"><option>Select</option>
+                  <optgroup label="Weak"><option>1-10%  ||  Weak</option><option>11-33%  ||  Weak</option><option>34-66%  ||  Weak</option><option>&gt;67%  ||  Weak</option></optgroup>
+                  <optgroup label="Moderate"><option>1-10%  ||  Moderate</option><option>11-33%  ||  Moderate</option><option>34-66%  ||  Moderate</option><option>&gt;67%  ||  Moderate</option></optgroup>
+                  <optgroup label="Strong"><option>1-10%  ||  Strong</option><option>11-33%  ||  Strong</option><option>34-66%  ||  Strong</option><option>&gt;67%  ||  Strong</option></optgroup>
+                </select></td>
+                <td class="select" ALIGN="center"><select class="form-select"><option>Select</option>
+                  <optgroup label="Weak"><option>1-10%  ||  Weak</option><option>11-33%  ||  Weak</option><option>34-66%  ||  Weak</option><option>&gt;67%  ||  Weak</option></optgroup>
+                  <optgroup label="Moderate"><option>1-10%  ||  Moderate</option><option>11-33%  ||  Moderate</option><option>34-66%  ||  Moderate</option><option>&gt;67%  ||  Moderate</option></optgroup>
+                  <optgroup label="Strong"><option>1-10%  ||  Strong</option><option>11-33%  ||  Strong</option><option>34-66%  ||  Strong</option><option>&gt;67%  ||  Strong</option></optgroup>
+                </select></td>
+                <td class="select" ALIGN="center"><select class="form-select"><option>Select</option><option>Good</option><option>Fair</option><option>Poor</option><option>Educational Challenge</option></select></td>
+              </tr>
+
+              <tr>
+                <td>Core 7</td>
+                <td class="select" ALIGN="center"><select class="form-select"><option>Select</option>
+                  <optgroup label="Weak"><option>1-10%  ||  Weak</option><option>11-33%  ||  Weak</option><option>34-66%  ||  Weak</option><option>&gt;67%  ||  Weak</option></optgroup>
+                  <optgroup label="Moderate"><option>1-10%  ||  Moderate</option><option>11-33%  ||  Moderate</option><option>34-66%  ||  Moderate</option><option>&gt;67%  ||  Moderate</option></optgroup>
+                  <optgroup label="Strong"><option>1-10%  ||  Strong</option><option>11-33%  ||  Strong</option><option>34-66%  ||  Strong</option><option>&gt;67%  ||  Strong</option></optgroup>
+                </select></td>
+                <td class="select" ALIGN="center"><select class="form-select"><option>Select</option>
+                  <optgroup label="Weak"><option>1-10%  ||  Weak</option><option>11-33%  ||  Weak</option><option>34-66%  ||  Weak</option><option>&gt;67%  ||  Weak</option></optgroup>
+                  <optgroup label="Moderate"><option>1-10%  ||  Moderate</option><option>11-33%  ||  Moderate</option><option>34-66%  ||  Moderate</option><option>&gt;67%  ||  Moderate</option></optgroup>
+                  <optgroup label="Strong"><option>1-10%  ||  Strong</option><option>11-33%  ||  Strong</option><option>34-66%  ||  Strong</option><option>&gt;67%  ||  Strong</option></optgroup>
+                </select></td>
+                <td class="select" ALIGN="center"><select class="form-select"><option>Select</option>
+                  <optgroup label="Weak"><option>1-10%  ||  Weak</option><option>11-33%  ||  Weak</option><option>34-66%  ||  Weak</option><option>&gt;67%  ||  Weak</option></optgroup>
+                  <optgroup label="Moderate"><option>1-10%  ||  Moderate</option><option>11-33%  ||  Moderate</option><option>34-66%  ||  Moderate</option><option>&gt;67%  ||  Moderate</option></optgroup>
+                  <optgroup label="Strong"><option>1-10%  ||  Strong</option><option>11-33%  ||  Strong</option><option>34-66%  ||  Strong</option><option>&gt;67%  ||  Strong</option></optgroup>
+                </select></td>
+                <td class="select" ALIGN="center"><select class="form-select"><option>Select</option><option>Good</option><option>Fair</option><option>Poor</option><option>Educational Challenge</option></select></td>
+              </tr>
+
+              <tr>
+                <td>Core 8</td>
+                <td class="select" ALIGN="center"><select class="form-select"><option>Select</option>
+                  <optgroup label="Weak"><option>1-10%  ||  Weak</option><option>11-33%  ||  Weak</option><option>34-66%  ||  Weak</option><option>&gt;67%  ||  Weak</option></optgroup>
+                  <optgroup label="Moderate"><option>1-10%  ||  Moderate</option><option>11-33%  ||  Moderate</option><option>34-66%  ||  Moderate</option><option>&gt;67%  ||  Moderate</option></optgroup>
+                  <optgroup label="Strong"><option>1-10%  ||  Strong</option><option>11-33%  ||  Strong</option><option>34-66%  ||  Strong</option><option>&gt;67%  ||  Strong</option></optgroup>
+                </select></td>
+                <td class="select" ALIGN="center"><select class="form-select"><option>Select</option>
+                  <optgroup label="Weak"><option>1-10%  ||  Weak</option><option>11-33%  ||  Weak</option><option>34-66%  ||  Weak</option><option>&gt;67%  ||  Weak</option></optgroup>
+                  <optgroup label="Moderate"><option>1-10%  ||  Moderate</option><option>11-33%  ||  Moderate</option><option>34-66%  ||  Moderate</option><option>&gt;67%  ||  Moderate</option></optgroup>
+                  <optgroup label="Strong"><option>1-10%  ||  Strong</option><option>11-33%  ||  Strong</option><option>34-66%  ||  Strong</option><option>&gt;67%  ||  Strong</option></optgroup>
+                </select></td>
+                <td class="select" ALIGN="center"><select class="form-select"><option>Select</option>
+                  <optgroup label="Weak"><option>1-10%  ||  Weak</option><option>11-33%  ||  Weak</option><option>34-66%  ||  Weak</option><option>&gt;67%  ||  Weak</option></optgroup>
+                  <optgroup label="Moderate"><option>1-10%  ||  Moderate</option><option>11-33%  ||  Moderate</option><option>34-66%  ||  Moderate</option><option>&gt;67%  ||  Moderate</option></optgroup>
+                  <optgroup label="Strong"><option>1-10%  ||  Strong</option><option>11-33%  ||  Strong</option><option>34-66%  ||  Strong</option><option>&gt;67%  ||  Strong</option></optgroup>
+                </select></td>
+                <td class="select" ALIGN="center"><select class="form-select"><option>Select</option><option>Good</option><option>Fair</option><option>Poor</option><option>Educational Challenge</option></select></td>
+              </tr>
+
+              <tr>
+                <td>Core 9</td>
+                <td class="select" ALIGN="center"><select class="form-select"><option>Select</option>
+                  <optgroup label="Weak"><option>1-10%  ||  Weak</option><option>11-33%  ||  Weak</option><option>34-66%  ||  Weak</option><option>&gt;67%  ||  Weak</option></optgroup>
+                  <optgroup label="Moderate"><option>1-10%  ||  Moderate</option><option>11-33%  ||  Moderate</option><option>34-66%  ||  Moderate</option><option>&gt;67%  ||  Moderate</option></optgroup>
+                  <optgroup label="Strong"><option>1-10%  ||  Strong</option><option>11-33%  ||  Strong</option><option>34-66%  ||  Strong</option><option>&gt;67%  ||  Strong</option></optgroup>
+                </select></td>
+                <td class="select" ALIGN="center"><select class="form-select"><option>Select</option>
+                  <optgroup label="Weak"><option>1-10%  ||  Weak</option><option>11-33%  ||  Weak</option><option>34-66%  ||  Weak</option><option>&gt;67%  ||  Weak</option></optgroup>
+                  <optgroup label="Moderate"><option>1-10%  ||  Moderate</option><option>11-33%  ||  Moderate</option><option>34-66%  ||  Moderate</option><option>&gt;67%  ||  Moderate</option></optgroup>
+                  <optgroup label="Strong"><option>1-10%  ||  Strong</option><option>11-33%  ||  Strong</option><option>34-66%  ||  Strong</option><option>&gt;67%  ||  Strong</option></optgroup>
+                </select></td>
+                <td class="select" ALIGN="center"><select class="form-select"><option>Select</option>
+                  <optgroup label="Weak"><option>1-10%  ||  Weak</option><option>11-33%  ||  Weak</option><option>34-66%  ||  Weak</option><option>&gt;67%  ||  Weak</option></optgroup>
+                  <optgroup label="Moderate"><option>1-10%  ||  Moderate</option><option>11-33%  ||  Moderate</option><option>34-66%  ||  Moderate</option><option>&gt;67%  ||  Moderate</option></optgroup>
+                  <optgroup label="Strong"><option>1-10%  ||  Strong</option><option>11-33%  ||  Strong</option><option>34-66%  ||  Strong</option><option>&gt;67%  ||  Strong</option></optgroup>
+                </select></td>
+                <td class="select" ALIGN="center"><select class="form-select"><option>Select</option><option>Good</option><option>Fair</option><option>Poor</option><option>Educational Challenge</option></select></td>
+              </tr>
+
+              <tr>
+                <td>Core 10</td>
+                <td class="select" ALIGN="center"><select class="form-select"><option>Select</option>
+                  <optgroup label="Weak"><option>1-10%  ||  Weak</option><option>11-33%  ||  Weak</option><option>34-66%  ||  Weak</option><option>&gt;67%  ||  Weak</option></optgroup>
+                  <optgroup label="Moderate"><option>1-10%  ||  Moderate</option><option>11-33%  ||  Moderate</option><option>34-66%  ||  Moderate</option><option>&gt;67%  ||  Moderate</option></optgroup>
+                  <optgroup label="Strong"><option>1-10%  ||  Strong</option><option>11-33%  ||  Strong</option><option>34-66%  ||  Strong</option><option>&gt;67%  ||  Strong</option></optgroup>
+                </select></td>
+                <td class="select" ALIGN="center"><select class="form-select"><option>Select</option>
+                  <optgroup label="Weak"><option>1-10%  ||  Weak</option><option>11-33%  ||  Weak</option><option>34-66%  ||  Weak</option><option>&gt;67%  ||  Weak</option></optgroup>
+                  <optgroup label="Moderate"><option>1-10%  ||  Moderate</option><option>11-33%  ||  Moderate</option><option>34-66%  ||  Moderate</option><option>&gt;67%  ||  Moderate</option></optgroup>
+                  <optgroup label="Strong"><option>1-10%  ||  Strong</option><option>11-33%  ||  Strong</option><option>34-66%  ||  Strong</option><option>&gt;67%  ||  Strong</option></optgroup>
+                </select></td>
+                <td class="select" ALIGN="center"><select class="form-select"><option>Select</option>
+                  <optgroup label="Weak"><option>1-10%  ||  Weak</option><option>11-33%  ||  Weak</option><option>34-66%  ||  Weak</option><option>&gt;67%  ||  Weak</option></optgroup>
+                  <optgroup label="Moderate"><option>1-10%  ||  Moderate</option><option>11-33%  ||  Moderate</option><option>34-66%  ||  Moderate</option><option>&gt;67%  ||  Moderate</option></optgroup>
+                  <optgroup label="Strong"><option>1-10%  ||  Strong</option><option>11-33%  ||  Strong</option><option>34-66%  ||  Strong</option><option>&gt;67%  ||  Strong</option></optgroup>
+                </select></td>
+                <td class="select" ALIGN="center"><select class="form-select"><option>Select</option><option>Good</option><option>Fair</option><option>Poor</option><option>Educational Challenge</option></select></td>
+              </tr>
+
+              <tr>
+                <td>Core 11</td>
+                <td class="select" ALIGN="center"><select class="form-select"><option>Select</option>
+                  <optgroup label="Weak"><option>1-10%  ||  Weak</option><option>11-33%  ||  Weak</option><option>34-66%  ||  Weak</option><option>&gt;67%  ||  Weak</option></optgroup>
+                  <optgroup label="Moderate"><option>1-10%  ||  Moderate</option><option>11-33%  ||  Moderate</option><option>34-66%  ||  Moderate</option><option>&gt;67%  ||  Moderate</option></optgroup>
+                  <optgroup label="Strong"><option>1-10%  ||  Strong</option><option>11-33%  ||  Strong</option><option>34-66%  ||  Strong</option><option>&gt;67%  ||  Strong</option></optgroup>
+                </select></td>
+                <td class="select" ALIGN="center"><select class="form-select"><option>Select</option>
+                  <optgroup label="Weak"><option>1-10%  ||  Weak</option><option>11-33%  ||  Weak</option><option>34-66%  ||  Weak</option><option>&gt;67%  ||  Weak</option></optgroup>
+                  <optgroup label="Moderate"><option>1-10%  ||  Moderate</option><option>11-33%  ||  Moderate</option><option>34-66%  ||  Moderate</option><option>&gt;67%  ||  Moderate</option></optgroup>
+                  <optgroup label="Strong"><option>1-10%  ||  Strong</option><option>11-33%  ||  Strong</option><option>34-66%  ||  Strong</option><option>&gt;67%  ||  Strong</option></optgroup>
+                </select></td>
+                <td class="select" ALIGN="center"><select class="form-select"><option>Select</option>
+                  <optgroup label="Weak"><option>1-10%  ||  Weak</option><option>11-33%  ||  Weak</option><option>34-66%  ||  Weak</option><option>&gt;67%  ||  Weak</option></optgroup>
+                  <optgroup label="Moderate"><option>1-10%  ||  Moderate</option><option>11-33%  ||  Moderate</option><option>34-66%  ||  Moderate</option><option>&gt;67%  ||  Moderate</option></optgroup>
+                  <optgroup label="Strong"><option>1-10%  ||  Strong</option><option>11-33%  ||  Strong</option><option>34-66%  ||  Strong</option><option>&gt;67%  ||  Strong</option></optgroup>
+                </select></td>
+                <td class="select" ALIGN="center"><select class="form-select"><option>Select</option><option>Good</option><option>Fair</option><option>Poor</option><option>Educational Challenge</option></select></td>
+              </tr>
+
+              <tr>
+                <td>Core 12</td>
+                <td class="select" ALIGN="center"><select class="form-select"><option>Select</option>
+                  <optgroup label="Weak"><option>1-10%  ||  Weak</option><option>11-33%  ||  Weak</option><option>34-66%  ||  Weak</option><option>&gt;67%  ||  Weak</option></optgroup>
+                  <optgroup label="Moderate"><option>1-10%  ||  Moderate</option><option>11-33%  ||  Moderate</option><option>34-66%  ||  Moderate</option><option>&gt;67%  ||  Moderate</option></optgroup>
+                  <optgroup label="Strong"><option>1-10%  ||  Strong</option><option>11-33%  ||  Strong</option><option>34-66%  ||  Strong</option><option>&gt;67%  ||  Strong</option></optgroup>
+                </select></td>
+                <td class="select" ALIGN="center"><select class="form-select"><option>Select</option>
+                  <optgroup label="Weak"><option>1-10%  ||  Weak</option><option>11-33%  ||  Weak</option><option>34-66%  ||  Weak</option><option>&gt;67%  ||  Weak</option></optgroup>
+                  <optgroup label="Moderate"><option>1-10%  ||  Moderate</option><option>11-33%  ||  Moderate</option><option>34-66%  ||  Moderate</option><option>&gt;67%  ||  Moderate</option></optgroup>
+                  <optgroup label="Strong"><option>1-10%  ||  Strong</option><option>11-33%  ||  Strong</option><option>34-66%  ||  Strong</option><option>&gt;67%  ||  Strong</option></optgroup>
+                </select></td>
+                <td class="select" ALIGN="center"><select class="form-select"><option>Select</option>
+                  <optgroup label="Weak"><option>1-10%  ||  Weak</option><option>11-33%  ||  Weak</option><option>34-66%  ||  Weak</option><option>&gt;67%  ||  Weak</option></optgroup>
+                  <optgroup label="Moderate"><option>1-10%  ||  Moderate</option><option>11-33%  ||  Moderate</option><option>34-66%  ||  Moderate</option><option>&gt;67%  ||  Moderate</option></optgroup>
+                  <optgroup label="Strong"><option>1-10%  ||  Strong</option><option>11-33%  ||  Strong</option><option>34-66%  ||  Strong</option><option>&gt;67%  ||  Strong</option></optgroup>
+                </select></td>
+                <td class="select" ALIGN="center"><select class="form-select"><option>Select</option><option>Good</option><option>Fair</option><option>Poor</option><option>Educational Challenge</option></select></td>
+              </tr>
+
             </tbody>
           </table>
         </div>
@@ -2853,25 +2346,49 @@
 
       <div class="mt-4 d-flex flex-column align-items-center text-center pb-2">
         <div class="mb-3" style="max-width:280px; width:100%;">
-          <label class="fw-semibold mb-1 d-block" for="scoreObtained-PR">Total Score</label>
+          <label class="fw-semibold mb-1 d-block" for="scoreTotal-ER">Total Score:</label>
           <div class="input-group justify-content-center">
-            <input type="number" id="scoreObtained-PR" class="form-control form-control-sm text-end score-input">
+            <input type="number" id="scoreTotal-ER" class="form-control form-control-sm text-end score-input">
           </div>
         </div>
+
+        <div class="mb-3" style="max-width:280px; width:100%;">
+          <label class="fw-semibold mb-1 d-block" for="scoreGood-ER">Good:</label>
+          <div class="input-group justify-content-center">
+            <input type="number" id="scoreGood-ER" class="form-control form-control-sm text-end score-input">
+          </div>
+        </div>
+
+        <div class="mb-3" style="max-width:280px; width:100%;">
+          <label class="fw-semibold mb-1 d-block" for="scoreFair-ER">Fair:</label>
+          <div class="input-group justify-content-center">
+            <input type="number" id="scoreFair-ER" class="form-control form-control-sm text-end score-input">
+          </div>
+        </div>
+
+        <div class="mb-3" style="max-width:280px; width:100%;">
+          <label class="fw-semibold mb-1 d-block" for="scorePoor-ER">Poor:</label>
+          <div class="input-group justify-content-center">
+            <input type="number" id="scorePoor-ER" class="form-control form-control-sm text-end score-input">
+          </div>
+        </div>
+
+
         <div style="max-width:500px; width:100%;">
-          <label class="fw-semibold mb-1 d-block" for="comment-PR">Comment:</label>
-          <textarea id="comment-PR" class="form-control" rows="3" placeholder="Enter your comment here..."></textarea>
+          <label class="fw-semibold mb-1 d-block" for="comment-ER">Comment:</label>
+          <textarea id="comment-ER" class="form-control" rows="3" placeholder="Enter your comment here..."></textarea>
         </div>
       </div>
 
       <div class="modal-footer border-0 px-4 py-3">
         <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancel</button>
-        <button type="button" class="btn btn-primary btn-save" data-sub="PR">Save</button>
-        <button type="button" class="btn btn-primary btn-submit" data-sub="R">Submit</button>
+        <button type="button" class="btn btn-primary btn-save" data-sub="ER">Save</button>
+        <button type="button" class="btn btn-primary btn-submit" data-sub="ER">Submit</button>
       </div>
     </div>
   </div>
 </div>
+
 
 <!-- ===== HER2/Neu ===== -->
 <div class="modal fade enter-result-modal" id="modal-HER2" data-sub="HER2" tabindex="-1" aria-labelledby="label-HER2" aria-hidden="true">
@@ -7802,6 +7319,244 @@ document.addEventListener('change', (e) => {
 
 
 </script>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const tbody = document.querySelector("#modal-ER #rows-ER");
+  if (!tbody) return;
+
+  const doaOptionsHTML = `
+    <option value="">Select</option>
+    <option value="Concordance">Concordance</option>
+    <option value="Discordance">Discordance</option>
+  `;
+
+  function ensureNAOption(sel) {
+    const hasNA = [...sel.querySelectorAll("option")].some(o => o.textContent.trim() === "NA");
+    if (hasNA) return;
+
+    const na = document.createElement("option");
+    na.value = "NA";
+    na.textContent = "NA";
+
+    // Put NA before the first optgroup (direct child of select)
+    const firstOptgroup = sel.querySelector("optgroup");
+    if (firstOptgroup) sel.insertBefore(na, firstOptgroup);
+    else sel.appendChild(na);
+  }
+
+  function wireNAReason(td, scoreSelect, ariaLabel) {
+    if (!td || !scoreSelect) return;
+
+    // Undo the earlier approach if it ran before
+    td.classList.remove("d-flex", "gap-2", "align-items-center");
+    td.style.flexWrap = "";
+
+    // Ensure NA exists
+    ensureNAOption(scoreSelect);
+
+    // Create / reuse wrapper
+    let wrap = td.querySelector(".na-wrap");
+    if (!wrap) {
+      wrap = document.createElement("div");
+      wrap.className = "na-wrap";
+      wrap.style.display = "flex";
+      wrap.style.gap = "8px";
+      wrap.style.alignItems = "center";
+      wrap.style.flexWrap = "nowrap";
+
+      // Insert wrapper and move the existing select into it
+      td.insertBefore(wrap, scoreSelect);
+      wrap.appendChild(scoreSelect);
+    }
+
+    // Make the main select take remaining space
+    scoreSelect.style.flex = "1 1 auto";
+    scoreSelect.style.minWidth = "0";
+
+    // Create / reuse reason select
+    let reasonSel = wrap.querySelector("select.na-reason");
+    if (!reasonSel) {
+      reasonSel = document.createElement("select");
+      reasonSel.className = "form-select form-select-sm na-reason";
+      reasonSel.setAttribute("aria-label", ariaLabel);
+      reasonSel.style.flex = "0 0 220px";
+      reasonSel.style.display = "none";
+      reasonSel.disabled = true;
+
+      reasonSel.innerHTML = `
+        <option value="">Reason</option>
+        <option value="Tissue Inadequate">Tissue Inadequate</option>
+        <option value="Tissue Wash-off">Tissue Wash-off</option>
+      `;
+
+      wrap.appendChild(reasonSel);
+    }
+
+    // Avoid double-wiring listeners
+    if (scoreSelect.dataset.naWired === "1") return;
+    scoreSelect.dataset.naWired = "1";
+
+    const toggle = () => {
+      const txt = scoreSelect.options[scoreSelect.selectedIndex]?.textContent?.trim() || "";
+      const isNA = (scoreSelect.value === "NA" || txt === "NA");
+
+      if (isNA) {
+        reasonSel.style.display = "";
+        reasonSel.disabled = false;
+      } else {
+        reasonSel.value = "";
+        reasonSel.style.display = "none";
+        reasonSel.disabled = true;
+      }
+    };
+
+    scoreSelect.addEventListener("change", toggle);
+    toggle();
+  }
+
+  tbody.querySelectorAll("tr").forEach(tr => {
+    const tds = tr.querySelectorAll("td");
+    if (tds.length < 5) return;
+
+    // Columns: 0 Core, 1 Participant, 2 EQAS, 3 Ideal, 4 DOA
+    const eqasTd  = tds[2];
+    const idealTd = tds[3];
+    const doaTd   = tds[4];
+
+    const eqasSelect  = eqasTd.querySelector("select.form-select");
+    const idealSelect = idealTd.querySelector("select.form-select");
+    const doaSelect   = doaTd.querySelector("select.form-select");
+
+    // DOA: Concordance/Discordance only
+    if (doaSelect) doaSelect.innerHTML = doaOptionsHTML;
+
+    // NA -> show reason select to the right (no replacement)
+    wireNAReason(eqasTd, eqasSelect, "NA Reason (EQAS)");
+    wireNAReason(idealTd, idealSelect, "NA Reason (Ideal)");
+  });
+});
+</script>
+
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const tbody = document.querySelector("#modal-PR #rows-PR");
+  if (!tbody) return;
+
+  const doaOptionsHTML = `
+    <option value="">Select</option>
+    <option value="Concordance">Concordance</option>
+    <option value="Discordance">Discordance</option>
+  `;
+
+  function ensureNAOption(sel) {
+    const hasNA = [...sel.querySelectorAll("option")].some(o => o.textContent.trim() === "NA");
+    if (hasNA) return;
+
+    const na = document.createElement("option");
+    na.value = "NA";
+    na.textContent = "NA";
+
+    // Put NA before the first optgroup (direct child of select)
+    const firstOptgroup = sel.querySelector("optgroup");
+    if (firstOptgroup) sel.insertBefore(na, firstOptgroup);
+    else sel.appendChild(na);
+  }
+
+  function wireNAReason(td, scoreSelect, ariaLabel) {
+    if (!td || !scoreSelect) return;
+
+    // Undo the earlier approach if it ran before
+    td.classList.remove("d-flex", "gap-2", "align-items-center");
+    td.style.flexWrap = "";
+
+    // Ensure NA exists
+    ensureNAOption(scoreSelect);
+
+    // Create / reuse wrapper
+    let wrap = td.querySelector(".na-wrap");
+    if (!wrap) {
+      wrap = document.createElement("div");
+      wrap.className = "na-wrap";
+      wrap.style.display = "flex";
+      wrap.style.gap = "8px";
+      wrap.style.alignItems = "center";
+      wrap.style.flexWrap = "nowrap";
+
+      // Insert wrapper and move the existing select into it
+      td.insertBefore(wrap, scoreSelect);
+      wrap.appendChild(scoreSelect);
+    }
+
+    // Make the main select take remaining space
+    scoreSelect.style.flex = "1 1 auto";
+    scoreSelect.style.minWidth = "0";
+
+    // Create / reuse reason select
+    let reasonSel = wrap.querySelector("select.na-reason");
+    if (!reasonSel) {
+      reasonSel = document.createElement("select");
+      reasonSel.className = "form-select form-select-sm na-reason";
+      reasonSel.setAttribute("aria-label", ariaLabel);
+      reasonSel.style.flex = "0 0 220px";
+      reasonSel.style.display = "none";
+      reasonSel.disabled = true;
+
+      reasonSel.innerHTML = `
+        <option value="">Reason</option>
+        <option value="Tissue Inadequate">Tissue Inadequate</option>
+        <option value="Tissue Wash-off">Tissue Wash-off</option>
+      `;
+
+      wrap.appendChild(reasonSel);
+    }
+
+    // Avoid double-wiring listeners
+    if (scoreSelect.dataset.naWired === "1") return;
+    scoreSelect.dataset.naWired = "1";
+
+    const toggle = () => {
+      const txt = scoreSelect.options[scoreSelect.selectedIndex]?.textContent?.trim() || "";
+      const isNA = (scoreSelect.value === "NA" || txt === "NA");
+
+      if (isNA) {
+        reasonSel.style.display = "";
+        reasonSel.disabled = false;
+      } else {
+        reasonSel.value = "";
+        reasonSel.style.display = "none";
+        reasonSel.disabled = true;
+      }
+    };
+
+    scoreSelect.addEventListener("change", toggle);
+    toggle();
+  }
+
+  tbody.querySelectorAll("tr").forEach(tr => {
+    const tds = tr.querySelectorAll("td");
+    if (tds.length < 5) return;
+
+    // Columns: 0 Core, 1 Participant, 2 EQAS, 3 Ideal, 4 DOA
+    const eqasTd  = tds[2];
+    const idealTd = tds[3];
+    const doaTd   = tds[4];
+
+    const eqasSelect  = eqasTd.querySelector("select.form-select");
+    const idealSelect = idealTd.querySelector("select.form-select");
+    const doaSelect   = doaTd.querySelector("select.form-select");
+
+    // DOA: Concordance/Discordance only
+    if (doaSelect) doaSelect.innerHTML = doaOptionsHTML;
+
+    // NA -> show reason select to the right (no replacement)
+    wireNAReason(eqasTd, eqasSelect, "NA Reason (EQAS)");
+    wireNAReason(idealTd, idealSelect, "NA Reason (Ideal)");
+  });
+});
+</script>
+
 
 
 </body>
