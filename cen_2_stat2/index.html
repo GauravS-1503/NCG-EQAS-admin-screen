@@ -42,11 +42,7 @@
     <div class="bg-white p-3 rounded shadow-sm">
       <div id="ihcView">
         <div class="bucket-tabs d-flex gap-3 flex-wrap mb-2 mb-md-0">
-          <div class="bucket-tab active-tab" data-status="status" onclick="setActiveTab(this)">
-            Status
-          </div>
-
-          <div class="bucket-tab" data-status="reporting" onclick="setActiveTab(this)">
+          <div class="bucket-tab active-tab" data-status="reporting" onclick="setActiveTab(this)">
             Sample Reporting
           </div>
         </div>
@@ -196,7 +192,7 @@
               <td class="tracking-cell" data-original="">
                 <input type="text" class="form-control form-control-sm" placeholder="Enter Tracking ID">
               </td>
-              <td>Lymphoma</td>
+              <td>Hematolymphoid</td>
               <td style="text-align: center;">01-07-2025</td>
               <td style="text-align: center;">
                 <button class="btn btn-success btn-sm px-2 py-1" onclick="confirmReceive(this)">✓</button>
@@ -303,7 +299,7 @@
             </tr>
             <tr>
               <td>28</td>
-              <td>Lymphoma</td>
+              <td>Hematolymphoid</td>
               <td>01/10/2025</td>
               <td class="text-center">
                 <button class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#protocolModal" data-submodule="Lymphoma" data-run="28">
@@ -1964,11 +1960,27 @@
 
       <div class="mt-4 d-flex flex-column align-items-center text-center pb-2">
         <div class="mb-3" style="max-width:280px; width:100%;">
-          <label class="fw-semibold mb-1 d-block" for="scoreTotal-ER">Total Score:</label>
+          <label class="fw-semibold mb-1 d-block" for="scoreTotal-ER">Total Score</label>
+        </div>
+
+        <div style="max-width:500px; width:100%;">
+          <div class="input-group mb-2">
+            <span class="input-group-text">Test Pass Rate</span>
+            <input type="number" class="form-control form-control-sm text-end" min="0" step="1" value="0">
+            <span class="input-group-text">/</span>
+            <input type="number" class="form-control form-control-sm text-end" min="0" step="1" value="0">
+            <span class="input-group-text">Results Concordant</span>
+          </div>
+
+          <!-- Pass Rate row -->
           <div class="input-group justify-content-center">
-            <input type="number" id="scoreTotal-ER" class="form-control form-control-sm text-end score-input">
+            <span class="input-group-text">Pass Rate</span>
+            <input type="number" class="form-control form-control-sm text-end"
+                  style="max-width: 80px;" min="0" step="1" value="0">
+            <span class="input-group-text">%</span>
           </div>
         </div>
+
 
         <div class="mb-3" style="max-width:280px; width:100%;">
           <label class="fw-semibold mb-1 d-block" for="scoreGood-ER">Good:</label>
@@ -2345,10 +2357,25 @@
       </div>
 
       <div class="mt-4 d-flex flex-column align-items-center text-center pb-2">
-        <div class="mb-3" style="max-width:280px; width:100%;">
-          <label class="fw-semibold mb-1 d-block" for="scoreTotal-ER">Total Score:</label>
+        <label class="fw-semibold mb-2 d-block">Total Score</label>
+
+          <!-- Test Pass Rate row -->
+           <!-- <div class="mt-4 d-flex flex-column align-items-center text-center pb-2"> -->
+        <div style="max-width:500px; width:100%;">
+          <div class="input-group mb-2">
+            <span class="input-group-text">Test Pass Rate</span>
+            <input type="number" class="form-control form-control-sm text-end" min="0" step="1" value="0">
+            <span class="input-group-text">/</span>
+            <input type="number" class="form-control form-control-sm text-end" min="0" step="1" value="0">
+            <span class="input-group-text">Results Concordant</span>
+          </div>
+
+          <!-- Pass Rate row -->
           <div class="input-group justify-content-center">
-            <input type="number" id="scoreTotal-ER" class="form-control form-control-sm text-end score-input">
+            <span class="input-group-text">Pass Rate</span>
+            <input type="number" class="form-control form-control-sm text-end"
+                  style="max-width: 80px;" min="0" step="1" value="0">
+            <span class="input-group-text">%</span>
           </div>
         </div>
 
@@ -2421,7 +2448,7 @@
                         <option>Negative 1+</option>
                         <option>Equivocal 2+</option>
                         <option>Positive 3+</option>
-                        <option>Lymph node</option>
+                        
                         <option>Blank</option>
                         <option>Uninterpretable</option>
                         <option>Tissue Depleted</option>
@@ -2435,7 +2462,7 @@
                         <option>Negative 1+</option>
                         <option>Equivocal 2+</option>
                         <option>Positive 3+</option>
-                        <option>Lymph node</option>
+                        
                         <option>Blank</option>
                         <option>Uninterpretable</option>
                         <option>Tissue Depleted</option>
@@ -2449,7 +2476,7 @@
                         <option>Negative 1+</option>
                         <option>Equivocal 2+</option>
                         <option>Positive 3+</option>
-                        <option>Lymph node</option>
+                        
                         <option>Blank</option>
                         <option>Uninterpretable</option>
                         <option>Tissue Depleted</option>
@@ -2475,7 +2502,7 @@
                         <option>Negative 1+</option>
                         <option>Equivocal 2+</option>
                         <option>Positive 3+</option>
-                        <option>Lymph node</option>
+                        
                         <option>Blank</option>
                         <option>Uninterpretable</option>
                         <option>Tissue Depleted</option>
@@ -2489,7 +2516,7 @@
                         <option>Negative 1+</option>
                         <option>Equivocal 2+</option>
                         <option>Positive 3+</option>
-                        <option>Lymph node</option>
+                        
                         <option>Blank</option>
                         <option>Uninterpretable</option>
                         <option>Tissue Depleted</option>
@@ -2503,7 +2530,7 @@
                         <option>Negative 1+</option>
                         <option>Equivocal 2+</option>
                         <option>Positive 3+</option>
-                        <option>Lymph node</option>
+                        
                         <option>Blank</option>
                         <option>Uninterpretable</option>
                         <option>Tissue Depleted</option>
@@ -2529,7 +2556,7 @@
                         <option>Negative 1+</option>
                         <option>Equivocal 2+</option>
                         <option>Positive 3+</option>
-                        <option>Lymph node</option>
+                        
                         <option>Blank</option>
                         <option>Uninterpretable</option>
                         <option>Tissue Depleted</option>
@@ -2543,7 +2570,7 @@
                         <option>Negative 1+</option>
                         <option>Equivocal 2+</option>
                         <option>Positive 3+</option>
-                        <option>Lymph node</option>
+                        
                         <option>Blank</option>
                         <option>Uninterpretable</option>
                         <option>Tissue Depleted</option>
@@ -2557,7 +2584,7 @@
                         <option>Negative 1+</option>
                         <option>Equivocal 2+</option>
                         <option>Positive 3+</option>
-                        <option>Lymph node</option>
+                        
                         <option>Blank</option>
                         <option>Uninterpretable</option>
                         <option>Tissue Depleted</option>
@@ -2583,7 +2610,7 @@
                         <option>Negative 1+</option>
                         <option>Equivocal 2+</option>
                         <option>Positive 3+</option>
-                        <option>Lymph node</option>
+                        
                         <option>Blank</option>
                         <option>Uninterpretable</option>
                         <option>Tissue Depleted</option>
@@ -2597,7 +2624,7 @@
                         <option>Negative 1+</option>
                         <option>Equivocal 2+</option>
                         <option>Positive 3+</option>
-                        <option>Lymph node</option>
+                        
                         <option>Blank</option>
                         <option>Uninterpretable</option>
                         <option>Tissue Depleted</option>
@@ -2611,7 +2638,7 @@
                         <option>Negative 1+</option>
                         <option>Equivocal 2+</option>
                         <option>Positive 3+</option>
-                        <option>Lymph node</option>
+                        
                         <option>Blank</option>
                         <option>Uninterpretable</option>
                         <option>Tissue Depleted</option>
@@ -2637,7 +2664,7 @@
                         <option>Negative 1+</option>
                         <option>Equivocal 2+</option>
                         <option>Positive 3+</option>
-                        <option>Lymph node</option>
+                        
                         <option>Blank</option>
                         <option>Uninterpretable</option>
                         <option>Tissue Depleted</option>
@@ -2651,7 +2678,7 @@
                         <option>Negative 1+</option>
                         <option>Equivocal 2+</option>
                         <option>Positive 3+</option>
-                        <option>Lymph node</option>
+                        
                         <option>Blank</option>
                         <option>Uninterpretable</option>
                         <option>Tissue Depleted</option>
@@ -2665,7 +2692,7 @@
                         <option>Negative 1+</option>
                         <option>Equivocal 2+</option>
                         <option>Positive 3+</option>
-                        <option>Lymph node</option>
+                        
                         <option>Blank</option>
                         <option>Uninterpretable</option>
                         <option>Tissue Depleted</option>
@@ -2691,7 +2718,7 @@
                         <option>Negative 1+</option>
                         <option>Equivocal 2+</option>
                         <option>Positive 3+</option>
-                        <option>Lymph node</option>
+                        
                         <option>Blank</option>
                         <option>Uninterpretable</option>
                         <option>Tissue Depleted</option>
@@ -2705,7 +2732,7 @@
                         <option>Negative 1+</option>
                         <option>Equivocal 2+</option>
                         <option>Positive 3+</option>
-                        <option>Lymph node</option>
+                        
                         <option>Blank</option>
                         <option>Uninterpretable</option>
                         <option>Tissue Depleted</option>
@@ -2719,7 +2746,7 @@
                         <option>Negative 1+</option>
                         <option>Equivocal 2+</option>
                         <option>Positive 3+</option>
-                        <option>Lymph node</option>
+                        
                         <option>Blank</option>
                         <option>Uninterpretable</option>
                         <option>Tissue Depleted</option>
@@ -2745,7 +2772,7 @@
                         <option>Negative 1+</option>
                         <option>Equivocal 2+</option>
                         <option>Positive 3+</option>
-                        <option>Lymph node</option>
+                        
                         <option>Blank</option>
                         <option>Uninterpretable</option>
                         <option>Tissue Depleted</option>
@@ -2759,7 +2786,7 @@
                         <option>Negative 1+</option>
                         <option>Equivocal 2+</option>
                         <option>Positive 3+</option>
-                        <option>Lymph node</option>
+                        
                         <option>Blank</option>
                         <option>Uninterpretable</option>
                         <option>Tissue Depleted</option>
@@ -2773,7 +2800,7 @@
                         <option>Negative 1+</option>
                         <option>Equivocal 2+</option>
                         <option>Positive 3+</option>
-                        <option>Lymph node</option>
+                        
                         <option>Blank</option>
                         <option>Uninterpretable</option>
                         <option>Tissue Depleted</option>
@@ -2799,7 +2826,7 @@
                         <option>Negative 1+</option>
                         <option>Equivocal 2+</option>
                         <option>Positive 3+</option>
-                        <option>Lymph node</option>
+                        
                         <option>Blank</option>
                         <option>Uninterpretable</option>
                         <option>Tissue Depleted</option>
@@ -2813,7 +2840,7 @@
                         <option>Negative 1+</option>
                         <option>Equivocal 2+</option>
                         <option>Positive 3+</option>
-                        <option>Lymph node</option>
+                        
                         <option>Blank</option>
                         <option>Uninterpretable</option>
                         <option>Tissue Depleted</option>
@@ -2827,7 +2854,7 @@
                         <option>Negative 1+</option>
                         <option>Equivocal 2+</option>
                         <option>Positive 3+</option>
-                        <option>Lymph node</option>
+                        
                         <option>Blank</option>
                         <option>Uninterpretable</option>
                         <option>Tissue Depleted</option>
@@ -2853,7 +2880,7 @@
                         <option>Negative 1+</option>
                         <option>Equivocal 2+</option>
                         <option>Positive 3+</option>
-                        <option>Lymph node</option>
+                        
                         <option>Blank</option>
                         <option>Uninterpretable</option>
                         <option>Tissue Depleted</option>
@@ -2867,7 +2894,7 @@
                         <option>Negative 1+</option>
                         <option>Equivocal 2+</option>
                         <option>Positive 3+</option>
-                        <option>Lymph node</option>
+                        
                         <option>Blank</option>
                         <option>Uninterpretable</option>
                         <option>Tissue Depleted</option>
@@ -2881,7 +2908,7 @@
                         <option>Negative 1+</option>
                         <option>Equivocal 2+</option>
                         <option>Positive 3+</option>
-                        <option>Lymph node</option>
+                        
                         <option>Blank</option>
                         <option>Uninterpretable</option>
                         <option>Tissue Depleted</option>
@@ -2907,7 +2934,7 @@
                         <option>Negative 1+</option>
                         <option>Equivocal 2+</option>
                         <option>Positive 3+</option>
-                        <option>Lymph node</option>
+                        
                         <option>Blank</option>
                         <option>Uninterpretable</option>
                         <option>Tissue Depleted</option>
@@ -2921,7 +2948,7 @@
                         <option>Negative 1+</option>
                         <option>Equivocal 2+</option>
                         <option>Positive 3+</option>
-                        <option>Lymph node</option>
+                        
                         <option>Blank</option>
                         <option>Uninterpretable</option>
                         <option>Tissue Depleted</option>
@@ -2935,7 +2962,7 @@
                         <option>Negative 1+</option>
                         <option>Equivocal 2+</option>
                         <option>Positive 3+</option>
-                        <option>Lymph node</option>
+                        
                         <option>Blank</option>
                         <option>Uninterpretable</option>
                         <option>Tissue Depleted</option>
@@ -2961,7 +2988,7 @@
                         <option>Negative 1+</option>
                         <option>Equivocal 2+</option>
                         <option>Positive 3+</option>
-                        <option>Lymph node</option>
+                        
                         <option>Blank</option>
                         <option>Uninterpretable</option>
                         <option>Tissue Depleted</option>
@@ -2975,7 +3002,7 @@
                         <option>Negative 1+</option>
                         <option>Equivocal 2+</option>
                         <option>Positive 3+</option>
-                        <option>Lymph node</option>
+                        
                         <option>Blank</option>
                         <option>Uninterpretable</option>
                         <option>Tissue Depleted</option>
@@ -2989,7 +3016,7 @@
                         <option>Negative 1+</option>
                         <option>Equivocal 2+</option>
                         <option>Positive 3+</option>
-                        <option>Lymph node</option>
+                        
                         <option>Blank</option>
                         <option>Uninterpretable</option>
                         <option>Tissue Depleted</option>
@@ -3015,7 +3042,7 @@
                         <option>Negative 1+</option>
                         <option>Equivocal 2+</option>
                         <option>Positive 3+</option>
-                        <option>Lymph node</option>
+                        
                         <option>Blank</option>
                         <option>Uninterpretable</option>
                         <option>Tissue Depleted</option>
@@ -3029,7 +3056,7 @@
                         <option>Negative 1+</option>
                         <option>Equivocal 2+</option>
                         <option>Positive 3+</option>
-                        <option>Lymph node</option>
+                        
                         <option>Blank</option>
                         <option>Uninterpretable</option>
                         <option>Tissue Depleted</option>
@@ -3043,7 +3070,7 @@
                         <option>Negative 1+</option>
                         <option>Equivocal 2+</option>
                         <option>Positive 3+</option>
-                        <option>Lymph node</option>
+                        
                         <option>Blank</option>
                         <option>Uninterpretable</option>
                         <option>Tissue Depleted</option>
@@ -3067,6 +3094,24 @@
 
       <div class="mt-4 d-flex flex-column align-items-center text-center pb-2">
         <div style="max-width:500px; width:100%;">
+          <label class="fw-semibold mb-2 d-block">Total Score</label>
+
+          <!-- Test Pass Rate row -->
+          <div class="input-group mb-2">
+            <span class="input-group-text">Test Pass Rate</span>
+            <input type="number" class="form-control form-control-sm text-end" min="0" step="1" value="0">
+            <span class="input-group-text">/</span>
+            <input type="number" class="form-control form-control-sm text-end" min="0" step="1" value="0">
+            <span class="input-group-text">Results Concordant</span>
+          </div>
+
+          <!-- Pass Rate row -->
+          <div class="input-group justify-content-center">
+            <span class="input-group-text">Pass Rate</span>
+            <input type="number" class="form-control form-control-sm text-end"
+                  style="max-width: 80px;" min="0" step="1" value="0">
+            <span class="input-group-text">%</span>
+          </div>
           <label class="fw-semibold mb-1 d-block" for="comment-PR">Comment:</label>
           <textarea id="comment-PR" class="form-control" rows="3" placeholder="Enter your comment here..."></textarea>
         </div>
@@ -3086,7 +3131,7 @@
   <div class="modal-dialog modal-xl modal-wide">
     <div class="modal-content p-0" style="border-radius:12px; overflow:hidden;">
       <div class="d-flex justify-content-between align-items-center" style="background:#2f3e63;color:#fff;padding:14px 20px;">
-        <h4 class="modal-title mb-0 fw-semibold" id="label-LYM">Enter Results – Lymphoma</h4>
+        <h4 class="modal-title mb-0 fw-semibold" id="label-LYM">Enter Results – Hematolymphoid</h4>
         <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
 
@@ -3113,9 +3158,9 @@
                         <option>Interpret in Large Cells</option>
                         <option>Interpret in Tumor Cells</option>
                         <option>Interpret in Abnormal Cells</option>
-                        <option>Lymph Node</option>
+                        
                         <option>Blank</option>
-                        <option>Others</option>
+                        
                   </select>
               </td>              
               <td class = "select" ALIGN="center">      
@@ -3125,10 +3170,10 @@
                         <option>Negative</option>
                         <option>Uninterpretable</option>
                         <option>No Tumor</option>
-                        <option>Lymph node</option>
+                        
                         <option>Blank</option>
                         <option>Control</option>
-                        <option>Others</option>
+                        
                   </select>
               </td>
               <td class = "select" ALIGN="center">      
@@ -3138,10 +3183,10 @@
                         <option>Negative</option>
                         <option>Uninterpretable</option>
                         <option>No Tumor</option>
-                        <option>Lymph node</option>
+                        
                         <option>Blank</option>
                         <option>Control</option>
-                        <option>Others</option>
+                        
                   </select>
               </td>
               <td class = "select" ALIGN="center">      
@@ -3151,10 +3196,10 @@
                         <option>Negative</option>
                         <option>Uninterpretable</option>
                         <option>No Tumor</option>
-                        <option>Lymph node</option>
+                        
                         <option>Blank</option>
                         <option>Control</option>
-                        <option>Others</option>
+                        
                   </select>
               </td>
               <td class = "select" ALIGN="center">      
@@ -3166,8 +3211,8 @@
                         <option>Uninterpretable</option>
                         <option>No Tumor</option>
                         <option>Blank</option>
-                        <option>Lymph Node</option>
-                        <option>Others</option>
+                        
+                        
                   </select>
               </td>
             </tr>
@@ -3180,9 +3225,9 @@
                         <option>Interpret in Large Cells</option>
                         <option>Interpret in Tumor Cells</option>
                         <option>Interpret in Abnormal Cells</option>
-                        <option>Lymph Node</option>
+                        
                         <option>Blank</option>
-                        <option>Others</option>
+                        
                   </select>
               </td>              
               <td class = "select" ALIGN="center">      
@@ -3192,10 +3237,10 @@
                         <option>Negative</option>
                         <option>Uninterpretable</option>
                         <option>No Tumor</option>
-                        <option>Lymph node</option>
+                        
                         <option>Blank</option>
                         <option>Control</option>
-                        <option>Others</option>
+                        
                   </select>
               </td>
               <td class = "select" ALIGN="center">      
@@ -3205,10 +3250,10 @@
                         <option>Negative</option>
                         <option>Uninterpretable</option>
                         <option>No Tumor</option>
-                        <option>Lymph node</option>
+                        
                         <option>Blank</option>
                         <option>Control</option>
-                        <option>Others</option>
+                        
                   </select>
               </td>
               <td class = "select" ALIGN="center">      
@@ -3218,10 +3263,10 @@
                         <option>Negative</option>
                         <option>Uninterpretable</option>
                         <option>No Tumor</option>
-                        <option>Lymph node</option>
+                        
                         <option>Blank</option>
                         <option>Control</option>
-                        <option>Others</option>
+                        
                   </select>
               </td>
               <td class = "select" ALIGN="center">      
@@ -3233,8 +3278,8 @@
                         <option>Uninterpretable</option>
                         <option>No Tumor</option>
                         <option>Blank</option>
-                        <option>Lymph Node</option>
-                        <option>Others</option>
+                        
+                        
                   </select>
               </td>
             </tr>
@@ -3247,9 +3292,9 @@
                         <option>Interpret in Large Cells</option>
                         <option>Interpret in Tumor Cells</option>
                         <option>Interpret in Abnormal Cells</option>
-                        <option>Lymph Node</option>
+                        
                         <option>Blank</option>
-                        <option>Others</option>
+                        
                   </select>
               </td>              
               <td class = "select" ALIGN="center">      
@@ -3259,10 +3304,10 @@
                         <option>Negative</option>
                         <option>Uninterpretable</option>
                         <option>No Tumor</option>
-                        <option>Lymph node</option>
+                        
                         <option>Blank</option>
                         <option>Control</option>
-                        <option>Others</option>
+                        
                   </select>
               </td>
               <td class = "select" ALIGN="center">      
@@ -3272,10 +3317,10 @@
                         <option>Negative</option>
                         <option>Uninterpretable</option>
                         <option>No Tumor</option>
-                        <option>Lymph node</option>
+                        
                         <option>Blank</option>
                         <option>Control</option>
-                        <option>Others</option>
+                        
                   </select>
               </td>
               <td class = "select" ALIGN="center">      
@@ -3285,10 +3330,10 @@
                         <option>Negative</option>
                         <option>Uninterpretable</option>
                         <option>No Tumor</option>
-                        <option>Lymph node</option>
+                        
                         <option>Blank</option>
                         <option>Control</option>
-                        <option>Others</option>
+                        
                   </select>
               </td>
               <td class = "select" ALIGN="center">      
@@ -3300,8 +3345,8 @@
                         <option>Uninterpretable</option>
                         <option>No Tumor</option>
                         <option>Blank</option>
-                        <option>Lymph Node</option>
-                        <option>Others</option>
+                        
+                        
                   </select>
               </td>
             </tr>
@@ -3314,9 +3359,9 @@
                         <option>Interpret in Large Cells</option>
                         <option>Interpret in Tumor Cells</option>
                         <option>Interpret in Abnormal Cells</option>
-                        <option>Lymph Node</option>
+                        
                         <option>Blank</option>
-                        <option>Others</option>
+                        
                   </select>
               </td>              
               <td class = "select" ALIGN="center">      
@@ -3326,10 +3371,10 @@
                         <option>Negative</option>
                         <option>Uninterpretable</option>
                         <option>No Tumor</option>
-                        <option>Lymph node</option>
+                        
                         <option>Blank</option>
                         <option>Control</option>
-                        <option>Others</option>
+                        
                   </select>
               </td>
               <td class = "select" ALIGN="center">      
@@ -3339,10 +3384,10 @@
                         <option>Negative</option>
                         <option>Uninterpretable</option>
                         <option>No Tumor</option>
-                        <option>Lymph node</option>
+                        
                         <option>Blank</option>
                         <option>Control</option>
-                        <option>Others</option>
+                        
                   </select>
               </td>
               <td class = "select" ALIGN="center">      
@@ -3352,10 +3397,10 @@
                         <option>Negative</option>
                         <option>Uninterpretable</option>
                         <option>No Tumor</option>
-                        <option>Lymph node</option>
+                        
                         <option>Blank</option>
                         <option>Control</option>
-                        <option>Others</option>
+                        
                   </select>
               </td>
               <td class = "select" ALIGN="center">      
@@ -3367,8 +3412,8 @@
                         <option>Uninterpretable</option>
                         <option>No Tumor</option>
                         <option>Blank</option>
-                        <option>Lymph Node</option>
-                        <option>Others</option>
+                        
+                        
                   </select>
               </td>
             </tr>
@@ -3381,9 +3426,9 @@
                         <option>Interpret in Large Cells</option>
                         <option>Interpret in Tumor Cells</option>
                         <option>Interpret in Abnormal Cells</option>
-                        <option>Lymph Node</option>
+                        
                         <option>Blank</option>
-                        <option>Others</option>
+                        
                   </select>
               </td>              
               <td class = "select" ALIGN="center">      
@@ -3393,10 +3438,10 @@
                         <option>Negative</option>
                         <option>Uninterpretable</option>
                         <option>No Tumor</option>
-                        <option>Lymph node</option>
+                        
                         <option>Blank</option>
                         <option>Control</option>
-                        <option>Others</option>
+                        
                   </select>
               </td>
               <td class = "select" ALIGN="center">      
@@ -3406,10 +3451,10 @@
                         <option>Negative</option>
                         <option>Uninterpretable</option>
                         <option>No Tumor</option>
-                        <option>Lymph node</option>
+                        
                         <option>Blank</option>
                         <option>Control</option>
-                        <option>Others</option>
+                        
                   </select>
               </td>
               <td class = "select" ALIGN="center">      
@@ -3419,10 +3464,10 @@
                         <option>Negative</option>
                         <option>Uninterpretable</option>
                         <option>No Tumor</option>
-                        <option>Lymph node</option>
+                        
                         <option>Blank</option>
                         <option>Control</option>
-                        <option>Others</option>
+                        
                   </select>
               </td>
               <td class = "select" ALIGN="center">      
@@ -3434,8 +3479,8 @@
                         <option>Uninterpretable</option>
                         <option>No Tumor</option>
                         <option>Blank</option>
-                        <option>Lymph Node</option>
-                        <option>Others</option>
+                        
+                        
                   </select>
               </td>
             </tr>
@@ -3448,9 +3493,9 @@
                         <option>Interpret in Large Cells</option>
                         <option>Interpret in Tumor Cells</option>
                         <option>Interpret in Abnormal Cells</option>
-                        <option>Lymph Node</option>
+                        
                         <option>Blank</option>
-                        <option>Others</option>
+                        
                   </select>
               </td>              
               <td class = "select" ALIGN="center">      
@@ -3460,10 +3505,10 @@
                         <option>Negative</option>
                         <option>Uninterpretable</option>
                         <option>No Tumor</option>
-                        <option>Lymph node</option>
+                        
                         <option>Blank</option>
                         <option>Control</option>
-                        <option>Others</option>
+                        
                   </select>
               </td>
               <td class = "select" ALIGN="center">      
@@ -3473,10 +3518,10 @@
                         <option>Negative</option>
                         <option>Uninterpretable</option>
                         <option>No Tumor</option>
-                        <option>Lymph node</option>
+                        
                         <option>Blank</option>
                         <option>Control</option>
-                        <option>Others</option>
+                        
                   </select>
               </td>
               <td class = "select" ALIGN="center">      
@@ -3486,10 +3531,10 @@
                         <option>Negative</option>
                         <option>Uninterpretable</option>
                         <option>No Tumor</option>
-                        <option>Lymph node</option>
+                        
                         <option>Blank</option>
                         <option>Control</option>
-                        <option>Others</option>
+                        
                   </select>
               </td>
               <td class = "select" ALIGN="center">      
@@ -3501,8 +3546,8 @@
                         <option>Uninterpretable</option>
                         <option>No Tumor</option>
                         <option>Blank</option>
-                        <option>Lymph Node</option>
-                        <option>Others</option>
+                        
+                        
                   </select>
               </td>
             </tr>
@@ -3515,9 +3560,9 @@
                         <option>Interpret in Large Cells</option>
                         <option>Interpret in Tumor Cells</option>
                         <option>Interpret in Abnormal Cells</option>
-                        <option>Lymph Node</option>
+                        
                         <option>Blank</option>
-                        <option>Others</option>
+                        
                   </select>
               </td>              
               <td class = "select" ALIGN="center">      
@@ -3527,10 +3572,10 @@
                         <option>Negative</option>
                         <option>Uninterpretable</option>
                         <option>No Tumor</option>
-                        <option>Lymph node</option>
+                        
                         <option>Blank</option>
                         <option>Control</option>
-                        <option>Others</option>
+                        
                   </select>
               </td>
               <td class = "select" ALIGN="center">      
@@ -3540,10 +3585,10 @@
                         <option>Negative</option>
                         <option>Uninterpretable</option>
                         <option>No Tumor</option>
-                        <option>Lymph node</option>
+                        
                         <option>Blank</option>
                         <option>Control</option>
-                        <option>Others</option>
+                        
                   </select>
               </td>
               <td class = "select" ALIGN="center">      
@@ -3553,10 +3598,10 @@
                         <option>Negative</option>
                         <option>Uninterpretable</option>
                         <option>No Tumor</option>
-                        <option>Lymph node</option>
+                        
                         <option>Blank</option>
                         <option>Control</option>
-                        <option>Others</option>
+                        
                   </select>
               </td>
               <td class = "select" ALIGN="center">      
@@ -3568,8 +3613,8 @@
                         <option>Uninterpretable</option>
                         <option>No Tumor</option>
                         <option>Blank</option>
-                        <option>Lymph Node</option>
-                        <option>Others</option>
+                        
+                        
                   </select>
               </td>
             </tr>
@@ -3582,9 +3627,9 @@
                         <option>Interpret in Large Cells</option>
                         <option>Interpret in Tumor Cells</option>
                         <option>Interpret in Abnormal Cells</option>
-                        <option>Lymph Node</option>
+                        
                         <option>Blank</option>
-                        <option>Others</option>
+                        
                   </select>
               </td>              
               <td class = "select" ALIGN="center">      
@@ -3594,10 +3639,10 @@
                         <option>Negative</option>
                         <option>Uninterpretable</option>
                         <option>No Tumor</option>
-                        <option>Lymph node</option>
+                        
                         <option>Blank</option>
                         <option>Control</option>
-                        <option>Others</option>
+                        
                   </select>
               </td>
               <td class = "select" ALIGN="center">      
@@ -3607,10 +3652,10 @@
                         <option>Negative</option>
                         <option>Uninterpretable</option>
                         <option>No Tumor</option>
-                        <option>Lymph node</option>
+                        
                         <option>Blank</option>
                         <option>Control</option>
-                        <option>Others</option>
+                        
                   </select>
               </td>
               <td class = "select" ALIGN="center">      
@@ -3620,10 +3665,10 @@
                         <option>Negative</option>
                         <option>Uninterpretable</option>
                         <option>No Tumor</option>
-                        <option>Lymph node</option>
+                        
                         <option>Blank</option>
                         <option>Control</option>
-                        <option>Others</option>
+                        
                   </select>
               </td>
               <td class = "select" ALIGN="center">      
@@ -3635,8 +3680,8 @@
                         <option>Uninterpretable</option>
                         <option>No Tumor</option>
                         <option>Blank</option>
-                        <option>Lymph Node</option>
-                        <option>Others</option>
+                        
+                        
                   </select>
               </td>
             </tr>
@@ -3649,9 +3694,9 @@
                         <option>Interpret in Large Cells</option>
                         <option>Interpret in Tumor Cells</option>
                         <option>Interpret in Abnormal Cells</option>
-                        <option>Lymph Node</option>
+                        
                         <option>Blank</option>
-                        <option>Others</option>
+                        
                   </select>
               </td>              
               <td class = "select" ALIGN="center">      
@@ -3661,10 +3706,10 @@
                         <option>Negative</option>
                         <option>Uninterpretable</option>
                         <option>No Tumor</option>
-                        <option>Lymph node</option>
+                        
                         <option>Blank</option>
                         <option>Control</option>
-                        <option>Others</option>
+                        
                   </select>
               </td>
               <td class = "select" ALIGN="center">      
@@ -3674,10 +3719,10 @@
                         <option>Negative</option>
                         <option>Uninterpretable</option>
                         <option>No Tumor</option>
-                        <option>Lymph node</option>
+                        
                         <option>Blank</option>
                         <option>Control</option>
-                        <option>Others</option>
+                        
                   </select>
               </td>
               <td class = "select" ALIGN="center">      
@@ -3687,10 +3732,10 @@
                         <option>Negative</option>
                         <option>Uninterpretable</option>
                         <option>No Tumor</option>
-                        <option>Lymph node</option>
+                        
                         <option>Blank</option>
                         <option>Control</option>
-                        <option>Others</option>
+                        
                   </select>
               </td>
               <td class = "select" ALIGN="center">      
@@ -3702,8 +3747,8 @@
                         <option>Uninterpretable</option>
                         <option>No Tumor</option>
                         <option>Blank</option>
-                        <option>Lymph Node</option>
-                        <option>Others</option>
+                        
+                        
                   </select>
               </td>
             </tr>
@@ -3716,9 +3761,9 @@
                         <option>Interpret in Large Cells</option>
                         <option>Interpret in Tumor Cells</option>
                         <option>Interpret in Abnormal Cells</option>
-                        <option>Lymph Node</option>
+                        
                         <option>Blank</option>
-                        <option>Others</option>
+                        
                   </select>
               </td>              
               <td class = "select" ALIGN="center">      
@@ -3728,10 +3773,10 @@
                         <option>Negative</option>
                         <option>Uninterpretable</option>
                         <option>No Tumor</option>
-                        <option>Lymph node</option>
+                        
                         <option>Blank</option>
                         <option>Control</option>
-                        <option>Others</option>
+                        
                   </select>
               </td>
               <td class = "select" ALIGN="center">      
@@ -3741,10 +3786,10 @@
                         <option>Negative</option>
                         <option>Uninterpretable</option>
                         <option>No Tumor</option>
-                        <option>Lymph node</option>
+                        
                         <option>Blank</option>
                         <option>Control</option>
-                        <option>Others</option>
+                        
                   </select>
               </td>
               <td class = "select" ALIGN="center">      
@@ -3754,10 +3799,10 @@
                         <option>Negative</option>
                         <option>Uninterpretable</option>
                         <option>No Tumor</option>
-                        <option>Lymph node</option>
+                        
                         <option>Blank</option>
                         <option>Control</option>
-                        <option>Others</option>
+                        
                   </select>
               </td>
               <td class = "select" ALIGN="center">      
@@ -3769,8 +3814,8 @@
                         <option>Uninterpretable</option>
                         <option>No Tumor</option>
                         <option>Blank</option>
-                        <option>Lymph Node</option>
-                        <option>Others</option>
+                        
+                        
                   </select>
               </td>
             </tr>
@@ -3783,9 +3828,9 @@
                         <option>Interpret in Large Cells</option>
                         <option>Interpret in Tumor Cells</option>
                         <option>Interpret in Abnormal Cells</option>
-                        <option>Lymph Node</option>
+                        
                         <option>Blank</option>
-                        <option>Others</option>
+                        
                   </select>
               </td>              
               <td class = "select" ALIGN="center">      
@@ -3795,10 +3840,10 @@
                         <option>Negative</option>
                         <option>Uninterpretable</option>
                         <option>No Tumor</option>
-                        <option>Lymph node</option>
+                        
                         <option>Blank</option>
                         <option>Control</option>
-                        <option>Others</option>
+                        
                   </select>
               </td>
               <td class = "select" ALIGN="center">      
@@ -3808,10 +3853,10 @@
                         <option>Negative</option>
                         <option>Uninterpretable</option>
                         <option>No Tumor</option>
-                        <option>Lymph node</option>
+                        
                         <option>Blank</option>
                         <option>Control</option>
-                        <option>Others</option>
+                        
                   </select>
               </td>
               <td class = "select" ALIGN="center">      
@@ -3821,10 +3866,10 @@
                         <option>Negative</option>
                         <option>Uninterpretable</option>
                         <option>No Tumor</option>
-                        <option>Lymph node</option>
+                        
                         <option>Blank</option>
                         <option>Control</option>
-                        <option>Others</option>
+                        
                   </select>
               </td>
               <td class = "select" ALIGN="center">      
@@ -3836,8 +3881,8 @@
                         <option>Uninterpretable</option>
                         <option>No Tumor</option>
                         <option>Blank</option>
-                        <option>Lymph Node</option>
-                        <option>Others</option>
+                        
+                        
                   </select>
               </td>
             </tr>
@@ -3850,9 +3895,9 @@
                         <option>Interpret in Large Cells</option>
                         <option>Interpret in Tumor Cells</option>
                         <option>Interpret in Abnormal Cells</option>
-                        <option>Lymph Node</option>
+                        
                         <option>Blank</option>
-                        <option>Others</option>
+                        
                   </select>
               </td>              
               <td class = "select" ALIGN="center">      
@@ -3862,10 +3907,10 @@
                         <option>Negative</option>
                         <option>Uninterpretable</option>
                         <option>No Tumor</option>
-                        <option>Lymph node</option>
+                        
                         <option>Blank</option>
                         <option>Control</option>
-                        <option>Others</option>
+                        
                   </select>
               </td>
               <td class = "select" ALIGN="center">      
@@ -3875,10 +3920,10 @@
                         <option>Negative</option>
                         <option>Uninterpretable</option>
                         <option>No Tumor</option>
-                        <option>Lymph node</option>
+                        
                         <option>Blank</option>
                         <option>Control</option>
-                        <option>Others</option>
+                        
                   </select>
               </td>
               <td class = "select" ALIGN="center">      
@@ -3888,10 +3933,10 @@
                         <option>Negative</option>
                         <option>Uninterpretable</option>
                         <option>No Tumor</option>
-                        <option>Lymph node</option>
+                        
                         <option>Blank</option>
                         <option>Control</option>
-                        <option>Others</option>
+                        
                   </select>
               </td>
               <td class = "select" ALIGN="center">      
@@ -3903,8 +3948,8 @@
                         <option>Uninterpretable</option>
                         <option>No Tumor</option>
                         <option>Blank</option>
-                        <option>Lymph Node</option>
-                        <option>Others</option>
+                        
+                        
                   </select>
               </td>
             </tr>
@@ -3983,54 +4028,52 @@
                         <option>Interpret in Large Cells</option>
                         <option>Interpret in Tumor Cells</option>
                         <option>Interpret in Abnormal Cells</option>
-                        <option>Lymph Node</option>
+                        
                         <option>Blank</option>
-                        <option>Others</option>
+                        
                   </select>
               </td>              
               <td class = "select" ALIGN="center">      
                   <select class="form-select">
                         <option>Select</option>        
                         <option>Positive</option>
-                        <option>Focal Positive</option>
-                        <option>Strong Diffuse Positive</option>
                         <option>Negative</option>
                         <option>Uninterpretable</option>
                         <option>No Tumor</option>
-                        <option>Lymph node</option>
+                        
                         <option>Blank</option>
                         <option>Control</option>
-                        <option>Others</option>
+                        
                   </select>
               </td>
               <td class = "select" ALIGN="center">      
                   <select class="form-select">
                         <option>Select</option>        
                         <option>Positive</option>
-                        <option>Focal Positive</option>
-                        <option>Strong Diffuse Positive</option>
+                        
+                        
                         <option>Negative</option>
                         <option>Uninterpretable</option>
                         <option>No Tumor</option>
-                        <option>Lymph node</option>
+                        
                         <option>Blank</option>
                         <option>Control</option>
-                        <option>Others</option>
+                        
                   </select>
               </td>
               <td class = "select" ALIGN="center">      
                   <select class="form-select">
                         <option>Select</option>        
                         <option>Positive</option>
-                        <option>Focal Positive</option>
-                        <option>Strong Diffuse Positive</option>
+                        
+                        
                         <option>Negative</option>
                         <option>Uninterpretable</option>
                         <option>No Tumor</option>
-                        <option>Lymph node</option>
+                        
                         <option>Blank</option>
                         <option>Control</option>
-                        <option>Others</option>
+                        
                   </select>
               </td>
               <td class = "select" ALIGN="center">      
@@ -4042,8 +4085,8 @@
                         <option>Uninterpretable</option>
                         <option>No Tumor</option>
                         <option>Blank</option>
-                        <option>Lymph Node</option>
-                        <option>Others</option>
+                        
+                        
                   </select>
               </td>
             </tr>
@@ -4056,54 +4099,54 @@
                         <option>Interpret in Large Cells</option>
                         <option>Interpret in Tumor Cells</option>
                         <option>Interpret in Abnormal Cells</option>
-                        <option>Lymph Node</option>
+                        
                         <option>Blank</option>
-                        <option>Others</option>
+                        
                   </select>
               </td>              
               <td class = "select" ALIGN="center">      
                   <select class="form-select">
                         <option>Select</option>        
                         <option>Positive</option>
-                        <option>Focal Positive</option>
-                        <option>Strong Diffuse Positive</option>
+                        
+                        
                         <option>Negative</option>
                         <option>Uninterpretable</option>
                         <option>No Tumor</option>
-                        <option>Lymph node</option>
+                        
                         <option>Blank</option>
                         <option>Control</option>
-                        <option>Others</option>
+                        
                   </select>
               </td>
               <td class = "select" ALIGN="center">      
                   <select class="form-select">
                         <option>Select</option>        
                         <option>Positive</option>
-                        <option>Focal Positive</option>
-                        <option>Strong Diffuse Positive</option>
+                        
+                        
                         <option>Negative</option>
                         <option>Uninterpretable</option>
                         <option>No Tumor</option>
-                        <option>Lymph node</option>
+                        
                         <option>Blank</option>
                         <option>Control</option>
-                        <option>Others</option>
+                        
                   </select>
               </td>
               <td class = "select" ALIGN="center">      
                   <select class="form-select">
                         <option>Select</option>        
                         <option>Positive</option>
-                        <option>Focal Positive</option>
-                        <option>Strong Diffuse Positive</option>
+                        
+                        
                         <option>Negative</option>
                         <option>Uninterpretable</option>
                         <option>No Tumor</option>
-                        <option>Lymph node</option>
+                        
                         <option>Blank</option>
                         <option>Control</option>
-                        <option>Others</option>
+                        
                   </select>
               </td>
               <td class = "select" ALIGN="center">      
@@ -4115,8 +4158,8 @@
                         <option>Uninterpretable</option>
                         <option>No Tumor</option>
                         <option>Blank</option>
-                        <option>Lymph Node</option>
-                        <option>Others</option>
+                        
+                        
                   </select>
               </td>
             </tr>
@@ -4129,54 +4172,54 @@
                         <option>Interpret in Large Cells</option>
                         <option>Interpret in Tumor Cells</option>
                         <option>Interpret in Abnormal Cells</option>
-                        <option>Lymph Node</option>
+                        
                         <option>Blank</option>
-                        <option>Others</option>
+                        
                   </select>
               </td>              
               <td class = "select" ALIGN="center">      
                   <select class="form-select">
                         <option>Select</option>        
                         <option>Positive</option>
-                        <option>Focal Positive</option>
-                        <option>Strong Diffuse Positive</option>
+                        
+                        
                         <option>Negative</option>
                         <option>Uninterpretable</option>
                         <option>No Tumor</option>
-                        <option>Lymph node</option>
+                        
                         <option>Blank</option>
                         <option>Control</option>
-                        <option>Others</option>
+                        
                   </select>
               </td>
               <td class = "select" ALIGN="center">      
                   <select class="form-select">
                         <option>Select</option>        
                         <option>Positive</option>
-                        <option>Focal Positive</option>
-                        <option>Strong Diffuse Positive</option>
+                        
+                        
                         <option>Negative</option>
                         <option>Uninterpretable</option>
                         <option>No Tumor</option>
-                        <option>Lymph node</option>
+                        
                         <option>Blank</option>
                         <option>Control</option>
-                        <option>Others</option>
+                        
                   </select>
               </td>
               <td class = "select" ALIGN="center">      
                   <select class="form-select">
                         <option>Select</option>        
                         <option>Positive</option>
-                        <option>Focal Positive</option>
-                        <option>Strong Diffuse Positive</option>
+                        
+                        
                         <option>Negative</option>
                         <option>Uninterpretable</option>
                         <option>No Tumor</option>
-                        <option>Lymph node</option>
+                        
                         <option>Blank</option>
                         <option>Control</option>
-                        <option>Others</option>
+                        
                   </select>
               </td>
               <td class = "select" ALIGN="center">      
@@ -4188,8 +4231,8 @@
                         <option>Uninterpretable</option>
                         <option>No Tumor</option>
                         <option>Blank</option>
-                        <option>Lymph Node</option>
-                        <option>Others</option>
+                        
+                        
                   </select>
               </td>
             </tr>
@@ -4202,54 +4245,54 @@
                         <option>Interpret in Large Cells</option>
                         <option>Interpret in Tumor Cells</option>
                         <option>Interpret in Abnormal Cells</option>
-                        <option>Lymph Node</option>
+                        
                         <option>Blank</option>
-                        <option>Others</option>
+                        
                   </select>
               </td>              
               <td class = "select" ALIGN="center">      
                   <select class="form-select">
                         <option>Select</option>        
                         <option>Positive</option>
-                        <option>Focal Positive</option>
-                        <option>Strong Diffuse Positive</option>
+                        
+                        
                         <option>Negative</option>
                         <option>Uninterpretable</option>
                         <option>No Tumor</option>
-                        <option>Lymph node</option>
+                        
                         <option>Blank</option>
                         <option>Control</option>
-                        <option>Others</option>
+                        
                   </select>
               </td>
               <td class = "select" ALIGN="center">      
                   <select class="form-select">
                         <option>Select</option>        
                         <option>Positive</option>
-                        <option>Focal Positive</option>
-                        <option>Strong Diffuse Positive</option>
+                        
+                        
                         <option>Negative</option>
                         <option>Uninterpretable</option>
                         <option>No Tumor</option>
-                        <option>Lymph node</option>
+                        
                         <option>Blank</option>
                         <option>Control</option>
-                        <option>Others</option>
+                        
                   </select>
               </td>
               <td class = "select" ALIGN="center">      
                   <select class="form-select">
                         <option>Select</option>        
                         <option>Positive</option>
-                        <option>Focal Positive</option>
-                        <option>Strong Diffuse Positive</option>
+                        
+                        
                         <option>Negative</option>
                         <option>Uninterpretable</option>
                         <option>No Tumor</option>
-                        <option>Lymph node</option>
+                        
                         <option>Blank</option>
                         <option>Control</option>
-                        <option>Others</option>
+                        
                   </select>
               </td>
               <td class = "select" ALIGN="center">      
@@ -4261,8 +4304,8 @@
                         <option>Uninterpretable</option>
                         <option>No Tumor</option>
                         <option>Blank</option>
-                        <option>Lymph Node</option>
-                        <option>Others</option>
+                        
+                        
                   </select>
               </td>
             </tr>
@@ -4275,54 +4318,54 @@
                         <option>Interpret in Large Cells</option>
                         <option>Interpret in Tumor Cells</option>
                         <option>Interpret in Abnormal Cells</option>
-                        <option>Lymph Node</option>
+                        
                         <option>Blank</option>
-                        <option>Others</option>
+                        
                   </select>
               </td>              
               <td class = "select" ALIGN="center">      
                   <select class="form-select">
                         <option>Select</option>        
                         <option>Positive</option>
-                        <option>Focal Positive</option>
-                        <option>Strong Diffuse Positive</option>
+                        
+                        
                         <option>Negative</option>
                         <option>Uninterpretable</option>
                         <option>No Tumor</option>
-                        <option>Lymph node</option>
+                        
                         <option>Blank</option>
                         <option>Control</option>
-                        <option>Others</option>
+                        
                   </select>
               </td>
               <td class = "select" ALIGN="center">      
                   <select class="form-select">
                         <option>Select</option>        
                         <option>Positive</option>
-                        <option>Focal Positive</option>
-                        <option>Strong Diffuse Positive</option>
+                        
+                        
                         <option>Negative</option>
                         <option>Uninterpretable</option>
                         <option>No Tumor</option>
-                        <option>Lymph node</option>
+                        
                         <option>Blank</option>
                         <option>Control</option>
-                        <option>Others</option>
+                        
                   </select>
               </td>
               <td class = "select" ALIGN="center">      
                   <select class="form-select">
                         <option>Select</option>        
                         <option>Positive</option>
-                        <option>Focal Positive</option>
-                        <option>Strong Diffuse Positive</option>
+                        
+                        
                         <option>Negative</option>
                         <option>Uninterpretable</option>
                         <option>No Tumor</option>
-                        <option>Lymph node</option>
+                        
                         <option>Blank</option>
                         <option>Control</option>
-                        <option>Others</option>
+                        
                   </select>
               </td>
               <td class = "select" ALIGN="center">      
@@ -4334,8 +4377,8 @@
                         <option>Uninterpretable</option>
                         <option>No Tumor</option>
                         <option>Blank</option>
-                        <option>Lymph Node</option>
-                        <option>Others</option>
+                        
+                        
                   </select>
               </td>
             </tr>
@@ -4348,54 +4391,54 @@
                         <option>Interpret in Large Cells</option>
                         <option>Interpret in Tumor Cells</option>
                         <option>Interpret in Abnormal Cells</option>
-                        <option>Lymph Node</option>
+                        
                         <option>Blank</option>
-                        <option>Others</option>
+                        
                   </select>
               </td>              
               <td class = "select" ALIGN="center">      
                   <select class="form-select">
                         <option>Select</option>        
                         <option>Positive</option>
-                        <option>Focal Positive</option>
-                        <option>Strong Diffuse Positive</option>
+                        
+                        
                         <option>Negative</option>
                         <option>Uninterpretable</option>
                         <option>No Tumor</option>
-                        <option>Lymph node</option>
+                        
                         <option>Blank</option>
                         <option>Control</option>
-                        <option>Others</option>
+                        
                   </select>
               </td>
               <td class = "select" ALIGN="center">      
                   <select class="form-select">
                         <option>Select</option>        
                         <option>Positive</option>
-                        <option>Focal Positive</option>
-                        <option>Strong Diffuse Positive</option>
+                        
+                        
                         <option>Negative</option>
                         <option>Uninterpretable</option>
                         <option>No Tumor</option>
-                        <option>Lymph node</option>
+                        
                         <option>Blank</option>
                         <option>Control</option>
-                        <option>Others</option>
+                        
                   </select>
               </td>
               <td class = "select" ALIGN="center">      
                   <select class="form-select">
                         <option>Select</option>        
                         <option>Positive</option>
-                        <option>Focal Positive</option>
-                        <option>Strong Diffuse Positive</option>
+                        
+                        
                         <option>Negative</option>
                         <option>Uninterpretable</option>
                         <option>No Tumor</option>
-                        <option>Lymph node</option>
+                        
                         <option>Blank</option>
                         <option>Control</option>
-                        <option>Others</option>
+                        
                   </select>
               </td>
               <td class = "select" ALIGN="center">      
@@ -4407,8 +4450,8 @@
                         <option>Uninterpretable</option>
                         <option>No Tumor</option>
                         <option>Blank</option>
-                        <option>Lymph Node</option>
-                        <option>Others</option>
+                        
+                        
                   </select>
               </td>
             </tr>
@@ -4421,54 +4464,54 @@
                         <option>Interpret in Large Cells</option>
                         <option>Interpret in Tumor Cells</option>
                         <option>Interpret in Abnormal Cells</option>
-                        <option>Lymph Node</option>
+                        
                         <option>Blank</option>
-                        <option>Others</option>
+                        
                   </select>
               </td>              
               <td class = "select" ALIGN="center">      
                   <select class="form-select">
                         <option>Select</option>        
                         <option>Positive</option>
-                        <option>Focal Positive</option>
-                        <option>Strong Diffuse Positive</option>
+                        
+                        
                         <option>Negative</option>
                         <option>Uninterpretable</option>
                         <option>No Tumor</option>
-                        <option>Lymph node</option>
+                        
                         <option>Blank</option>
                         <option>Control</option>
-                        <option>Others</option>
+                        
                   </select>
               </td>
               <td class = "select" ALIGN="center">      
                   <select class="form-select">
                         <option>Select</option>        
                         <option>Positive</option>
-                        <option>Focal Positive</option>
-                        <option>Strong Diffuse Positive</option>
+                        
+                        
                         <option>Negative</option>
                         <option>Uninterpretable</option>
                         <option>No Tumor</option>
-                        <option>Lymph node</option>
+                        
                         <option>Blank</option>
                         <option>Control</option>
-                        <option>Others</option>
+                        
                   </select>
               </td>
               <td class = "select" ALIGN="center">      
                   <select class="form-select">
                         <option>Select</option>        
                         <option>Positive</option>
-                        <option>Focal Positive</option>
-                        <option>Strong Diffuse Positive</option>
+                        
+                        
                         <option>Negative</option>
                         <option>Uninterpretable</option>
                         <option>No Tumor</option>
-                        <option>Lymph node</option>
+                        
                         <option>Blank</option>
                         <option>Control</option>
-                        <option>Others</option>
+                        
                   </select>
               </td>
               <td class = "select" ALIGN="center">      
@@ -4480,8 +4523,8 @@
                         <option>Uninterpretable</option>
                         <option>No Tumor</option>
                         <option>Blank</option>
-                        <option>Lymph Node</option>
-                        <option>Others</option>
+                        
+                        
                   </select>
               </td>
             </tr>
@@ -4494,54 +4537,54 @@
                         <option>Interpret in Large Cells</option>
                         <option>Interpret in Tumor Cells</option>
                         <option>Interpret in Abnormal Cells</option>
-                        <option>Lymph Node</option>
+                        
                         <option>Blank</option>
-                        <option>Others</option>
+                        
                   </select>
               </td>              
               <td class = "select" ALIGN="center">      
                   <select class="form-select">
                         <option>Select</option>        
                         <option>Positive</option>
-                        <option>Focal Positive</option>
-                        <option>Strong Diffuse Positive</option>
+                        
+                        
                         <option>Negative</option>
                         <option>Uninterpretable</option>
                         <option>No Tumor</option>
-                        <option>Lymph node</option>
+                        
                         <option>Blank</option>
                         <option>Control</option>
-                        <option>Others</option>
+                        
                   </select>
               </td>
               <td class = "select" ALIGN="center">      
                   <select class="form-select">
                         <option>Select</option>        
                         <option>Positive</option>
-                        <option>Focal Positive</option>
-                        <option>Strong Diffuse Positive</option>
+                        
+                        
                         <option>Negative</option>
                         <option>Uninterpretable</option>
                         <option>No Tumor</option>
-                        <option>Lymph node</option>
+                        
                         <option>Blank</option>
                         <option>Control</option>
-                        <option>Others</option>
+                        
                   </select>
               </td>
               <td class = "select" ALIGN="center">      
                   <select class="form-select">
                         <option>Select</option>        
                         <option>Positive</option>
-                        <option>Focal Positive</option>
-                        <option>Strong Diffuse Positive</option>
+                        
+                        
                         <option>Negative</option>
                         <option>Uninterpretable</option>
                         <option>No Tumor</option>
-                        <option>Lymph node</option>
+                        
                         <option>Blank</option>
                         <option>Control</option>
-                        <option>Others</option>
+                        
                   </select>
               </td>
               <td class = "select" ALIGN="center">      
@@ -4553,8 +4596,8 @@
                         <option>Uninterpretable</option>
                         <option>No Tumor</option>
                         <option>Blank</option>
-                        <option>Lymph Node</option>
-                        <option>Others</option>
+                        
+                        
                   </select>
               </td>
             </tr>
@@ -4567,54 +4610,54 @@
                         <option>Interpret in Large Cells</option>
                         <option>Interpret in Tumor Cells</option>
                         <option>Interpret in Abnormal Cells</option>
-                        <option>Lymph Node</option>
+                        
                         <option>Blank</option>
-                        <option>Others</option>
+                        
                   </select>
               </td>              
               <td class = "select" ALIGN="center">      
                   <select class="form-select">
                         <option>Select</option>        
                         <option>Positive</option>
-                        <option>Focal Positive</option>
-                        <option>Strong Diffuse Positive</option>
+                        
+                        
                         <option>Negative</option>
                         <option>Uninterpretable</option>
                         <option>No Tumor</option>
-                        <option>Lymph node</option>
+                        
                         <option>Blank</option>
                         <option>Control</option>
-                        <option>Others</option>
+                        
                   </select>
               </td>
               <td class = "select" ALIGN="center">      
                   <select class="form-select">
                         <option>Select</option>        
                         <option>Positive</option>
-                        <option>Focal Positive</option>
-                        <option>Strong Diffuse Positive</option>
+                        
+                        
                         <option>Negative</option>
                         <option>Uninterpretable</option>
                         <option>No Tumor</option>
-                        <option>Lymph node</option>
+                        
                         <option>Blank</option>
                         <option>Control</option>
-                        <option>Others</option>
+                        
                   </select>
               </td>
               <td class = "select" ALIGN="center">      
                   <select class="form-select">
                         <option>Select</option>        
                         <option>Positive</option>
-                        <option>Focal Positive</option>
-                        <option>Strong Diffuse Positive</option>
+                        
+                        
                         <option>Negative</option>
                         <option>Uninterpretable</option>
                         <option>No Tumor</option>
-                        <option>Lymph node</option>
+                        
                         <option>Blank</option>
                         <option>Control</option>
-                        <option>Others</option>
+                        
                   </select>
               </td>
               <td class = "select" ALIGN="center">      
@@ -4626,8 +4669,8 @@
                         <option>Uninterpretable</option>
                         <option>No Tumor</option>
                         <option>Blank</option>
-                        <option>Lymph Node</option>
-                        <option>Others</option>
+                        
+                        
                   </select>
               </td>
             </tr>
@@ -4640,54 +4683,54 @@
                         <option>Interpret in Large Cells</option>
                         <option>Interpret in Tumor Cells</option>
                         <option>Interpret in Abnormal Cells</option>
-                        <option>Lymph Node</option>
+                        
                         <option>Blank</option>
-                        <option>Others</option>
+                        
                   </select>
               </td>              
               <td class = "select" ALIGN="center">      
                   <select class="form-select">
                         <option>Select</option>        
                         <option>Positive</option>
-                        <option>Focal Positive</option>
-                        <option>Strong Diffuse Positive</option>
+                        
+                        
                         <option>Negative</option>
                         <option>Uninterpretable</option>
                         <option>No Tumor</option>
-                        <option>Lymph node</option>
+                        
                         <option>Blank</option>
                         <option>Control</option>
-                        <option>Others</option>
+                        
                   </select>
               </td>
               <td class = "select" ALIGN="center">      
                   <select class="form-select">
                         <option>Select</option>        
                         <option>Positive</option>
-                        <option>Focal Positive</option>
-                        <option>Strong Diffuse Positive</option>
+                        
+                        
                         <option>Negative</option>
                         <option>Uninterpretable</option>
                         <option>No Tumor</option>
-                        <option>Lymph node</option>
+                        
                         <option>Blank</option>
                         <option>Control</option>
-                        <option>Others</option>
+                        
                   </select>
               </td>
               <td class = "select" ALIGN="center">      
                   <select class="form-select">
                         <option>Select</option>        
                         <option>Positive</option>
-                        <option>Focal Positive</option>
-                        <option>Strong Diffuse Positive</option>
+                        
+                        
                         <option>Negative</option>
                         <option>Uninterpretable</option>
                         <option>No Tumor</option>
-                        <option>Lymph node</option>
+                        
                         <option>Blank</option>
                         <option>Control</option>
-                        <option>Others</option>
+                        
                   </select>
               </td>
               <td class = "select" ALIGN="center">      
@@ -4699,8 +4742,8 @@
                         <option>Uninterpretable</option>
                         <option>No Tumor</option>
                         <option>Blank</option>
-                        <option>Lymph Node</option>
-                        <option>Others</option>
+                        
+                        
                   </select>
               </td>
             </tr>
@@ -4713,54 +4756,54 @@
                         <option>Interpret in Large Cells</option>
                         <option>Interpret in Tumor Cells</option>
                         <option>Interpret in Abnormal Cells</option>
-                        <option>Lymph Node</option>
+                        
                         <option>Blank</option>
-                        <option>Others</option>
+                        
                   </select>
               </td>              
               <td class = "select" ALIGN="center">      
                   <select class="form-select">
                         <option>Select</option>        
                         <option>Positive</option>
-                        <option>Focal Positive</option>
-                        <option>Strong Diffuse Positive</option>
+                        
+                        
                         <option>Negative</option>
                         <option>Uninterpretable</option>
                         <option>No Tumor</option>
-                        <option>Lymph node</option>
+                        
                         <option>Blank</option>
                         <option>Control</option>
-                        <option>Others</option>
+                        
                   </select>
               </td>
               <td class = "select" ALIGN="center">      
                   <select class="form-select">
                         <option>Select</option>        
                         <option>Positive</option>
-                        <option>Focal Positive</option>
-                        <option>Strong Diffuse Positive</option>
+                        
+                        
                         <option>Negative</option>
                         <option>Uninterpretable</option>
                         <option>No Tumor</option>
-                        <option>Lymph node</option>
+                        
                         <option>Blank</option>
                         <option>Control</option>
-                        <option>Others</option>
+                        
                   </select>
               </td>
               <td class = "select" ALIGN="center">      
                   <select class="form-select">
                         <option>Select</option>        
                         <option>Positive</option>
-                        <option>Focal Positive</option>
-                        <option>Strong Diffuse Positive</option>
+                        
+                        
                         <option>Negative</option>
                         <option>Uninterpretable</option>
                         <option>No Tumor</option>
-                        <option>Lymph node</option>
+                        
                         <option>Blank</option>
                         <option>Control</option>
-                        <option>Others</option>
+                        
                   </select>
               </td>
               <td class = "select" ALIGN="center">      
@@ -4772,8 +4815,8 @@
                         <option>Uninterpretable</option>
                         <option>No Tumor</option>
                         <option>Blank</option>
-                        <option>Lymph Node</option>
-                        <option>Others</option>
+                        
+                        
                   </select>
               </td>
             </tr>
@@ -4786,54 +4829,54 @@
                         <option>Interpret in Large Cells</option>
                         <option>Interpret in Tumor Cells</option>
                         <option>Interpret in Abnormal Cells</option>
-                        <option>Lymph Node</option>
+                        
                         <option>Blank</option>
-                        <option>Others</option>
+                        
                   </select>
               </td>              
               <td class = "select" ALIGN="center">      
                   <select class="form-select">
                         <option>Select</option>        
                         <option>Positive</option>
-                        <option>Focal Positive</option>
-                        <option>Strong Diffuse Positive</option>
+                        
+                        
                         <option>Negative</option>
                         <option>Uninterpretable</option>
                         <option>No Tumor</option>
-                        <option>Lymph node</option>
+                        
                         <option>Blank</option>
                         <option>Control</option>
-                        <option>Others</option>
+                        
                   </select>
               </td>
               <td class = "select" ALIGN="center">      
                   <select class="form-select">
                         <option>Select</option>        
                         <option>Positive</option>
-                        <option>Focal Positive</option>
-                        <option>Strong Diffuse Positive</option>
+                        
+                        
                         <option>Negative</option>
                         <option>Uninterpretable</option>
                         <option>No Tumor</option>
-                        <option>Lymph node</option>
+                        
                         <option>Blank</option>
                         <option>Control</option>
-                        <option>Others</option>
+                        
                   </select>
               </td>
               <td class = "select" ALIGN="center">      
                   <select class="form-select">
                         <option>Select</option>        
                         <option>Positive</option>
-                        <option>Focal Positive</option>
-                        <option>Strong Diffuse Positive</option>
+                        
+                        
                         <option>Negative</option>
                         <option>Uninterpretable</option>
                         <option>No Tumor</option>
-                        <option>Lymph node</option>
+                        
                         <option>Blank</option>
                         <option>Control</option>
-                        <option>Others</option>
+                        
                   </select>
               </td>
               <td class = "select" ALIGN="center">      
@@ -4845,8 +4888,8 @@
                         <option>Uninterpretable</option>
                         <option>No Tumor</option>
                         <option>Blank</option>
-                        <option>Lymph Node</option>
-                        <option>Others</option>
+                        
+                        
                   </select>
               </td>
             </tr>
@@ -6517,7 +6560,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (t.startsWith('misc')) return 'MISC';
     return 'ER';
   };
-  const DISPLAY = { ER:'ER', PR:'PR', HER2:'HER2/Neu', LYMPHOMA:'Lymphoma', MISC:'Miscellaneous' };
+  const DISPLAY = { ER:'ER', PR:'PR', HER2:'HER2/Neu', LYMPHOMA:'Hematolymphoid', MISC:'Miscellaneous' };
 
   // --- 2) Default (editable) values per submodule. Tweak these anytime. ---
   const defaultsByKey = {
@@ -7320,6 +7363,7 @@ document.addEventListener('change', (e) => {
 
 </script>
 
+<!-- ER: add Negative to Participant/EQAS/Ideal score dropdowns (top-level before optgroups) -->
 <script>
 document.addEventListener("DOMContentLoaded", () => {
   const tbody = document.querySelector("#modal-ER #rows-ER");
@@ -7329,33 +7373,51 @@ document.addEventListener("DOMContentLoaded", () => {
     <option value="">Select</option>
     <option value="Concordance">Concordance</option>
     <option value="Discordance">Discordance</option>
+    <option value="Educational_Challenge">Educational challenge</option>
+    <option value="Control">Control</option>
+    <option value="Blank">Blank</option>
+    <option value="Exclusion">Exclude from Scoring</option>
   `;
 
-  function ensureNAOption(sel) {
-    const hasNA = [...sel.querySelectorAll("option")].some(o => o.textContent.trim() === "NA");
-    if (hasNA) return;
+  // Add NA, Blank, Control, Negative as top-level options (before optgroups)
+  function ensureTopOptions(sel) {
+    if (!sel) return;
 
-    const na = document.createElement("option");
-    na.value = "NA";
-    na.textContent = "NA";
+    const existing = new Set(
+      [...sel.querySelectorAll("option")].map(o => o.textContent.trim())
+    );
 
-    // Put NA before the first optgroup (direct child of select)
+    // Insert in this order: NA, Blank, Control, Negative
+    const toAdd = [
+      { value: "NA", text: "NA" },
+      { value: "Blank", text: "Blank" },
+      { value: "Control", text: "Control" },
+      { value: "Negative", text: "Negative" },
+    ].filter(x => !existing.has(x.text));
+
+    if (!toAdd.length) return;
+
     const firstOptgroup = sel.querySelector("optgroup");
-    if (firstOptgroup) sel.insertBefore(na, firstOptgroup);
-    else sel.appendChild(na);
+    toAdd.forEach(({ value, text }) => {
+      const opt = document.createElement("option");
+      opt.value = value;
+      opt.textContent = text;
+
+      if (firstOptgroup) sel.insertBefore(opt, firstOptgroup);
+      else sel.appendChild(opt);
+    });
   }
 
   function wireNAReason(td, scoreSelect, ariaLabel) {
     if (!td || !scoreSelect) return;
 
-    // Undo the earlier approach if it ran before
     td.classList.remove("d-flex", "gap-2", "align-items-center");
     td.style.flexWrap = "";
 
-    // Ensure NA exists
-    ensureNAOption(scoreSelect);
+    // Ensure NA + Blank + Control + Negative exist
+    ensureTopOptions(scoreSelect);
 
-    // Create / reuse wrapper
+    // wrapper
     let wrap = td.querySelector(".na-wrap");
     if (!wrap) {
       wrap = document.createElement("div");
@@ -7365,16 +7427,14 @@ document.addEventListener("DOMContentLoaded", () => {
       wrap.style.alignItems = "center";
       wrap.style.flexWrap = "nowrap";
 
-      // Insert wrapper and move the existing select into it
       td.insertBefore(wrap, scoreSelect);
       wrap.appendChild(scoreSelect);
     }
 
-    // Make the main select take remaining space
     scoreSelect.style.flex = "1 1 auto";
     scoreSelect.style.minWidth = "0";
 
-    // Create / reuse reason select
+    // reason select
     let reasonSel = wrap.querySelector("select.na-reason");
     if (!reasonSel) {
       reasonSel = document.createElement("select");
@@ -7386,14 +7446,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
       reasonSel.innerHTML = `
         <option value="">Reason</option>
-        <option value="Tissue Inadequate">Tissue Inadequate</option>
-        <option value="Tissue Wash-off">Tissue Wash-off</option>
+        <option value="Tissue not sufficient">Tissue not sufficient</option>
+        <option value="Uninterpretable">Uninterpretable</option>
       `;
 
       wrap.appendChild(reasonSel);
     }
 
-    // Avoid double-wiring listeners
     if (scoreSelect.dataset.naWired === "1") return;
     scoreSelect.dataset.naWired = "1";
 
@@ -7420,25 +7479,27 @@ document.addEventListener("DOMContentLoaded", () => {
     if (tds.length < 5) return;
 
     // Columns: 0 Core, 1 Participant, 2 EQAS, 3 Ideal, 4 DOA
+    const participantTd = tds[1];
     const eqasTd  = tds[2];
     const idealTd = tds[3];
     const doaTd   = tds[4];
 
+    const participantSelect = participantTd.querySelector("select.form-select");
     const eqasSelect  = eqasTd.querySelector("select.form-select");
     const idealSelect = idealTd.querySelector("select.form-select");
     const doaSelect   = doaTd.querySelector("select.form-select");
 
-    // DOA: Concordance/Discordance only
     if (doaSelect) doaSelect.innerHTML = doaOptionsHTML;
 
-    // NA -> show reason select to the right (no replacement)
+    // Add NA + Blank + Control + Negative to ALL 3 score dropdowns
+    ensureTopOptions(participantSelect);
     wireNAReason(eqasTd, eqasSelect, "NA Reason (EQAS)");
     wireNAReason(idealTd, idealSelect, "NA Reason (Ideal)");
   });
 });
 </script>
 
-
+<!-- PR: add Negative to Participant/EQAS/Ideal score dropdowns (top-level before optgroups) -->
 <script>
 document.addEventListener("DOMContentLoaded", () => {
   const tbody = document.querySelector("#modal-PR #rows-PR");
@@ -7448,33 +7509,51 @@ document.addEventListener("DOMContentLoaded", () => {
     <option value="">Select</option>
     <option value="Concordance">Concordance</option>
     <option value="Discordance">Discordance</option>
+    <option value="Educational_Challenge">Educational challenge</option>
+    <option value="Control">Control</option>
+    <option value="Blank">Blank</option>
+    <option value="Exclusion">Exclude from Scoring</option>
   `;
 
-  function ensureNAOption(sel) {
-    const hasNA = [...sel.querySelectorAll("option")].some(o => o.textContent.trim() === "NA");
-    if (hasNA) return;
+  // Add NA, Blank, Control, Negative as top-level options (before optgroups)
+  function ensureTopOptions(sel) {
+    if (!sel) return;
 
-    const na = document.createElement("option");
-    na.value = "NA";
-    na.textContent = "NA";
+    const existing = new Set(
+      [...sel.querySelectorAll("option")].map(o => o.textContent.trim())
+    );
 
-    // Put NA before the first optgroup (direct child of select)
+    // Insert in this order: NA, Blank, Control, Negative
+    const toAdd = [
+      { value: "NA", text: "NA" },
+      { value: "Blank", text: "Blank" },
+      { value: "Control", text: "Control" },
+      { value: "Negative", text: "Negative" },
+    ].filter(x => !existing.has(x.text));
+
+    if (!toAdd.length) return;
+
     const firstOptgroup = sel.querySelector("optgroup");
-    if (firstOptgroup) sel.insertBefore(na, firstOptgroup);
-    else sel.appendChild(na);
+    toAdd.forEach(({ value, text }) => {
+      const opt = document.createElement("option");
+      opt.value = value;
+      opt.textContent = text;
+
+      if (firstOptgroup) sel.insertBefore(opt, firstOptgroup);
+      else sel.appendChild(opt);
+    });
   }
 
   function wireNAReason(td, scoreSelect, ariaLabel) {
     if (!td || !scoreSelect) return;
 
-    // Undo the earlier approach if it ran before
     td.classList.remove("d-flex", "gap-2", "align-items-center");
     td.style.flexWrap = "";
 
-    // Ensure NA exists
-    ensureNAOption(scoreSelect);
+    // Ensure NA + Blank + Control + Negative exist
+    ensureTopOptions(scoreSelect);
 
-    // Create / reuse wrapper
+    // wrapper
     let wrap = td.querySelector(".na-wrap");
     if (!wrap) {
       wrap = document.createElement("div");
@@ -7484,16 +7563,14 @@ document.addEventListener("DOMContentLoaded", () => {
       wrap.style.alignItems = "center";
       wrap.style.flexWrap = "nowrap";
 
-      // Insert wrapper and move the existing select into it
       td.insertBefore(wrap, scoreSelect);
       wrap.appendChild(scoreSelect);
     }
 
-    // Make the main select take remaining space
     scoreSelect.style.flex = "1 1 auto";
     scoreSelect.style.minWidth = "0";
 
-    // Create / reuse reason select
+    // reason select
     let reasonSel = wrap.querySelector("select.na-reason");
     if (!reasonSel) {
       reasonSel = document.createElement("select");
@@ -7505,14 +7582,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
       reasonSel.innerHTML = `
         <option value="">Reason</option>
-        <option value="Tissue Inadequate">Tissue Inadequate</option>
-        <option value="Tissue Wash-off">Tissue Wash-off</option>
+        <option value="Tissue Not Sufficient">Tissue Not Sufficient</option>
+        <option value="Uninterpretable">Uninterpretable</option>
       `;
 
       wrap.appendChild(reasonSel);
     }
 
-    // Avoid double-wiring listeners
     if (scoreSelect.dataset.naWired === "1") return;
     scoreSelect.dataset.naWired = "1";
 
@@ -7539,24 +7615,466 @@ document.addEventListener("DOMContentLoaded", () => {
     if (tds.length < 5) return;
 
     // Columns: 0 Core, 1 Participant, 2 EQAS, 3 Ideal, 4 DOA
+    const participantTd = tds[1];
     const eqasTd  = tds[2];
     const idealTd = tds[3];
     const doaTd   = tds[4];
 
+    const participantSelect = participantTd.querySelector("select.form-select");
     const eqasSelect  = eqasTd.querySelector("select.form-select");
     const idealSelect = idealTd.querySelector("select.form-select");
     const doaSelect   = doaTd.querySelector("select.form-select");
 
-    // DOA: Concordance/Discordance only
     if (doaSelect) doaSelect.innerHTML = doaOptionsHTML;
 
-    // NA -> show reason select to the right (no replacement)
+    // Add NA + Blank + Control + Negative to ALL 3 score dropdowns
+    ensureTopOptions(participantSelect);
     wireNAReason(eqasTd, eqasSelect, "NA Reason (EQAS)");
     wireNAReason(idealTd, idealSelect, "NA Reason (Ideal)");
   });
 });
 </script>
 
+
+
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const tbody = document.querySelector("#modal-HER2 #rows-HER2");
+  if (!tbody) return;
+
+  // Concordance column options (remove Concordant *)
+  const concordanceOptionsHTML = `
+    <option value="">Select</option>
+    <option value="Concordant">Concordant</option>
+    <option value="Discordant">Discordant</option>
+    <option value="Educational_Challenge">Educational Challenge</option>
+    <option value="Control">Control</option>
+    <option value="Blank">Blank</option>
+    <option value="Exclusion">Exclude from Scoring</option>
+  `;
+
+  // Remove specific options by visible text
+  function removeOptionsByText(sel, texts) {
+    if (!sel) return;
+    const targets = new Set(texts.map(t => t.trim().toLowerCase()));
+    [...sel.querySelectorAll("option")].forEach(opt => {
+      const txt = (opt.textContent || "").trim().toLowerCase();
+      if (targets.has(txt)) opt.remove();
+    });
+  }
+
+  // Ensure a top-level option exists (before first optgroup if any)
+  function ensureTopOption(sel, { value, text }) {
+    if (!sel) return;
+
+    const exists = [...sel.querySelectorAll("option")].some(
+      o => (o.textContent || "").trim() === text
+    );
+    if (exists) return;
+
+    const opt = document.createElement("option");
+    opt.value = value;
+    opt.textContent = text;
+
+    const firstOptgroup = sel.querySelector("optgroup");
+    if (firstOptgroup) sel.insertBefore(opt, firstOptgroup);
+    else sel.appendChild(opt);
+  }
+
+  // Adds NA + Control at top-level, and removes undesired options from the score dropdown
+  function normalizeScoreSelect(sel) {
+    if (!sel) return;
+
+    // 2) Remove these from score dropdowns
+    removeOptionsByText(sel, ["Uninterpretable", "Tissue Depleted", "Others", "NA"]);
+
+    // 2) Add Control to score dropdowns
+    ensureTopOption(sel, { value: "Control", text: "Control" });
+
+    // 1) Add NA to score dropdowns (and handle reason dropdown)
+    ensureTopOption(sel, { value: "NA", text: "NA" });
+  }
+
+  function wireNAReason(td, scoreSelect, ariaLabel) {
+    if (!td || !scoreSelect) return;
+
+    // Ensure score dropdown is normalized first
+    normalizeScoreSelect(scoreSelect);
+
+    // Wrapper (so we can show NA reason beside the select)
+    let wrap = td.querySelector(".na-wrap");
+    if (!wrap) {
+      wrap = document.createElement("div");
+      wrap.className = "na-wrap";
+      wrap.style.display = "flex";
+      wrap.style.gap = "8px";
+      wrap.style.alignItems = "center";
+      wrap.style.flexWrap = "nowrap";
+
+      td.insertBefore(wrap, scoreSelect);
+      wrap.appendChild(scoreSelect);
+    }
+
+    scoreSelect.style.flex = "1 1 auto";
+    scoreSelect.style.minWidth = "0";
+
+    // Create / reuse reason select
+    let reasonSel = wrap.querySelector("select.na-reason");
+    if (!reasonSel) {
+      reasonSel = document.createElement("select");
+      reasonSel.className = "form-select form-select-sm na-reason";
+      reasonSel.setAttribute("aria-label", ariaLabel);
+      reasonSel.style.flex = "0 0 220px";
+      reasonSel.style.display = "none";
+      reasonSel.disabled = true;
+
+      // 1) NA Reasons
+      reasonSel.innerHTML = `
+        <option value="">Reason</option>
+        <option value="Tissue not sufficient">Tissue not sufficient</option>
+        <option value="Uninterpretable">Uninterpretable</option>
+      `;
+
+      wrap.appendChild(reasonSel);
+    }
+
+    // Avoid double wiring
+    if (scoreSelect.dataset.naWired === "1") return;
+    scoreSelect.dataset.naWired = "1";
+
+    const toggle = () => {
+      const txt = scoreSelect.options[scoreSelect.selectedIndex]?.textContent?.trim() || "";
+      const isNA = (scoreSelect.value === "NA" || txt === "NA");
+
+      if (isNA) {
+        reasonSel.style.display = "";
+        reasonSel.disabled = false;
+      } else {
+        reasonSel.value = "";
+        reasonSel.style.display = "none";
+        reasonSel.disabled = true;
+      }
+    };
+
+    scoreSelect.addEventListener("change", toggle);
+    toggle();
+  }
+
+  // Apply to ALL rows (all cores)
+  tbody.querySelectorAll("tr").forEach(tr => {
+    const tds = tr.querySelectorAll("td");
+    if (tds.length < 5) return;
+
+    // Columns: 0 Core, 1 Participant, 2 EQAS, 3 Ideal, 4 Concordance
+    const participantTd = tds[1];
+    const eqasTd = tds[2];
+    const idealTd = tds[3];
+    const concordTd = tds[4];
+
+    const participantSelect = participantTd.querySelector("select.form-select");
+    const eqasSelect = eqasTd.querySelector("select.form-select");
+    const idealSelect = idealTd.querySelector("select.form-select");
+    const concordSelect = concordTd.querySelector("select.form-select");
+
+    // 3) Concordance dropdown: set new list and remove Concordant *
+    if (concordSelect) concordSelect.innerHTML = concordanceOptionsHTML;
+
+    // 1 + 2) Score dropdowns: add NA with reason + add Control + remove unwanted
+    wireNAReason(participantTd, participantSelect, "NA Reason (Participant)");
+    wireNAReason(eqasTd, eqasSelect, "NA Reason (EQAS)");
+    wireNAReason(idealTd, idealSelect, "NA Reason (Ideal)");
+  });
+});
+</script>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const tbody = document.querySelector("#modal-LYM #rows-LYM");
+  if (!tbody) return;
+
+  // Concordance column options (standardized)
+  const concordanceOptionsHTML = `
+    <option value="">Select</option>
+    <option value="Concordant">Concordant</option>
+    <option value="Discordant">Discordant</option>
+    <option value="Educational_Challenge">Educational Challenge</option>
+    <option value="Control">Control</option>
+    <option value="Blank">Blank</option>
+    <option value="Exclusion">Exclude from Scoring</option>
+  `;
+
+  function removeOptionsByText(sel, texts) {
+    if (!sel) return;
+    const targets = new Set(texts.map(t => t.trim().toLowerCase()));
+    [...sel.querySelectorAll("option")].forEach(opt => {
+      const txt = (opt.textContent || "").trim().toLowerCase();
+      if (targets.has(txt)) opt.remove();
+    });
+  }
+
+  function ensureTopOption(sel, { value, text }) {
+    if (!sel) return;
+
+    const exists = [...sel.querySelectorAll("option")].some(
+      o => (o.textContent || "").trim() === text
+    );
+    if (exists) return;
+
+    const opt = document.createElement("option");
+    opt.value = value;
+    opt.textContent = text;
+
+    const firstOptgroup = sel.querySelector("optgroup");
+    if (firstOptgroup) sel.insertBefore(opt, firstOptgroup);
+    else sel.appendChild(opt);
+  }
+
+  function normalizeScoreSelect(sel) {
+    if (!sel) return;
+
+    // 1) Remove unwanted options from score dropdowns
+    removeOptionsByText(sel, ["Uninterpretable", "No Tumor"]);
+
+    // 2) Add NA (if not present)
+    ensureTopOption(sel, { value: "NA", text: "NA" });
+  }
+
+  function wireNAReason(td, scoreSelect, ariaLabel) {
+    if (!td || !scoreSelect) return;
+
+    // Ensure select is normalized first
+    normalizeScoreSelect(scoreSelect);
+
+    // Create / reuse wrapper
+    let wrap = td.querySelector(".na-wrap");
+    if (!wrap) {
+      wrap = document.createElement("div");
+      wrap.className = "na-wrap";
+      wrap.style.display = "flex";
+      wrap.style.gap = "8px";
+      wrap.style.alignItems = "center";
+      wrap.style.flexWrap = "nowrap";
+
+      td.insertBefore(wrap, scoreSelect);
+      wrap.appendChild(scoreSelect);
+    }
+
+    // Main select flex behavior
+    scoreSelect.style.flex = "1 1 auto";
+    scoreSelect.style.minWidth = "0";
+
+    // Create / reuse NA reason select
+    let reasonSel = wrap.querySelector("select.na-reason");
+    if (!reasonSel) {
+      reasonSel = document.createElement("select");
+      reasonSel.className = "form-select form-select-sm na-reason";
+      reasonSel.setAttribute("aria-label", ariaLabel);
+      reasonSel.style.flex = "0 0 220px";
+      reasonSel.style.display = "none";
+      reasonSel.disabled = true;
+
+      reasonSel.innerHTML = `
+        <option value="">Reason</option>
+        <option value="Tissue Not Sufficient">Tissue Not Sufficient</option>
+        <option value="Uninterpretable">Uninterpretable</option>
+      `;
+
+      wrap.appendChild(reasonSel);
+    }
+
+    // Avoid double wiring
+    if (scoreSelect.dataset.naWired === "1") return;
+    scoreSelect.dataset.naWired = "1";
+
+    const toggle = () => {
+      const txt = scoreSelect.options[scoreSelect.selectedIndex]?.textContent?.trim() || "";
+      const isNA = (scoreSelect.value === "NA" || txt === "NA");
+
+      if (isNA) {
+        reasonSel.style.display = "";
+        reasonSel.disabled = false;
+      } else {
+        reasonSel.value = "";
+        reasonSel.style.display = "none";
+        reasonSel.disabled = true;
+      }
+    };
+
+    scoreSelect.addEventListener("change", toggle);
+    toggle();
+  }
+
+  // Apply to ALL rows (all cores)
+  tbody.querySelectorAll("tr").forEach(tr => {
+    const tds = tr.querySelectorAll("td");
+    if (tds.length < 6) return;
+
+    // Columns: 0 Core, 1 Questionnaire, 2 Participant, 3 EQAS, 4 Ideal, 5 Concordance
+    const participantTd = tds[2];
+    const eqasTd = tds[3];
+    const idealTd = tds[4];
+    const concordTd = tds[5];
+
+    const participantSelect = participantTd.querySelector("select.form-select");
+    const eqasSelect = eqasTd.querySelector("select.form-select");
+    const idealSelect = idealTd.querySelector("select.form-select");
+    const concordSelect = concordTd.querySelector("select.form-select");
+
+    // 3) Concordance standardized list
+    if (concordSelect) concordSelect.innerHTML = concordanceOptionsHTML;
+
+    // 1 + 2) NA logic (same pattern) for Participant/EQAS/Ideal
+    wireNAReason(participantTd, participantSelect, "NA Reason (Participant)");
+    wireNAReason(eqasTd, eqasSelect, "NA Reason (EQAS)");
+    wireNAReason(idealTd, idealSelect, "NA Reason (Ideal)");
+  });
+});
+</script>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const tbody = document.querySelector("#modal-MISC #rows-MISC");
+  if (!tbody) return;
+
+  // Concordance column options (standardized)
+  const concordanceOptionsHTML = `
+    <option value="">Select</option>
+    <option value="Concordant">Concordant</option>
+    <option value="Discordant">Discordant</option>
+    <option value="Educational_Challenge">Educational Challenge</option>
+    <option value="Control">Control</option>
+    <option value="Blank">Blank</option>
+    <option value="Exclusion">Exclude from Scoring</option>
+  `;
+
+  function removeOptionsByText(sel, texts) {
+    if (!sel) return;
+    const targets = new Set(texts.map(t => t.trim().toLowerCase()));
+    [...sel.querySelectorAll("option")].forEach(opt => {
+      const txt = (opt.textContent || "").trim().toLowerCase();
+      if (targets.has(txt)) opt.remove();
+    });
+  }
+
+  function ensureTopOption(sel, { value, text }) {
+    if (!sel) return;
+
+    const exists = [...sel.querySelectorAll("option")].some(
+      o => (o.textContent || "").trim() === text
+    );
+    if (exists) return;
+
+    const opt = document.createElement("option");
+    opt.value = value;
+    opt.textContent = text;
+
+    const firstOptgroup = sel.querySelector("optgroup");
+    if (firstOptgroup) sel.insertBefore(opt, firstOptgroup);
+    else sel.appendChild(opt);
+  }
+
+  function normalizeScoreSelect(sel) {
+    if (!sel) return;
+
+    // Remove unwanted options (same as LYM)
+    removeOptionsByText(sel, ["Uninterpretable", "No Tumor"]);
+
+    // Add NA (if not present)
+    ensureTopOption(sel, { value: "NA", text: "NA" });
+  }
+
+  function wireNAReason(td, scoreSelect, ariaLabel) {
+    if (!td || !scoreSelect) return;
+
+    // Ensure select is normalized first
+    normalizeScoreSelect(scoreSelect);
+
+    // Create / reuse wrapper
+    let wrap = td.querySelector(".na-wrap");
+    if (!wrap) {
+      wrap = document.createElement("div");
+      wrap.className = "na-wrap";
+      wrap.style.display = "flex";
+      wrap.style.gap = "8px";
+      wrap.style.alignItems = "center";
+      wrap.style.flexWrap = "nowrap";
+
+      td.insertBefore(wrap, scoreSelect);
+      wrap.appendChild(scoreSelect);
+    }
+
+    // Main select flex behavior
+    scoreSelect.style.flex = "1 1 auto";
+    scoreSelect.style.minWidth = "0";
+
+    // Create / reuse NA reason select
+    let reasonSel = wrap.querySelector("select.na-reason");
+    if (!reasonSel) {
+      reasonSel = document.createElement("select");
+      reasonSel.className = "form-select form-select-sm na-reason";
+      reasonSel.setAttribute("aria-label", ariaLabel);
+      reasonSel.style.flex = "0 0 220px";
+      reasonSel.style.display = "none";
+      reasonSel.disabled = true;
+
+      reasonSel.innerHTML = `
+        <option value="">Reason</option>
+        <option value="Tissue Not Sufficient">Tissue Not Sufficient</option>
+        <option value="Uninterpretable">Uninterpretable</option>
+      `;
+
+      wrap.appendChild(reasonSel);
+    }
+
+    // Avoid double wiring
+    if (scoreSelect.dataset.naWired === "1") return;
+    scoreSelect.dataset.naWired = "1";
+
+    const toggle = () => {
+      const txt = scoreSelect.options[scoreSelect.selectedIndex]?.textContent?.trim() || "";
+      const isNA = (scoreSelect.value === "NA" || txt === "NA");
+
+      if (isNA) {
+        reasonSel.style.display = "";
+        reasonSel.disabled = false;
+      } else {
+        reasonSel.value = "";
+        reasonSel.style.display = "none";
+        reasonSel.disabled = true;
+      }
+    };
+
+    scoreSelect.addEventListener("change", toggle);
+    toggle();
+  }
+
+  // Apply to ALL rows (all cores)
+  tbody.querySelectorAll("tr").forEach(tr => {
+    const tds = tr.querySelectorAll("td");
+    if (tds.length < 6) return;
+
+    // Columns: 0 Core, 1 Questionnaire, 2 Participant, 3 EQAS, 4 Ideal, 5 Concordance
+    const participantTd = tds[2];
+    const eqasTd = tds[3];
+    const idealTd = tds[4];
+    const concordTd = tds[5];
+
+    const participantSelect = participantTd.querySelector("select.form-select");
+    const eqasSelect = eqasTd.querySelector("select.form-select");
+    const idealSelect = idealTd.querySelector("select.form-select");
+    const concordSelect = concordTd.querySelector("select.form-select");
+
+    // Concordance standardized list
+    if (concordSelect) concordSelect.innerHTML = concordanceOptionsHTML;
+
+    // NA logic (same pattern) for Participant/EQAS/Ideal
+    wireNAReason(participantTd, participantSelect, "NA Reason (Participant)");
+    wireNAReason(eqasTd, eqasSelect, "NA Reason (EQAS)");
+    wireNAReason(idealTd, idealSelect, "NA Reason (Ideal)");
+  });
+});
+</script>
 
 
 </body>
